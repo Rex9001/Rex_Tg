@@ -17,7 +17,7 @@
 /area/station/maintenance/solars/port/aft)
 "am" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "at" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -56,7 +56,7 @@
 /obj/machinery/airalarm/directional/south,
 /obj/structure/reagent_dispensers/cooking_oil,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "aJ" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -313,7 +313,7 @@
 /turf/open/floor/iron/half,
 /area/station/hallway/primary/port)
 "eD" = (
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "eH" = (
 /obj/effect/turf_decal/stripes/line,
@@ -329,7 +329,7 @@
 "eX" = (
 /obj/structure/table/reinforced,
 /obj/item/holosign_creator/robot_seat/bar,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "ff" = (
 /obj/effect/turf_decal/stripes/line,
@@ -443,7 +443,7 @@
 	name = "Bar"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/bar,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "he" = (
 /obj/structure/cable,
@@ -474,7 +474,7 @@
 /obj/structure/displaycase/forsale/kitchen{
 	pixel_y = 8
 	},
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "hv" = (
 /obj/machinery/light/dim/directional/north,
@@ -488,6 +488,7 @@
 /area/station/commons/vacant_room/commissary)
 "hG" = (
 /obj/structure/sign/poster/random/directional/west,
+/obj/machinery/computer/slot_machine,
 /turf/open/floor/iron/large,
 /area/station/service/bar)
 "hX" = (
@@ -522,8 +523,6 @@
 /area/space)
 "io" = (
 /obj/structure/table,
-/obj/effect/spawner/random/trash/cigbutt,
-/obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "iu" = (
@@ -675,7 +674,7 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/wrench,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "kt" = (
 /obj/effect/spawner/random/structure/crate,
@@ -684,7 +683,7 @@
 /area/station/maintenance/port)
 "kv" = (
 /obj/machinery/vending/wardrobe/bar_wardrobe,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "kK" = (
 /obj/machinery/smartfridge/food,
@@ -811,7 +810,7 @@
 /obj/effect/spawner/random/entertainment/gambling,
 /obj/effect/spawner/random/entertainment/deck,
 /obj/item/storage/dice,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "mQ" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -858,6 +857,10 @@
 "nF" = (
 /turf/open/floor/iron/half,
 /area/station/hallway/primary)
+"nG" = (
+/obj/structure/chair/stool/directional/west,
+/turf/open/floor/iron/large,
+/area/station/service/bar)
 "nI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -881,7 +884,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "os" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -918,7 +921,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "oI" = (
 /obj/machinery/vending/autodrobe/all_access,
 /turf/open/floor/plating,
@@ -968,6 +971,13 @@
 	},
 /turf/open/floor/iron/half,
 /area/station/hallway/primary)
+"pr" = (
+/obj/item/kirbyplants/random,
+/obj/machinery/light/dim/directional/north,
+/obj/machinery/door/firedoor,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/iron/half,
+/area/station/hallway/primary)
 "pt" = (
 /obj/structure/table,
 /obj/structure/spider/stickyweb,
@@ -979,7 +989,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "pw" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
@@ -1306,6 +1316,9 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
+"vb" = (
+/turf/open/floor/iron/textured_large,
+/area/station/service/bar)
 "vg" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/iron/cafeteria,
@@ -1333,7 +1346,7 @@
 /obj/item/reagent_containers/cup/glass/shaker{
 	pixel_x = -6
 	},
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "vr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1374,7 +1387,7 @@
 /obj/structure/table/reinforced,
 /obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/storage/box/rubbershot,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "vX" = (
 /obj/structure/chair/stool/bar/directional/east,
@@ -1438,6 +1451,11 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/station/ai_monitored/command/storage/eva)
+"wU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/half,
+/area/station/hallway/primary)
 "wY" = (
 /obj/effect/turf_decal/weather,
 /turf/open/floor/plating,
@@ -1523,7 +1541,7 @@
 	},
 /obj/structure/kitchenspike,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "xZ" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/iron/cafeteria,
@@ -1575,11 +1593,11 @@
 "za" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "zl" = (
 /obj/structure/closet/secure_closet/bar,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron,
 /area/station/service/bar/backroom)
 "zm" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -1598,7 +1616,7 @@
 	name = "Pete"
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "zx" = (
 /obj/machinery/computer/records/security{
 	dir = 8
@@ -1729,7 +1747,7 @@
 /obj/machinery/gibber,
 /obj/machinery/camera/directional/north,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Bl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1828,7 +1846,7 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/machinery/icecream_vat,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "DJ" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -1985,7 +2003,7 @@
 /area/station/ai_monitored/command/storage/eva)
 "FS" = (
 /obj/structure/table/reinforced/rglass,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "FT" = (
 /obj/effect/turf_decal/stripes/red/line{
@@ -2023,7 +2041,7 @@
 	desc = "Looks like a knock-off chem-master. Perhaps useful for separating liquids when mixing drinks precisely. Also dispenses condiments.";
 	name = "HoochMaster Deluxe"
 	},
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "GB" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -2064,7 +2082,7 @@
 	},
 /obj/machinery/food_cart,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Hj" = (
 /obj/machinery/door/poddoor/preopen,
 /obj/effect/turf_decal/sand,
@@ -2340,7 +2358,7 @@
 /obj/structure/table/reinforced/rglass,
 /obj/effect/spawner/random/entertainment/cigarette,
 /obj/effect/spawner/random/entertainment/lighter,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "Km" = (
 /turf/open/floor/iron/cafeteria,
@@ -2349,7 +2367,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/structure/kitchenspike,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Kq" = (
 /turf/open/space/basic,
 /area/space)
@@ -2418,7 +2436,7 @@
 "Lu" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Lw" = (
 /obj/effect/gibspawner/human,
 /turf/open/misc/sandy_dirt,
@@ -2454,6 +2472,10 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
+"LU" = (
+/obj/machinery/computer/slot_machine,
+/turf/open/floor/iron/large,
+/area/station/service/bar)
 "Mg" = (
 /turf/open/floor/plating,
 /area/station/maintenance/port)
@@ -2580,7 +2602,7 @@
 	},
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Nv" = (
 /obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/iron/half,
@@ -2647,7 +2669,7 @@
 "Of" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Oi" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/dirt,
@@ -2925,11 +2947,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "Tv" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "TC" = (
 /obj/machinery/suit_storage_unit/standard_unit,
@@ -3274,14 +3296,14 @@
 /area/station/hallway/primary)
 "ZA" = (
 /obj/structure/sign/poster/random/directional/east,
-/turf/open/floor/iron/large,
+/turf/open/floor/iron/textured_large,
 /area/station/service/bar)
 "ZC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/space)
+/area/station/service/kitchen/coldroom)
 "ZD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -149920,8 +149942,8 @@ co
 co
 uP
 uP
-rO
-rB
+fQ
+pr
 Nj
 ws
 Fm
@@ -150177,7 +150199,7 @@ uP
 uP
 uP
 uP
-jo
+oC
 nF
 Kg
 nF
@@ -150434,7 +150456,7 @@ uP
 uP
 uP
 uP
-jo
+oC
 Jo
 oW
 Zs
@@ -150691,7 +150713,7 @@ uP
 uP
 uP
 uP
-jo
+oC
 nF
 Jc
 IQ
@@ -150948,8 +150970,8 @@ QH
 QH
 cm
 cm
-QH
-IQ
+fQ
+wU
 oW
 FZ
 Fm
@@ -151199,11 +151221,11 @@ uP
 uP
 QH
 kg
-MP
+LU
 hG
 jy
-MP
-MP
+LU
+LU
 kg
 hp
 nF
@@ -151456,11 +151478,11 @@ uP
 uP
 QH
 MP
+nG
+nG
 MP
-MP
-MP
-MP
-MP
+nG
+nG
 MP
 hp
 nF
@@ -153768,13 +153790,13 @@ uP
 uP
 uP
 QH
-MP
-MP
-MP
-MP
-MP
-MP
-MP
+vb
+vb
+vb
+vb
+vb
+vb
+vb
 QH
 nF
 oW
@@ -154029,7 +154051,7 @@ yY
 yY
 yY
 As
-MP
+vb
 za
 Tv
 hp
@@ -154286,9 +154308,9 @@ am
 vE
 eX
 yY
-MP
-MP
-MP
+vb
+vb
+vb
 hp
 nF
 oW
