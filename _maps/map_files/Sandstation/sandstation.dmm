@@ -592,6 +592,21 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"is" = (
+/obj/machinery/button/door/directional/south{
+	id = "armory";
+	name = "Armory Shutters";
+	req_access = list("armory");
+	pixel_y = -6
+	},
+/obj/machinery/button/door/directional/south{
+	id = "armory";
+	name = "Armory Shutters";
+	req_access = list("armory");
+	pixel_y = 6
+	},
+/turf/closed/wall/r_wall,
+/area/space)
 "iu" = (
 /obj/structure/cable,
 /obj/structure/cable,
@@ -1107,6 +1122,13 @@
 /obj/item/holosign_creator/robot_seat/restaurant,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
+"pC" = (
+/obj/machinery/door/poddoor/shutters/window{
+	id = "armory";
+	name = "Armory Shutters"
+	},
+/turf/open/floor/iron/large,
+/area/space)
 "pD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/large,
@@ -153702,7 +153724,7 @@ Qd
 Qd
 Qd
 Qd
-JD
+is
 Qd
 Qd
 Qd
@@ -153959,7 +153981,7 @@ rO
 Qd
 Qd
 Qd
-Qd
+pC
 Qd
 Qd
 Qd
@@ -154216,7 +154238,7 @@ Qd
 Qd
 Qd
 Qd
-Qd
+pC
 Qd
 Qd
 Qd
@@ -154473,7 +154495,7 @@ rO
 Qd
 Qd
 Qd
-Qd
+pC
 Qd
 Qd
 Qd
@@ -154730,7 +154752,7 @@ rO
 Qd
 Qd
 Qd
-Qd
+pC
 Qd
 Qd
 Qd
