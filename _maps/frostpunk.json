@@ -1,0 +1,32 @@
+{
+	"version": 1,
+	"map_name": "Shuttle crash on ice",
+	"map_path": "Event_maps/Frostpunk_ripoff",
+	"map_file": "Frost_punk_ripoff.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"planetary": 1,
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_box",
+		"emergency": "emergency_box"
+	},
+	"traits": [
+		{
+			"Mining": true,
+			"Linkage": null,
+			"Gravity": true,
+			"Ice Ruins Underground": true,
+			"Baseturf": "/turf/open/misc/asteriod/snow/icemoon",
+			"No Parallax": true
+		}
+	],
+	"minetype": "none",
+	"blacklist_file": "iceruinblacklist.txt",
+	"job_changes": {
+		"Captain": {
+			"special_charter": "crash"
+		}
+	}
+}
