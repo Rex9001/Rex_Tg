@@ -103,6 +103,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
 "bh" = (
@@ -223,6 +224,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
 "cg" = (
@@ -1053,6 +1055,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 8
 	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron/large,
 /area/station/security/lockers)
 "kv" = (
@@ -1570,6 +1573,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/commons/vacant_room/commissary)
+"pN" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/large,
+/area/station/security/brig/entrance)
 "pO" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
@@ -2895,6 +2902,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
 "Be" = (
@@ -2953,6 +2961,10 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/radio/intercom/directional/west{
+	pixel_x = -2;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
 "BN" = (
@@ -2980,6 +2992,7 @@
 /area/station/service/kitchen)
 "BZ" = (
 /obj/machinery/holopad/secure,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
 "Ca" = (
@@ -3843,6 +3856,8 @@
 /area/station/security/brig)
 "Ja" = (
 /obj/machinery/light/small/directional/east,
+/obj/structure/table/glass,
+/mob/living/basic/giant_spider/sgt_araneus,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "Jb" = (
@@ -4011,7 +4026,8 @@
 /turf/open/space/basic,
 /area/space)
 "Kr" = (
-/mob/living/basic/giant_spider/sgt_araneus,
+/obj/structure/table/glass,
+/obj/effect/spawner/random/entertainment/musical_instrument,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "Kt" = (
@@ -4302,6 +4318,7 @@
 /area/station/ai_monitored/command/storage/eva)
 "MN" = (
 /obj/structure/closet/secure_closet/hos,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "MP" = (
@@ -4395,6 +4412,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
 "Nz" = (
@@ -4411,11 +4429,12 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/item/phone{
 	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
+	pixel_x = -4;
 	pixel_y = 3
 	},
 /obj/machinery/recharger{
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = 4
 	},
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
@@ -5105,6 +5124,13 @@
 /area/station/hallway/primary/central/fore)
 "TO" = (
 /obj/machinery/light/small/directional/south,
+/obj/structure/table/glass,
+/obj/machinery/microwave{
+	pixel_y = 7
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 4
+	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "TQ" = (
@@ -154633,7 +154659,7 @@ FW
 zD
 wc
 nm
-OV
+pN
 RL
 uc
 RL
