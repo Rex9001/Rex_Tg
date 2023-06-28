@@ -313,6 +313,8 @@
 	name = "Cell 3";
 	pixel_y = -32
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/space)
 "cQ" = (
@@ -811,6 +813,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
+"ii" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "ik" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/chuunibyou{
@@ -1165,6 +1172,10 @@
 "mg" = (
 /obj/structure/cable,
 /obj/structure/cable,
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 3";
+	name = "Cell 3 locker"
+	},
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "mi" = (
@@ -1396,6 +1407,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/service/kitchen/coldroom)
+"op" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "os" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -1476,6 +1493,8 @@
 	id = "Holding Cell";
 	name = "Holding Cell"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "oW" = (
@@ -1610,6 +1629,8 @@
 	id = "Cell 3";
 	name = "Cell 3"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "qg" = (
@@ -2206,6 +2227,15 @@
 /obj/item/storage/box/rubbershot,
 /turf/open/floor/iron,
 /area/station/service/bar/backroom)
+"vL" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "vX" = (
 /obj/structure/chair/stool/bar/directional/east,
 /obj/effect/landmark/start/hangover,
@@ -2353,6 +2383,8 @@
 	name = "Cell 2";
 	pixel_y = -32
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/space)
 "wY" = (
@@ -2727,6 +2759,15 @@
 	},
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
+"zB" = (
+/obj/structure/table,
+/obj/item/restraints/handcuffs,
+/obj/item/restraints/handcuffs{
+	pixel_y = 6;
+	pixel_x = -3
+	},
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "zC" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
@@ -2944,6 +2985,13 @@
 /obj/item/food/sandwich/cheese/grilled,
 /turf/open/floor/iron/half,
 /area/station/hallway/primary/central/fore)
+"BA" = (
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 2";
+	name = "Cell 2 locker"
+	},
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "BD" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/light/dim/directional/west,
@@ -3085,6 +3133,12 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
+"CR" = (
+/obj/structure/cable,
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "CU" = (
 /obj/machinery/door/firedoor,
 /obj/structure/extinguisher_cabinet/directional/east,
@@ -3190,6 +3244,17 @@
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/plating,
 /area/station/security/checkpoint/customs)
+"DQ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/curtain,
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "DT" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 1
@@ -3845,6 +3910,13 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+"IT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "IU" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -4681,6 +4753,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
+"Pv" = (
+/obj/structure/cable,
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 1";
+	name = "Cell 1 locker"
+	},
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "Px" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/light/dim/directional/east,
@@ -4701,6 +4781,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/office)
+"PH" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/curtain,
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "PK" = (
 /obj/structure/flora/tree/palm/style_random,
 /turf/open/misc/beach/sand,
@@ -5235,6 +5325,8 @@
 	name = "Cell 1";
 	pixel_y = -32
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/space)
 "UQ" = (
@@ -5284,6 +5376,8 @@
 	id = "Cell 2";
 	name = "Cell 2"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "Vi" = (
@@ -5447,6 +5541,8 @@
 	id = "Cell 1";
 	name = "Cell 1"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "Xk" = (
@@ -5485,6 +5581,11 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/station/ai_monitored/command/storage/eva)
+"Xu" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/large,
+/area/station/security/brig)
 "Xw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -5733,6 +5834,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/security/warden)
+"ZJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/large,
+/area/space)
 "ZL" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/half,
@@ -149007,10 +149113,10 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 qe
-YX
-YX
+Xu
+PH
 wL
 TN
 Pj
@@ -149266,7 +149372,7 @@ Qd
 Qd
 cO
 rz
-YX
+op
 YX
 wL
 jX
@@ -149521,9 +149627,9 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 mA
-wT
+CR
 mg
 wL
 jX
@@ -149778,7 +149884,7 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 rz
 mA
 qV
@@ -150035,10 +150141,10 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 Vh
-YX
-wT
+Xu
+DQ
 wL
 jX
 Pj
@@ -150294,7 +150400,7 @@ Qd
 Qd
 wV
 rz
-YX
+op
 YX
 wL
 jX
@@ -150549,10 +150655,10 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 mA
-wT
-YX
+CR
+BA
 wL
 jX
 Pj
@@ -150806,7 +150912,7 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 rz
 mA
 mA
@@ -151063,10 +151169,10 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 Xf
-YX
-YX
+Xu
+PH
 wL
 Yp
 Pj
@@ -151322,7 +151428,7 @@ Qd
 Qd
 UN
 rz
-YX
+op
 YX
 wL
 jX
@@ -151577,10 +151683,10 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 ae
-YX
-wT
+ii
+Pv
 wL
 jX
 Pj
@@ -151834,7 +151940,7 @@ Qd
 Qd
 Qd
 Qd
-Qd
+ZJ
 rz
 mA
 qV
@@ -152078,7 +152184,7 @@ jW
 nP
 jW
 YX
-Uh
+IT
 YX
 YX
 Uh
@@ -152091,9 +152197,9 @@ YX
 YX
 YX
 YX
-YX
+Xu
 oU
-YX
+Xu
 EG
 wL
 jX
@@ -152345,13 +152451,13 @@ YX
 YX
 YX
 YX
-YX
-YX
-YX
-YX
+Xu
+Xu
+Xu
+Xu
 rz
 YX
-EG
+zB
 wL
 jX
 Pj
@@ -152588,7 +152694,7 @@ yi
 eK
 Nz
 UJ
-eK
+vL
 nL
 eK
 YX
@@ -152602,11 +152708,11 @@ YX
 YX
 YX
 YX
+Xu
 YX
 YX
 YX
-YX
-rz
+ae
 YX
 EG
 wL
