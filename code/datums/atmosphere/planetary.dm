@@ -50,3 +50,26 @@
 	minimum_temp = ICEBOX_MIN_TEMPERATURE
 	maximum_temp = ICEBOX_MIN_TEMPERATURE
 
+/datum/atmosphere/sandplanet
+	id = SANDPLANET_DEFAULT_ATMOS
+	base_gases = list(
+		/datum/gas/oxygen=5,
+		/datum/gas/carbon_dioxide=10,
+	)
+	normal_gases = list(
+		/datum/gas/oxygen=5,
+		/datum/gas/carbon_dioxide=15,
+		/datum/gas/nitrogen=10,
+	)
+	restricted_gases = list(
+		/datum/gas/plasma=0.2
+		/datum/gas/bz=0.1
+		/datum/gas/miasma=1
+	)
+	restricted_chance = 25
+
+	minimum_pressure = HAZARD_LOW_PRESSURE + 10
+	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
+
+	minimum_temp = SANDPLANET_MIN_TEMPERATURE
+	maximum_temp = SANDPLANET_MAX_TEMPERATURE

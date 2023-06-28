@@ -45,6 +45,11 @@
 #define LAVALAND_MAX_TEMPERATURE 350
 /// The minimum temperature of Icebox
 #define ICEBOX_MIN_TEMPERATURE 180
+/// The minimum temperature of Sandplanet
+#define SANDPLANET_MIN_TEMPERATURE 460
+/// The maximum temperature of Sandplanet
+#define SANDPLANET_MAX_TEMPERATURE 500
+
 
 /// The natural temperature for a body
 #define BODYTEMP_NORMAL 310.15
@@ -66,6 +71,8 @@
 #define BODYTEMP_HEAT_DAMAGE_LIMIT (BODYTEMP_NORMAL + 30)
 /// A temperature limit which is above the maximum lavaland temperature
 #define BODYTEMP_HEAT_LAVALAND_SAFE (LAVALAND_MAX_TEMPERATURE + 5)
+/// A temperature limit which is above the maximum Sandplanet temperature
+#define BODYTEMP_HEAT_SANDPLANET_SAFE (SANDPLANET_MAX_TEMPERATURE + 10)
 /// The body temperature limit the human body can take before it starts taking damage from cold.
 /// This also affects how fast the body normalises it's temperature when cold.
 /// 270k is about -3c, that is below freezing and would hurt over time.
