@@ -62,9 +62,9 @@
 		/datum/gas/nitrogen=10,
 	)
 	restricted_gases = list(
-		/datum/gas/plasma=0.2
-		/datum/gas/bz=0.1
-		/datum/gas/miasma=1
+		/datum/gas/plasma=0.1,
+		/datum/gas/bz=0.1,
+		/datum/gas/miasma=1.2,
 	)
 	restricted_chance = 25
 
