@@ -1,7 +1,7 @@
 "al" = (/obj/structure/cannon,/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "ap" = (/obj/effect/decal/cleanable/blood,/obj/item/kirbyplants/random/dead,/turf/open/floor/stone,/area/shuttle/pirate/flying_dutchman)
 "aw" = (/obj/effect/turf_decal/siding/wood/corner{dir = 1},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
-"aG" = (/obj/structure/closet/cabinet{name = "The red captains cabinet"},/obj/item/clothing/shoes/pirate/armored,/obj/item/clothing/suit/hooded/cloak/goliath{name = "red captains cloak"},/obj/item/clothing/under/syndicate/bloodred{name = "blood-red suit"},/obj/item/clothing/suit/hooded/berserker{pressure_resistance = 5; min_cold_protection_temperature = 0; name = "red kings armor"; desc = "Voices of all those slain echo throughout the armour, it appears to have been repainted from berserker armor though the captain has kept the original berserker helmet"; icon_state = "hgpirate"; icon = 'icons/obj/clothing/suits/costume.dmi'; worn_icon = 'icons/mob/clothing/suits/costume.dmi'},/obj/item/clothing/head/helmet/space/pirate,/turf/open/floor/stone,/area/shuttle/pirate/flying_dutchman)
+"aG" = (/obj/structure/closet/cabinet{name = "The red captains cabinet"},/obj/item/clothing/shoes/pirate/armored,/obj/item/clothing/under/syndicate/bloodred{name = "blood-red suit"},/obj/item/clothing/head/helmet/space/pirate{name = "red captains helmet"},/obj/item/clothing/suit/hooded/berserker{pressure_resistance = 10; min_cold_protection_temperature = 0; name = "Red captains armor"; desc = "Voices of the lost echo from the armor, looted and passed down through millenia of combat"; resistance_flags = 3},/obj/item/tank/jetpack/oxygen/security{name = "red captains jetpack"; desc = "A tank of compressed oxygen fitted for the red captain"},/obj/item/tank/internals/emergency_oxygen/engi,/obj/item/clothing/suit/space/pirate{name = "red captains EVA suit"; desc = "A suit intended for last minute evacuations, not that the captain expects any"},/turf/open/floor/stone,/area/shuttle/pirate/flying_dutchman)
 "aW" = (/obj/machinery/computer/monitor{dir = 8},/turf/open/floor/carpet/royalblack/airless,/area/shuttle/pirate/flying_dutchman)
 "bo" = (/obj/machinery/porta_turret/syndicate/energy,/turf/closed/wall/mineral/wood/nonmetal,/area/shuttle/pirate/flying_dutchman)
 "br" = (/obj/structure/rack,/obj/item/gun/ballistic/shotgun/automatic/combat,/obj/item/gun/ballistic/shotgun/automatic/combat,/obj/item/storage/box/lethalshot,/obj/item/storage/box/lethalshot,/obj/effect/turf_decal/siding/wood/end{dir = 4},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
@@ -36,7 +36,7 @@
 "nI" = (/obj/item/stack/cannonball/the_big_one,/obj/effect/turf_decal/siding/wood/end{dir = 8},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "ou" = (/obj/structure/stairs/wood{dir = 4},/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
 "pe" = (/obj/effect/turf_decal/siding/wood,/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
-"pi" = (/obj/structure/table/wood/fancy/black,/obj/item/gun/energy/beam_rifle{lefthand_file = icons/mob/inhands/weapons/melee_lefthand.dmi; righthand_file = icons/mob/inhands/weapons/melee_righthand.dmi; inhand_icon_state = powerfist; icon = 'icons/obj/device_syndie.dmi'; icon_state = "powerfist"; pixel_y = 5; pixel_x = 3; color = #669900; name = "Hand of the red captain"; desc = "A weapon of devestating potential looted from an experimental terran lab."; aiming_time_fire_threshold = 3},/obj/item/necromantic_stone,/turf/open/floor/carpet/red,/area/shuttle/pirate/flying_dutchman)
+"pi" = (/obj/structure/table/wood/fancy/black,/obj/item/gun/energy/beam_rifle{lefthand_file = icons/mob/inhands/weapons/melee_lefthand.dmi; righthand_file = icons/mob/inhands/weapons/melee_righthand.dmi; inhand_icon_state = powerfist; icon = 'icons/obj/device_syndie.dmi'; icon_state = "powerfist"; pixel_y = 5; pixel_x = 3; color = #669900; name = "Hand of the red captain"; desc = "A weapon of devestating potential looted from an experimental terran lab."; aiming_time_fire_threshold = 3; projectile_damage = 50},/obj/item/necromantic_stone,/turf/open/floor/carpet/red,/area/shuttle/pirate/flying_dutchman)
 "qb" = (/obj/structure/table,/obj/machinery/light/small/directional/west,/turf/open/floor/carpet/royalblack/airless,/area/shuttle/pirate/flying_dutchman)
 "rc" = (/obj/effect/mob_spawn/ghost_role/human/pirate/skeleton,/obj/effect/turf_decal/siding/wood,/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "rq" = (/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
@@ -59,6 +59,7 @@
 "xh" = (/obj/item/reagent_containers/cup/bucket/wooden,/obj/effect/turf_decal/siding/wood{dir = 8},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "xX" = (/turf/open/floor/carpet/royalblack/airless,/area/shuttle/pirate/flying_dutchman)
 "yN" = (/obj/machinery/light/small/directional/west,/obj/effect/turf_decal/siding/wood{dir = 8},/obj/effect/turf_decal/siding/wood/corner{dir = 4},/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
+"zd" = (/obj/machinery/piratepad,/turf/open/floor/carpet/royalblack/airless,/area/shuttle/pirate/flying_dutchman)
 "zu" = (/obj/effect/turf_decal/siding/wood{dir = 6},/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
 "zD" = (/obj/effect/turf_decal/siding/wood{dir = 1},/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
 "zN" = (/obj/machinery/light/small/directional/north,/obj/effect/turf_decal/siding/wood{dir = 1},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
@@ -72,7 +73,6 @@
 "DG" = (/obj/machinery/light/small/directional/east,/obj/effect/turf_decal/siding/wood{dir = 5},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "DP" = (/obj/machinery/door/airlock/vault{color = "#825427"; name = "Ship Armoury"},/obj/effect/mapping_helpers/airlock/cutaiwire,/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
 "El" = (/obj/machinery/light/small/directional/west,/obj/effect/turf_decal/siding/wood{dir = 8},/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
-"En" = (/obj/structure/table,/obj/machinery/light/small/directional/west,/obj/item/reagent_containers/cup/glass/bottle/whiskey{pixel_y = 8},/obj/item/reagent_containers/cup/glass{pixel_y = 8; pixel_x = -7},/obj/item/reagent_containers/cup/glass{pixel_y = 7; pixel_x = 8},/turf/open/floor/carpet/royalblack/airless,/area/shuttle/pirate/flying_dutchman)
 "EI" = (/obj/structure/rack{icon = 'icons/obj/stationobjs.dmi'; icon_state = "minibar"; name = "skeletal minibar"},/obj/item/reagent_containers/condiment/milk{pixel_x = 5},/obj/item/reagent_containers/condiment/milk{pixel_x = -5},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "ER" = (/obj/structure/railing,/obj/effect/turf_decal/siding/wood/end,/obj/structure/cannon,/turf/open/floor/plating/airless,/area/shuttle/pirate/flying_dutchman)
 "Fe" = (/obj/effect/turf_decal/siding/wood{dir = 9},/obj/structure/table/wood,/obj/item/stack/cannonball/fourteen,/obj/item/flashlight/flare/torch,/obj/effect/turf_decal/siding/wood{dir = 5},/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
@@ -118,6 +118,7 @@
 "TL" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/carpet/red,/area/shuttle/pirate/flying_dutchman)
 "UK" = (/obj/effect/turf_decal/siding/wood/corner,/turf/closed/wall/mineral/wood/nonmetal,/area/shuttle/pirate/flying_dutchman)
 "Vh" = (/obj/structure/fermenting_barrel/gunpowder,/obj/item/reagent_containers/cup/bucket/wooden,/obj/item/reagent_containers/cup/bucket/wooden,/obj/effect/turf_decal/siding/wood,/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
+"Vu" = (/obj/structure/table,/obj/machinery/light/small/directional/west,/obj/item/reagent_containers/cup/glass/bottle/whiskey{pixel_y = 8},/obj/item/reagent_containers/cup/glass{pixel_y = 8; pixel_x = -7},/obj/item/reagent_containers/cup/glass{pixel_y = 7; pixel_x = 8},/turf/open/floor/carpet/royalblack/airless,/area/shuttle/pirate/flying_dutchman)
 "WP" = (/turf/open/floor/stone,/area/shuttle/pirate/flying_dutchman)
 "WY" = (/obj/structure/rack,/obj/item/gun/ballistic/shotgun/automatic/combat,/obj/item/gun/ballistic/shotgun/automatic/combat,/obj/item/storage/box/lethalshot,/obj/item/storage/box/lethalshot,/obj/effect/turf_decal/siding/wood{dir = 4},/turf/open/floor/wood,/area/shuttle/pirate/flying_dutchman)
 "Xg" = (/obj/structure/fermenting_barrel/gunpowder,/obj/item/reagent_containers/cup/bucket/wooden,/obj/item/reagent_containers/cup/bucket/wooden,/obj/machinery/light/small/directional/east,/turf/open/floor/wood/airless,/area/shuttle/pirate/flying_dutchman)
@@ -152,7 +153,7 @@ jvjvjvjvjvXAuAawIWRBnrGqPnXAbtfFtfzDuRuJzDzDtfzDuRuJzDzDtfzDzDuJzDuRtfzDzDuJzDzD
 jvjvjvjvXAXAJlrqalalrqrqWYXAXAEluRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRCZJwCNCNXAjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
 jvjvjvjvXAnIvMexrcexexrqZAbrXAMbsNuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRuRsNuRuRuRuRuRuRuRuRuRuRzDJwXAeiXAjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
 jvjvjvsqXAXAXAXAXAXAXADPXAXAXAMbuRuRUKXAKuUKXAuRuRuRuRXACNCNCNXAuRuRuRuRuRuRXAXAMOXAXAuRuRuRCZXUJwXACNXAjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
-jvjvjvXAlSfthbSfvbzNvbrqvbDGXAElpeHgXALouRLoXAFCpeOPuRXAEnxXiSCNuRuRFCpeOPdCXALouRLoXAuRFCpeOPuRCZCQFeXAXACNXAjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
+jvjvjvXAlSfthbSfvbzNvbrqvbDGXAElpeHgXALouRLoXAFCpeOPuRXAVuzdiSCNuRuRFCpeOPdCXALouRLoXAuRFCpeOPuRCZCQFeXAXACNXAjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
 jvjvjvXAlSftxhrqrqrqrqTprqrqbQhNFiMbXAMguRLoXAhNFiBNuRouuRuRtzCNuRuRhNFiMbuRXALouRXgXAuRhNFiMbuRuRuRCZzDXUzDzDKmjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
 jvjvjvXAlSftxhTprqTprqrqrqrqbQhNFiMbXALouRXgXAhNFiMbuRouGBuRBTCNuRuRhNFiMbuRXAMguRLoXAuRhNFiMbuRuRuRFCpeMkpepejdjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
 jvjvjvXAlSftxhEIrqrqGorqrqeAXAyNzDnfXALouRLoXACZzDPUuRXAqbxXaWCNuRuRCZzDPUdCXALouRLoXAuRCZzDPUuRFCVhwzXAXACNXAjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjvjv
