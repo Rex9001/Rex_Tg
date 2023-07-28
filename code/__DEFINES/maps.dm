@@ -81,6 +81,8 @@ Always compile, always use that verb, and always make sure that it works for wha
 #define ZTRAIT_SPACE_RUINS "Space Ruins"
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
 #define ZTRAIT_ICE_RUINS "Ice Ruins"
+#define ZTRAIT_DUNE_RUINS "Dune Ruins"
+#define ZTRAIT_DUNE_RUINS_MINING "Dune Ruins Mining"
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
 
@@ -88,6 +90,7 @@ Always compile, always use that verb, and always make sure that it works for wha
 #define ZTRAIT_SNOWSTORM "Weather_Snowstorm"
 #define ZTRAIT_ASHSTORM "Weather_Ashstorm"
 #define ZTRAIT_VOIDSTORM "Weather_Voidstorm"
+#define ZTRAIT_SANDSTORM "Weather_Sandstorm"
 
 /// boolean - does this z prevent ghosts from observing it
 #define ZTRAIT_SECRET "Secret"
@@ -174,6 +177,8 @@ Always compile, always use that verb, and always make sure that it works for wha
 ///Map generation defines
 #define DEFAULT_SPACE_RUIN_LEVELS 7
 #define DEFAULT_SPACE_EMPTY_LEVELS 1
+#define DEFAULT_DUNE_RUIN_LEVELS 6
+#define DEFAULT_DUNE_EMPTY_LEVELS 2
 
 #define PERLIN_LAYER_HEIGHT "perlin_height"
 #define PERLIN_LAYER_HUMIDITY "perlin_humidity"
