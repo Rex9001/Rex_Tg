@@ -1,4 +1,4 @@
-//Sand Storms happen semi-frequently on the dunes. They heavily obscure vision, and cause high fire damage to anyone caught outside.
+//Sand Storms happen semi-frequently on the dunes. They heavily obscure vision, and cause high brute damage to anyone caught outside.
 /datum/weather/sand_storm
 	name = "sand storm"
 	desc = "An intense atmospheric event during which sand is picked up by strong winds at speeds were they can flay unprotected flesh."
@@ -19,10 +19,9 @@
 	area_type = /area
 	protect_indoors = TRUE
 	target_trait = ZTRAIT_SANDSTORM
-
 	immunity_type = TRAIT_SANDSTORM_IMMUNE
 
-	probability = 90
+	probability = 100
 
 	barometer_predictable = TRUE
 	var/list/weak_sounds = list()
@@ -66,11 +65,11 @@
 		return FALSE
 
 /datum/weather/sand_storm/weather_act(mob/living/victim)
-	victim.adjustBruteLoss(6)
+	victim.adjustBruteLoss(5)
 
-/datum/weather/ash_storm/end()
+/datum/weather/sand_storm/end()
 	GLOB.ash_storm_sounds -= weak_sounds
-	for(var/turf/open/misc/asteroid/basalt/basalt as anything in GLOB.dug_up_basalt)
+	for(var/turf/open/misc/asteroid/dune as anything in GLOB.dug_up_basalt)
 		if(!(basalt.loc in impacted_areas) || !(basalt.z in impacted_z_levels))
 			continue
 		basalt.refill_dug()

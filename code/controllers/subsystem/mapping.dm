@@ -71,6 +71,7 @@ SUBSYSTEM_DEF(mapping)
 	// Z-manager stuff
 	var/station_start  // should only be used for maploading-related tasks
 	var/space_levels_so_far = 0
+	var/dune_levels_so_far = 0
 	///list of all z level datums in the order of their z (z level 1 is at index 1, etc.)
 	var/list/datum/space_level/z_list
 	///list of all z level indices that form multiz connections and whether theyre linked up or down.
@@ -139,7 +140,10 @@ SUBSYSTEM_DEF(mapping)
 	while (space_levels_so_far < config.space_empty_levels + config.space_ruin_levels)
 		empty_space = add_new_zlevel("Empty Area [space_levels_so_far+1]", list(ZTRAIT_LINKAGE = CROSSLINKED))
 		++space_levels_so_far
-
+	//Creates dune ruin levels (if the map has them)
+	while (dune_levels_so_far < config.dune_ruin_levels)
+		add_new_zlevel("Dune Ruin Area [dune_levels_so_far+1]", ZTRAITS_DUNES)
+		++dune_levels_so_far
 	// Pick a random away mission.
 	if(CONFIG_GET(flag/roundstart_away))
 		createRandomZlevel(prob(CONFIG_GET(number/config_gateway_chance)))

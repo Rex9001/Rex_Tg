@@ -142,13 +142,13 @@ Always compile, always use that verb, and always make sure that it works for wha
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
 	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
 ///Z level traits for Dunes
-#define ZTRAITS_DUNE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_DUNE_RUINS = TRUE, ZTRAIT_SANDSTORMS = TRUE)
+#define ZTRAITS_DUNE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_DUNE_RUINS = TRUE, ZTRAIT_SANDSTORM = TRUE)
 ///Z level traits for Dune mining
 #define ZTRAITS_DUNE_MINING list(\
 	ZTRAIT_MINING = TRUE, \
 	ZTRAIT_DUNE_RUINS_MINING = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
-	ZTRAIT_BASETURF = /)
+	ZTRAIT_BASETURF = /turf/open/misc/sandplanet)
 ///Z level traits for Away Missions
 #define ZTRAITS_AWAY list(ZTRAIT_AWAY = TRUE)
 ///Z level traits for Secret Away Missions
