@@ -17,7 +17,7 @@
 	tiled_dirt = FALSE
 	var/smooth_icon = 'icons/turf/floors/ash.dmi'
 
-	/turf/open/misc/basalt/Initialize(mapload)
+	/turf/open/misc/sandplanet/Initialize(mapload)
 		. = ..()
 		AddElement(/datum/element/diggable, /obj/item/stack/ore/glass/basalt, 2)
 		if(prob(15))

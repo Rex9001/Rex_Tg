@@ -67,9 +67,9 @@
 /datum/weather/sand_storm/weather_act(mob/living/victim)
 	victim.adjustBruteLoss(5)
 
-/datum/weather/sand_storm/end()
+/datum/weather/ash_storm/end()
 	GLOB.ash_storm_sounds -= weak_sounds
-	for(var/turf/open/misc/asteroid/dune as anything in GLOB.dug_up_basalt)
+	for(var/turf/open/misc/asteroid/basalt/basalt as anything in GLOB.dug_up_basalt)
 		if(!(basalt.loc in impacted_areas) || !(basalt.z in impacted_z_levels))
 			continue
 		basalt.refill_dug()
