@@ -382,6 +382,11 @@
 /area/station/maintenance/port)
 "cE" = (
 /obj/machinery/light/small/directional/south,
+/obj/machinery/requests_console/directional/south{
+	department = "Bar";
+	name = "Bar Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "cH" = (
@@ -2750,7 +2755,9 @@
 /area/space/nearstation)
 "tB" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/drinks,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "tC" = (
@@ -3825,6 +3832,7 @@
 "zD" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/table/reinforced,
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/wood,
 /area/station/service/bar/backroom)
 "zI" = (
@@ -4624,6 +4632,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/large,
 /area/station/security/brig/entrance)
+"Fl" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/service/bar)
 "Fn" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
@@ -5726,6 +5738,7 @@
 /obj/item/reagent_containers/syringe,
 /obj/item/wrench,
 /obj/item/wirecutters,
+/obj/item/reagent_containers/cup/rag,
 /turf/open/floor/pod/light,
 /area/station/security/execution/education)
 "Mn" = (
@@ -6872,7 +6885,9 @@
 /area/station/service/bar)
 "Ua" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/drinks/beer,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "Uc" = (
@@ -6953,11 +6968,17 @@
 /obj/effect/turf_decal/tile/dark/half/contrasted{
 	dir = 4
 	},
-/obj/item/reagent_containers/condiment/saltshaker{
-	pixel_y = 1;
-	pixel_x = -9
+/obj/item/food/grown/chili{
+	pixel_x = 4;
+	pixel_y = 3
 	},
-/obj/item/food/grown/chili,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 9
+	},
+/obj/item/stack/sheet/sandblock{
+	pixel_y = 6;
+	pixel_x = -10
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "UB" = (
@@ -7194,6 +7215,7 @@
 /obj/item/reagent_containers/cup/glass/shaker{
 	pixel_x = -6
 	},
+/obj/item/reagent_containers/cup/rag,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "Wn" = (
@@ -95028,7 +95050,7 @@ ja
 ja
 ja
 Ke
-gQ
+Fl
 gQ
 gQ
 gQ
@@ -96312,7 +96334,7 @@ ja
 ja
 ja
 ja
-hZ
+Hn
 zD
 ZM
 FE
@@ -96569,7 +96591,7 @@ ja
 ja
 ja
 ja
-Hn
+hZ
 FZ
 FZ
 FZ
