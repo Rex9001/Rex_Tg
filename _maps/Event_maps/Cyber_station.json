@@ -1,0 +1,32 @@
+{
+	"version": 1,
+	"map_name": "Cyberstation",
+	"map_path": "custom",
+	"map_file": "Cyber_station.dmm",
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_meta",
+		"emergency": "emergency_meta"
+	},
+	"traits": [
+		{
+			"Up": true,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": true,
+			"Baseturf": "/turf/open/misc/asteroid/basalt/airless",
+			"Linkage": "Cross"
+		}
+	],
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/commons/lounge"]
+		},
+		"Captain": {
+			"special_charter": "asteroid"
+		}
+	}
+}
