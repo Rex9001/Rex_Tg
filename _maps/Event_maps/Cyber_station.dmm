@@ -6540,6 +6540,13 @@
 /obj/effect/landmark/start/scientist,
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/office)
+"cvD" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "cvJ" = (
 /obj/machinery/door/window/right/directional/north{
 	name = "Petting Zoo"
@@ -7417,7 +7424,7 @@
 /area/station/medical/morgue)
 "cLW" = (
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/tendril,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "cMa" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
@@ -7901,7 +7908,7 @@
 /area/station/medical/virology)
 "cWQ" = (
 /obj/effect/mob_spawn/corpse/human/syndicatesoldier,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "cWS" = (
 /obj/machinery/door/firedoor,
@@ -11521,6 +11528,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
+"emM" = (
+/obj/structure/closet/crate/engineering,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/rods/fifty,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "emO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16568,13 +16582,6 @@
 /obj/structure/sign/warning/pods,
 /turf/closed/wall/r_wall,
 /area/station/security/brig)
-"gkB" = (
-/obj/structure/closet/crate/engineering,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/rods/fifty,
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "gkD" = (
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall,
@@ -18933,7 +18940,7 @@
 /area/station/maintenance/aft/greater)
 "hho" = (
 /mob/living/simple_animal/hostile/big_legion,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "hhs" = (
 /obj/structure/cable,
@@ -19215,7 +19222,7 @@
 /area/station/security/detectives_office)
 "hmf" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "hmh" = (
 /obj/structure/cable,
@@ -29859,12 +29866,6 @@
 	},
 /turf/open/floor/engine,
 /area/station/science/explab)
-"lio" = (
-/obj/effect/decal/cleanable/blood/footprints{
-	dir = 8
-	},
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "liq" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -30582,6 +30583,13 @@
 /obj/effect/landmark/start/cargo_technician,
 /turf/open/floor/iron/smooth,
 /area/station/cargo/sorting)
+"lvD" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/door/airlock/mining,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "lwz" = (
 /obj/effect/turf_decal/trimline/green/line{
 	dir = 1
@@ -31938,12 +31946,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/cargo/sorting)
-"lWP" = (
-/obj/effect/decal/cleanable/blood/footprints{
-	dir = 1
-	},
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "lWY" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/rnd/production/circuit_imprinter/department/science,
@@ -35612,13 +35614,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/command)
-"nnx" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/footprints{
-	dir = 8
-	},
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "nny" = (
 /obj/effect/decal/cleanable/food/flour,
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -36732,6 +36727,12 @@
 /obj/item/book/codex_gigas,
 /turf/open/floor/engine/cult,
 /area/station/service/library)
+"nNk" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "nNn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
@@ -42378,6 +42379,7 @@
 /area/station/science/ordnance/office)
 "pRc" = (
 /obj/structure/barricade/wooden,
+/obj/machinery/door/airlock/mining,
 /turf/open/misc/asteroid/airless,
 /area/ruin/powered)
 "pRk" = (
@@ -46965,6 +46967,12 @@
 /obj/item/organ/internal/cyberimp/arm/medibeam,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
+"rxG" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "rxR" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -60820,6 +60828,9 @@
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
+"wyd" = (
+/turf/open/misc/asteroid/lavaland_atmos,
+/area/space/nearstation)
 "wyg" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -65418,7 +65429,7 @@
 /area/station/hallway/primary/central)
 "ylH" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "ylQ" = (
 /obj/structure/table,
@@ -173937,10 +173948,10 @@ ukq
 ukq
 ukq
 ukq
-gkB
+emM
 aqx
 aqx
-nnx
+cvD
 aqx
 aqx
 aqx
@@ -174197,8 +174208,8 @@ aqx
 aqx
 aqx
 aqx
-lWP
-lWP
+rxG
+rxG
 aqx
 ukq
 ukq
@@ -174456,7 +174467,7 @@ aqx
 aqx
 aqx
 aqx
-lio
+nNk
 ukq
 ukq
 ukq
@@ -174713,7 +174724,7 @@ aqx
 aqx
 aqx
 ukq
-lio
+lvD
 lva
 lva
 ukq
@@ -174972,7 +174983,7 @@ ukq
 ukq
 ukq
 lva
-aqx
+wyd
 ukq
 ukq
 ukq
@@ -175228,7 +175239,7 @@ ukq
 ukq
 ukq
 ukq
-aqx
+wyd
 hmf
 ukq
 ukq
@@ -175486,8 +175497,8 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -175743,9 +175754,9 @@ ukq
 ukq
 ukq
 ukq
-aqx
+wyd
 ylH
-aqx
+wyd
 ukq
 ukq
 ukq
@@ -176258,8 +176269,8 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -176516,8 +176527,8 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -176775,7 +176786,7 @@ ukq
 ukq
 ukq
 ylH
-aqx
+wyd
 ukq
 ukq
 ukq
@@ -177031,9 +177042,9 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -177290,13 +177301,13 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -177548,14 +177559,14 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
 ylH
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -177802,16 +177813,16 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -178059,16 +178070,16 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
 cWQ
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -178320,12 +178331,12 @@ ukq
 aqx
 aqx
 cWQ
-aqx
+wyd
 hho
-aqx
+wyd
 cLW
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -178573,16 +178584,16 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -178831,15 +178842,15 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
 cLW
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -179087,16 +179098,16 @@ ukq
 ukq
 ukq
 ukq
-aqx
+wyd
 ukq
 aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -179345,16 +179356,16 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
-aqx
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
+wyd
 ylH
-aqx
+wyd
 ukq
 ukq
 ukq
@@ -179603,16 +179614,16 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+wyd
+wyd
 hmf
-aqx
+wyd
 ukq
 ukq
 ukq
@@ -179868,7 +179879,7 @@ ukq
 ukq
 ukq
 ukq
-aqx
+wyd
 hmf
 ukq
 ukq
@@ -180126,8 +180137,8 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+wyd
+wyd
 ukq
 ukq
 ukq
@@ -180383,7 +180394,7 @@ ukq
 ukq
 ukq
 ukq
-aqx
+wyd
 ylH
 hmf
 ukq
@@ -180642,7 +180653,7 @@ ukq
 ukq
 ukq
 hmf
-aqx
+wyd
 ukq
 ukq
 ukq
