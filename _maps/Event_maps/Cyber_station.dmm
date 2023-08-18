@@ -4721,6 +4721,12 @@
 /obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
 /turf/open/floor/plating,
 /area/station/medical/medbay/central)
+"bMq" = (
+/obj/effect/mob_spawn/corpse/human/engineer/mod,
+/obj/item/construction/rcd/ce,
+/obj/item/rcd_ammo/large,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "bMD" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
@@ -6167,6 +6173,13 @@
 /obj/structure/sign/departments/science,
 /turf/closed/wall,
 /area/station/science/lobby)
+"cnj" = (
+/obj/item/crusher_trophy/legion_skull{
+	pixel_y = 2;
+	pixel_x = -14
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "cnw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -31467,9 +31480,6 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 5
 	},
@@ -35749,6 +35759,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
+"nrl" = (
+/mob/living/basic/mining/bileworm/vileworm{
+	name = "The Vile One";
+	health = 250
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "nrB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -40816,6 +40833,13 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/security/brig)
+"poS" = (
+/obj/item/crusher_trophy/legion_skull{
+	pixel_y = -17;
+	pixel_x = -8
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "poV" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -45310,6 +45334,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
+"qRn" = (
+/obj/effect/mine/shrapnel/sting,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "qRp" = (
 /obj/machinery/light/very_dim/directional/north,
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
@@ -48156,6 +48184,10 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/security/prison)
+"rTI" = (
+/obj/effect/mine/explosive/flash,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "rTJ" = (
 /obj/structure/curtain/cloth,
 /turf/open/floor/iron/dark/textured_large,
@@ -54525,6 +54557,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
+"ugr" = (
+/obj/effect/mine/shrapnel,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "ugx" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -57640,6 +57676,13 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
+"vtA" = (
+/obj/item/crusher_trophy/legion_skull{
+	pixel_y = 11;
+	pixel_x = 15
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "vtR" = (
 /obj/machinery/mass_driver/trash{
 	dir = 8
@@ -79451,12 +79494,12 @@ iot
 iot
 iot
 iot
-kno
-kno
-kno
-kno
-kno
-kno
+iot
+iot
+iot
+iot
+iot
+iot
 kno
 kno
 kno
@@ -79965,12 +80008,12 @@ iot
 iot
 iot
 iot
-kno
-kno
-kno
-kno
-kno
-kno
+iot
+iot
+iot
+iot
+iot
+iot
 kno
 kno
 kno
@@ -80214,9 +80257,9 @@ kno
 kno
 kno
 kno
+iot
 kno
-kno
-kno
+iot
 kno
 kno
 kno
@@ -80471,9 +80514,9 @@ kno
 kno
 kno
 kno
+iot
 kno
-kno
-kno
+iot
 kno
 kno
 kno
@@ -80728,9 +80771,9 @@ kno
 kno
 kno
 kno
+iot
 kno
-kno
-kno
+iot
 kno
 kno
 kno
@@ -80985,9 +81028,9 @@ kno
 kno
 kno
 kno
+iot
 kno
-kno
-kno
+iot
 kno
 kno
 kno
@@ -81242,9 +81285,9 @@ kno
 kno
 kno
 kno
+iot
 kno
-kno
-kno
+iot
 kno
 kno
 kno
@@ -140466,7 +140509,7 @@ ukq
 ukq
 ukq
 ukq
-aqx
+ugr
 ukq
 ukq
 ukq
@@ -140718,10 +140761,10 @@ aqx
 ukq
 ukq
 ukq
+qRn
 aqx
 aqx
-aqx
-aqx
+rTI
 aqx
 aqx
 ukq
@@ -141601,8 +141644,8 @@ ukq
 aqx
 aqx
 aqx
-aqx
-aqx
+bMq
+nrl
 aqx
 aqx
 aqx
@@ -142894,7 +142937,7 @@ aqx
 aqx
 aqx
 aqx
-aqx
+poS
 aqx
 ukq
 ukq
@@ -143152,7 +143195,7 @@ ukq
 ukq
 ukq
 ukq
-aqx
+cnj
 aqx
 ukq
 ukq
@@ -143410,7 +143453,7 @@ ukq
 ukq
 ukq
 ukq
-aqx
+vtA
 aqx
 aqx
 aqx
