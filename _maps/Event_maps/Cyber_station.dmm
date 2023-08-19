@@ -10159,14 +10159,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/main)
-"dKt" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/port)
 "dKH" = (
 /obj/machinery/air_sensor/ordnance_burn_chamber,
 /turf/open/floor/engine/vacuum,
@@ -13460,6 +13452,7 @@
 /area/station/medical/virology)
 "eWA" = (
 /obj/machinery/deepfryer,
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/kitchen,
 /area/station/commons/lounge)
 "eWB" = (
@@ -15022,8 +15015,10 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "fwQ" = (
-/obj/structure/ladder/unbreakable,
 /obj/structure/fans/tiny/invisible,
+/obj/structure/trap/ctf/red{
+	name = "historically accurate magical runes"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
 "fwU" = (
@@ -36888,10 +36883,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
-"nJb" = (
-/obj/item/kitchen/rollingpin,
-/turf/closed/wall,
-/area/station/commons/lounge)
 "nJl" = (
 /obj/structure/lattice,
 /obj/structure/sign/warning/electric_shock/directional/south,
@@ -38424,7 +38415,7 @@
 /turf/open/floor/engine,
 /area/station/science/explab)
 "onY" = (
-/turf/open/indestructible/binary,
+/turf/closed/indestructible/sandstone,
 /area/station/maintenance/floor1/port)
 "oog" = (
 /obj/structure/sign/directions/security{
@@ -43125,6 +43116,7 @@
 /area/station/medical/morgue)
 "pWO" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/kitchen,
 /area/station/commons/lounge)
 "pWS" = (
@@ -45451,6 +45443,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/kitchen/rollingpin,
 /turf/open/floor/iron/kitchen,
 /area/station/commons/lounge)
 "qLk" = (
@@ -52800,9 +52793,6 @@
 /obj/structure/ladder/unbreakable{
 	name = "ladder to deepmaints"
 	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "tqz" = (
@@ -56660,18 +56650,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/duct,
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "uIm" = (
@@ -59118,15 +59096,6 @@
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 9
-	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
@@ -65203,12 +65172,8 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/gravity_generator)
 "xRI" = (
-/obj/structure/ladder/unbreakable{
-	name = "ladder to deepmaints"
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
+/turf/closed/indestructible/sandstone,
+/area/space)
 "xRM" = (
 /obj/machinery/light/very_dim/directional/south,
 /obj/effect/turf_decal/stripes/line,
@@ -74686,7 +74651,7 @@ voW
 voW
 voW
 voW
-tey
+xRI
 tey
 tey
 wbx
@@ -85387,7 +85352,7 @@ kno
 kno
 kno
 kno
-fwQ
+kno
 kno
 kno
 kno
@@ -85848,7 +85813,7 @@ kno
 kno
 kno
 kno
-xRI
+kno
 kno
 kno
 kno
@@ -92238,7 +92203,7 @@ iot
 kno
 kno
 kno
-kno
+fwQ
 kno
 kno
 kno
@@ -97392,11 +97357,11 @@ vDP
 jZS
 vDP
 vDP
-vDP
+hXN
 pBT
 ryM
 pBT
-vDP
+hXN
 vDP
 vDP
 vDP
@@ -99721,7 +99686,7 @@ bMu
 kno
 kno
 iot
-xRI
+kno
 kno
 kno
 kno
@@ -100323,7 +100288,7 @@ kno
 kno
 kno
 kno
-xRI
+kno
 kno
 kno
 kno
@@ -104845,11 +104810,11 @@ vDP
 vDP
 vDP
 vDP
-vDP
+mDz
 sDE
 qCM
 sDE
-vDP
+mDz
 vDP
 vDP
 vDP
@@ -107175,7 +107140,7 @@ kno
 kno
 kno
 kno
-xRI
+kno
 kno
 kno
 kno
@@ -150923,7 +150888,7 @@ ext
 dhX
 tos
 gsf
-dKt
+uEp
 ihq
 eDI
 mES
@@ -168891,7 +168856,7 @@ sOK
 iSj
 ciR
 bDI
-nJb
+jol
 uTR
 bBo
 qLb
