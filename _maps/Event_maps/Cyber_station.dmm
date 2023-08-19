@@ -15015,12 +15015,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "fwQ" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/trap/ctf/red{
-	name = "historically accurate magical runes"
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
+/turf/closed/indestructible/sandstone,
+/area/space)
 "fwU" = (
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled,
 /obj/effect/mapping_helpers/broken_floor,
@@ -65172,8 +65168,12 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/gravity_generator)
 "xRI" = (
-/turf/closed/indestructible/sandstone,
-/area/space)
+/obj/structure/fans/tiny/invisible,
+/obj/structure/trap/ctf/red{
+	name = "historically accurate magical runes"
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
 "xRM" = (
 /obj/machinery/light/very_dim/directional/south,
 /obj/effect/turf_decal/stripes/line,
@@ -74651,7 +74651,7 @@ voW
 voW
 voW
 voW
-xRI
+fwQ
 tey
 tey
 wbx
@@ -92203,7 +92203,7 @@ iot
 kno
 kno
 kno
-fwQ
+xRI
 kno
 kno
 kno
