@@ -113,18 +113,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
 /turf/open/misc/asteroid/airless,
 /area/space/nearstation)
-"abW" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/hangover,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/turf/open/floor/iron/smooth,
-/area/station/commons/storage/tools)
 "abY" = (
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
@@ -4790,6 +4778,10 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
+"bMS" = (
+/obj/structure/bonfire/prelit,
+/turf/open/misc/asteroid/lavaland_atmos,
+/area/space/nearstation)
 "bMT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6404,12 +6396,17 @@
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
 "crx" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port{
-	requires_power = 0
-	})
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/hangover,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth,
+/area/station/commons/storage/tools)
 "crH" = (
 /obj/machinery/recharge_station,
 /turf/open/floor/plating,
@@ -10997,10 +10994,9 @@
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/exit/departure_lounge)
 "ean" = (
-/obj/structure/fans/tiny/invisible,
 /obj/structure/industrial_lift/public,
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
+/turf/open/openspace,
+/area/station/commons/storage/tools)
 "eap" = (
 /obj/machinery/door/airlock{
 	id_tag = "AuxToilet2";
@@ -19388,9 +19384,15 @@
 /area/station/medical/chemistry)
 "hmp" = (
 /obj/structure/fans/tiny/invisible,
-/obj/structure/punji_sticks/spikes,
-/turf/open/misc/grass,
-/area/centcom/ctf)
+/obj/structure/industrial_lift/public,
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "cyber_deepmaint_elevator_toolstorage"
+	},
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "cyber_deepmaint_elevator_toolstorage"
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
 "hmx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22554,6 +22556,15 @@
 "iso" = (
 /turf/open/floor/grass,
 /area/station/science/research)
+"isx" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "cyber_deepmaint_elevator_toolstorage";
+	preset_destination_names = list("2"="Lower        Deck","3"="Upper        Deck")
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
 "isC" = (
 /obj/structure/chair/stool/directional/north,
 /obj/effect/mapping_helpers/broken_floor,
@@ -25656,9 +25667,12 @@
 /turf/open/floor/plating,
 /area/station/hallway/primary/central)
 "jzo" = (
-/obj/structure/bonfire/prelit,
-/turf/open/misc/asteroid/lavaland_atmos,
-/area/space/nearstation)
+/obj/structure/fans/tiny/invisible,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port{
+	requires_power = 0
+	})
 "jzr" = (
 /obj/item/poster/random_contraband,
 /obj/item/poster/random_contraband,
@@ -26002,14 +26016,9 @@
 /turf/open/floor/iron/smooth,
 /area/station/security/execution/transfer)
 "jFN" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/industrial_lift/public,
-/obj/machinery/elevator_control_panel/directional/east{
-	linked_elevator_id = "tram_lower_center_lift";
-	preset_destination_names = list("2"="Lower        Deck","3"="Upper        Deck")
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
+/obj/structure/barricade/wooden,
+/turf/open/misc/asteroid/lavaland_atmos,
+/area/space/nearstation)
 "jFR" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/light/small/directional/west,
@@ -32736,17 +32745,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/grimy,
 /area/station/service/chapel/office)
-"mgr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/turf/open/floor/iron/smooth,
-/area/station/commons/storage/tools)
 "mgD" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -37896,17 +37894,15 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/greater)
 "oez" = (
-/obj/machinery/lift_indicator{
-	linked_elevator_id = "tram_lower_center_lift";
-	pixel_x = -5;
-	pixel_y = -3
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/obj/machinery/button/elevator{
-	id = "tram_lower_center_lift";
-	pixel_x = -7;
-	pixel_y = -1
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
 	},
-/turf/closed/wall,
+/turf/open/floor/iron/smooth,
 /area/station/commons/storage/tools)
 "oeG" = (
 /obj/structure/disposalpipe/segment,
@@ -38794,12 +38790,9 @@
 /area/station/maintenance/solars/port/aft)
 "ovc" = (
 /obj/structure/fans/tiny/invisible,
-/obj/machinery/door/window/elevator/left/directional/north{
-	elevator_linked_id = "tram_lower_center_lift";
-	elevator_mode = 1
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
+/obj/structure/punji_sticks/spikes,
+/turf/open/misc/grass,
+/area/centcom/ctf)
 "ovi" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -46708,6 +46701,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/virology)
+"rlp" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/punji_sticks/spikes,
+/turf/open/indestructible/binary,
+/area/centcom/ctf)
 "rlq" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -49043,6 +49041,11 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/space/nearstation)
+"saN" = (
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/sand,
+/turf/open/misc/sandy_dirt,
+/area/centcom/ctf)
 "saO" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/structure/disposalpipe/segment,
@@ -50188,17 +50191,6 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /turf/open/floor/iron/smooth,
 /area/station/security/warden)
-"sxg" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/industrial_lift/public,
-/obj/effect/abstract/elevator_music_zone{
-	linked_elevator_id = "tram_lower_center_lift"
-	},
-/obj/effect/landmark/lift_id{
-	specific_lift_id = "tram_lower_center_lift"
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
 "sxo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -52107,10 +52099,18 @@
 /turf/open/floor/iron/dark/corner,
 /area/station/engineering/atmos)
 "tgh" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/punji_sticks/spikes,
-/turf/open/indestructible/binary,
-/area/centcom/ctf)
+/obj/machinery/lift_indicator{
+	linked_elevator_id = "cyber_deepmaint_elevator_toolstorage";
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/machinery/button/elevator{
+	id = "cyber_deepmaint_elevator_toolstorage";
+	pixel_x = -7;
+	pixel_y = -1
+	},
+/turf/closed/wall,
+/area/station/commons/storage/tools)
 "tgw" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible/layer5,
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
@@ -52890,11 +52890,6 @@
 /obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
-"tth" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/turf_decal/sand,
-/turf/open/misc/sandy_dirt,
-/area/centcom/ctf)
 "ttn" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/dark/telecomms,
@@ -53552,9 +53547,13 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/lesser)
 "tGv" = (
-/obj/structure/industrial_lift/public,
-/turf/open/openspace,
-/area/station/commons/storage/tools)
+/obj/structure/fans/tiny/invisible,
+/obj/machinery/door/window/elevator/left/directional/north{
+	elevator_linked_id = "tram_lower_center_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
 "tGH" = (
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
@@ -65995,9 +65994,10 @@
 /turf/open/floor/iron/smooth,
 /area/station/security/brig)
 "ykk" = (
-/obj/structure/barricade/wooden,
-/turf/open/misc/asteroid/lavaland_atmos,
-/area/space/nearstation)
+/obj/structure/fans/tiny/invisible,
+/obj/structure/industrial_lift/public,
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
 "ykz" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/hangover,
@@ -76388,7 +76388,7 @@ kno
 kno
 hFi
 htI
-crx
+jzo
 kno
 xfw
 xuH
@@ -99105,22 +99105,22 @@ kno
 iot
 kno
 sxW
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 xsN
 xsN
-hmp
+ovc
 ezf
-tgh
+rlp
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
 ezf
 bMu
@@ -99156,9 +99156,9 @@ kno
 kno
 kno
 iot
-ean
-ean
-ean
+ykk
+ykk
+ykk
 iot
 kno
 kno
@@ -99413,9 +99413,9 @@ kno
 kno
 kno
 iot
-ean
-ean
-ean
+ykk
+ykk
+ykk
 iot
 kno
 kno
@@ -99670,10 +99670,10 @@ kno
 kno
 kno
 iot
-ean
-sxg
-ean
-ovc
+ykk
+hmp
+ykk
+tGv
 kno
 kno
 kno
@@ -99927,9 +99927,9 @@ kno
 kno
 kno
 iot
-ean
-ean
-ean
+ykk
+ykk
+ykk
 iot
 kno
 kno
@@ -100141,7 +100141,7 @@ ezf
 ezf
 ezf
 ezf
-tth
+saN
 ezf
 ezf
 ezf
@@ -100184,9 +100184,9 @@ kno
 kno
 kno
 iot
-ean
-jFN
-ean
+ykk
+isx
+ykk
 iot
 kno
 kno
@@ -101424,7 +101424,7 @@ thn
 ezf
 dKt
 ezf
-tth
+saN
 ezf
 jZS
 ezf
@@ -102710,7 +102710,7 @@ ezf
 dKt
 ezf
 ezf
-tth
+saN
 xsN
 ezf
 ezf
@@ -102961,23 +102961,23 @@ kno
 kno
 sxW
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 xsN
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 ezf
-hmp
+ovc
 bMu
 kno
 kno
@@ -164692,11 +164692,11 @@ coQ
 dCW
 jjW
 coQ
-tGv
-tGv
-tGv
+ean
+ean
+ean
+tgh
 oez
-mgr
 ciR
 rbR
 oWl
@@ -164950,10 +164950,10 @@ coQ
 sAv
 coQ
 hVB
-tGv
-tGv
+ean
+ean
 hrr
-abW
+crx
 ciR
 rbR
 jol
@@ -165206,11 +165206,11 @@ kxY
 coQ
 iAQ
 coQ
-tGv
-tGv
-tGv
+ean
+ean
+ean
 xqD
-mgr
+oez
 ciR
 rbR
 jol
@@ -165464,10 +165464,10 @@ coQ
 hZo
 coQ
 hVB
-tGv
-tGv
+ean
+ean
 hrr
-mgr
+oez
 ciR
 rbR
 vzG
@@ -165721,8 +165721,8 @@ coQ
 kSv
 coQ
 phu
-tGv
-tGv
+ean
+ean
 sGJ
 kEB
 ciR
@@ -166495,7 +166495,7 @@ pVp
 pUR
 pVp
 sVK
-mgr
+oez
 izI
 nrX
 vzG
@@ -175410,8 +175410,8 @@ aqx
 aqx
 ukq
 sph
-ykk
-ykk
+jFN
+jFN
 ukq
 ukq
 ukq
@@ -175667,7 +175667,7 @@ ukq
 ukq
 ukq
 ukq
-ykk
+jFN
 jmx
 ukq
 ukq
@@ -181596,7 +181596,7 @@ ukq
 ukq
 ukq
 pbo
-ykk
+jFN
 ukq
 ukq
 jBH
@@ -187767,11 +187767,11 @@ ukq
 ukq
 ukq
 jmx
-jzo
+bMS
 jmx
 jmx
 jmx
-jzo
+bMS
 jmx
 jmx
 oGd
@@ -188799,7 +188799,7 @@ mtg
 kkd
 jmx
 jmx
-jzo
+bMS
 jmx
 ukq
 ukq
