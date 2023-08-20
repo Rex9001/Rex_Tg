@@ -8485,7 +8485,7 @@
 /mob/living/basic/mining/goliath/ancient{
 	faction = list("boss")
 	},
-/turf/open/misc/asteroid,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "dgm" = (
 /obj/structure/rack,
@@ -10066,6 +10066,10 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
+"dIj" = (
+/obj/structure/bonfire/prelit,
+/turf/open/misc/asteroid/lavaland_atmos,
+/area/space/nearstation)
 "dIq" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
@@ -12936,11 +12940,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
-"eLM" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/turf_decal/sand,
-/turf/open/misc/sandy_dirt,
-/area/centcom/ctf)
 "eLR" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple/layer2{
 	dir = 5
@@ -21278,7 +21277,7 @@
 /area/station/service/chapel)
 "hUi" = (
 /obj/structure/statue/bone/skull,
-/turf/open/misc/asteroid,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "hUl" = (
 /obj/effect/turf_decal/siding/purple{
@@ -27821,7 +27820,7 @@
 /area/station/security/prison)
 "kkd" = (
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child,
-/turf/open/misc/asteroid,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "kkk" = (
 /obj/effect/turf_decal/stripes/line{
@@ -31514,6 +31513,10 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/command)
+"lIj" = (
+/obj/structure/barricade/wooden,
+/turf/open/misc/asteroid/lavaland_atmos,
+/area/space/nearstation)
 "lIq" = (
 /obj/structure/table,
 /obj/item/cultivator,
@@ -32781,8 +32784,10 @@
 /turf/open/floor/iron/grimy,
 /area/station/service/chapel/office)
 "mgr" = (
-/turf/open/misc/asteroid,
-/area/space/nearstation)
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/sand,
+/turf/open/misc/sandy_dirt,
+/area/centcom/ctf)
 "mgD" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -34418,7 +34423,7 @@
 /area/station/medical/surgery/theatre)
 "mIZ" = (
 /obj/item/grenade/syndieminibomb/concussion,
-/turf/open/misc/asteroid,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "mJl" = (
 /obj/machinery/light/very_dim/directional/south,
@@ -40394,7 +40399,7 @@
 "pbo" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
 /obj/structure/barricade/wooden,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "pbp" = (
 /obj/machinery/light/small/directional/south,
@@ -42564,6 +42569,11 @@
 /obj/effect/mapping_helpers/airlock/access/all/science/xenobio,
 /turf/open/floor/iron/smooth,
 /area/station/science/xenobiology)
+"pKR" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/punji_sticks/spikes,
+/turf/open/indestructible/binary,
+/area/centcom/ctf)
 "pLb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -42826,7 +42836,7 @@
 "pRc" = (
 /obj/structure/barricade/wooden,
 /obj/machinery/door/airlock/mining,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/ruin/powered)
 "pRk" = (
 /obj/machinery/airalarm/directional/west,
@@ -47973,7 +47983,7 @@
 /area/station/medical/surgery/theatre)
 "rFV" = (
 /obj/item/grenade/syndieminibomb,
-/turf/open/misc/asteroid,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "rGb" = (
 /obj/machinery/conveyor{
@@ -49846,7 +49856,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/mining,
-/turf/open/misc/asteroid/airless,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "spu" = (
 /obj/machinery/airalarm/directional/north,
@@ -54755,7 +54765,7 @@
 /area/station/ai_monitored/command/storage/eva)
 "uaH" = (
 /obj/item/grenade/frag,
-/turf/open/misc/asteroid,
+/turf/open/misc/asteroid/lavaland_atmos,
 /area/space/nearstation)
 "uaK" = (
 /obj/effect/landmark/start/station_engineer,
@@ -99191,13 +99201,13 @@ xsN
 xsN
 abW
 ezf
-jZS
+pKR
 ezf
 abW
 ezf
 abW
 ezf
-abW
+ezf
 bMu
 kno
 kno
@@ -100216,7 +100226,7 @@ ezf
 ezf
 ezf
 ezf
-eLM
+mgr
 ezf
 ezf
 ezf
@@ -101499,7 +101509,7 @@ thn
 ezf
 dKt
 ezf
-eLM
+mgr
 ezf
 jZS
 ezf
@@ -102785,7 +102795,7 @@ ezf
 dKt
 ezf
 ezf
-eLM
+mgr
 xsN
 ezf
 ezf
@@ -175485,8 +175495,8 @@ aqx
 aqx
 ukq
 sph
-lva
-lva
+lIj
+lIj
 ukq
 ukq
 ukq
@@ -175742,7 +175752,7 @@ ukq
 ukq
 ukq
 ukq
-lva
+lIj
 jmx
 ukq
 ukq
@@ -179088,8 +179098,8 @@ ukq
 ukq
 ukq
 ukq
-aqx
-aqx
+jmx
+jmx
 cWQ
 jmx
 hho
@@ -179860,7 +179870,7 @@ ukq
 ukq
 jmx
 ukq
-aqx
+jmx
 jmx
 jmx
 jmx
@@ -181671,7 +181681,7 @@ ukq
 ukq
 ukq
 pbo
-lva
+lIj
 ukq
 ukq
 jBH
@@ -187073,8 +187083,8 @@ ukq
 ukq
 ukq
 ukq
-mgr
-mgr
+jmx
+jmx
 ukq
 ukq
 ukq
@@ -187329,10 +187339,10 @@ ukq
 ukq
 ukq
 ukq
-mgr
+jmx
 kkd
-mgr
-mgr
+jmx
+jmx
 ukq
 ukq
 ukq
@@ -187585,12 +187595,12 @@ ukq
 ukq
 ukq
 ukq
-mgr
-mgr
-mgr
+jmx
+jmx
+jmx
 kkd
-mgr
-mgr
+jmx
+jmx
 hUi
 oGd
 aqx
@@ -187841,14 +187851,14 @@ ukq
 ukq
 ukq
 ukq
-mgr
-mtg
-mgr
-mgr
-mgr
-mtg
-mgr
-mgr
+jmx
+dIj
+jmx
+jmx
+jmx
+dIj
+jmx
+jmx
 oGd
 ukq
 ukq
@@ -188098,13 +188108,13 @@ ukq
 ukq
 ukq
 ukq
-mgr
+jmx
 kkd
-mgr
-mgr
+jmx
+jmx
 mIZ
-mgr
-mgr
+jmx
+jmx
 hUi
 oGd
 ukq
@@ -188356,11 +188366,11 @@ ukq
 ukq
 ukq
 kkd
-mgr
+jmx
 uaH
 dgi
-mgr
-mgr
+jmx
+jmx
 ukq
 ukq
 ukq
@@ -188612,14 +188622,14 @@ ukq
 ukq
 ukq
 ukq
-mgr
-mgr
-mgr
-mgr
+jmx
+jmx
+jmx
+jmx
 rFV
-mgr
-mgr
-mgr
+jmx
+jmx
+jmx
 ukq
 ukq
 ukq
@@ -188872,10 +188882,10 @@ ukq
 ukq
 mtg
 kkd
-mgr
-mgr
-mtg
-mgr
+jmx
+jmx
+dIj
+jmx
 ukq
 ukq
 ukq
@@ -189128,10 +189138,10 @@ ukq
 ukq
 ukq
 ukq
-mgr
+jmx
 kkd
-mgr
-mgr
+jmx
+jmx
 ukq
 ukq
 ukq
@@ -189385,9 +189395,9 @@ ukq
 ukq
 ukq
 ukq
-mgr
-mgr
-mgr
+jmx
+jmx
+jmx
 ukq
 ukq
 ukq
