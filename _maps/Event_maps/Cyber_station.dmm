@@ -115,8 +115,9 @@
 /area/space/nearstation)
 "abW" = (
 /obj/structure/fans/tiny/invisible,
-/turf/closed/indestructible/iron,
-/area/station/maintenance/floor1/port)
+/obj/structure/punji_sticks/spikes,
+/turf/open/misc/grass,
+/area/centcom/ctf)
 "abY" = (
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
@@ -4770,7 +4771,7 @@
 "bMu" = (
 /obj/structure/fans/tiny/invisible,
 /turf/closed/indestructible/fakeglass,
-/area/station/maintenance/floor1/port)
+/area/centcom/ctf)
 "bMD" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
@@ -10161,11 +10162,9 @@
 /area/station/engineering/main)
 "dKt" = (
 /obj/structure/fans/tiny/invisible,
-/obj/structure/trap/ctf/red{
-	name = "historically accurate magical runes"
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/floor1/port)
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass,
+/area/centcom/ctf)
 "dKH" = (
 /obj/machinery/air_sensor/ordnance_burn_chamber,
 /turf/open/floor/engine/vacuum,
@@ -12937,6 +12936,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
+"eLM" = (
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/sand,
+/turf/open/misc/sandy_dirt,
+/area/centcom/ctf)
 "eLR" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple/layer2{
 	dir = 5
@@ -36888,7 +36892,7 @@
 /area/station/engineering/atmos)
 "nJb" = (
 /obj/structure/fans/tiny/invisible,
-/obj/structure/flora/bush/lavendergrass/style_random,
+/obj/structure/flora/bush/lavendergrass,
 /turf/open/misc/grass,
 /area/centcom/ctf)
 "nJl" = (
@@ -43277,6 +43281,13 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"pZJ" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/mineral_door{
+	name = "castle gate"
+	},
+/turf/open/floor/stone,
+/area/centcom/ctf)
 "pZL" = (
 /obj/machinery/light/very_dim/directional/south,
 /obj/effect/turf_decal/delivery,
@@ -46560,6 +46571,13 @@
 /obj/effect/turf_decal/trimline/yellow/filled/end,
 /turf/open/floor/iron/textured,
 /area/station/medical/medbay/central)
+"rhI" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/mineral_door{
+	name = "castle gate"
+	},
+/turf/open/space/basic,
+/area/centcom/ctf)
 "rhO" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -65181,9 +65199,11 @@
 /area/station/engineering/gravity_generator)
 "xRI" = (
 /obj/structure/fans/tiny/invisible,
-/obj/structure/flora/bush/lavendergrass,
-/turf/open/misc/grass,
-/area/centcom/ctf)
+/obj/structure/trap/ctf/red{
+	name = "historically accurate magical runes"
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
 "xRM" = (
 /obj/machinery/light/very_dim/directional/south,
 /obj/effect/turf_decal/stripes/line,
@@ -92213,7 +92233,7 @@ iot
 kno
 kno
 kno
-dKt
+xRI
 kno
 kno
 kno
@@ -97103,26 +97123,26 @@ kno
 kno
 iot
 kno
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
 kno
 kno
 iot
@@ -97360,7 +97380,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -97617,7 +97637,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -97874,7 +97894,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 vDP
 jZS
 jZS
@@ -98131,7 +98151,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -98388,7 +98408,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 vDP
 jZS
 vDP
@@ -98645,7 +98665,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -98902,7 +98922,6 @@ kno
 kno
 iot
 kno
-abW
 sxW
 sxW
 sxW
@@ -98910,8 +98929,9 @@ sxW
 sxW
 sxW
 sxW
-vDP
-vDP
+sxW
+pZJ
+pZJ
 sxW
 sxW
 sxW
@@ -99159,25 +99179,25 @@ kno
 kno
 iot
 kno
+sxW
 abW
 ezf
+abW
 ezf
+abW
 ezf
-ezf
-ezf
-ezf
-ezf
+abW
 xsN
 xsN
-ezf
+abW
 ezf
 jZS
 ezf
+abW
 ezf
+abW
 ezf
-ezf
-ezf
-ezf
+abW
 bMu
 kno
 kno
@@ -99416,7 +99436,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 ezf
 jZS
 ezf
@@ -99432,9 +99452,9 @@ ezf
 ezf
 ezf
 ezf
-xRI
+nJb
 jZS
-xRI
+nJb
 bMu
 kno
 kno
@@ -99673,7 +99693,7 @@ kno
 kno
 iot
 kno
-abW
+sxW
 jZS
 ezf
 ezf
@@ -99685,7 +99705,7 @@ jZS
 ncF
 ezf
 jZS
-xRI
+nJb
 ezf
 ezf
 ezf
@@ -99930,7 +99950,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 ezf
@@ -99946,7 +99966,7 @@ ezf
 ezf
 jZS
 ezf
-xRI
+nJb
 ezf
 ezf
 bMu
@@ -100187,7 +100207,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 ezf
@@ -100196,7 +100216,7 @@ ezf
 ezf
 ezf
 ezf
-xsN
+eLM
 ezf
 ezf
 ezf
@@ -100444,10 +100464,10 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
-xRI
+nJb
 ezf
 ezf
 ezf
@@ -100701,7 +100721,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 jZS
 ezf
@@ -100958,7 +100978,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 thn
@@ -101215,7 +101235,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 thn
 thn
@@ -101472,14 +101492,14 @@ kno
 kno
 kno
 kno
-abW
+sxW
 thn
 thn
 thn
 ezf
-nJb
+dKt
 ezf
-xsN
+eLM
 ezf
 jZS
 ezf
@@ -101487,7 +101507,7 @@ ezf
 ezf
 ezf
 ezf
-nJb
+dKt
 ezf
 ezf
 ezf
@@ -101729,7 +101749,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 thn
 ezf
 ezf
@@ -101741,12 +101761,12 @@ ezf
 ezf
 ezf
 ezf
+dKt
+ezf
+ezf
+ezf
+ezf
 nJb
-ezf
-ezf
-ezf
-ezf
-xRI
 ezf
 bMu
 kno
@@ -101986,17 +102006,17 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 ezf
-nJb
+dKt
 ezf
 ezf
 xsN
 ezf
 ezf
-xRI
+nJb
 ezf
 ezf
 ezf
@@ -102243,7 +102263,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 ezf
@@ -102500,7 +102520,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 jZS
@@ -102512,7 +102532,7 @@ xsN
 ezf
 ezf
 ezf
-xRI
+nJb
 ezf
 ezf
 ezf
@@ -102757,23 +102777,23 @@ kno
 kno
 kno
 kno
-abW
+sxW
 ezf
 ezf
 ezf
 ezf
-nJb
+dKt
 ezf
 ezf
+eLM
 xsN
-xsN
 ezf
 ezf
 ezf
 ezf
 ezf
 ezf
-nJb
+dKt
 ezf
 ezf
 bMu
@@ -103014,25 +103034,25 @@ kno
 kno
 kno
 kno
+sxW
+ezf
 abW
 ezf
+abW
 ezf
+abW
 ezf
-ezf
-ezf
-ezf
-ezf
-ezf
+abW
 xsN
+abW
 ezf
+abW
 ezf
+abW
 ezf
+abW
 ezf
-ezf
-ezf
-ezf
-ezf
-ezf
+abW
 bMu
 kno
 kno
@@ -103271,7 +103291,6 @@ kno
 kno
 kno
 kno
-abW
 sxW
 sxW
 sxW
@@ -103280,7 +103299,8 @@ sxW
 sxW
 sxW
 sxW
-vDP
+rhI
+pZJ
 sxW
 sxW
 sxW
@@ -103528,7 +103548,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -103785,7 +103805,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -104042,7 +104062,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 vDP
 jZS
 vDP
@@ -104299,7 +104319,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 vDP
 jZS
 vDP
@@ -104556,7 +104576,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 vDP
 jZS
 jZS
@@ -104813,7 +104833,7 @@ kno
 kno
 kno
 kno
-abW
+sxW
 vDP
 vDP
 vDP
@@ -105070,26 +105090,26 @@ kno
 kno
 kno
 kno
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
-abW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
+sxW
 kno
 kno
 kno
