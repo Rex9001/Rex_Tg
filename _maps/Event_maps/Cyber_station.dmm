@@ -15081,10 +15081,7 @@
 /area/station/maintenance/aft/lesser)
 "fwQ" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/closet{
-	name = "exploration suit storage"
-	},
+/obj/structure/closet,
 /obj/item/door_seal,
 /obj/item/clothing/under/rank/engineering/engineer/hazard,
 /obj/item/clothing/under/rank/engineering/engineer/hazard,
@@ -15353,7 +15350,8 @@
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "fDJ" = (
-/turf/open/indestructible,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
 "fDM" = (
 /obj/machinery/door/airlock/external{
@@ -18588,10 +18586,6 @@
 /obj/structure/alien/weeds,
 /turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
-"gWa" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/station/maintenance/floor1/port)
 "gWo" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/spawner/random/structure/closet_private,
@@ -19728,6 +19722,10 @@
 /obj/machinery/light/dim/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology/hallway)
+"hrP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/station/maintenance/floor1/port)
 "hrU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -27887,7 +27885,8 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/turf/open/indestructible,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
 "kjz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38700,7 +38699,8 @@
 /area/station/science/xenobiology/hallway)
 "oqh" = (
 /obj/machinery/power/smes/magical,
-/turf/open/indestructible,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
 "oqk" = (
 /obj/structure/table,
@@ -56694,6 +56694,18 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
+"uEh" = (
+/obj/structure/fans/tiny/invisible,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet{
+	name = "exploration suit storage"
+	},
+/obj/item/door_seal,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/turf/open/floor/iron,
+/area/station/maintenance/floor1/port)
 "uEp" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -58279,7 +58291,11 @@
 /area/station/engineering/transit_tube)
 "voW" = (
 /obj/structure/fans/tiny/invisible,
-/turf/closed/indestructible/hotelwall,
+/turf/closed/indestructible/hotelwall{
+	icon = 'icons/turf/mining.dmi';
+	icon_state = "redrock";
+	base_icon_state = "red_wall"
+	},
 /area/station/maintenance/floor1/port)
 "voZ" = (
 /obj/machinery/door/airlock/maintenance,
@@ -58969,6 +58985,17 @@
 	},
 /turf/open/floor/engine,
 /area/station/engineering/atmospherics_engine)
+"vBU" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/closet{
+	name = "exploration suit storage"
+	},
+/obj/item/door_seal,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/turf/open/floor/iron,
+/area/station/maintenance/floor1/port)
 "vBY" = (
 /obj/machinery/door/airlock{
 	name = "Central Emergency Storage"
@@ -63319,7 +63346,8 @@
 /area/station/cargo/miningoffice)
 "xfj" = (
 /obj/structure/cable,
-/turf/open/indestructible,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
 "xfs" = (
 /obj/structure/closet/crate,
@@ -63803,17 +63831,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
-"xnC" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/closet{
-	name = "exploration suit storage"
-	},
-/obj/item/door_seal,
-/obj/item/clothing/under/rank/engineering/engineer/hazard,
-/obj/item/clothing/under/rank/engineering/engineer/hazard,
-/obj/item/clothing/under/rank/engineering/engineer/hazard,
-/turf/open/floor/iron,
-/area/station/maintenance/floor1/port)
 "xnH" = (
 /obj/machinery/computer/atmos_control/oxygen_tank{
 	dir = 1
@@ -64429,7 +64446,8 @@
 "xyC" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
-/turf/open/indestructible,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
 /area/station/maintenance/floor1/port)
 "xyG" = (
 /obj/structure/rack,
@@ -65665,15 +65683,6 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/listeningstation)
-"xVR" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/closet,
-/obj/item/door_seal,
-/obj/item/clothing/under/rank/engineering/engineer/hazard,
-/obj/item/clothing/under/rank/engineering/engineer/hazard,
-/obj/item/clothing/under/rank/engineering/engineer/hazard,
-/turf/open/floor/iron,
-/area/station/maintenance/floor1/port)
 "xWd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /mob/living/carbon/human/species/monkey,
@@ -99531,8 +99540,8 @@ cSD
 tcm
 tcm
 tcm
-xnC
-fwQ
+vBU
+uEh
 iot
 kno
 htI
@@ -99786,7 +99795,7 @@ iot
 wMM
 vHK
 xRI
-gWa
+hrP
 vHK
 xRI
 xRI
@@ -100559,8 +100568,8 @@ wMM
 nsP
 tcm
 tcm
+uEh
 fwQ
-xVR
 iot
 jTw
 kno
