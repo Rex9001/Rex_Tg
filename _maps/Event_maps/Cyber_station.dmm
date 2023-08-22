@@ -15080,8 +15080,17 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "fwQ" = (
-/turf/closed/indestructible/sandstone,
-/area/space)
+/obj/structure/fans/tiny/invisible,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet{
+	name = "exploration suit storage"
+	},
+/obj/item/door_seal,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/turf/open/floor/iron,
+/area/station/maintenance/floor1/port)
 "fwU" = (
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled,
 /obj/effect/mapping_helpers/broken_floor,
@@ -18578,6 +18587,10 @@
 /obj/effect/gibspawner,
 /obj/structure/alien/weeds,
 /turf/open/floor/plating,
+/area/station/maintenance/floor1/port)
+"gWa" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
 /area/station/maintenance/floor1/port)
 "gWo" = (
 /obj/machinery/airalarm/directional/north,
@@ -63790,6 +63803,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
+"xnC" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/closet{
+	name = "exploration suit storage"
+	},
+/obj/item/door_seal,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/turf/open/floor/iron,
+/area/station/maintenance/floor1/port)
 "xnH" = (
 /obj/machinery/computer/atmos_control/oxygen_tank{
 	dir = 1
@@ -65641,6 +65665,15 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/listeningstation)
+"xVR" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/closet,
+/obj/item/door_seal,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/turf/open/floor/iron,
+/area/station/maintenance/floor1/port)
 "xWd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /mob/living/carbon/human/species/monkey,
@@ -74939,7 +74972,7 @@ voW
 voW
 voW
 voW
-fwQ
+onY
 tey
 tey
 wbx
@@ -99498,8 +99531,8 @@ cSD
 tcm
 tcm
 tcm
-xRI
-vHK
+xnC
+fwQ
 iot
 kno
 htI
@@ -99753,7 +99786,7 @@ iot
 wMM
 vHK
 xRI
-vHK
+gWa
 vHK
 xRI
 xRI
@@ -100526,8 +100559,8 @@ wMM
 nsP
 tcm
 tcm
-vHK
-xRI
+fwQ
+xVR
 iot
 jTw
 kno
