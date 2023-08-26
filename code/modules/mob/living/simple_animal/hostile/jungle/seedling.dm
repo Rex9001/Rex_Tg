@@ -65,10 +65,10 @@
 
 /datum/status_effect/seedling_beam_indicator
 	id = "seedling beam indicator"
-	duration = 3 SECONDS
+	duration = 30
 	status_type = STATUS_EFFECT_MULTIPLE
 	alert_type = null
-	tick_interval = 0.2 SECONDS
+	tick_interval = 1
 	var/atom/movable/screen/seedling/seedling_screen_object
 	var/atom/target
 
@@ -92,7 +92,7 @@
 			owner.client.screen -= seedling_screen_object
 	return ..()
 
-/datum/status_effect/seedling_beam_indicator/tick(seconds_between_ticks)
+/datum/status_effect/seedling_beam_indicator/tick()
 	var/target_angle = get_angle(owner, target)
 	var/matrix/final = matrix()
 	final.Turn(target_angle)

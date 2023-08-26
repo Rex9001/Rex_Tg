@@ -58,5 +58,5 @@
 	progression_minimum = 30 MINUTES
 	item = /obj/item/ammo_box/a357
 	cost = 4
-	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS) //nukies get their own version
+	purchasable_from = ~UPLINK_CLOWN_OPS
 	illegal_tech = FALSE

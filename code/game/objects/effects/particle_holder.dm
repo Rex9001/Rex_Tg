@@ -12,37 +12,31 @@
 	/// See \code\__DEFINES\particles.dm
 	var/particle_flags = NONE
 
-	var/atom/parent
-
 /obj/effect/abstract/particle_holder/Initialize(mapload, particle_path = /particles/smoke, particle_flags = NONE)
 	. = ..()
 	if(!loc)
 		stack_trace("particle holder was created with no loc!")
 		return INITIALIZE_HINT_QDEL
-	// We nullspace ourselves because some objects use their contents (e.g. storage) and some items may drop everything in their contents on deconstruct.
-	parent = loc
-	loc = null
+	// We assert this isn't an /area
 
-	// Mouse opacity can get set to opaque by some objects when placed into the object's contents (storage containers).
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	src.particle_flags = particle_flags
-	particles = new particle_path()
+	particles = new particle_path
 	// /atom doesn't have vis_contents, /turf and /atom/movable do
-	var/atom/movable/lie_about_areas = parent
+	var/atom/movable/lie_about_areas = loc
 	lie_about_areas.vis_contents += src
-	RegisterSignal(parent, COMSIG_QDELETING, PROC_REF(parent_deleted))
+	if(!ismovable(loc))
+		RegisterSignal(loc, COMSIG_QDELETING, PROC_REF(immovable_deleted))
 
 	if(particle_flags & PARTICLE_ATTACH_MOB)
-		RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
-	on_move(parent, null, NORTH)
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
+	on_move(loc, null, NORTH)
 
 /obj/effect/abstract/particle_holder/Destroy(force)
 	QDEL_NULL(particles)
-	parent = null
 	return ..()
 
 /// Non movables don't delete contents on destroy, so we gotta do this
-/obj/effect/abstract/particle_holder/proc/parent_deleted(datum/source)
+/obj/effect/abstract/particle_holder/proc/immovable_deleted(datum/source)
 	SIGNAL_HANDLER
 	qdel(src)
 

@@ -167,9 +167,15 @@
 	name = "boxed cybernetic implants"
 	desc = "A sleek, sturdy box."
 	icon_state = "cyber_implants"
+	var/list/boxed = list(
+		/obj/item/autosurgeon/syndicate/thermal_eyes,
+		/obj/item/autosurgeon/syndicate/xray_eyes,
+		/obj/item/autosurgeon/syndicate/anti_stun,
+		/obj/item/autosurgeon/syndicate/reviver)
+	var/amount = 5
 
 /obj/item/storage/box/cyber_implants/PopulateContents()
-	new /obj/item/autosurgeon/syndicate/xray_eyes(src)
-	new /obj/item/autosurgeon/syndicate/anti_stun(src)
-	new /obj/item/autosurgeon/syndicate/reviver(src)
-	new /obj/item/autosurgeon/syndicate/anti_drop(src)
+	var/implant
+	while(contents.len <= amount)
+		implant = pick(boxed)
+		new implant(src)

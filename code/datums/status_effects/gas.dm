@@ -23,7 +23,7 @@
 	owner.add_overlay(cube)
 
 
-/datum/status_effect/freon/tick(seconds_between_ticks)
+/datum/status_effect/freon/tick()
 	if(can_melt && owner.bodytemperature >= owner.get_body_temp_normal())
 		qdel(src)
 
@@ -51,9 +51,6 @@
 /datum/status_effect/freon/watcher
 	duration = 8
 	can_melt = FALSE
-
-/datum/status_effect/freon/watcher/extended
-	duration = 5 SECONDS
 
 /datum/status_effect/freon/lasting
 	id = "lasting_frozen"

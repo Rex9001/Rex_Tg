@@ -86,14 +86,14 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/mulebot)
 	diag_hud_set_mulebotcell()
 
-/mob/living/simple_animal/bot/mulebot/Exited(atom/movable/gone, direction)
-	. = ..()
-	if(gone == load)
+/mob/living/simple_animal/bot/mulebot/handle_atom_del(atom/A)
+	if(A == load)
 		unload(0)
-	if(gone == cell)
+	if(A == cell)
 		turn_off()
 		cell = null
 		diag_hud_set_mulebotcell()
+	return ..()
 
 /mob/living/simple_animal/bot/mulebot/examine(mob/user)
 	. = ..()
@@ -157,10 +157,8 @@
 		user.put_in_hands(cell)
 	else
 		cell.forceMove(drop_location())
-	user.visible_message(
-		span_notice("[user] crowbars [cell] out from [src]."),
-		span_notice("You pry [cell] out of [src]."),
-	)
+	visible_message(span_notice("[user] crowbars [cell] out from [src]."),
+					span_notice("You pry [cell] out of [src]."))
 	cell = null
 	diag_hud_set_mulebotcell()
 	return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -174,10 +172,8 @@
 			return TRUE
 		cell = I
 		diag_hud_set_mulebotcell()
-		user.visible_message(
-			span_notice("[user] inserts \a [cell] into [src]."),
-			span_notice("You insert [cell] into [src]."),
-		)
+		visible_message(span_notice("[user] inserts \a [cell] into [src]."),
+						span_notice("You insert [cell] into [src]."))
 		return TRUE
 	else if(is_wire_tool(I) && bot_cover_flags & BOT_COVER_OPEN)
 		return attack_hand(user)

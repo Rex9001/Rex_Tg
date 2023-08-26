@@ -535,13 +535,10 @@
 	return properties["transmittable"]
 
 /**
- *  If the disease has an incubation time (such as event diseases) start the timer, let properties determine if there's no timer set.
+ *  If the disease has an incubation time (such as event diseases) start the timer
  */
 /datum/disease/advance/after_add()
 	. = ..()
-
-	if(isnull(incubation_time))
-		return
 
 	if(incubation_time < world.time)
 		make_visible()

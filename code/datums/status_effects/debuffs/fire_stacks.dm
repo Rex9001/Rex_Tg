@@ -17,6 +17,9 @@
 	/// For how much firestacks does one our stack count
 	var/stack_modifier = 1
 
+	/// A particle effect, for things like embers - Should be set on update_particles()
+	var/obj/effect/abstract/particle_holder/particle_effect
+
 /datum/status_effect/fire_handler/refresh(mob/living/new_owner, new_stacks, forced = FALSE)
 	if(forced)
 		set_stacks(new_stacks)
@@ -77,6 +80,23 @@
 
 			adjust_stacks(override_effect.stacks)
 			qdel(override_effect)
+
+/datum/status_effect/fire_handler/on_apply()
+	. = ..()
+	update_particles()
+
+/datum/status_effect/fire_handler/on_remove()
+	if(particle_effect)
+		QDEL_NULL(particle_effect)
+	return ..()
+
+/**
+ * Updates the particles for the status effects
+ * Should be handled by subtypes!
+ */
+
+/datum/status_effect/fire_handler/proc/update_particles()
+	SHOULD_CALL_PARENT(FALSE)
 
 /**
  * Setter and adjuster procs for firestacks
@@ -139,7 +159,7 @@
 	/// Type of mob light emitter we use when on fire
 	var/moblight_type = /obj/effect/dummy/lighting_obj/moblight/fire
 
-/datum/status_effect/fire_handler/fire_stacks/tick(seconds_between_ticks)
+/datum/status_effect/fire_handler/fire_stacks/tick(seconds_per_tick, times_fired)
 	if(stacks <= 0)
 		qdel(src)
 		return TRUE
@@ -147,7 +167,7 @@
 	if(!on_fire)
 		return TRUE
 
-	adjust_stacks(owner.fire_stack_decay_rate * seconds_between_ticks)
+	adjust_stacks(owner.fire_stack_decay_rate * seconds_per_tick)
 
 	if(stacks <= 0)
 		qdel(src)
@@ -158,7 +178,7 @@
 		qdel(src)
 		return TRUE
 
-	deal_damage(seconds_between_ticks)
+	deal_damage(seconds_per_tick, times_fired)
 	update_overlay()
 	update_particles()
 
@@ -177,12 +197,13 @@
  * Proc that handles damage dealing and all special effects
  *
  * Arguments:
- * - seconds_between_ticks
+ * - seconds_per_tick
+ * - times_fired
  *
  */
 
-/datum/status_effect/fire_handler/fire_stacks/proc/deal_damage(seconds_per_tick)
-	owner.on_fire_stack(seconds_per_tick, src)
+/datum/status_effect/fire_handler/fire_stacks/proc/deal_damage(seconds_per_tick, times_fired)
+	owner.on_fire_stack(seconds_per_tick, times_fired, src)
 
 	var/turf/location = get_turf(owner)
 	location.hotspot_expose(700, 25 * seconds_per_tick, TRUE)
@@ -191,12 +212,13 @@
  * Used to deal damage to humans and count their protection.
  *
  * Arguments:
- * - seconds_between_ticks
+ * - seconds_per_tick
+ * - times_fired
  * - no_protection: When set to TRUE, fire will ignore any possible fire protection
  *
  */
 
-/datum/status_effect/fire_handler/fire_stacks/proc/harm_human(seconds_per_tick, no_protection = FALSE)
+/datum/status_effect/fire_handler/fire_stacks/proc/harm_human(seconds_per_tick, times_fired, no_protection = FALSE)
 	var/mob/living/carbon/human/victim = owner
 	var/thermal_protection = victim.get_thermal_protection()
 
@@ -279,8 +301,8 @@
 	enemy_types = list(/datum/status_effect/fire_handler/fire_stacks)
 	stack_modifier = -1
 
-/datum/status_effect/fire_handler/wet_stacks/tick(seconds_between_ticks)
-	adjust_stacks(-0.5 * seconds_between_ticks)
+/datum/status_effect/fire_handler/wet_stacks/tick(seconds_per_tick)
+	adjust_stacks(-0.5 * seconds_per_tick)
 	if(stacks <= 0)
 		qdel(src)
 

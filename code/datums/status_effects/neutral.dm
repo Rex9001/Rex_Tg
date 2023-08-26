@@ -30,7 +30,7 @@
 	if(!QDELETED(reward_target))
 		reward_target.get_kill(owner)
 
-/datum/status_effect/syphon_mark/tick(seconds_between_ticks)
+/datum/status_effect/syphon_mark/tick()
 	if(owner.stat == DEAD)
 		get_kill()
 		qdel(src)
@@ -96,7 +96,7 @@
 	playsound(owner, 'sound/weapons/gun/shotgun/rack.ogg', 75, FALSE)
 	return ..()
 
-/datum/status_effect/bounty/tick(seconds_between_ticks)
+/datum/status_effect/bounty/tick()
 	if(owner.stat == DEAD)
 		rewards()
 		qdel(src)
@@ -343,7 +343,7 @@
 /datum/status_effect/caltropped
 	id = "caltropped"
 	duration = 1 SECONDS
-	tick_interval = -1
+	tick_interval = INFINITY
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = null
 
@@ -374,7 +374,7 @@
 		QDEL_NULL(alt_clone)
 	return ..()
 
-/datum/status_effect/eigenstasium/tick(seconds_between_ticks)
+/datum/status_effect/eigenstasium/tick()
 	. = ..()
 	//This stuff runs every cycle
 	if(prob(5))

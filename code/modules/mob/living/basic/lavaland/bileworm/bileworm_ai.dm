@@ -1,6 +1,6 @@
 /datum/ai_controller/basic_controller/bileworm
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/bileworm(),
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
 	)
 
 	planning_subtrees = list(
@@ -8,9 +8,6 @@
 		/datum/ai_planning_subtree/bileworm_attack,
 		/datum/ai_planning_subtree/bileworm_execute,
 	)
-
-/datum/targetting_datum/basic/bileworm
-	ignore_sight = TRUE
 
 /datum/ai_planning_subtree/bileworm_attack
 

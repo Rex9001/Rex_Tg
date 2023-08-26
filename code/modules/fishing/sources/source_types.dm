@@ -23,13 +23,14 @@
 		/obj/item/fish/guppy = 10,
 	)
 	catalog_description = "Fish dimension (Fishing portal generator)"
+
 /datum/fish_source/chasm
 	catalog_description = "Chasm depths"
 	background = "fishing_background_lavaland"
 	fish_table = list(
 		FISHING_DUD = 5,
 		/obj/item/fish/chasm_crab = 15,
-		/datum/chasm_detritus = 30,
+		/obj/item/chasm_detritus = 30,
 	)
 
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 5
@@ -37,7 +38,7 @@
 /datum/fish_source/chasm/roll_reward(obj/item/fishing_rod/rod, mob/fisherman)
 	var/rolled_reward = ..()
 
-	if(!rod.hook || !ispath(rolled_reward, /datum/chasm_detritus))
+	if(!rod.hook || !ispath(rolled_reward, /obj/item/chasm_detritus))
 		return rolled_reward
 
 	return rod.hook.chasm_detritus_type
@@ -106,13 +107,15 @@
 /datum/fish_source/holographic
 	catalog_description = "Holographic water"
 	fish_table = list(
-		/obj/item/fish/holo = 10,
-		/obj/item/fish/holo/crab = 10,
-		/obj/item/fish/holo/puffer = 10,
-		/obj/item/fish/holo/angel = 10,
-		/obj/item/fish/holo/clown = 10,
-		/obj/item/fish/holo/checkered = 5,
-		/obj/item/fish/holo/halffish = 5,
+		/obj/item/fish/holo = 2,
+		/obj/item/fish/holo/crab = 2,
+		/obj/item/fish/holo/puffer = 2,
+		/obj/item/fish/holo/angel = 2,
+		/obj/item/fish/holo/clown = 2,
+	)
+	fish_counts = list(
+		/obj/item/fish/holo/checkered = 1,
+		/obj/item/fish/holo/halffish = 1,
 	)
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY - 5
 
@@ -129,7 +132,7 @@
 	if(!istype(get_area(user), /area/station/holodeck))
 		interrupt_challenge("exited holodeck")
 
-/datum/fish_source/holographic/on_challenge_completed(datum/fishing_challenge/source, mob/user, success)
+/datum/fish_source/holographic/on_challenge_completed(datum/fishing_challenge/source, mob/user, success, perfect)
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
