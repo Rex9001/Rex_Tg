@@ -341,6 +341,16 @@
 	},
 /turf/open/floor/iron/dark/small,
 /area/station/ai_monitored/security/armory)
+"cj" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/security/range)
 "cm" = (
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
@@ -850,7 +860,7 @@
 "fI" = (
 /obj/machinery/light/small/directional/east,
 /obj/structure/table/glass,
-/mob/living/basic/giant_spider/sgt_araneus,
+/mob/living/basic/spider/giant/sgt_araneus,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "fQ" = (
@@ -3619,6 +3629,7 @@
 "yt" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/camera/directional/east,
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/security/range)
 "yw" = (
@@ -4947,6 +4958,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm/directional/east,
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/large,
 /area/station/security/lockers)
 "Hj" = (
@@ -5148,6 +5160,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/directional/north,
+/obj/item/kirbyplants/random,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/security/range)
 "Is" = (
@@ -5364,6 +5378,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/range)
 "JP" = (
@@ -6975,9 +6990,9 @@
 /obj/item/reagent_containers/spray/cleaner{
 	pixel_x = 9
 	},
-/obj/item/stack/sheet/sandblock{
-	pixel_y = 6;
-	pixel_x = -10
+/obj/item/stack/ore/glass{
+	pixel_x = -8;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
@@ -86012,7 +86027,7 @@ DG
 Ir
 Oa
 Oa
-Oa
+cj
 ae
 Le
 Pi
