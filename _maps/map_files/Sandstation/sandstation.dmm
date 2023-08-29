@@ -916,17 +916,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
-"gi" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/cup/glass/waterbottle/large{
-	pixel_y = 11;
-	pixel_x = -6
-	},
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = 5
-	},
-/turf/open/floor/carpet,
-/area/station/command/heads_quarters/hos)
 "gl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -1129,7 +1118,9 @@
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
 "hG" = (
-/obj/structure/statue/sandstone/venus,
+/obj/structure/statue/sandstone/venus{
+	name = "Lady Justice"
+	},
 /turf/open/floor/carpet/blue,
 /area/station/security/courtroom)
 "hH" = (
@@ -2000,10 +1991,6 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
-"nT" = (
-/obj/structure/sign/poster/random/directional/north,
-/turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
 "oe" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -2110,10 +2097,6 @@
 /obj/machinery/keycard_auth/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
-"oW" = (
-/obj/machinery/duct,
-/turf/open/floor/light/colour_cycle/dancefloor_a,
-/area/station/service/bar)
 "oX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -2240,10 +2223,6 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /turf/open/floor/iron/large,
 /area/station/security/brig/entrance)
-"qa" = (
-/obj/structure/chair/stool/directional/west,
-/turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
 "qc" = (
 /turf/closed/wall,
 /area/station/service/kitchen)
@@ -2756,9 +2735,6 @@
 /obj/structure/flora/tree/palm/style_random,
 /turf/open/misc/beach/sand,
 /area/station/maintenance/aft/lesser)
-"tz" = (
-/turf/open/floor/light/colour_cycle/dancefloor_a,
-/area/station/service/bar)
 "tA" = (
 /obj/structure/marker_beacon/burgundy,
 /turf/open/misc/beach/sand,
@@ -4166,9 +4142,20 @@
 /turf/open/floor/plating,
 /area/station/security/courtroom)
 "Ch" = (
-/obj/structure/window/spawner/directional/south,
-/turf/open/floor/carpet/blue,
-/area/station/security/courtroom)
+/obj/structure/table/wood,
+/obj/effect/spawner/random/decoration/ornament{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/item/book{
+	pixel_y = -1;
+	pixel_x = 5;
+	desc = "I'd rather die than be caught with this shit.";
+	name = "HoS assistant: Revelations book 265: Return of the tide";
+	icon_state = "chuuni_manga"
+	},
+/turf/open/floor/carpet,
+/area/station/command/heads_quarters/hos)
 "Ci" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4606,10 +4593,6 @@
 /obj/effect/spawner/random/trash,
 /turf/open/floor/plating/rust,
 /area/station/maintenance/aft/lesser)
-"Fc" = (
-/obj/effect/spawner/structure/window,
-/turf/open/misc/beach/sand,
-/area/station/hallway/primary)
 "Fe" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -4644,9 +4627,8 @@
 /turf/open/floor/iron/large,
 /area/station/security/brig/entrance)
 "Fl" = (
-/obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
+/area/space)
 "Fn" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
@@ -5341,6 +5323,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "Jx" = (
@@ -5382,9 +5367,8 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/range)
 "JP" = (
-/obj/machinery/duct,
-/turf/open/floor/light/colour_cycle/dancefloor_b,
-/area/station/service/bar)
+/turf/closed/wall/material,
+/area/space)
 "JS" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/dark_red/filled/corner{
@@ -5495,9 +5479,8 @@
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
 "Kx" = (
-/obj/machinery/computer/slot_machine,
-/turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
+/turf/closed/wall,
+/area/space)
 "KA" = (
 /obj/structure/table/reinforced,
 /obj/machinery/firealarm/directional/north{
@@ -5796,19 +5779,10 @@
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "Mw" = (
-/obj/structure/table/wood,
-/obj/effect/spawner/random/decoration/ornament{
-	pixel_y = 3;
-	pixel_x = -3
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 2
 	},
-/obj/item/book{
-	pixel_y = -1;
-	pixel_x = 5;
-	desc = "I'd rather die than be caught with this shit.";
-	name = "HoS assistant: Revelations book 265: Return of the tide";
-	icon_state = "chuuni_manga"
-	},
-/obj/structure/cable,
+/obj/effect/spawner/random/trash/bin,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
 "My" = (
@@ -5885,10 +5859,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/half,
 /area/station/hallway/primary/central/fore)
-"MZ" = (
-/obj/machinery/jukebox,
-/turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
 "Ne" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
@@ -6405,7 +6375,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 10
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/large,
 /area/station/security/holding_cell)
 "QH" = (
 /obj/docking_port/stationary{
@@ -6451,7 +6421,7 @@
 /area/station/security/brig)
 "QY" = (
 /obj/effect/landmark/start/hangover,
-/turf/open/floor/light/colour_cycle/dancefloor_b,
+/turf/open/floor/iron/dark/textured,
 /area/station/service/bar)
 "Rd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -6564,7 +6534,6 @@
 /turf/open/floor/carpet/blue,
 /area/station/security/courtroom)
 "RO" = (
-/obj/effect/spawner/structure/window,
 /turf/open/misc/beach/coast/corner{
 	dir = 1
 	},
@@ -6581,12 +6550,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
-"RU" = (
-/obj/structure/sign/poster/random/directional/west,
-/obj/machinery/computer/slot_machine,
-/obj/machinery/light/small/directional/west,
-/turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
 "RV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -6873,10 +6836,10 @@
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "TK" = (
-/obj/machinery/light/small/directional/north,
-/obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/iron/dark/textured,
-/area/station/service/bar)
+/obj/structure/chair/stool/directional/east,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/carpet/blue,
+/area/station/security/courtroom)
 "TL" = (
 /obj/machinery/light/broken/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -7510,9 +7473,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/large,
 /area/station/security/lockers)
-"XM" = (
-/turf/open/floor/light/colour_cycle/dancefloor_b,
-/area/station/service/bar)
 "XN" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -81918,12 +81878,12 @@ ja
 ja
 ja
 ja
-ja
-ja
-ja
-ja
-ja
-ja
+JP
+vP
+vP
+vP
+vP
+JP
 ja
 ja
 ja
@@ -82176,11 +82136,11 @@ Qb
 Qb
 Vn
 hE
-Ca
-Ca
-Ca
+TK
+rJ
+rJ
+rJ
 hE
-Ca
 Ca
 hE
 Ca
@@ -82433,10 +82393,10 @@ Qb
 Qb
 Vn
 WK
-rJ
-rJ
-rJ
-rJ
+lc
+OE
+lc
+lc
 eS
 Wg
 SY
@@ -82689,12 +82649,12 @@ Qb
 Qb
 Qb
 Vn
-Ch
-lc
-OE
-lc
-lc
-eS
+iu
+iu
+iu
+iu
+iu
+Is
 ts
 eB
 ts
@@ -87099,7 +87059,7 @@ hg
 hg
 hg
 hg
-Mp
+xg
 Mp
 Mp
 Mp
@@ -88838,10 +88798,10 @@ ja
 ja
 ja
 ja
-ja
-ja
-ja
-DH
+OJ
+OJ
+OJ
+xP
 mq
 lU
 Ms
@@ -89094,10 +89054,10 @@ ja
 ja
 ja
 ja
-zr
 OJ
-zr
-zr
+OJ
+JB
+Ch
 zr
 zr
 Zt
@@ -89353,8 +89313,8 @@ ja
 ja
 OJ
 Mw
-JB
-gi
+ef
+ef
 zr
 oN
 pv
@@ -92494,13 +92454,13 @@ YX
 dM
 ja
 ja
-ja
-ja
-ja
-ja
-ja
-ja
-ja
+Kx
+Kx
+Kx
+Kx
+Kx
+Kx
+Kx
 ja
 ow
 bs
@@ -92750,15 +92710,15 @@ nR
 fx
 dM
 ja
-ja
-ja
-ja
-ja
-ja
-ja
-ja
-ja
-ja
+Kx
+Kx
+Fl
+Fl
+Fl
+Fl
+Fl
+Kx
+Kx
 ow
 xM
 oF
@@ -93007,14 +92967,14 @@ LQ
 Hq
 dM
 ja
-ja
-Ke
-Ke
-Ke
-Ke
-Ke
-Ke
-Ke
+Kx
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
 Ke
 qA
 vl
@@ -93264,15 +93224,15 @@ dM
 dM
 dM
 ja
-ja
-Ke
-wt
 Kx
-RU
-MZ
-Kx
-Kx
-wt
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
 bl
 xM
 qQ
@@ -93520,15 +93480,15 @@ ja
 ja
 ja
 ja
-ja
-ja
-Ke
+Kx
+Kx
 gQ
-qa
-qa
 gQ
-qa
-qa
+gQ
+gQ
+gQ
+gQ
+gQ
 gQ
 bl
 xM
@@ -93777,15 +93737,15 @@ ja
 ja
 ja
 ja
-ja
-ja
-Ke
-nT
-tz
-XM
-tz
+Kx
+Fl
+gQ
+gQ
+gQ
+gQ
+gQ
 QY
-tz
+gQ
 gQ
 bl
 xM
@@ -94034,15 +93994,15 @@ ja
 ja
 ja
 ja
-ja
-ja
-Ke
-wt
-XM
-tz
-XM
-tz
-XM
+Kx
+Fl
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
 wt
 Ke
 Er
@@ -94291,15 +94251,15 @@ ja
 ja
 ja
 ja
-ja
-ja
-Ke
-TK
-tz
+Kx
+Fl
+gQ
+gQ
+gQ
 QY
-tz
-JP
-oW
+gQ
+Oe
+Oe
 Oe
 gu
 lJ
@@ -94548,14 +94508,14 @@ ja
 ja
 ja
 ja
-ja
-ja
-Ke
-wt
-XM
-tz
-XM
-oW
+Kx
+Fl
+gQ
+gQ
+gQ
+gQ
+gQ
+Oe
 QY
 nc
 SP
@@ -94805,15 +94765,15 @@ ja
 ja
 ja
 ja
-ja
-ja
-Ke
-nT
-tz
+Kx
+Kx
+gQ
+gQ
+gQ
 QY
-tz
-JP
-tz
+gQ
+Oe
+gQ
 gQ
 Ke
 xM
@@ -95063,9 +95023,9 @@ ja
 ja
 ja
 ja
-ja
-Ke
-Fl
+Kx
+gQ
+gQ
 gQ
 gQ
 gQ
@@ -95320,10 +95280,10 @@ ja
 ja
 ja
 ja
-ja
-Ke
+Kx
+gQ
 LE
-wt
+gQ
 ar
 lZ
 kT
@@ -95577,7 +95537,7 @@ ja
 ja
 ja
 ja
-ja
+Kx
 Ke
 ls
 BU
@@ -95834,7 +95794,7 @@ ja
 ja
 ja
 ja
-ja
+Kx
 Ke
 uV
 zp
@@ -96876,7 +96836,7 @@ Er
 DB
 xM
 yL
-Fc
+yL
 RO
 Pl
 ec
@@ -97132,7 +97092,7 @@ ja
 xM
 DB
 xM
-yL
+xM
 yL
 yL
 yL
