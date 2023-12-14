@@ -55,3 +55,11 @@
 		return
 	owner.alpha = 255
 	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_UNARMED_ATTACK))
+
+// Used by chameleon_skin
+/datum/mutation/human/chameleon/changeling
+	name = "Chameleon Skin"
+	text_gain_indication = "<span class='notice'>You feel your skin shift to blend in.</span>"
+	text_lose_indication = "<span class='notice'>You feel your skin shift back to its original form.</span>"
+	locked = TRUE
+	power_coeff = 1.6

@@ -1397,9 +1397,8 @@
 
 /datum/reagent/medicine/changelingadrenaline/on_mob_life(mob/living/carbon/metabolizer, seconds_per_tick, times_fired)
 	. = ..()
-	metabolizer.AdjustAllImmobility(-20 * REM * seconds_per_tick)
-	if(metabolizer.adjustStaminaLoss(-10 * REM * seconds_per_tick, updating_stamina = FALSE))
-		. = UPDATE_MOB_HEALTH
+	metabolizer.AdjustAllImmobility(-60 * REM * seconds_per_tick)
+	metabolizer.adjustStaminaLoss(-10 * REM * seconds_per_tick, updating_stamina = FALSE, required_biotype = affected_biotype)
 	metabolizer.set_jitter_if_lower(20 SECONDS * REM * seconds_per_tick)
 	metabolizer.set_dizzy_if_lower(20 SECONDS * REM * seconds_per_tick)
 
@@ -1422,7 +1421,7 @@
 
 /datum/reagent/medicine/changelinghaste
 	name = "Changeling Haste"
-	description = "Drastically increases movement speed, but deals toxin damage."
+	description = "Drastically increases movement speed."
 	color = "#AE151D"
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
@@ -1434,11 +1433,6 @@
 /datum/reagent/medicine/changelinghaste/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	affected_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/changelinghaste)
-
-/datum/reagent/medicine/changelinghaste/on_mob_life(mob/living/carbon/metabolizer, seconds_per_tick, times_fired)
-	. = ..()
-	if(metabolizer.adjustToxLoss(2 * REM * seconds_per_tick, updating_health = FALSE))
-		return UPDATE_MOB_HEALTH
 
 /datum/reagent/medicine/higadrite
 	name = "Higadrite"

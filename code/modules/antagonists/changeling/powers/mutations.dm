@@ -545,13 +545,13 @@
 	heat_protection = 0
 
 /datum/armor/armor_changeling
-	melee = 40
-	bullet = 40
-	laser = 40
+	melee = 60
+	bullet = 50
+	laser = 50
 	energy = 50
-	bomb = 10
+	bomb = 30
 	bio = 10
-	fire = 90
+	fire = 10
 	acid = 90
 
 /obj/item/clothing/suit/armor/changeling/Initialize(mapload)
@@ -570,13 +570,13 @@
 	flags_inv = HIDEEARS|HIDEHAIR|HIDEEYES|HIDEFACIALHAIR|HIDEFACE|HIDESNOUT
 
 /datum/armor/helmet_changeling
-	melee = 40
-	bullet = 40
-	laser = 40
+	melee = 60
+	bullet = 50
+	laser = 50
 	energy = 50
-	bomb = 10
+	bomb = 30
 	bio = 10
-	fire = 90
+	fire = 10
 	acid = 90
 
 /obj/item/clothing/head/helmet/changeling/Initialize(mapload)
