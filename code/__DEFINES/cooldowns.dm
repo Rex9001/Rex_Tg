@@ -48,6 +48,9 @@
 // item cooldowns
 #define COOLDOWN_SIGNALLER_SEND "cooldown_signaller_send"
 
+// changeling cooldowns
+#define COOLDOWN_CHANGELING_BIODEGRADE "changeling_biodegrade"
+
 //circuit cooldowns
 #define COOLDOWN_CIRCUIT_SOUNDEMITTER "circuit_soundemitter"
 #define COOLDOWN_CIRCUIT_SPEECH "circuit_speech"

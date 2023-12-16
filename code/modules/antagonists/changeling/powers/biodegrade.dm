@@ -1,6 +1,7 @@
 /datum/action/changeling/biodegrade
 	name = "Biodegrade"
-	desc = "Dissolves restraints or other objects preventing free movement. Reviving from stasis will trigger this for free. Costs 30 chemicals."
+	desc = "Dissolves restraints or other objects preventing free movement. Reviving from stasis will trigger this for free.  \
+	The revival effect can only be triggered once every 2 minutes. Costs 30 chemicals."
 	helptext = "This is obvious to nearby people, and can destroy standard restraints and closets."
 	button_icon_state = "biodegrade"
 	chemical_cost = 30 //High cost to prevent spam
@@ -23,6 +24,11 @@
 
 /datum/action/changeling/biodegrade/proc/on_revive(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
+
+	// Timer of 2 minutes to prevent constant spamming
+	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_CHANGELING_BIODEGRADE))
+		return
+	TIMER_COOLDOWN_START(src, COOLDOWN_CHANGELING_BIODEGRADE, 2 MINUTES)
 
 	var/restraints = check_restraints(user)
 	return restraints
