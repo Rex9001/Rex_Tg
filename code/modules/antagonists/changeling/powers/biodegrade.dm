@@ -36,7 +36,6 @@
 			span_warning("We vomit acidic ooze onto our restraints!"))
 		addtimer(CALLBACK(src, PROC_REF(dissolve_handcuffs), user, cuffs), 30)
 		log_combat(user, user.handcuffed, "melted handcuffs", addition = "(biodegrade)")
-		..()
 		return TRUE
 
 	if(user.legcuffed)
@@ -48,7 +47,6 @@
 
 		addtimer(CALLBACK(src, PROC_REF(dissolve_legcuffs), user, legcuff), 30)
 		log_combat(user, user.legcuffed, "melted legcuffs", addition = "(biodegrade)")
-		..()
 		return TRUE
 
 	if(user.wear_suit?.breakouttime)
@@ -59,7 +57,6 @@
 			span_warning("We vomit acidic ooze onto our [user.wear_suit.name]!"))
 		addtimer(CALLBACK(src, PROC_REF(dissolve_straightjacket), user, stray), 30)
 		log_combat(user, user.wear_suit, "melted [user.wear_suit]", addition = "(biodegrade)")
-		..()
 		return TRUE
 
 	if(istype(user.loc, /obj/structure/closet))
@@ -70,7 +67,6 @@
 		to_chat(user, span_warning("We vomit acidic goop onto the interior of [closet]!"))
 		addtimer(CALLBACK(src, PROC_REF(open_closet), user, closet), 70)
 		log_combat(user, user.loc, "melted locker", addition = "(biodegrade)")
-		..()
 		return TRUE
 
 	if(istype(user.loc, /obj/structure/spider/cocoon))
@@ -81,7 +77,6 @@
 		to_chat(user, span_warning("We secrete acidic enzymes from our skin and begin melting our cocoon..."))
 		addtimer(CALLBACK(src, PROC_REF(dissolve_cocoon), user, cocoon), 25) //Very short because it's just webs
 		log_combat(user, user.loc, "melted cocoon", addition = "(biodegrade)")
-		..()
 		return TRUE
 
 	user.balloon_alert(user, "already free!")
