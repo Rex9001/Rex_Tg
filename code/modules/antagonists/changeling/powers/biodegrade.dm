@@ -7,14 +7,33 @@
 	dna_cost = 2
 	req_human = TRUE
 
+/datum/action/changeling/biodegrade/on_purchase(mob/user, is_respec)
+	. = ..()
+	RegisterSignal(user, SIGNAL_REMOVETRAIT(TRAIT_DEATHCOMA), PROC_REF(on_revive))
+
+/datum/action/changeling/biodegrade/Remove(mob/remove_from)
+	UnregisterSignal(remove_from, SIGNAL_REMOVETRAIT(TRAIT_DEATHCOMA))
+	return ..()
+
 /datum/action/changeling/biodegrade/sting_action(mob/living/carbon/human/user)
+	var/restraints = check_restraints(user)
+	if (restraints)
+		..()
+	return restraints
+
+/datum/action/changeling/biodegrade/proc/on_revive(mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+
+	var/restraints = check_restraints(user)
+	return restraints
+
+/datum/action/changeling/biodegrade/proc/check_restraints(mob/living/carbon/human/user)
 	if(user.handcuffed)
 		var/obj/cuffs = user.get_item_by_slot(ITEM_SLOT_HANDCUFFED)
 		if(!istype(cuffs))
 			return FALSE
 		user.visible_message(span_warning("[user] vomits a glob of acid on [user.p_their()] [cuffs]!"), \
 			span_warning("We vomit acidic ooze onto our restraints!"))
-
 		addtimer(CALLBACK(src, PROC_REF(dissolve_handcuffs), user, cuffs), 30)
 		log_combat(user, user.handcuffed, "melted handcuffs", addition = "(biodegrade)")
 		..()
