@@ -582,3 +582,121 @@
 /obj/item/clothing/head/helmet/changeling/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
+
+/***************************************\
+|*************Spiky Shell***************|
+\***************************************/
+/datum/action/changeling/suit/spikes
+	name = "Poison Spines"
+	desc = "We grow poison spines across our body which will break off as you get attacked. Using this ability whilst spines \
+			are active will send them flying in every direction, having a high chance to embed. Costs 20 chemicals."
+	helptext = "Upkeep of the armor requires a low expenditure of chemicals. The spines will embed in people who attack you. \
+				If anyone walks on you whilst you are lying down they will be knocked down. Spines will deal constant \
+				toxin damage in their embedded victims. Cannot be used in lesser form."
+	button_icon_state = "chitinous_armor"
+	chemical_cost = 20
+	dna_cost = 2
+	req_human = TRUE
+	recharge_slowdown = 0.1
+
+	suit_type = /obj/item/clothing/suit/armor/spikes
+	helmet_type = /obj/item/clothing/head/helmet/spikes
+	suit_name_simple = "armor"
+	helmet_name_simple = "helmet"
+
+/obj/item/clothing/suit/armor/spikes
+	name = "mass of spines"
+	desc = "A tough, hard covering of black chitin."
+	icon_state = "lingarmor"
+	inhand_icon_state = null
+	item_flags = DROPDEL
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	armor_type = /datum/armor/armor_spikes
+	flags_inv = HIDEJUMPSUIT
+	cold_protection = 0
+	heat_protection = 0
+	// Whoever is wearing us
+	var/mob/living/carbon/human/wearer
+
+/datum/armor/armor_spikes
+	melee = 30
+	bullet = 20
+	laser = 30
+	energy = 30
+	bomb = 10
+	bio = 80
+	fire = 10
+	acid = 90
+
+/obj/item/clothing/suit/armor/spikes/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
+	if(ismob(loc))
+		loc.visible_message(span_warning("[loc.name]\'s flesh bulges, that quickly sprout into spines!"), span_warning("We sprout spines to hinder attackers!"), span_hear("You hear organic matter ripping and tearing!"))
+
+/obj/item/clothing/suit/armor/spikes/equipped(mob/user, slot, initial)
+	. = ..()
+	if(!(slot & slot_flags))
+		return
+
+	user.AddComponentFrom(REF(src), /datum/component/caltrop, min_damage = 20, max_damage = 30, flags = CALTROP_BYPASS_SHOES)
+	src.wearer = user
+
+/obj/item/clothing/suit/armor/spikes/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	. = ..()
+	var/obj/item/poison_spine/payload
+	var/mob/living/carbon/human/attacker = hitby
+
+	if(!can_embed_spine(attacker) || !payload.tryEmbed(attacker.get_active_hand(), forced = TRUE))
+		return
+	to_chat(attacker, span_warning("You feel something break off into your skin!"))
+
+/obj/item/clothing/suit/armor/spikes/proc/can_embed_spine(mob/living/carbon/human/user)
+	if (!istype(user) || HAS_TRAIT(user, TRAIT_PIERCEIMMUNE))
+		return FALSE
+	if (user == wearer)
+		return FALSE
+	return TRUE
+
+/obj/item/clothing/suit/armor/spikes/Destroy()
+	. = ..()
+	wearer.RemoveComponentSource(REF(src), /datum/component/caltrop)
+
+/obj/item/poison_spine
+	name = "chem spike"
+	desc = "Hardened biomass, shaped into... something."
+	icon = 'icons/obj/weapons/thrown.dmi'
+	icon_state = "tonguespikechem"
+	throwforce = 10
+	embedding = list("pain_mult" = 4, "embed_chance" = 100, "embedded_fall_chance" = 0,)
+
+/obj/item/poison_spine/embedded(mob/living/carbon/human/embedded_mob)
+	. = ..()
+	embedded_mob.reagents.add_reagent(/datum/reagent/toxin/cyanide, 5)
+
+/obj/item/poison_spine/unembedded()
+	qdel(src)
+	return ..()
+
+/obj/item/clothing/head/helmet/spikes
+	name = "mass of spines"
+	desc = "A tough, hard covering of black chitin with transparent chitin in front."
+	icon_state = "lingarmorhelmet"
+	inhand_icon_state = null
+	item_flags = DROPDEL
+	armor_type = /datum/armor/helmet_spikes
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEEYES|HIDEFACIALHAIR|HIDEFACE|HIDESNOUT
+
+/datum/armor/helmet_spikes
+	melee = 30
+	bullet = 20
+	laser = 30
+	energy = 30
+	bomb = 10
+	bio = 80
+	fire = 10
+	acid = 90
+
+/obj/item/clothing/head/helmet/changeling/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)

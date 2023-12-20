@@ -28,7 +28,7 @@
 			C.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = 0)
 		O.forceMove(get_turf(user))
 
-	user.reagents.add_reagent(/datum/reagent/medicine/mutadone, 10)
+	user.reagents.add_reagent(/datum/reagent/medicine/mutadone, 1)
 	user.reagents.add_reagent(/datum/reagent/medicine/pen_acid, 20)
 	user.reagents.add_reagent(/datum/reagent/medicine/antihol, 10)
 	user.reagents.add_reagent(/datum/reagent/medicine/mannitol, 25)
