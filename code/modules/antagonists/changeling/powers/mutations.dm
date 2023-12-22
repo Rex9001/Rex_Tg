@@ -591,7 +591,7 @@
 	desc = "We grow poison spines across our body which will break off as you get attacked. Using this ability whilst spines \
 			are active will send them flying in every direction, having a high chance to embed. Costs 20 chemicals."
 	helptext = "Upkeep of the armor requires a low expenditure of chemicals. The spines will embed in people who attack you. \
-				If anyone walks on you whilst you are lying down they will be knocked down. Spines will deal constant \
+				If anyone walks on you whilst you are lying down they will be knocked down. Spines will deal \
 				toxin damage in their embedded victims. Cannot be used in lesser form."
 	button_icon_state = "chitinous_armor"
 	chemical_cost = 20
@@ -617,6 +617,9 @@
 	heat_protection = 0
 	// Whoever is wearing us
 	var/mob/living/carbon/human/wearer
+	var/datum/caltrops
+	// The stuff we embed on attack
+	var/obj/item/poison_spine/spine
 
 /datum/armor/armor_spikes
 	melee = 30
@@ -639,15 +642,16 @@
 	if(!(slot & slot_flags))
 		return
 
-	user.AddComponentFrom(REF(src), /datum/component/caltrop, min_damage = 20, max_damage = 30, flags = CALTROP_BYPASS_SHOES)
+	src.caltrops = user.AddComponent(/datum/component/caltrop, min_damage = 20, max_damage = 30, flags = CALTROP_BYPASS_SHOES)
 	src.wearer = user
 
 /obj/item/clothing/suit/armor/spikes/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	. = ..()
-	var/obj/item/poison_spine/payload
-	var/mob/living/carbon/human/attacker = hitby
+	var/mob/living/carbon/human/attacker = GET_ASSAILANT(hitby)
 
-	if(!can_embed_spine(attacker) || !payload.tryEmbed(attacker.get_active_hand(), forced = TRUE))
+	if(!can_embed_spine(attacker))
+		return
+	if(!spine.tryEmbed(attacker.get_active_hand(), forced = TRUE))
 		return
 	to_chat(attacker, span_warning("You feel something break off into your skin!"))
 
@@ -660,10 +664,10 @@
 
 /obj/item/clothing/suit/armor/spikes/Destroy()
 	. = ..()
-	wearer.RemoveComponentSource(REF(src), /datum/component/caltrop)
+	qdel(caltrops)
 
 /obj/item/poison_spine
-	name = "chem spike"
+	name = "Poison Spine"
 	desc = "Hardened biomass, shaped into... something."
 	icon = 'icons/obj/weapons/thrown.dmi'
 	icon_state = "tonguespikechem"
