@@ -616,6 +616,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation)
+"ame" = (
+/obj/machinery/vending/hydroseeds{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta/end,
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "amp" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -997,6 +1004,15 @@
 /obj/structure/chair/stool/directional/east,
 /turf/open/floor/iron/smooth,
 /area/station/commons/fitness/recreation)
+"atz" = (
+/obj/structure/statue/gold/rd{
+	anchored = 1;
+	desc = "A statue of the founder of Spinward Smoothies. The number 007 is carved into its placard, for some reason.";
+	name = "Golden Memories";
+	pixel_y = 12
+	},
+/turf/open/floor/bronze/flat,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "atA" = (
 /obj/effect/decal/cleanable/blood/gibs{
 	icon_state = "drip1"
@@ -1578,6 +1594,13 @@
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"aDD" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 4
+	},
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "aDK" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -1613,6 +1636,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/service/hydroponics)
+"aEg" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta/corner,
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "aEk" = (
 /turf/closed/wall/r_wall,
 /area/station/security/office)
@@ -4505,6 +4536,10 @@
 /obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"bzZ" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "bAa" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -5025,6 +5060,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/dangerous_research/lab)
+"bHm" = (
+/obj/structure/hedge{
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta,
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "bHn" = (
 /obj/machinery/door/airlock/external/glass{
 	name = "Supply Door Airlock"
@@ -5206,6 +5248,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/cytology)
+"bKS" = (
+/obj/machinery/door/airlock/security,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/security/hos,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "bLb" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/camera/directional/west{
@@ -5394,6 +5442,10 @@
 /obj/effect/spawner/random/decoration/ornament,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
+"bNZ" = (
+/obj/structure/flora/bush/flowers_yw/style_random,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "bOf" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -5577,6 +5629,10 @@
 	dir = 1
 	},
 /area/station/engineering/atmos)
+"bQK" = (
+/obj/machinery/light/small/broken/directional/south,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "bQT" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
@@ -5602,6 +5658,7 @@
 /obj/machinery/camera/directional/north,
 /obj/item/gun/ballistic/rocketlauncher/unrestricted,
 /obj/item/ammo_casing/rocket,
+/obj/item/ammo_casing/rocket/heap,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
 "bRh" = (
@@ -5655,6 +5712,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
+"bSo" = (
+/obj/structure/billboard/smoothies{
+	pixel_y = 14
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "bSy" = (
 /obj/machinery/power/turbine/core_rotor{
 	dir = 4;
@@ -6852,6 +6916,11 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/space/nearstation)
+"cnj" = (
+/mob/living/basic/cockroach,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "cnn" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L11"
@@ -6859,6 +6928,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
+"cnt" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 1
+	},
+/obj/machinery/chem_dispenser/drinks{
+	dir = 1
+	},
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "cnJ" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -6994,8 +7073,8 @@
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "cpy" = (
-/obj/machinery/power/smes,
 /obj/structure/cable,
+/obj/machinery/power/smes/engineering,
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/garbagetruck/foodwaste)
 "cpD" = (
@@ -8732,6 +8811,11 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
+"cRy" = (
+/obj/structure/flora/bush/flowers_yw/style_random,
+/obj/machinery/light/directional/south,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "cRE" = (
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/door/airlock/vault{
@@ -9510,6 +9594,15 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/gravity_generator)
+"dcZ" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 8
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "ddb" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/glass/fifty{
@@ -10261,6 +10354,10 @@
 /obj/item/pipe_dispenser,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
+"dok" = (
+/obj/structure/flora/bush/flowers_pp/style_random,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "don" = (
 /obj/item/mmi,
 /obj/structure/rack,
@@ -10313,11 +10410,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
-"dpO" = (
-/obj/machinery/food_cart,
-/obj/effect/turf_decal/sand,
-/turf/open/floor/iron/kitchen,
-/area/space/nearstation)
 "dpU" = (
 /obj/item/trash/shrimp_chips,
 /obj/item/trash/sosjerky,
@@ -11297,11 +11389,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
-"dGK" = (
-/obj/effect/turf_decal/sand,
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/iron/kitchen,
-/area/space/nearstation)
 "dGO" = (
 /obj/machinery/door/poddoor{
 	id = "winter_biodome"
@@ -11403,6 +11490,10 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/starboard)
+"dIL" = (
+/obj/structure/table/reinforced,
+/turf/closed/mineral/asteroid,
+/area/space/nearstation)
 "dJg" = (
 /obj/machinery/light_switch/directional/east,
 /obj/machinery/modular_computer/preset/curator{
@@ -13132,6 +13223,11 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
+"emb" = (
+/turf/open/floor/bamboo{
+	smoothing_flags = 0
+	},
+/area/ruin/space/has_grav/spinwardsmoothies)
 "emj" = (
 /obj/structure/sign/warning/radiation/rad_area/directional/north,
 /obj/effect/turf_decal/stripes/line{
@@ -13356,6 +13452,10 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/break_room)
+"epw" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "epD" = (
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /turf/open/floor/iron/dark/diagonal,
@@ -14108,6 +14208,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet,
 /area/station/command/bridge)
+"ezd" = (
+/obj/effect/spawner/random/contraband/narcotics,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "ezk" = (
 /obj/structure/lattice/catwalk,
 /turf/open/misc/asteroid/airless{
@@ -14210,6 +14316,10 @@
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating/airless,
+/area/space/nearstation)
+"eBv" = (
+/obj/structure/girder/reinforced,
+/turf/open/misc/asteroid/airless,
 /area/space/nearstation)
 "eBE" = (
 /obj/machinery/door/window/right/directional/south{
@@ -14648,6 +14758,10 @@
 	dir = 4
 	},
 /area/station/security/prison)
+"eKS" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/turf/closed/mineral/asteroid,
+/area/space/nearstation)
 "eLb" = (
 /obj/structure/closet,
 /obj/item/stack/sheet/glass{
@@ -14772,6 +14886,12 @@
 /obj/effect/mapping_helpers/airlock/access/any/security/general,
 /turf/open/floor/iron/smooth,
 /area/station/security/courtroom)
+"eMG" = (
+/obj/machinery/vending/boozeomat/all_access{
+	onstation = 0
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "eMH" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -15452,6 +15572,10 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
+"eYC" = (
+/obj/machinery/power/shuttle_engine/heater,
+/turf/closed/wall/mineral/titanium,
+/area/space/nearstation)
 "eYK" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -17181,6 +17305,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/commons/dorms)
+"fyp" = (
+/turf/closed/wall/mineral/titanium,
+/area/space/nearstation)
 "fyC" = (
 /obj/structure/cable,
 /obj/machinery/computer/security/telescreen/interrogation{
@@ -17542,6 +17669,7 @@
 "fEm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/red/directional/east,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/commons/lounge)
 "fEF" = (
@@ -17756,6 +17884,9 @@
 /obj/effect/landmark/start/bitrunner,
 /turf/open/floor/iron/dark/textured_half,
 /area/station/cargo/bitrunning/den)
+"fHP" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "fHT" = (
 /obj/structure/showcase/cyborg/old{
 	pixel_y = 20
@@ -18481,6 +18612,12 @@
 "fWs" = (
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
+"fWx" = (
+/obj/machinery/door/airlock/security,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/security,
+/turf/open/floor/mineral/titanium/tiled/airless,
+/area/space/nearstation)
 "fWG" = (
 /obj/machinery/power/shuttle_engine/large{
 	dir = 8;
@@ -22724,6 +22861,10 @@
 /obj/structure/marker_beacon/indigo,
 /turf/open/misc/asteroid/airless,
 /area/space/nearstation)
+"hmE" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst/right,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "hmL" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
@@ -24835,6 +24976,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/port)
+"hXL" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "hXR" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/bot_white,
@@ -25874,6 +26022,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/cytology)
+"iqz" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "iqD" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -26607,6 +26759,17 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/dangerous_research/medical)
+"iDy" = (
+/obj/structure/table/wood,
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 1
+	},
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 1
+	},
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "iDD" = (
 /obj/structure/rack,
 /obj/item/aicard,
@@ -26824,6 +26987,18 @@
 /obj/machinery/duct,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
+"iGk" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/item/bedsheet/orange{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/prisoner,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "iGo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -27132,6 +27307,10 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
+"iNL" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/mineral/titanium/tiled/airless,
+/area/space/nearstation)
 "iNT" = (
 /obj/effect/landmark/start/bartender,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -28107,6 +28286,10 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/security/courtroom)
+"jck" = (
+/mob/living/basic/mining/hivelord,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "jcl" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -29757,12 +29940,22 @@
 /obj/item/clothing/mask/gas,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
+"jFs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/red/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/commons/lounge)
 "jFu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/entry)
+"jFK" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/mob/living/basic/butterfly,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "jGa" = (
 /obj/machinery/shower/directional/east,
 /obj/machinery/light/small/directional/south,
@@ -30624,6 +30817,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
+"jVq" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/item/bedsheet/orange{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "jVJ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -32205,6 +32408,10 @@
 /obj/effect/spawner/random/engineering/tank,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"ktR" = (
+/obj/structure/flora/rock/pile/jungle/large/style_random,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "ktU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32500,6 +32707,11 @@
 /obj/machinery/atmospherics/pipe/color_adapter,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+"kxx" = (
+/obj/structure/flora/bush/flowers_pp/style_random,
+/mob/living/basic/butterfly,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "kxz" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
@@ -32752,6 +32964,10 @@
 /obj/item/organ/internal/eyes/robotic/xray,
 /turf/open/floor/iron/dark,
 /area/station/command/corporate_showroom)
+"kAm" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/carpet/red/airless,
+/area/space/nearstation)
 "kAI" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -32994,6 +33210,9 @@
 /obj/machinery/holopad,
 /turf/open/floor/wood,
 /area/station/service/cafeteria)
+"kFy" = (
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "kFL" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/generic_maintenance_landmark,
@@ -33820,6 +34039,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/research)
+"kUR" = (
+/obj/structure/rack,
+/turf/closed/mineral/asteroid,
+/area/space/nearstation)
 "kUT" = (
 /obj/machinery/atmospherics/components/tank,
 /obj/effect/turf_decal/siding/purple{
@@ -34697,6 +34920,14 @@
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"lhx" = (
+/obj/structure/table/wood/fancy,
+/obj/machinery/reagentgrinder,
+/obj/effect/turf_decal/siding/thinplating/terracotta/end{
+	dir = 4
+	},
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "lhF" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -35627,6 +35858,12 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/wood/parquet,
 /area/station/medical/psychology)
+"lwB" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/security,
+/turf/open/floor/mineral/titanium/tiled/airless,
+/area/space/nearstation)
 "lwE" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/structure/closet/crate/silvercrate,
@@ -36226,6 +36463,11 @@
 /obj/effect/spawner/random/clothing/costume,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"lGq" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "lGr" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/structure/disposalpipe/segment,
@@ -36780,6 +37022,11 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/entry)
+"lQd" = (
+/obj/structure/flora/bush/flowers_yw/style_random,
+/mob/living/basic/butterfly,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "lQn" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -38482,6 +38729,9 @@
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/wood,
 /area/station/service/bar/backroom)
+"mqZ" = (
+/turf/open/floor/carpet/red/airless,
+/area/space/nearstation)
 "mrl" = (
 /obj/item/book/bible,
 /obj/structure/altar_of_gods,
@@ -39094,6 +39344,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/space/nearstation)
+"mBZ" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "mCj" = (
 /obj/machinery/vending/wardrobe/hydro_wardrobe,
 /obj/effect/turf_decal/stripes/line{
@@ -43276,6 +43530,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/break_room)
+"nQF" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst/left,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "nQQ" = (
 /obj/machinery/light/dim/directional/west,
 /obj/structure/cable,
@@ -44705,6 +44963,10 @@
 	dir = 1
 	},
 /area/station/engineering/atmos)
+"onf" = (
+/obj/machinery/modular_computer,
+/turf/closed/mineral/asteroid,
+/area/space/nearstation)
 "oni" = (
 /turf/open/misc/asteroid{
 	icon_state = "asteroid8"
@@ -45045,6 +45307,15 @@
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
+"otN" = (
+/obj/structure/chair/sofa/corp{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 8
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "ouf" = (
 /obj/effect/turf_decal/stripes/asteroid,
 /obj/effect/decal/cleanable/blood/footprints{
@@ -46077,6 +46348,14 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/security/office)
+"oKW" = (
+/obj/structure/hedge{
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "oLd" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -48204,6 +48483,11 @@
 	},
 /turf/open/floor/plating/rust,
 /area/ruin/space/has_grav/dangerous_research/lab)
+"pwj" = (
+/obj/structure/marker_beacon/violet,
+/obj/structure/lattice/catwalk,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "pwn" = (
 /obj/docking_port/stationary/escape_pod,
 /turf/open/misc/asteroid/airless,
@@ -48979,6 +49263,10 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/aft)
+"pIT" = (
+/obj/machinery/light/broken/directional/south,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "pIZ" = (
 /obj/effect/spawner/random/trash/garbage{
 	spawn_scatter_radius = 1
@@ -54982,6 +55270,13 @@
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/dangerous_research)
+"rBL" = (
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 1
+	},
+/obj/machinery/chem_dispenser,
+/turf/open/floor/bamboo,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "rBN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
@@ -55326,6 +55621,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/dangerous_research)
+"rHk" = (
+/obj/machinery/light/directional/east,
+/obj/structure/flora/bush/flowers_pp/style_random,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "rHu" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/turf_decal/delivery,
@@ -56447,6 +56747,13 @@
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/greater)
+"rYR" = (
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/obj/effect/mob_spawn/corpse/human/prisoner,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "rYU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -56834,6 +57141,15 @@
 /obj/machinery/light/dim/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
+"sfq" = (
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 8
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/bamboo{
+	smoothing_flags = 0
+	},
+/area/ruin/space/has_grav/spinwardsmoothies)
 "sfA" = (
 /obj/structure/table/optable,
 /obj/structure/noticeboard/directional/east,
@@ -57130,6 +57446,15 @@
 	},
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/storage/gas)
+"skv" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 9
+	},
+/turf/open/floor/bamboo{
+	smoothing_flags = 0
+	},
+/area/ruin/space/has_grav/spinwardsmoothies)
 "skA" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
@@ -58635,6 +58960,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/entry)
+"sJJ" = (
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "sJQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -58752,6 +59080,13 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"sLe" = (
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/obj/effect/spawner/random/contraband/narcotics,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "sLm" = (
 /obj/machinery/light/dim/directional/north,
 /obj/machinery/status_display/evac/directional/north,
@@ -60766,6 +61101,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"tuO" = (
+/mob/living/basic/mining/hivelord,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "tuS" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -61410,6 +61749,12 @@
 /obj/effect/turf_decal/tile/purple/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/science/research)
+"tEU" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "tEZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/closed/wall/r_wall,
@@ -61886,6 +62231,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
+"tPq" = (
+/mob/living/basic/butterfly,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "tPv" = (
 /turf/closed/wall,
 /area/station/security/checkpoint/customs)
@@ -61934,6 +62283,10 @@
 /obj/item/soulstone/anybody/chaplain,
 /turf/open/floor/cult,
 /area/station/service/chapel/office)
+"tQh" = (
+/obj/structure/closet/secure_closet/security,
+/turf/open/floor/mineral/titanium/tiled/airless,
+/area/space/nearstation)
 "tQj" = (
 /obj/machinery/iv_drip,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -65569,10 +65922,6 @@
 /obj/effect/decal/cleanable/blood/bubblegum,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/dangerous_research/lab)
-"uWK" = (
-/obj/effect/turf_decal/sand,
-/turf/open/floor/iron/kitchen,
-/area/space/nearstation)
 "uWO" = (
 /obj/structure/chair{
 	dir = 4
@@ -66768,6 +67117,9 @@
 /obj/structure/alien/resin/membrane,
 /turf/open/floor/pod/dark,
 /area/space/nearstation)
+"vpK" = (
+/turf/open/floor/mineral/titanium/tiled/airless,
+/area/space/nearstation)
 "vpN" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -67505,6 +67857,15 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engine_equipment,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
+"vBD" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 9
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "vBN" = (
 /obj/machinery/atmospherics/components/tank,
 /turf/open/floor/iron/dark,
@@ -67529,6 +67890,10 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
+"vCu" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "vCD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -68728,6 +69093,10 @@
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+"wai" = (
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/turf/open/floor/iron/dark/airless,
+/area/space/nearstation)
 "wan" = (
 /obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
 /obj/effect/turf_decal/tile/purple/anticorner/contrasted{
@@ -70748,6 +71117,12 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
+"wId" = (
+/mob/living/basic/mining/basilisk{
+	environment_smash = 0
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "wIn" = (
 /obj/structure/table,
 /obj/item/cultivator,
@@ -74566,6 +74941,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/lobby)
+"xUb" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/spinwardsmoothies)
 "xUe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -74596,6 +74976,16 @@
 /obj/machinery/monkey_recycler,
 /turf/open/floor/iron/smooth,
 /area/station/science/xenobiology)
+"xUX" = (
+/obj/structure/closet/secure_closet/contraband{
+	name = "confiscation locker"
+	},
+/obj/effect/spawner/random/exotic/antag_gear,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/effect/spawner/random/contraband/prison,
+/obj/effect/spawner/random/contraband/prison,
+/turf/open/floor/mineral/titanium/tiled/airless,
+/area/space/nearstation)
 "xVj" = (
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/window/reinforced/spawner/directional/north,
@@ -74638,6 +75028,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"xVQ" = (
+/obj/structure/billboard/nanotrasen/defaced,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "xVV" = (
 /obj/structure/closet/crate/preopen,
 /obj/item/stack/package_wrap,
@@ -75643,6 +76037,15 @@
 /obj/machinery/light/dim/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
+"ylq" = (
+/obj/effect/turf_decal/siding/thinplating/terracotta{
+	dir = 10
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/bamboo{
+	smoothing_flags = 0
+	},
+/area/ruin/space/has_grav/spinwardsmoothies)
 "ylt" = (
 /turf/closed/mineral/asteroid,
 /area/station/science/ordnance/bomb)
@@ -78686,6 +79089,15 @@ hor
 onH
 onH
 onH
+pwj
+onH
+onH
+onH
+bSo
+onH
+onH
+onH
+pwj
 onH
 onH
 onH
@@ -78693,15 +79105,6 @@ onH
 onH
 onH
 onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-iGH
 iGH
 iGH
 iGH
@@ -78943,6 +79346,15 @@ hor
 onH
 onH
 onH
+jPD
+onH
+onH
+onH
+jPD
+onH
+onH
+onH
+jPD
 onH
 onH
 onH
@@ -78950,14 +79362,6 @@ onH
 onH
 onH
 onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
 iGH
 iGH
 iGH
@@ -79013,9 +79417,8 @@ iGH
 iGH
 iGH
 iGH
-iGH
-iGH
-iGH
+hor
+hor
 iGH
 iGH
 iGH
@@ -79198,17 +79601,17 @@ hor
 hor
 hor
 hor
-hor
+onH
+onH
+jPD
 onH
 onH
 onH
+jPD
 onH
 onH
 onH
-onH
-onH
-onH
-onH
+jPD
 onH
 onH
 onH
@@ -79455,80 +79858,80 @@ hor
 hor
 hor
 hor
+onH
+onH
+jPD
+onH
+onH
+onH
+jPD
+onH
+onH
+onH
+jPD
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
+iGH
 hor
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
-iGH
 hor
-iGH
 hor
 hor
 iGH
@@ -79712,17 +80115,17 @@ hor
 hor
 hor
 hor
-hor
 onH
 onH
+pwj
+jPD
 onH
 onH
+jPD
 onH
 onH
-onH
-onH
-onH
-onH
+jPD
+pwj
 onH
 onH
 onH
@@ -79969,16 +80372,16 @@ hor
 hor
 hor
 hor
-hor
-hor
 onH
 onH
 onH
-onH
-onH
-onH
-onH
-onH
+jPD
+jPD
+jPD
+pwj
+jPD
+jPD
+jPD
 onH
 onH
 onH
@@ -80228,11 +80631,11 @@ hor
 hor
 hor
 hor
-hor
-hor
 onH
 onH
 onH
+onH
+jPD
 onH
 onH
 onH
@@ -80485,16 +80888,16 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
+onH
 hor
 onH
 onH
+jPD
 onH
 onH
-onH
-onH
+hor
+hor
+hor
 onH
 onH
 onH
@@ -80745,6 +81148,14 @@ hor
 hor
 hor
 hor
+onH
+jPD
+onH
+hor
+hor
+hor
+hor
+hor
 hor
 hor
 onH
@@ -80770,14 +81181,6 @@ onH
 onH
 onH
 onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
 hor
 hor
 hor
@@ -80832,14 +81235,14 @@ hor
 hor
 hor
 hor
-iGH
-iGH
 hor
 hor
-iGH
 hor
 hor
-iGH
+hor
+hor
+hor
+hor
 hor
 hor
 hor
@@ -81001,9 +81404,18 @@ hor
 hor
 hor
 hor
+fHP
+fHP
+xUb
+fHP
+fHP
+fHP
+fHP
 hor
 hor
 hor
+hor
+hor
 onH
 onH
 onH
@@ -81021,16 +81433,7 @@ onH
 onH
 onH
 onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
+hor
 hor
 hor
 hor
@@ -81257,36 +81660,36 @@ hor
 hor
 hor
 hor
+fHP
+fHP
+kFy
+kFy
+mBZ
+kxx
+kFy
+fHP
+fHP
+fHP
+fHP
 hor
 hor
 hor
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
 hor
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
+hor
 hor
 hor
 hor
@@ -81514,36 +81917,36 @@ hor
 hor
 hor
 hor
+fHP
+oKW
+dok
+kFy
+kFy
+kFy
+bNZ
+kFy
+mBZ
+cRy
+fHP
+hor
+hor
+hor
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
 hor
 hor
 hor
 hor
-hor
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
 hor
 hor
 hor
@@ -81771,20 +82174,20 @@ hor
 hor
 hor
 hor
+fHP
+bHm
+tPq
+kFy
+ktR
+kFy
+kFy
+kFy
+atz
+mBZ
+fHP
+fHP
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-onH
-onH
-onH
-onH
-onH
-onH
 onH
 onH
 onH
@@ -81871,7 +82274,7 @@ hor
 hor
 hor
 hor
-iGH
+hor
 hor
 hor
 iGH
@@ -82028,20 +82431,20 @@ hor
 hor
 hor
 hor
+fHP
+bHm
+mBZ
+kFy
+kFy
+kFy
+dok
+kFy
+dok
+dok
+kFy
+fHP
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-onH
-onH
-onH
-onH
-onH
-onH
 onH
 onH
 onH
@@ -82128,7 +82531,7 @@ hor
 hor
 hor
 hor
-iGH
+hor
 hor
 hor
 hor
@@ -82252,7 +82655,7 @@ onH
 onH
 onH
 onH
-onH
+xVQ
 onH
 onH
 onH
@@ -82285,24 +82688,24 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+bHm
+kFy
+bNZ
+kFy
+dok
+kFy
+lQd
+kFy
+mBZ
+kFy
+fHP
 hor
 hor
 onH
 onH
-onH
-onH
-onH
-onH
-onH
-onH
-onH
+hor
+hor
 hor
 hor
 hor
@@ -82385,8 +82788,8 @@ hor
 hor
 hor
 hor
-iGH
-iGH
+hor
+hor
 hor
 hor
 iGH
@@ -82520,7 +82923,7 @@ onH
 onH
 onH
 onH
-onH
+xVQ
 onH
 onH
 onH
@@ -82542,18 +82945,18 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+bHm
+dok
+kFy
+mBZ
+kFy
+bNZ
+mBZ
+bNZ
+kFy
+mBZ
+fHP
 hor
 hor
 hor
@@ -82799,18 +83202,18 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+bHm
+mBZ
+jFK
+kFy
+vBD
+otN
+otN
+otN
+otN
+dcZ
+fHP
 hor
 hor
 hor
@@ -83056,19 +83459,19 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+bHm
+dok
+bNZ
+kFy
+aEg
+aDD
+aDD
+aDD
+aDD
+aDD
+fHP
+fHP
 hor
 hor
 hor
@@ -83313,19 +83716,19 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+fHP
+fHP
+kFy
+dok
+lhx
+sJJ
+sJJ
+sJJ
+sJJ
+sJJ
+cnt
+fHP
 hor
 hor
 hor
@@ -83572,17 +83975,17 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+rHk
+mBZ
+emb
+sJJ
+sJJ
+sJJ
+sJJ
+sJJ
+iDy
+fHP
 hor
 hor
 hor
@@ -83824,22 +84227,22 @@ onH
 onH
 onH
 hor
+onH
 hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+fHP
+fHP
+eMG
+sJJ
+skv
+sfq
+ylq
+sJJ
+rBL
+fHP
 hor
 hor
 hor
@@ -84082,21 +84485,21 @@ onH
 onH
 onH
 onH
-onH
-onH
-onH
 hor
 hor
 hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
+fHP
+ame
+sJJ
+fHP
+fHP
+fHP
+fHP
+fHP
+fHP
 hor
 hor
 hor
@@ -84340,17 +84743,17 @@ onH
 onH
 onH
 onH
-onH
-onH
 hor
 hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
+fHP
+fHP
+fHP
+fHP
+kUR
+kUR
 hor
 hor
 hor
@@ -84609,7 +85012,7 @@ hor
 hor
 hor
 hor
-hor
+kUR
 hor
 hor
 hor
@@ -84863,8 +85266,8 @@ hor
 hor
 hor
 hor
-hor
-hor
+kUR
+kUR
 hor
 hor
 hor
@@ -85375,9 +85778,9 @@ onH
 onH
 onH
 onH
-onH
-onH
-onH
+hor
+hor
+hor
 onH
 onH
 onH
@@ -113108,7 +113511,7 @@ dns
 haN
 cil
 cil
-nxA
+jFs
 cil
 cil
 nxA
@@ -127266,14 +127669,6 @@ onH
 onH
 onH
 hor
-hor
-hor
-hor
-onH
-onH
-onH
-hor
-hor
 onH
 onH
 onH
@@ -127281,8 +127676,16 @@ onH
 onH
 onH
 onH
+fyp
+fyp
+fyp
+fyp
+fyp
+nQF
 onH
 onH
+eYC
+iqz
 onH
 onH
 onH
@@ -127523,29 +127926,29 @@ onH
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
+eBv
 onH
 onH
-hor
-hor
-hor
+eBv
+fyp
+fyp
+fyp
+tQh
+vpK
+xUX
+fyp
+fyp
+fyp
+fyp
+eYC
+iqz
 onH
 onH
 onH
 onH
 onH
 onH
-onH
-hor
-hor
-hor
 hor
 hor
 hor
@@ -127781,30 +128184,30 @@ hor
 hor
 hor
 hor
+onH
+hor
+eBv
+kAm
+dIL
+vCu
+fyp
+jck
+vpK
+bQK
+fyp
+iGk
+hXL
+jVq
+eYC
+iqz
+onH
+onH
+onH
+onH
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
+onH
 hor
 hor
 hor
@@ -128040,28 +128443,28 @@ hor
 hor
 hor
 hor
+eKS
+onH
+mqZ
+tuO
+bKS
+vpK
+vpK
+vpK
+fWx
+wai
+wai
+cnj
+epw
+onH
+onH
+onH
+onH
+onH
+onH
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
 hor
 hor
 hor
@@ -128297,27 +128700,27 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+eKS
+onf
+tEU
+pIT
+fyp
+fyp
+fWx
+fyp
+fyp
+cnj
+lGq
+wai
+epw
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
 hor
 hor
 hor
@@ -128547,7 +128950,7 @@ htI
 onH
 onH
 onH
-hor
+onH
 onH
 hor
 hor
@@ -128557,24 +128960,24 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
+bzZ
+vpK
+bCp
+iNL
+fyp
+sLe
+ezd
+rYR
+eYC
+iqz
+onH
+onH
+onH
+onH
+onH
+onH
+onH
 hor
 hor
 hor
@@ -128813,25 +129216,25 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+eBv
+eBv
+fyp
+bCp
+vpK
+vpK
+fyp
+fyp
+fyp
+fyp
+eYC
+iqz
+onH
+onH
+onH
+onH
+onH
+onH
+onH
 hor
 hor
 hor
@@ -129062,31 +129465,31 @@ onH
 onH
 onH
 hor
-hor
 onH
 onH
 onH
 hor
 hor
+hor
+hor
+hor
 onH
+onH
+fyp
+fyp
+lwB
+fyp
+fyp
+hmE
+onH
+onH
+eYC
+iqz
 hor
 hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
+onH
+onH
 hor
 hor
 hor
@@ -129320,25 +129723,25 @@ onH
 onH
 hor
 hor
-hor
-hor
 onH
 onH
 onH
 hor
+hor
+hor
+wId
 onH
 onH
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
+onH
 hor
 hor
 hor
@@ -129578,21 +129981,21 @@ hor
 hor
 hor
 hor
+onH
+onH
+hor
+hor
 hor
 hor
 onH
 onH
 onH
 onH
-uWK
 onH
-hor
-hor
-hor
-hor
-hor
-hor
-hor
+onH
+onH
+onH
+onH
 hor
 hor
 hor
@@ -129835,17 +130238,17 @@ hor
 hor
 hor
 hor
-hor
-hor
-hor
 onH
-dpO
-dGK
+onH
+onH
 onH
 onH
 hor
 hor
-hor
+onH
+onH
+onH
+onH
 hor
 hor
 hor
@@ -130098,8 +130501,8 @@ onH
 onH
 xyd
 onH
-onH
-onH
+hor
+hor
 hor
 hor
 hor
@@ -130355,8 +130758,8 @@ onH
 onH
 onH
 onH
-onH
-onH
+hor
+hor
 hor
 hor
 hor
