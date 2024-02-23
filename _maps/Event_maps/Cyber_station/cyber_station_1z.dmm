@@ -2149,6 +2149,7 @@
 	id = "corporate_privacy";
 	name = "Showroom Shutters"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/corporate_showroom)
 "aNu" = (
@@ -5185,7 +5186,6 @@
 /area/station/science/xenobiology)
 "bLl" = (
 /obj/machinery/light/small/directional/east,
-/obj/machinery/power/apc/auto_name/directional/east,
 /obj/machinery/button/door/directional/east{
 	id = "commissarydoor";
 	name = "Commissary Door Lock";
@@ -14773,6 +14773,7 @@
 /obj/structure/rack,
 /obj/item/organ/internal/cyberimp/arm/flash,
 /obj/item/organ/internal/cyberimp/arm/toolset,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/corporate_showroom)
 "eQI" = (
@@ -29244,6 +29245,7 @@
 /obj/structure/rack,
 /obj/item/organ/internal/cyberimp/chest/thrusters,
 /obj/item/organ/internal/cyberimp/arm/surgery,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/corporate_showroom)
 "jFi" = (
@@ -29583,6 +29585,10 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/smooth,
 /area/station/commons/dorms)
+"jKD" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/command/corporate_showroom)
 "jKI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -49049,6 +49055,15 @@
 "pYy" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/pumproom)
+"pYG" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	id = "commissaryshutter";
+	name = "Vacant Commissary Shutter"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/command/corporate_showroom)
 "pYM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
@@ -60828,6 +60843,7 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/primary/central)
 "tPv" = (
@@ -74077,6 +74093,8 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/rack,
 /obj/item/organ/internal/cyberimp/arm/esword,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/corporate_showroom)
 "yhj" = (
@@ -102554,9 +102572,9 @@ nii
 eDI
 mOJ
 jFh
-jzJ
-oVI
-jzJ
+jKD
+pYG
+jKD
 aNs
 tPc
 kkC
