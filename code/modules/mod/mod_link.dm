@@ -47,23 +47,19 @@
 	if(newdir & NORTH)
 		other_visual.pixel_y = 13
 		other_visual.layer = BELOW_MOB_LAYER
-		SET_PLANE_IMPLICIT(other_visual, GAME_PLANE_FOV_HIDDEN)
 	if(newdir & SOUTH)
 		other_visual.pixel_y = -24
 		other_visual.layer = ABOVE_ALL_MOB_LAYER
-		SET_PLANE_IMPLICIT(other_visual, GAME_PLANE_UPPER_FOV_HIDDEN)
 		new_transform.Scale(-1, 1)
 		new_transform.Translate(-1, 0)
 	if(newdir & EAST)
 		other_visual.pixel_x = 14
 		other_visual.layer = BELOW_MOB_LAYER
-		SET_PLANE_IMPLICIT(other_visual, GAME_PLANE_FOV_HIDDEN)
 		new_transform.Shear(0.5, 0)
 		new_transform.Scale(0.65, 1)
 	if(newdir & WEST)
 		other_visual.pixel_x = -14
 		other_visual.layer = BELOW_MOB_LAYER
-		SET_PLANE_IMPLICIT(other_visual, GAME_PLANE_FOV_HIDDEN)
 		new_transform.Shear(-0.5, 0)
 		new_transform.Scale(0.65, 1)
 	other_visual.transform = new_transform
@@ -87,8 +83,10 @@
 	if(istype(tool.buffer, /datum/mod_link))
 		var/datum/mod_link/buffer_link = tool.buffer
 		tool_frequency = buffer_link.frequency
+		balloon_alert(user, "frequency set")
 	if(!tool_frequency && mod_link.frequency)
 		tool.set_buffer(mod_link)
+		balloon_alert(user, "frequency copied")
 	else if(tool_frequency && !mod_link.frequency)
 		mod_link.frequency = tool_frequency
 	else if(tool_frequency && mod_link.frequency)
@@ -98,8 +96,10 @@
 		switch(response)
 			if("Copy")
 				tool.set_buffer(mod_link)
+				balloon_alert(user, "frequency copied")
 			if("Imprint")
 				mod_link.frequency = tool_frequency
+				balloon_alert(user, "frequency set")
 
 /obj/item/mod/control/proc/can_call()
 	return get_charge() && wearer && wearer.stat < DEAD
@@ -187,6 +187,8 @@
 
 /obj/item/clothing/neck/link_scryer/attack_self(mob/user, modifiers)
 	var/new_label = reject_bad_text(tgui_input_text(user, "Change the visible name", "Set Name", label, MAX_NAME_LEN))
+	if(!user.is_holding(src))
+		return
 	if(!new_label)
 		balloon_alert(user, "invalid name!")
 		return
@@ -197,7 +199,7 @@
 /obj/item/clothing/neck/link_scryer/process(seconds_per_tick)
 	if(!mod_link.link_call)
 		return
-	cell.use(min(20 * seconds_per_tick, cell.charge))
+	cell.use(0.02 * STANDARD_CELL_RATE * seconds_per_tick, force = TRUE)
 
 /obj/item/clothing/neck/link_scryer/attackby(obj/item/attacked_by, mob/user, params)
 	. = ..()
@@ -231,17 +233,23 @@
 	if(istype(tool.buffer, /datum/mod_link))
 		var/datum/mod_link/buffer_link = tool.buffer
 		tool_frequency = buffer_link.frequency
+		balloon_alert(user, "frequency set")
 	if(!tool_frequency && mod_link.frequency)
 		tool.set_buffer(mod_link)
+		balloon_alert(user, "frequency copied")
 	else if(tool_frequency && !mod_link.frequency)
 		mod_link.frequency = tool_frequency
 	else if(tool_frequency && mod_link.frequency)
 		var/response = tgui_alert(user, "Would you like to copy or imprint the frequency?", "MODlink Frequency", list("Copy", "Imprint"))
+		if(!user.is_holding(tool))
+			return
 		switch(response)
 			if("Copy")
 				tool.set_buffer(mod_link)
+				balloon_alert(user, "frequency copied")
 			if("Imprint")
 				mod_link.frequency = tool_frequency
+				balloon_alert(user, "frequency set")
 
 /obj/item/clothing/neck/link_scryer/worn_overlays(mutable_appearance/standing, isinhands)
 	. = ..()
@@ -310,6 +318,8 @@
 
 /// A MODlink datum, used to handle unique functions that will be used in the MODlink call.
 /datum/mod_link
+	/// Generic name for multitool buffers.
+	var/name = "MODlink"
 	/// The frequency of the MODlink. You can only call other MODlinks on the same frequency.
 	var/frequency
 	/// The unique ID of the MODlink.

@@ -37,11 +37,28 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	//Direction -> if we have a conveyor belt in that direction
 	var/list/neighbors
 
-/obj/machinery/conveyor/Initialize(mapload)
+/obj/machinery/conveyor/Initialize(mapload, new_dir, new_id)
 	. = ..()
 	AddElement(/datum/element/footstep_override, priority = STEP_SOUND_CONVEYOR_PRIORITY)
 	var/static/list/give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN)
 	AddElement(/datum/element/give_turf_traits, give_turf_traits)
+	register_context()
+
+	if(new_dir)
+		setDir(new_dir)
+	if(new_id)
+		id = new_id
+	neighbors = list()
+	///Leaving onto conveyor detection won't work at this point, but that's alright since it's an optimization anyway
+	///Should be fine without it
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXITED = PROC_REF(conveyable_exit),
+		COMSIG_ATOM_ENTERED = PROC_REF(conveyable_enter),
+		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(conveyable_enter)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+	update_move_direction()
+	LAZYADD(GLOB.conveyors_by_id[id], src)
 
 /obj/machinery/conveyor/examine(mob/user)
 	. = ..()
@@ -50,6 +67,20 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	. += "\nLeft-click with a <b>wrench</b> to rotate."
 	. += "Left-click with a <b>screwdriver</b> to invert its direction."
 	. += "Right-click with a <b>screwdriver</b> to flip its belt around."
+	. += "Using another <b>conveyor belt assembly</b> on this will place a <b>new conveyor belt<b> in the direction this one is pointing."
+
+/obj/machinery/conveyor/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(istype(held_item, /obj/item/stack/conveyor))
+		context[SCREENTIP_CONTEXT_LMB] = "Extend current conveyor belt"
+		return CONTEXTUAL_SCREENTIP_SET
+	if(held_item?.tool_behaviour == TOOL_WRENCH)
+		context[SCREENTIP_CONTEXT_LMB] = "Rotate conveyor belt"
+		return CONTEXTUAL_SCREENTIP_SET
+	if(held_item?.tool_behaviour == TOOL_SCREWDRIVER)
+		context[SCREENTIP_CONTEXT_LMB] = "Invert conveyor belt"
+		context[SCREENTIP_CONTEXT_RMB] = "Flip conveyor belt"
+		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
@@ -77,27 +108,11 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(.)
 		set_operating(TRUE)
 
-// create a conveyor
-/obj/machinery/conveyor/Initialize(mapload, new_dir, new_id)
-	..()
-	if(new_dir)
-		setDir(new_dir)
-	if(new_id)
-		id = new_id
-	neighbors = list()
-	///Leaving onto conveyor detection won't work at this point, but that's alright since it's an optimization anyway
-	///Should be fine without it
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_EXITED = PROC_REF(conveyable_exit),
-		COMSIG_ATOM_ENTERED = PROC_REF(conveyable_enter),
-		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(conveyable_enter)
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-	update_move_direction()
-	LAZYADD(GLOB.conveyors_by_id[id], src)
-	return INITIALIZE_HINT_LATELOAD
+/obj/machinery/conveyor/auto/inverted
+	icon_state = "conveyor_map_inverted"
+	flipped = TRUE
 
-/obj/machinery/conveyor/LateInitialize()
+/obj/machinery/conveyor/post_machine_initialize()
 	. = ..()
 	build_neighbors()
 
@@ -233,7 +248,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor/proc/conveyable_exit(datum/source, atom/convayable, direction)
 	SIGNAL_HANDLER
 	var/has_conveyor = neighbors["[direction]"]
-	if(!has_conveyor || !isturf(convayable.loc)) //If you've entered something on us, stop moving
+	if(convayable.z != z || !has_conveyor || !isturf(convayable.loc)) //If you've entered something on us, stop moving
 		SSmove_manager.stop_looping(convayable, SSconveyors)
 
 /obj/machinery/conveyor/proc/start_conveying(atom/movable/moving)
@@ -281,6 +296,19 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		inverted = !inverted
 		update_move_direction()
 		to_chat(user, span_notice("You set [src]'s direction [inverted ? "backwards" : "back to default"]."))
+
+	else if(istype(attacking_item, /obj/item/stack/conveyor))
+		// We should place a new conveyor belt machine on the output turf the conveyor is pointing to.
+		var/turf/target_turf = get_step(get_turf(src), forwards)
+		if(!target_turf)
+			return ..()
+		for(var/obj/machinery/conveyor/belt in target_turf)
+			to_chat(user, span_warning("You cannot place a conveyor belt on top of another conveyor belt."))
+			return ..()
+
+		var/obj/item/stack/conveyor/belt_item = attacking_item
+		belt_item.use(1)
+		new /obj/machinery/conveyor(target_turf, forwards, id)
 
 	else if(!user.combat_mode)
 		user.transferItemToLoc(attacking_item, drop_location())
@@ -534,6 +562,14 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/item/stack/conveyor/update_weight()
 	return FALSE
 
+/obj/item/stack/conveyor/examine(mob/user)
+	. = ..()
+	. += span_notice("Use a conveyor switch assembly on this before placing to connect to a lever.")
+
+/obj/item/stack/conveyor/use(used, transfer, check)
+	. = ..()
+	playsound(src, 'sound/weapons/genhit.ogg', 30, TRUE)
+
 /obj/item/stack/conveyor/thirty
 	amount = 30
 
@@ -579,9 +615,9 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(!attached_switch)
 		return
 
-	INVOKE_ASYNC(src, PROC_REF(update_conveyers), port)
+	INVOKE_ASYNC(src, PROC_REF(update_conveyors), port)
 
-/obj/item/circuit_component/conveyor_switch/proc/update_conveyers(datum/port/input/port)
+/obj/item/circuit_component/conveyor_switch/proc/update_conveyors(datum/port/input/port)
 	if(!attached_switch)
 		return
 
