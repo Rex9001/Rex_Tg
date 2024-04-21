@@ -21,8 +21,6 @@
 	var/traits = null
 	var/space_ruin_levels = DEFAULT_SPACE_RUIN_LEVELS
 	var/space_empty_levels = DEFAULT_SPACE_EMPTY_LEVELS
-	var/dune_ruin_levels = DEFAULT_DUNE_RUIN_LEVELS
-	VAR/dune_empty_levels = DEFAULT_DUNE_EMPTY_LEVELS
 	/// Boolean that tells us if this is a planetary station. (like IceBoxStation)
 	var/planetary = FALSE
 

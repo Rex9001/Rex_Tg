@@ -140,10 +140,6 @@ SUBSYSTEM_DEF(mapping)
 	while (space_levels_so_far < config.space_empty_levels + config.space_ruin_levels)
 		empty_space = add_new_zlevel("Empty Area [space_levels_so_far+1]", list(ZTRAIT_LINKAGE = CROSSLINKED))
 		++space_levels_so_far
-	//Creates dune ruin levels (if the map has them)
-	while (dune_levels_so_far < config.dune_ruin_levels)
-		add_new_zlevel("Dune Ruin Area [dune_levels_so_far+1]", ZTRAITS_DUNES)
-		++dune_levels_so_far
 	// Pick a random away mission.
 	if(CONFIG_GET(flag/roundstart_away))
 		createRandomZlevel(prob(CONFIG_GET(number/config_gateway_chance)))
