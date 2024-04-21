@@ -687,14 +687,6 @@
 "ef" = (
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hos)
-"eg" = (
-/obj/machinery/button/door/directional/south{
-	id = "evashutter";
-	name = "E.V.A. Storage Shutter Control";
-	req_access = list("command")
-	},
-/turf/closed/wall,
-/area/station/maintenance/aft/lesser)
 "el" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 10
@@ -1159,6 +1151,11 @@
 "hh" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/camera/autoname/directional/south,
+/obj/machinery/button/door/directional/south{
+	id = "evashutter";
+	name = "E.V.A. Storage Shutter Control";
+	req_access = list("command")
+	},
 /turf/open/floor/iron/half,
 /area/station/hallway/secondary/entry)
 "hj" = (
@@ -88364,7 +88361,7 @@ lV
 lV
 lV
 lV
-eg
+lV
 ux
 BG
 pW
