@@ -8,6 +8,8 @@
 "ab" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/parquet,
 /area/space)
 "ae" = (
@@ -264,6 +266,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/large,
 /area/station/security/brig/entrance)
+"bw" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/wood/parquet,
+/area/space)
 "bz" = (
 /obj/structure/closet/crate/grave,
 /turf/open/misc/sandy_dirt,
@@ -1921,6 +1928,7 @@
 /turf/open/floor/plating,
 /area/station/security/brig)
 "lL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/red,
 /area/space)
 "lO" = (
@@ -4263,6 +4271,8 @@
 	name = "Law Office"
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/parquet,
 /area/station/hallway/primary/central/fore)
 "zI" = (
@@ -4356,6 +4366,8 @@
 /area/station/command/heads_quarters/hos)
 "Aw" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/parquet,
 /area/space)
 "Ax" = (
@@ -4634,6 +4646,11 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/security/courtroom)
+"Cd" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/carpet/red,
+/area/space)
 "Ch" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/decoration/ornament{
@@ -5347,6 +5364,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
+"Gq" = (
+/obj/structure/chair/comfy/brown,
+/obj/effect/landmark/start/lawyer,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/carpet/red,
+/area/space)
 "Gr" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 1
@@ -5484,6 +5509,8 @@
 /area/station/security/lockers)
 "Hi" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet/red,
 /area/space)
 "Hj" = (
@@ -5796,6 +5823,8 @@
 /area/station/maintenance/aft/lesser)
 "IJ" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/half,
 /area/station/hallway/primary/central/fore)
 "IL" = (
@@ -83413,7 +83442,7 @@ ty
 Nt
 Mg
 lL
-MD
+Gq
 Je
 ks
 Sb
@@ -83925,8 +83954,8 @@ cV
 tV
 ty
 nV
-Mg
-Hi
+bw
+Cd
 MD
 hq
 ks
