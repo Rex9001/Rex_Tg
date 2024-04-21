@@ -1195,8 +1195,8 @@
 /obj/machinery/button/door/directional/west{
 	id = "lawyer_shutters";
 	name = "Privacy Shutters";
-	pixel_x = -23;
-	pixel_y = -4
+	pixel_x = -25;
+	pixel_y = -1
 	},
 /turf/open/floor/carpet/red,
 /area/space)
@@ -1307,6 +1307,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/commons/vacant_room/commissary)
+"ib" = (
+/obj/structure/bookcase/random/nonfiction,
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood/parquet,
+/area/space)
 "if" = (
 /turf/open/floor/iron/half,
 /area/space)
@@ -2753,6 +2758,7 @@
 	dir = 8
 	},
 /obj/machinery/photocopier,
+/obj/machinery/light/directional/east,
 /turf/open/floor/wood/parquet,
 /area/space)
 "rt" = (
@@ -4114,6 +4120,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "yQ" = (
@@ -4337,6 +4344,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/hangover,
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "Av" = (
@@ -4437,6 +4445,10 @@
 /obj/effect/turf_decal/sand/plating,
 /turf/open/floor/plating,
 /area/station/solars/port/aft)
+"Bd" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/blue,
+/area/station/security/courtroom)
 "Bf" = (
 /obj/machinery/mech_bay_recharge_port{
 	dir = 2
@@ -4606,6 +4618,7 @@
 /obj/item/taperecorder,
 /obj/item/clothing/glasses/sunglasses,
 /obj/machinery/light_switch/directional/west,
+/obj/machinery/light/directional/west,
 /turf/open/floor/wood/parquet,
 /area/space)
 "BZ" = (
@@ -6216,6 +6229,7 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/light/dim/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
 "Lu" = (
@@ -7238,6 +7252,7 @@
 /obj/structure/chair/comfy/brown,
 /obj/effect/landmark/start/lawyer,
 /obj/machinery/camera/directional/north,
+/obj/machinery/light/dim/directional/north,
 /turf/open/floor/carpet/blue,
 /area/station/security/courtroom)
 "RO" = (
@@ -7341,6 +7356,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth_large,
 /area/space/nearstation)
+"Sm" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/security/courtroom)
 "Sn" = (
 /obj/structure/closet/firecloset,
 /obj/effect/landmark/start/hangover/closet,
@@ -7871,6 +7891,11 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/iron/large,
 /area/station/security/lockers)
+"VU" = (
+/obj/structure/chair/stool/directional/east,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/carpet/blue,
+/area/station/security/courtroom)
 "VY" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -8473,6 +8498,14 @@
 /obj/item/storage/box/rubbershot,
 /turf/open/floor/wood,
 /area/station/service/bar/backroom)
+"ZN" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/landmark/start/assistant,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/half,
+/area/station/hallway/primary/central/fore)
 "ZP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -81061,7 +81094,7 @@ fq
 dP
 xc
 aL
-aL
+ZN
 aL
 xc
 dP
@@ -82852,7 +82885,7 @@ hE
 TK
 rJ
 rJ
-rJ
+VU
 hE
 Ca
 hE
@@ -83640,7 +83673,7 @@ Hi
 Ad
 Jf
 RT
-Sb
+ib
 Kx
 ja
 ja
@@ -84656,7 +84689,7 @@ Is
 ts
 Fo
 ts
-Hk
+Sm
 hE
 kU
 YT
@@ -84908,7 +84941,7 @@ dy
 iu
 iu
 iu
-iu
+Bd
 Is
 AB
 Xg
