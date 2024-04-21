@@ -17,9 +17,9 @@
 	tiled_dirt = FALSE
 	var/smooth_icon = 'icons/turf/floors/ash.dmi'
 
-	/turf/open/misc/sandplanet/Initialize(mapload)
-		. = ..()
-		AddElement(/datum/element/diggable, /obj/item/stack/ore/glass/basalt, 2)
-		if(prob(15))
-			icon_state = "basalt[rand(0, 12)]"
-			set_basalt_light(src)
+/turf/open/misc/sandplanet/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/diggable, /obj/item/stack/ore/glass/basalt, 2)
+	if(prob(15))
+		icon_state = "basalt[rand(0, 12)]"
+		set_basalt_light(src)
