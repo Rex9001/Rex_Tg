@@ -716,6 +716,15 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/textured,
 /area/station/service/bar)
+"ex" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "lawyer_shutters";
+	name = "Law Office Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/service/lawoffice)
 "ez" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -1942,6 +1951,11 @@
 /area/station/hallway/primary/port)
 "lG" = (
 /obj/effect/spawner/structure/window,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "lawyer_shutters";
+	name = "Law Office Shutters";
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/station/service/lawoffice)
 "lJ" = (
@@ -84494,10 +84508,10 @@ xc
 gx
 Kx
 Kx
-lG
-lG
-lG
-lG
+ex
+ex
+ex
+ex
 Kx
 ja
 ja
