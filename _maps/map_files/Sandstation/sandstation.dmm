@@ -640,6 +640,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
+"dK" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/security/detectives_office)
 "dM" = (
 /turf/closed/wall,
 /area/station/commons/vacant_room/commissary)
@@ -1048,10 +1052,6 @@
 /obj/structure/cable,
 /turf/open/floor/wood/parquet,
 /area/station/service/lawoffice)
-"gs" = (
-/obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
-/area/space)
 "gt" = (
 /obj/structure/bookcase/random/adult,
 /turf/open/floor/carpet,
@@ -1958,6 +1958,14 @@
 	},
 /turf/open/floor/plating,
 /area/station/service/lawoffice)
+"lH" = (
+/obj/structure/table/wood,
+/obj/machinery/fax{
+	fax_name = "Detective's Office";
+	name = "Detective's Fax Machine"
+	},
+/turf/open/floor/iron/grimy,
+/area/station/security/detectives_office)
 "lJ" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3902,6 +3910,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
+/obj/machinery/vending/wardrobe/det_wardrobe,
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "xK" = (
@@ -4392,6 +4401,13 @@
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/restraints/handcuffs,
+/obj/machinery/button/door/directional/north{
+	id = "detective_shutters";
+	name = "detective's office shutters control";
+	req_access = list("detective");
+	pixel_y = 38;
+	pixel_x = 5
+	},
 /turf/open/floor/carpet/royalblack,
 /area/station/security/detectives_office)
 "An" = (
@@ -4938,6 +4954,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet/blue,
 /area/station/security/courtroom)
+"Dw" = (
+/obj/machinery/door/airlock/security{
+	name = "Detective's Office"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/grimy,
+/area/station/security/detectives_office)
 "DB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -5238,7 +5261,6 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/large,
 /area/station/security/brig/entrance)
@@ -6073,7 +6095,7 @@
 "JV" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/large,
-/area/station/security/execution/transfer)
+/area/station/security/processing)
 "JW" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -6208,9 +6230,6 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/iron/smooth_large,
 /area/space/nearstation)
-"KF" = (
-/turf/open/misc/beach/sand,
-/area/station/security/detectives_office)
 "KG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
@@ -6606,6 +6625,15 @@
 /obj/effect/spawner/random/structure/closet_maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
+"MX" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "detective_shutters";
+	name = "Detective's Office Shutters"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/security/detectives_office)
 "MY" = (
 /obj/machinery/light/dim/directional/north,
 /obj/item/kirbyplants/random,
@@ -6863,7 +6891,7 @@
 /area/station/ai_monitored/security/armory)
 "OW" = (
 /turf/open/floor/iron/large,
-/area/station/security/execution/transfer)
+/area/station/security/processing)
 "OX" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7030,7 +7058,7 @@
 /area/station/hallway/primary/port)
 "Qb" = (
 /turf/closed/wall/r_wall,
-/area/station/security/execution/transfer)
+/area/station/security/processing)
 "Qc" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
@@ -7139,7 +7167,7 @@
 "QB" = (
 /obj/machinery/door/window/brigdoor/left/directional/east,
 /turf/open/floor/iron/large,
-/area/station/security/execution/transfer)
+/area/station/security/processing)
 "QC" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 8
@@ -7180,8 +7208,8 @@
 "QI" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
+	pixel_x = -4;
+	pixel_y = 1
 	},
 /turf/open/floor/carpet/royalblack,
 /area/station/security/detectives_office)
@@ -7957,9 +7985,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/warden)
-"VT" = (
-/turf/closed/wall,
-/area/space)
 "VU" = (
 /obj/structure/chair/stool/directional/east,
 /obj/machinery/light/dim/directional/south,
@@ -8289,6 +8314,10 @@
 /obj/effect/turf_decal/weather,
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+"XV" = (
+/obj/structure/closet/secure_closet/detective,
+/turf/open/floor/iron/grimy,
+/area/station/security/detectives_office)
 "XX" = (
 /obj/structure/chair,
 /obj/item/radio/intercom/directional/east,
@@ -94263,11 +94292,11 @@ ja
 ja
 mC
 mC
+lH
 cC
 cC
 cC
-cC
-cC
+MX
 WQ
 xc
 xc
@@ -94517,14 +94546,14 @@ ja
 ja
 ja
 ja
-VT
+mC
 mC
 xJ
 xx
 cC
 cC
 cC
-cC
+MX
 xc
 xc
 xc
@@ -94774,14 +94803,14 @@ ja
 ja
 ja
 ja
-gs
+dK
 QI
 Ah
 fh
 cC
 cC
 cC
-cC
+Dw
 xc
 xc
 xc
@@ -95031,14 +95060,14 @@ ja
 ja
 ja
 ja
-gs
+dK
 eo
 bX
 fh
 cC
 cC
 cC
-cC
+MX
 xc
 xc
 xc
@@ -95288,14 +95317,14 @@ ja
 ja
 ja
 ja
-gs
+dK
 QO
 QO
 nA
 xx
 cC
 cC
-cC
+MX
 xc
 xc
 xc
@@ -95545,12 +95574,12 @@ ja
 ja
 ja
 ja
-VT
+mC
 mC
 AZ
 kb
 fh
-cC
+XV
 mC
 mC
 xc
@@ -95804,12 +95833,12 @@ ja
 ja
 ja
 mC
+dK
+dK
+dK
 mC
 mC
-mC
-mC
-mC
-KF
+ja
 xc
 xc
 xc
@@ -96060,13 +96089,13 @@ ja
 ja
 ja
 ja
-KF
-KF
-KF
-KF
-KF
-KF
-KF
+ja
+ja
+ja
+ja
+ja
+ja
+ja
 xc
 xc
 xc
@@ -96317,13 +96346,13 @@ ja
 ja
 ja
 ja
-KF
-KF
-KF
-KF
-KF
-KF
-KF
+ja
+ja
+ja
+ja
+ja
+ja
+ja
 xc
 xc
 xc
