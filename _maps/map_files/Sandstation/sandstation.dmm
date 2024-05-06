@@ -3195,6 +3195,14 @@
 /obj/structure/window,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"sL" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/commons/vacant_room/commissary)
 "sM" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 6
@@ -4261,14 +4269,6 @@
 /area/station/commons/vacant_room/commissary)
 "ym" = (
 /obj/effect/spawner/random/structure/table,
-/obj/item/food/drug/saturnx{
-	pixel_y = -2;
-	pixel_x = -3
-	},
-/obj/item/food/drug/saturnx{
-	pixel_y = 9;
-	pixel_x = -1
-	},
 /obj/item/reagent_containers/syringe/contraband/space_drugs,
 /obj/item/reagent_containers/syringe/contraband/space_drugs,
 /obj/item/reagent_containers/syringe/contraband/space_drugs,
@@ -4866,6 +4866,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/large,
 /area/station/security/brig)
+"By" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "BC" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -5223,6 +5228,11 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/iron/solarpanel,
 /area/station/solars/port/aft)
+"DF" = (
+/obj/effect/spawner/random/trash/grime,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "DG" = (
 /turf/closed/wall,
 /area/station/security/range)
@@ -5516,6 +5526,10 @@
 	},
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hos)
+"Fk" = (
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "Fl" = (
 /obj/machinery/computer/slot_machine,
 /turf/open/floor/iron/dark/textured,
@@ -7283,6 +7297,11 @@
 "Pp" = (
 /turf/closed/wall,
 /area/station/security/office)
+"Pr" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "Pt" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/sand,
@@ -7588,6 +7607,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/half,
 /area/station/hallway/primary)
+"QT" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "QU" = (
 /obj/structure/cable,
 /turf/open/floor/iron/solarpanel,
@@ -7826,6 +7850,12 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/command/heads_quarters/hos)
+"SA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "SH" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
@@ -8022,6 +8052,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
+"TZ" = (
+/obj/effect/spawner/random/trash/hobo_squat,
+/obj/item/food/drug/saturnx,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "Ua" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer{
@@ -8733,6 +8768,10 @@
 /obj/machinery/coffeemaker,
 /turf/open/floor/iron,
 /area/station/security/office)
+"Yq" = (
+/obj/effect/spawner/random/trash/grime,
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "Yt" = (
 /obj/machinery/shower/directional/south,
 /obj/machinery/duct,
@@ -94455,7 +94494,7 @@ dM
 dM
 dM
 dM
-dM
+sL
 dM
 dM
 dM
@@ -94715,7 +94754,7 @@ bB
 bB
 XC
 bB
-bB
+cG
 bB
 Ke
 Ke
@@ -94955,8 +94994,8 @@ OC
 bB
 cG
 bB
-bB
-bB
+cG
+cG
 bB
 XC
 bB
@@ -94973,7 +95012,7 @@ bB
 XC
 bB
 bB
-bB
+cG
 Ke
 wt
 gQ
@@ -95215,19 +95254,19 @@ XC
 XC
 XC
 bB
-cG
+SA
 bB
 bB
 bB
 bB
 XC
-bB
-XC
-bB
 bB
 XC
 cG
 bB
+XC
+cG
+QT
 bB
 bB
 bB
@@ -95486,7 +95525,7 @@ XC
 cG
 XC
 bB
-bB
+cG
 bB
 Ke
 gQ
@@ -95736,7 +95775,7 @@ cG
 bB
 bB
 cG
-bB
+QT
 bB
 mz
 XC
@@ -95994,7 +96033,7 @@ XC
 XC
 XC
 XC
-bB
+cG
 bB
 XC
 bB
@@ -96247,16 +96286,16 @@ VZ
 XC
 bB
 XC
-bB
-bB
-bB
+DF
+cG
+Yq
 XC
 bB
 bB
 XC
 bB
 bB
-bB
+Pr
 xq
 bB
 bB
@@ -96505,8 +96544,8 @@ XC
 cG
 XC
 bB
-bB
-bB
+TZ
+cG
 XC
 XC
 XC
@@ -96515,7 +96554,7 @@ XC
 bB
 XC
 bB
-bB
+cG
 bB
 Ke
 wt
@@ -96761,9 +96800,9 @@ VZ
 XC
 bB
 XC
-bB
-xq
-bB
+cG
+XC
+XC
 XC
 mz
 bB
@@ -97018,10 +97057,10 @@ VZ
 XC
 bB
 XC
+XC
+XC
 bB
-bB
-bB
-bB
+Pr
 bB
 cG
 bB
@@ -97538,7 +97577,7 @@ XC
 XC
 XC
 bB
-bB
+cG
 XC
 XC
 XC
@@ -98052,7 +98091,7 @@ VZ
 VZ
 XC
 XC
-bB
+Fk
 XC
 cG
 cG
@@ -98308,9 +98347,9 @@ VZ
 VZ
 VZ
 VZ
-VZ
-VZ
-VZ
+bB
+bB
+By
 cG
 bB
 bB
@@ -98566,11 +98605,11 @@ VZ
 VZ
 VZ
 XC
-VZ
+bB
 XC
 bB
 bB
-bB
+cG
 bB
 XC
 bB
