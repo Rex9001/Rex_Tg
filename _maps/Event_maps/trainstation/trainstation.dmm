@@ -31,6 +31,7 @@
 /turf/open/chasm/true/no_smooth/fake_motion_sand/fast,
 /area/space)
 "cG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/space)
 "cZ" = (
@@ -49,6 +50,7 @@
 	name = "EVA Storage"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/command/eva,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/space)
 "eg" = (
@@ -555,12 +557,14 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "AP" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
-	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/space)
 "Bo" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -677,23 +681,12 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/dark,
 /area/space)
-"Ki" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/trimline/neutral/warning{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/neutral/warning{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/space)
 "Lq" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/trimline/neutral/end{
-	dir = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/dark/side{
+	dir = 4
 	},
-/turf/open/floor/iron,
 /area/space)
 "Lr" = (
 /obj/machinery/vending/cart{
@@ -758,10 +751,15 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "Pm" = (
-/obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/space)
 "Re" = (
 /obj/structure/cable,
@@ -910,8 +908,10 @@
 "Xe" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/trimline/neutral/end,
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/space)
 "Xg" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -954,6 +954,7 @@
 	dir = 4
 	},
 /obj/structure/window/spawner/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/space)
 "YB" = (
@@ -36240,7 +36241,7 @@ rv
 gd
 AP
 Lq
-Ki
+Xe
 Xe
 Pm
 dD
