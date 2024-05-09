@@ -30,6 +30,10 @@
 /obj/structure/lattice,
 /turf/open/chasm/true/no_smooth/fake_motion_sand/fast,
 /area/space)
+"bO" = (
+/obj/structure/window/spawner/directional/east,
+/turf/open/floor/iron/dark,
+/area/space)
 "cG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron_dark,
@@ -39,6 +43,12 @@
 	dir = 1
 	},
 /turf/open/floor/carpet/blue,
+/area/space)
+"dl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
 /area/space)
 "dD" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
@@ -140,6 +150,12 @@
 /obj/effect/mapping_helpers/airlock/access/any/command/hop,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
+"hV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/space)
 "ih" = (
 /obj/structure/sign/warning/electric_shock/directional/north,
 /obj/effect/turf_decal/bot,
@@ -253,6 +269,16 @@
 "li" = (
 /turf/closed/wall,
 /area/station/command/heads_quarters/hop)
+"ls" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/space)
+"lZ" = (
+/obj/structure/chair,
+/turf/open/floor/iron,
+/area/space)
 "mq" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/turf_decal/bot_white/right,
@@ -304,6 +330,11 @@
 "nv" = (
 /turf/open/floor/iron/dark,
 /area/space)
+"nD" = (
+/obj/structure/table,
+/obj/item/food/sandwich/jelly,
+/turf/open/floor/iron,
+/area/space)
 "nK" = (
 /obj/machinery/pdapainter{
 	pixel_y = 2
@@ -336,6 +367,12 @@
 /mob/living/basic/pet/dog/corgi/ian,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
+"pc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/space)
 "ph" = (
 /turf/open/floor/iron,
 /area/space)
@@ -561,6 +598,12 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
+"ze" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/space)
 "As" = (
 /obj/structure/table/wood,
 /obj/structure/window/reinforced/spawner/directional/south,
@@ -692,6 +735,12 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark,
 /area/space)
+"HP" = (
+/obj/machinery/computer/teleporter{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
 "IR" = (
 /obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/dark,
@@ -710,6 +759,20 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
+"Lt" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Teleport Access"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable,
+/obj/effect/landmark/navigate_destination,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/any/command/teleporter,
+/turf/open/floor/iron,
+/area/space)
 "LU" = (
 /obj/structure/sign/directions/command{
 	dir = 1;
@@ -760,6 +823,18 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/space)
+"NG" = (
+/obj/machinery/teleport/station,
+/turf/open/floor/plating,
+/area/space)
+"NQ" = (
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/space)
+"NR" = (
+/obj/machinery/power/shieldwallgen,
+/turf/open/floor/iron/dark,
+/area/space)
 "Oj" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/landmark/start/hangover,
@@ -775,6 +850,18 @@
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
+/area/space)
+"Pv" = (
+/obj/structure/table,
+/turf/open/floor/iron/dark,
+/area/space)
+"PB" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "teleshutter";
+	name = "Teleporter Access Shutter";
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/space)
 "Re" = (
 /obj/structure/cable,
@@ -795,6 +882,27 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/access/all/supply/vault,
 /turf/open/floor/iron/dark,
+/area/space)
+"RU" = (
+/obj/structure/window/spawner/directional/west,
+/obj/machinery/power/shieldwallgen,
+/turf/open/floor/iron/dark,
+/area/space)
+"Sb" = (
+/obj/machinery/button/door/directional/east{
+	id = "teleshutter";
+	name = "Teleporter Shutter Control";
+	pixel_y = 5;
+	req_access = list("teleporter")
+	},
+/obj/machinery/power/shieldwallgen,
+/turf/open/floor/iron/dark,
+/area/space)
+"Sh" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/space)
 "Sm" = (
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -823,6 +931,16 @@
 	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
+"Ut" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
+"Uv" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/space)
 "UO" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 1
@@ -877,6 +995,9 @@
 /obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/iron/dark,
 /area/space)
+"Wc" = (
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "Wx" = (
 /obj/effect/turf_decal/trimline/neutral/warning{
 	dir = 8
@@ -989,6 +1110,10 @@
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
+/area/space)
+"Zd" = (
+/obj/machinery/teleport/hub,
+/turf/open/floor/plating,
 /area/space)
 "ZD" = (
 /obj/effect/landmark/event_spawn,
@@ -30350,7 +30475,7 @@ yo
 yo
 yo
 yo
-yo
+mx
 yo
 yo
 yo
@@ -30602,13 +30727,13 @@ XE
 uP
 Oj
 Fv
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+yo
+Pv
+Pv
+nv
+nv
 yo
 hD
 hD
@@ -30859,13 +30984,13 @@ pK
 Ma
 ih
 uO
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+yo
+Pv
+pc
+dl
+bO
 yo
 hD
 hD
@@ -31116,13 +31241,13 @@ ew
 Ma
 MO
 uO
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+yo
+nv
+ls
+Uv
+Zd
 yo
 hD
 hD
@@ -31373,13 +31498,13 @@ hc
 Ma
 jR
 uO
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+PB
+nv
+ls
+Uv
+NG
 yo
 yo
 yo
@@ -31630,13 +31755,13 @@ WD
 uP
 Oj
 uO
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+PB
+nv
+ls
+Uv
+HP
 yo
 hD
 hD
@@ -31887,13 +32012,13 @@ UP
 jZ
 yW
 Sm
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+PB
+nv
+hV
+ze
+RU
 yo
 hD
 hD
@@ -32144,13 +32269,13 @@ yz
 Ma
 GY
 Gt
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+yo
+Sb
+nv
+NR
+NR
 yo
 hD
 hD
@@ -32401,13 +32526,13 @@ li
 Ma
 Gt
 LU
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Wc
+Wc
+yo
+yo
+Lt
+yo
+yo
 yo
 yo
 yo
@@ -32656,11 +32781,11 @@ nv
 nv
 nv
 gd
-ph
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
+yo
 ph
 ph
 ph
@@ -32913,11 +33038,11 @@ nv
 nv
 nv
 GW
-ph
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
+yo
 ph
 ph
 ph
@@ -33170,11 +33295,11 @@ nv
 nv
 nv
 GW
-ph
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
+yo
 ph
 ph
 ph
@@ -33427,11 +33552,11 @@ nv
 nv
 nv
 GW
-ph
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
+yo
 ph
 ph
 ph
@@ -33684,11 +33809,11 @@ nv
 nv
 nv
 gd
-ph
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
+yo
 ph
 ph
 ph
@@ -33941,14 +34066,14 @@ gd
 gd
 gd
 gd
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
+yo
+yo
+yo
+yo
 ph
 ph
 ph
@@ -34198,10 +34323,10 @@ er
 Dy
 sZ
 er
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
 ph
 ph
 ph
@@ -34455,10 +34580,10 @@ gd
 pi
 rD
 gd
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
 ph
 ph
 ph
@@ -34712,10 +34837,10 @@ er
 Ry
 Dq
 er
-ph
-ph
-ph
-ph
+Ut
+Wc
+Wc
+Wc
 ph
 ph
 ph
@@ -35235,8 +35360,8 @@ gd
 ph
 ph
 ph
-ph
-ph
+yo
+yo
 ph
 ph
 ph
@@ -35493,7 +35618,7 @@ ph
 ph
 ph
 ph
-ph
+yo
 ph
 ph
 ph
@@ -35747,10 +35872,10 @@ He
 jj
 gd
 ph
-ph
-ph
-ph
-ph
+lZ
+NQ
+Sh
+yo
 ph
 ph
 ph
@@ -36004,10 +36129,10 @@ iH
 NA
 Xg
 ph
-ph
-ph
-ph
-ph
+lZ
+nD
+Sh
+yo
 ph
 ph
 ph
@@ -36261,10 +36386,10 @@ Xe
 Pm
 dD
 ph
-ph
-ph
-ph
-ph
+lZ
+NQ
+Sh
+yo
 ph
 ph
 ph
@@ -36521,7 +36646,7 @@ ph
 ph
 ph
 ph
-ph
+yo
 ph
 ph
 ph
