@@ -293,6 +293,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
+/obj/structure/table/reinforced,
+/obj/machinery/microwave/engineering/cell_included,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "il" = (
@@ -795,10 +797,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
-"si" = (
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/treatment_center)
 "su" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -1035,6 +1033,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"yy" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/white,
+/area/station/medical/treatment_center)
 "yz" = (
 /obj/structure/table/wood,
 /obj/machinery/button/ticket_machine{
@@ -1167,6 +1172,7 @@
 /area/station/command/heads_quarters/hop)
 "AE" = (
 /obj/effect/landmark/start/medical_doctor,
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
 "AP" = (
@@ -1184,6 +1190,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"Bi" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark,
+/area/station/medical/storage)
 "Bo" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -1218,6 +1228,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/space)
+"BP" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark,
+/area/station/medical/storage)
 "CM" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/circuit,
@@ -1395,6 +1412,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
 	},
+/obj/machinery/vending/coffee,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "GJ" = (
@@ -1723,6 +1741,8 @@
 /area/station/medical/storage)
 "PP" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/table/reinforced,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "QY" = (
@@ -1883,6 +1903,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "Vs" = (
@@ -2117,6 +2138,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "ZD" = (
@@ -35673,7 +35695,7 @@ ph
 cM
 Iz
 Af
-OU
+yy
 Rs
 kJ
 jx
@@ -35941,7 +35963,7 @@ rc
 GJ
 tK
 wY
-uY
+Bi
 kU
 rc
 yo
@@ -37227,7 +37249,7 @@ xe
 sg
 dm
 VY
-VY
+BP
 QY
 yo
 kk
@@ -37987,9 +38009,9 @@ cM
 cM
 cM
 ur
-si
 ur
-si
+ur
+ur
 ur
 cM
 cM
