@@ -8,7 +8,8 @@
 "ao" = (
 /obj/structure/lattice/catwalk{
 	explosive_resistance = 50;
-	name = "rail"
+	name = "rail";
+	damage_deflection = 500000
 	},
 /obj/machinery/conveyor/auto{
 	name = "air";
@@ -16,9 +17,24 @@
 	base_icon_state = "nothing";
 	icon_state = "nothing";
 	use_power = 0;
-	desc = "Malice."
+	desc = "Malice.";
+	explosive_resistance = 500;
+	damage_deflection = 5000000
 	},
-/turf/open/indestructible/plating,
+/obj/machinery/recycler/deathtrap{
+	dir = 1;
+	crush_damage = 200000;
+	item_recycle_sound = null;
+	name = "air";
+	desc = "The dangerous force that keeps people from walking infront of a train.";
+	use_power = 0;
+	icon = 'icons/blanks/32x32.dmi';
+	icon_name = "nothing";
+	icon_state = "nothing"
+	},
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "aO" = (
 /obj/structure/chair/sofa/bench/left{
@@ -46,7 +62,8 @@
 "bk" = (
 /obj/structure/lattice{
 	explosive_resistance = 50;
-	name = "rail"
+	name = "rail";
+	damage_deflection = 500000
 	},
 /obj/machinery/conveyor/auto{
 	name = "air";
@@ -54,7 +71,20 @@
 	base_icon_state = "nothing";
 	icon_state = "nothing";
 	use_power = 0;
-	desc = "Malice."
+	desc = "Malice.";
+	explosive_resistance = 500;
+	damage_deflection = 5000000
+	},
+/obj/machinery/recycler/deathtrap{
+	dir = 1;
+	crush_damage = 200000;
+	item_recycle_sound = null;
+	name = "air";
+	desc = "The dangerous force that keeps people from walking infront of a train.";
+	use_power = 0;
+	icon = 'icons/blanks/32x32.dmi';
+	icon_name = "nothing";
+	icon_state = "nothing"
 	},
 /turf/open/chasm/true/no_smooth/fake_motion_sand/fast,
 /area/space)
@@ -132,7 +162,8 @@
 "dj" = (
 /obj/structure/lattice{
 	explosive_resistance = 50;
-	name = "rail"
+	name = "rail";
+	damage_deflection = 500000
 	},
 /obj/machinery/conveyor/auto{
 	name = "air";
@@ -141,6 +172,17 @@
 	icon_state = "nothing";
 	desc = "The invisible force of the train.";
 	use_power = 0
+	},
+/obj/machinery/recycler/deathtrap{
+	dir = 1;
+	crush_damage = 200000;
+	item_recycle_sound = null;
+	name = "air";
+	desc = "The dangerous force that keeps people from walking infront of a train.";
+	use_power = 0;
+	icon = 'icons/blanks/32x32.dmi';
+	icon_name = "nothing";
+	icon_state = "nothing"
 	},
 /turf/open/indestructible/plating{
 	icon_state = "sandmovingfast";
@@ -353,7 +395,9 @@
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "hD" = (
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "hI" = (
 /obj/effect/turf_decal/siding/wood{
@@ -444,6 +488,26 @@
 	},
 /obj/machinery/holopad,
 /turf/open/floor/iron/dark,
+/area/space)
+"ju" = (
+/obj/structure/lattice/catwalk{
+	explosive_resistance = 50;
+	name = "rail";
+	damage_deflection = 500000
+	},
+/obj/machinery/conveyor/auto{
+	name = "air";
+	icon = 'icons/blanks/32x32.dmi';
+	base_icon_state = "nothing";
+	icon_state = "nothing";
+	use_power = 0;
+	desc = "Malice.";
+	explosive_resistance = 500;
+	damage_deflection = 5000000
+	},
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "jx" = (
 /obj/machinery/duct,
@@ -703,7 +767,9 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Storage Room"
 	},
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "mC" = (
 /obj/structure/table/reinforced,
@@ -1028,13 +1094,37 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
+"sj" = (
+/obj/structure/lattice{
+	explosive_resistance = 50;
+	name = "rail";
+	damage_deflection = 500000
+	},
+/obj/machinery/conveyor/auto{
+	name = "air";
+	icon = 'icons/blanks/32x32.dmi';
+	base_icon_state = "nothing";
+	icon_state = "nothing";
+	use_power = 0;
+	desc = "Malice.";
+	explosive_resistance = 500;
+	damage_deflection = 5000000
+	},
+/turf/open/indestructible/plating{
+	icon_state = "sandmovingfast";
+	name = "air";
+	desc = "Dont jump off, unless you want to fall a really long distance."
+	},
+/area/space)
 "su" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 4;
 	id = "main_surgery"
 	},
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/medical/treatment_center)
 "sv" = (
 /obj/structure/cable,
@@ -1096,7 +1186,8 @@
 "tA" = (
 /obj/structure/lattice/catwalk{
 	explosive_resistance = 50;
-	name = "rail"
+	name = "rail";
+	damage_deflection = 500000
 	},
 /obj/machinery/conveyor/auto{
 	name = "air";
@@ -1106,7 +1197,20 @@
 	desc = "The invisible force of the train.";
 	use_power = 0
 	},
-/turf/open/indestructible/plating,
+/obj/machinery/recycler/deathtrap{
+	dir = 1;
+	crush_damage = 200000;
+	item_recycle_sound = null;
+	name = "air";
+	desc = "The dangerous force that keeps people from walking infront of a train.";
+	use_power = 0;
+	icon = 'icons/blanks/32x32.dmi';
+	icon_name = "nothing";
+	icon_state = "nothing"
+	},
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "tH" = (
 /obj/machinery/defibrillator_mount/directional/south,
@@ -1131,7 +1235,9 @@
 /area/station/medical/storage)
 "ur" = (
 /obj/effect/spawner/structure/window,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/medical/treatment_center)
 "uM" = (
 /obj/item/storage/medkit/regular{
@@ -1155,7 +1261,9 @@
 "uO" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/hallway/secondary/command)
 "uP" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -1164,7 +1272,9 @@
 	name = "Privacy Shutters"
 	},
 /obj/structure/cable,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/command/heads_quarters/hop)
 "uY" = (
 /turf/open/floor/iron/dark,
@@ -1468,7 +1578,9 @@
 	codes_txt = "delivery;dir=4";
 	location = "Medbay"
 	},
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/medical/storage)
 "BC" = (
 /obj/item/fish/catfish,
@@ -1477,7 +1589,9 @@
 	pixel_x = -5
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "BF" = (
 /obj/machinery/holopad/secure,
@@ -1507,7 +1621,8 @@
 "CJ" = (
 /obj/structure/lattice{
 	explosive_resistance = 50;
-	name = "rail"
+	name = "rail";
+	damage_deflection = 500000
 	},
 /obj/machinery/conveyor/auto{
 	name = "air";
@@ -1515,7 +1630,20 @@
 	base_icon_state = "nothing";
 	icon_state = "nothing";
 	use_power = 0;
-	desc = "Malice."
+	desc = "Malice.";
+	explosive_resistance = 500;
+	damage_deflection = 5000000
+	},
+/obj/machinery/recycler/deathtrap{
+	dir = 1;
+	crush_damage = 200000;
+	item_recycle_sound = null;
+	name = "air";
+	desc = "The dangerous force that keeps people from walking infront of a train.";
+	use_power = 0;
+	icon = 'icons/blanks/32x32.dmi';
+	icon_name = "nothing";
+	icon_state = "nothing"
 	},
 /turf/open/indestructible/plating{
 	icon_state = "sandmovingfast";
@@ -1526,7 +1654,8 @@
 "CM" = (
 /obj/structure/lattice/catwalk{
 	explosive_resistance = 50;
-	name = "rail"
+	name = "rail";
+	damage_deflection = 500000
 	},
 /obj/machinery/conveyor/auto{
 	name = "air";
@@ -1534,7 +1663,9 @@
 	base_icon_state = "nothing";
 	icon_state = "nothing";
 	use_power = 0;
-	desc = "Malice."
+	desc = "Malice.";
+	explosive_resistance = 500;
+	damage_deflection = 5000000
 	},
 /turf/open/indestructible/light{
 	desc = "A magnetic plate to align the train.";
@@ -1626,7 +1757,9 @@
 	},
 /obj/machinery/duct,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/medical/storage)
 "Em" = (
 /obj/structure/table/wood,
@@ -1791,7 +1924,9 @@
 /area/station/command/heads_quarters/hop)
 "GW" = (
 /obj/effect/spawner/structure/window/reinforced,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "GX" = (
 /obj/effect/turf_decal/siding/wood/corner,
@@ -1848,7 +1983,9 @@
 /obj/machinery/computer/teleporter{
 	dir = 1
 	},
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "HS" = (
 /obj/structure/curtain,
@@ -2041,7 +2178,9 @@
 /area/space)
 "NG" = (
 /obj/machinery/teleport/station,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "NJ" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2403,7 +2542,9 @@
 /area/station/medical/treatment_center)
 "Wj" = (
 /obj/effect/spawner/structure/window,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/station/medical/storage)
 "Wq" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
@@ -2487,7 +2628,9 @@
 "Xg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "Xv" = (
 /obj/structure/window/reinforced/spawner/directional/east,
@@ -2610,7 +2753,9 @@
 /area/space)
 "Zd" = (
 /obj/machinery/teleport/hub,
-/turf/open/indestructible/plating,
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
 /area/space)
 "Zg" = (
 /obj/structure/railing/corner{
@@ -32241,30 +32386,30 @@ kk
 kk
 "}
 (116,1,1) = {"
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 CJ
 GW
 GW
@@ -32471,57 +32616,57 @@ ph
 ph
 ph
 yo
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 bk
 "}
 (117,1,1) = {"
-ao
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
+ju
+ju
 ao
 GW
 ex
@@ -32561,62 +32706,7 @@ hD
 yo
 ph
 yo
-CJ
-CJ
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-CJ
+sj
 CJ
 yo
 ph
@@ -32628,38 +32718,18 @@ ph
 ph
 ph
 ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
 ph
 ph
 ph
@@ -32671,7 +32741,27 @@ ph
 ph
 ph
 yo
-CJ
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+yo
+sj
 CJ
 yo
 ph
@@ -32725,60 +32815,115 @@ ph
 ph
 ph
 ph
+yo
+sj
+CJ
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
 ph
 ph
 yo
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
 ao
 "}
 (118,1,1) = {"
-ao
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
+ju
+ju
 ao
 gd
 gd
@@ -32818,62 +32963,7 @@ hD
 yo
 ph
 yo
-ao
-ao
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-ao
+ju
 ao
 yo
 ph
@@ -32928,7 +33018,62 @@ ph
 ph
 ph
 yo
+ju
 ao
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+yo
+ju
 ao
 yo
 ph
@@ -32985,57 +33130,57 @@ ph
 ph
 ph
 yo
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
 ao
 "}
 (119,1,1) = {"
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 CJ
 GW
 Zj
@@ -33075,62 +33220,7 @@ hD
 yo
 ph
 yo
-ao
-ao
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-ao
+ju
 ao
 yo
 ph
@@ -33185,7 +33275,62 @@ ph
 ph
 ph
 yo
+ju
 ao
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+yo
+ju
 ao
 yo
 ph
@@ -33242,30 +33387,30 @@ ph
 ph
 ph
 yo
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 bk
 "}
 (120,1,1) = {"
@@ -33332,62 +33477,7 @@ hD
 yo
 ph
 yo
-CJ
-CJ
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-CJ
+sj
 CJ
 yo
 ph
@@ -33442,7 +33532,62 @@ ph
 ph
 ph
 yo
+sj
 CJ
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+yo
+sj
 CJ
 yo
 ph
@@ -36353,30 +36498,30 @@ kk
 kk
 "}
 (132,1,1) = {"
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 CJ
 GW
 nv
@@ -36416,7 +36561,7 @@ ph
 ph
 ph
 yo
-CJ
+sj
 dj
 yo
 ph
@@ -36471,62 +36616,7 @@ Bi
 kU
 rc
 yo
-CJ
-CJ
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-CJ
+sj
 CJ
 yo
 ph
@@ -36580,60 +36670,115 @@ ph
 ph
 ph
 ph
+yo
+sj
+CJ
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
 ph
 ph
 yo
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 CJ
 "}
 (133,1,1) = {"
-ao
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
+ju
+ju
 ao
 GW
 nv
@@ -36673,7 +36818,7 @@ ph
 ph
 ph
 yo
-ao
+ju
 tA
 yo
 ph
@@ -36728,62 +36873,7 @@ Hm
 Hm
 Zi
 yo
-ao
-ao
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-ao
+ju
 ao
 yo
 ph
@@ -36837,60 +36927,115 @@ ph
 ph
 ph
 ph
+yo
+ju
+ao
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
 ph
 ph
 yo
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
 ao
 "}
 (134,1,1) = {"
-ao
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
+ju
+ju
 ao
 GW
 nv
@@ -36930,7 +37075,7 @@ ph
 ph
 ph
 yo
-ao
+ju
 ao
 yo
 ph
@@ -36985,62 +37130,7 @@ Ys
 Ys
 ij
 yo
-ao
-ao
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-ao
+ju
 ao
 yo
 ph
@@ -37094,60 +37184,115 @@ ph
 ph
 ph
 ph
+yo
+ju
+ao
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
 ph
 ph
 yo
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
-ao
-ao
-ao
+ju
+ju
+ju
 CM
 ao
 "}
 (135,1,1) = {"
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 CJ
 GW
 GW
@@ -37187,7 +37332,7 @@ ph
 ph
 ph
 yo
-CJ
+sj
 CJ
 yo
 ph
@@ -37242,62 +37387,7 @@ xs
 xs
 PP
 yo
-CJ
-CJ
-yo
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-ph
-yo
-CJ
+sj
 CJ
 yo
 ph
@@ -37351,33 +37441,88 @@ ph
 ph
 ph
 ph
+yo
+sj
+CJ
+yo
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
+ph
 ph
 ph
 yo
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
 CJ
 "}
 (136,1,1) = {"
