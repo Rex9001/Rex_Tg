@@ -18,7 +18,7 @@
 	use_power = 0;
 	desc = "Malice."
 	},
-/turf/open/floor/plating/airless,
+/turf/open/indestructible/plating,
 /area/space)
 "aO" = (
 /obj/structure/chair/sofa/bench/left{
@@ -142,7 +142,11 @@
 	desc = "The invisible force of the train.";
 	use_power = 0
 	},
-/turf/open/chasm/true/no_smooth/fake_motion_sand/fast,
+/turf/open/indestructible/plating{
+	icon_state = "sandmovingfast";
+	name = "air";
+	desc = "Dont jump off, unless you want to fall a really long distance."
+	},
 /area/space)
 "dk" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
@@ -349,7 +353,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "hD" = (
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "hI" = (
 /obj/effect/turf_decal/siding/wood{
@@ -699,7 +703,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Storage Room"
 	},
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "mC" = (
 /obj/structure/table/reinforced,
@@ -771,10 +775,6 @@
 /area/station/hallway/secondary/command)
 "nv" = (
 /turf/open/floor/iron/dark,
-/area/space)
-"nB" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating/airless,
 /area/space)
 "nD" = (
 /obj/item/food/sandwich/jelly,
@@ -1034,7 +1034,7 @@
 	dir = 4;
 	id = "main_surgery"
 	},
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/medical/treatment_center)
 "sv" = (
 /obj/structure/cable,
@@ -1106,7 +1106,7 @@
 	desc = "The invisible force of the train.";
 	use_power = 0
 	},
-/turf/open/floor/plating/airless,
+/turf/open/indestructible/plating,
 /area/space)
 "tH" = (
 /obj/machinery/defibrillator_mount/directional/south,
@@ -1131,7 +1131,7 @@
 /area/station/medical/storage)
 "ur" = (
 /obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/medical/treatment_center)
 "uM" = (
 /obj/item/storage/medkit/regular{
@@ -1155,7 +1155,7 @@
 "uO" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/hallway/secondary/command)
 "uP" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -1164,7 +1164,7 @@
 	name = "Privacy Shutters"
 	},
 /obj/structure/cable,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/command/heads_quarters/hop)
 "uY" = (
 /turf/open/floor/iron/dark,
@@ -1468,7 +1468,7 @@
 	codes_txt = "delivery;dir=4";
 	location = "Medbay"
 	},
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/medical/storage)
 "BC" = (
 /obj/item/fish/catfish,
@@ -1477,7 +1477,7 @@
 	pixel_x = -5
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "BF" = (
 /obj/machinery/holopad/secure,
@@ -1504,6 +1504,25 @@
 /obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/iron/white,
 /area/space)
+"CJ" = (
+/obj/structure/lattice{
+	explosive_resistance = 50;
+	name = "rail"
+	},
+/obj/machinery/conveyor/auto{
+	name = "air";
+	icon = 'icons/blanks/32x32.dmi';
+	base_icon_state = "nothing";
+	icon_state = "nothing";
+	use_power = 0;
+	desc = "Malice."
+	},
+/turf/open/indestructible/plating{
+	icon_state = "sandmovingfast";
+	name = "air";
+	desc = "Dont jump off, unless you want to fall a really long distance."
+	},
+/area/space)
 "CM" = (
 /obj/structure/lattice/catwalk{
 	explosive_resistance = 50;
@@ -1517,7 +1536,10 @@
 	use_power = 0;
 	desc = "Malice."
 	},
-/turf/open/floor/circuit,
+/turf/open/indestructible/light{
+	desc = "A magnetic plate to align the train.";
+	name = "magnetic plate"
+	},
 /area/space)
 "CU" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
@@ -1604,7 +1626,7 @@
 	},
 /obj/machinery/duct,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/medical/storage)
 "Em" = (
 /obj/structure/table/wood,
@@ -1769,7 +1791,7 @@
 /area/station/command/heads_quarters/hop)
 "GW" = (
 /obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "GX" = (
 /obj/effect/turf_decal/siding/wood/corner,
@@ -1826,7 +1848,7 @@
 /obj/machinery/computer/teleporter{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "HS" = (
 /obj/structure/curtain,
@@ -2019,7 +2041,7 @@
 /area/space)
 "NG" = (
 /obj/machinery/teleport/station,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "NJ" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2381,7 +2403,7 @@
 /area/station/medical/treatment_center)
 "Wj" = (
 /obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/station/medical/storage)
 "Wq" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
@@ -2465,7 +2487,7 @@
 "Xg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "Xv" = (
 /obj/structure/window/reinforced/spawner/directional/east,
@@ -2588,7 +2610,7 @@
 /area/space)
 "Zd" = (
 /obj/machinery/teleport/hub,
-/turf/open/floor/plating,
+/turf/open/indestructible/plating,
 /area/space)
 "Zg" = (
 /obj/structure/railing/corner{
@@ -32219,31 +32241,31 @@ kk
 kk
 "}
 (116,1,1) = {"
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 GW
 GW
 qe
@@ -32449,30 +32471,30 @@ ph
 ph
 ph
 yo
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 bk
 "}
 (117,1,1) = {"
@@ -32539,8 +32561,8 @@ hD
 yo
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -32594,8 +32616,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -32649,8 +32671,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -32990,31 +33012,31 @@ CM
 ao
 "}
 (119,1,1) = {"
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 GW
 Zj
 Zj
@@ -33220,30 +33242,30 @@ ph
 ph
 ph
 yo
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 bk
 "}
 (120,1,1) = {"
@@ -33310,8 +33332,8 @@ hD
 yo
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -33365,8 +33387,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -33420,8 +33442,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -34319,7 +34341,7 @@ Ut
 Wc
 Wc
 Wc
-nB
+GW
 Wu
 Dt
 Ij
@@ -34327,7 +34349,7 @@ FB
 mJ
 pd
 GR
-nB
+GW
 ph
 ph
 ph
@@ -34576,7 +34598,7 @@ Ut
 Wc
 Hl
 Wc
-nB
+GW
 Wu
 Zj
 fy
@@ -34584,7 +34606,7 @@ fy
 fy
 Zj
 GR
-nB
+GW
 ph
 ph
 ph
@@ -34833,7 +34855,7 @@ Ut
 Hl
 Wc
 Wc
-nB
+GW
 VS
 gJ
 pI
@@ -34841,7 +34863,7 @@ kY
 pI
 SQ
 Xw
-nB
+GW
 ph
 ph
 ph
@@ -35347,7 +35369,7 @@ Ut
 Wc
 Hl
 Wc
-nB
+GW
 OR
 WG
 To
@@ -35355,7 +35377,7 @@ kH
 kH
 xb
 Vi
-nB
+GW
 ph
 ph
 ph
@@ -35605,13 +35627,13 @@ Wc
 Wc
 Wc
 gd
-nB
-nB
+GW
+GW
 gd
 cC
 gd
-nB
-nB
+GW
+GW
 gd
 ph
 ph
@@ -36331,31 +36353,31 @@ kk
 kk
 "}
 (132,1,1) = {"
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 GW
 nv
 nv
@@ -36394,7 +36416,7 @@ ph
 ph
 ph
 yo
-bk
+CJ
 dj
 yo
 ph
@@ -36449,8 +36471,8 @@ Bi
 kU
 rc
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -36504,8 +36526,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -36561,31 +36583,31 @@ ph
 ph
 ph
 yo
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 "}
 (133,1,1) = {"
 ao
@@ -37102,31 +37124,31 @@ CM
 ao
 "}
 (135,1,1) = {"
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 GW
 GW
 nv
@@ -37165,8 +37187,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -37220,8 +37242,8 @@ xs
 xs
 PP
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -37275,8 +37297,8 @@ ph
 ph
 ph
 yo
-bk
-bk
+CJ
+CJ
 yo
 ph
 ph
@@ -37332,31 +37354,31 @@ ph
 ph
 ph
 yo
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
+CJ
 "}
 (136,1,1) = {"
 kk
