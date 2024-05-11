@@ -975,6 +975,12 @@
 "nv" = (
 /turf/open/floor/iron/dark,
 /area/space)
+"nC" = (
+/obj/structure/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/carpet/royalblue,
+/area/space)
 "nD" = (
 /obj/item/food/sandwich/jelly,
 /obj/structure/table/reinforced,
@@ -1226,6 +1232,12 @@
 /obj/effect/turf_decal/bot_white/left,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/eva)
+"rY" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "sg" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -1255,6 +1267,11 @@
 	desc = "Dont jump off, unless you want to fall a really long distance.";
 	base_icon_state = "sandmovingfast"
 	},
+/area/space)
+"sn" = (
+/obj/machinery/computer/shuttle/labor,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/carpet/royalblue,
 /area/space)
 "su" = (
 /obj/effect/spawner/structure/window,
@@ -1454,6 +1471,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/eva)
+"wE" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "wG" = (
 /obj/machinery/holopad,
 /obj/structure/cable,
@@ -1876,6 +1899,12 @@
 /obj/structure/table/wood/fancy,
 /turf/open/floor/carpet,
 /area/station/command/corporate_showroom)
+"Df" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "Dg" = (
 /obj/item/storage/medkit/regular{
 	pixel_x = 3;
@@ -1990,6 +2019,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"Fh" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/item/aicard,
+/obj/item/multitool,
+/turf/open/floor/carpet/royalblue,
+/area/space)
 "Fi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/stripes/line{
@@ -2228,6 +2264,22 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"IA" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/keycard_auth{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/machinery/button/door{
+	name = "Bridge Blast Door Toggle";
+	pixel_x = -7;
+	pixel_y = -2;
+	id = "bunkermodeactivated";
+	req_access = list("command")
+	},
+/turf/open/floor/carpet/royalblue,
+/area/space)
 "IO" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -2666,6 +2718,10 @@
 	},
 /turf/open/floor/wood,
 /area/station/command/corporate_showroom)
+"ST" = (
+/obj/machinery/computer/communications,
+/turf/open/floor/carpet/royalblue,
+/area/space)
 "Tg" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -2959,6 +3015,12 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
+"Xs" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "Xv" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/filingcabinet,
@@ -3148,6 +3210,12 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"Zn" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "Zr" = (
 /turf/open/floor/iron/dark,
 /area/station/command/teleporter)
@@ -3172,6 +3240,11 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/storage)
+"ZP" = (
+/obj/machinery/computer/shuttle/mining,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/carpet/royalblue,
+/area/space)
 "ZR" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/cup/bottle/multiver{
@@ -34572,9 +34645,9 @@ kk
 kk
 kk
 GW
-nv
-nv
-nv
+Xs
+Xs
+Df
 nv
 Yv
 Yv
@@ -34829,9 +34902,9 @@ kk
 kk
 kk
 GW
-nv
-nv
-nv
+ZP
+Fh
+rY
 nv
 nv
 nv
@@ -35086,9 +35159,9 @@ kk
 kk
 kk
 GW
-nv
-nv
-nv
+ST
+nC
+rY
 nv
 nv
 nv
@@ -35343,9 +35416,9 @@ kk
 kk
 kk
 GW
-nv
-nv
-nv
+sn
+IA
+rY
 nv
 nv
 nv
@@ -35600,9 +35673,9 @@ kk
 kk
 kk
 GW
-nv
-nv
-nv
+wE
+wE
+Zn
 nv
 nv
 nv
