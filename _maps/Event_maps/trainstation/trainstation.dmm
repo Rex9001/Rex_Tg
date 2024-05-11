@@ -947,6 +947,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/meeting_room)
+"ml" = (
+/turf/open/floor/plating,
+/area/space)
 "mp" = (
 /obj/machinery/door/window/right/directional/north{
 	name = "First Aid Supplies";
@@ -2004,10 +2007,6 @@
 	dir = 4
 	},
 /area/station/ai_monitored/command/storage/eva)
-"AT" = (
-/obj/effect/spawner/random/trash/crushed_can,
-/turf/open/floor/plating,
-/area/space)
 "Be" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2935,6 +2934,10 @@
 	dir = 9
 	},
 /turf/open/floor/iron/dark,
+/area/space)
+"QR" = (
+/obj/structure/falsewall/reinforced,
+/turf/open/floor/plating,
 /area/space)
 "QV" = (
 /obj/structure/railing{
@@ -38911,7 +38914,7 @@ Lu
 YE
 gd
 gd
-gd
+QR
 sS
 sS
 sS
@@ -39168,9 +39171,9 @@ EI
 EI
 EI
 wh
-eN
+ml
 Vj
-AT
+eN
 sS
 LX
 YB
