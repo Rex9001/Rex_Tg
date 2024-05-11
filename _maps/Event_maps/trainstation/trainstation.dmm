@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"af" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/station/command/meeting_room)
 "al" = (
 /obj/structure/chair/comfy{
 	dir = 8
@@ -36,7 +42,7 @@
 /turf/open/indestructible/plating{
 	name = "tracks"
 	},
-/area/space)
+/area/space/nearstation)
 "aO" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -96,8 +102,10 @@
 	icon_state = "nothing";
 	damage_deflection = 500000
 	},
-/turf/open/chasm/true/no_smooth/fake_motion_sand/fast,
-/area/space)
+/turf/open/indestructible/plating{
+	name = "tracks"
+	},
+/area/space/nearstation)
 "bq" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
@@ -105,6 +113,11 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
+"bG" = (
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/station/command/meeting_room)
 "bO" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/rglass{
@@ -197,12 +210,9 @@
 	damage_deflection = 500000
 	},
 /turf/open/indestructible/plating{
-	icon_state = "sandmovingfast";
-	name = "air";
-	desc = "Dont jump off, unless you want to fall a really long distance.";
-	base_icon_state = "sandmovingfast"
+	name = "tracks"
 	},
-/area/space)
+/area/space/nearstation)
 "dk" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
@@ -346,7 +356,9 @@
 "eD" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/side{
+	dir = 9
+	},
 /area/station/command/meeting_room)
 "eX" = (
 /obj/machinery/light/small/directional/south,
@@ -500,7 +512,9 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "hQ" = (
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/side{
+	dir = 10
+	},
 /area/station/command/meeting_room)
 "hV" = (
 /obj/effect/turf_decal/stripes/line{
@@ -513,6 +527,10 @@
 	dir = 1
 	},
 /turf/open/floor/iron/white,
+/area/space)
+"ig" = (
+/obj/structure/fireaxecabinet/directional/west,
+/turf/open/floor/iron/dark,
 /area/space)
 "ih" = (
 /obj/structure/sign/warning/electric_shock/directional/north,
@@ -544,7 +562,7 @@
 	pixel_y = 5
 	},
 /obj/item/radio/intercom,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
 "iH" = (
 /obj/structure/chair/sofa/bench/right{
@@ -608,7 +626,7 @@
 /turf/open/indestructible/plating{
 	name = "tracks"
 	},
-/area/space)
+/area/space/nearstation)
 "jx" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1129,7 +1147,9 @@
 /area/station/medical/treatment_center)
 "pT" = (
 /obj/machinery/airalarm/directional/east,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/station/command/meeting_room)
 "qb" = (
 /obj/structure/cable,
@@ -1269,12 +1289,9 @@
 	damage_deflection = 5000000
 	},
 /turf/open/indestructible/plating{
-	icon_state = "sandmovingfast";
-	name = "air";
-	desc = "Dont jump off, unless you want to fall a really long distance.";
-	base_icon_state = "sandmovingfast"
+	name = "tracks"
 	},
-/area/space)
+/area/space/nearstation)
 "sn" = (
 /obj/machinery/computer/shuttle/labor,
 /obj/structure/window/reinforced/spawner/directional/east,
@@ -1364,7 +1381,7 @@
 /turf/open/indestructible/plating{
 	name = "tracks"
 	},
-/area/space)
+/area/space/nearstation)
 "tH" = (
 /obj/machinery/defibrillator_mount/directional/south,
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -1401,6 +1418,15 @@
 /obj/item/pen,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
+"uI" = (
+/obj/machinery/computer/prisoner/management{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "uM" = (
 /obj/item/storage/medkit/regular{
 	pixel_x = 3;
@@ -1446,7 +1472,9 @@
 /area/station/command/corporate_showroom)
 "vn" = (
 /obj/structure/sign/flag/nanotrasen/directional/north,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
 /area/station/command/meeting_room)
 "vB" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
@@ -1490,6 +1518,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
+"wW" = (
+/obj/machinery/computer/security{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "wY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -1545,7 +1583,7 @@
 /obj/structure/chair/comfy/black{
 	dir = 4
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
 "xL" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
@@ -1691,7 +1729,7 @@
 /obj/structure/chair/comfy/black{
 	dir = 8
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
 "zN" = (
 /obj/structure/table/glass,
@@ -1748,7 +1786,7 @@
 	req_access = list("command");
 	pixel_x = 5
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
 "As" = (
 /obj/structure/table/wood,
@@ -1829,8 +1867,31 @@
 /obj/structure/chair/comfy/beige{
 	dir = 4
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
+"BW" = (
+/obj/structure/table/reinforced,
+/obj/item/assembly/flash/handheld{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/machinery/recharger{
+	pixel_x = -6
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/space)
+"BX" = (
+/obj/machinery/computer/records/security{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "CE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/toilet{
@@ -1839,41 +1900,6 @@
 /obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/captain/private)
-"CJ" = (
-/obj/structure/lattice{
-	explosive_resistance = 50;
-	name = "rail";
-	damage_deflection = 500000
-	},
-/obj/machinery/conveyor/auto{
-	name = "air";
-	icon = 'icons/blanks/32x32.dmi';
-	base_icon_state = "nothing";
-	icon_state = "nothing";
-	use_power = 0;
-	desc = "Malice.";
-	explosive_resistance = 500;
-	damage_deflection = 5000000
-	},
-/obj/machinery/recycler/deathtrap{
-	dir = 1;
-	crush_damage = 200000;
-	item_recycle_sound = null;
-	name = "air";
-	desc = "The dangerous force that keeps people from walking infront of a train.";
-	use_power = 0;
-	icon = 'icons/blanks/32x32.dmi';
-	icon_name = "nothing";
-	icon_state = "nothing";
-	damage_deflection = 500000
-	},
-/turf/open/indestructible/plating{
-	icon_state = "sandmovingfast";
-	name = "air";
-	desc = "Dont jump off, unless you want to fall a really long distance.";
-	base_icon_state = "sandmovingfast"
-	},
-/area/space)
 "CM" = (
 /obj/structure/lattice/catwalk{
 	explosive_resistance = 50;
@@ -1894,7 +1920,7 @@
 	desc = "A magnetic plate to align the train.";
 	name = "magnetic plate"
 	},
-/area/space)
+/area/space/nearstation)
 "CU" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /turf/open/floor/iron/white,
@@ -1917,12 +1943,6 @@
 /obj/structure/table/wood/fancy,
 /turf/open/floor/carpet,
 /area/station/command/corporate_showroom)
-"Df" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/space)
 "Dg" = (
 /obj/item/storage/medkit/regular{
 	pixel_x = 3;
@@ -1979,7 +1999,9 @@
 /area/space)
 "DY" = (
 /obj/machinery/status_display/evac/directional/north,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
 /area/station/command/meeting_room)
 "Ef" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2519,7 +2541,7 @@
 /obj/structure/chair/comfy/beige{
 	dir = 8
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
 "NX" = (
 /obj/structure/table,
@@ -2544,6 +2566,9 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"Oz" = (
+/turf/open/floor/iron/dark/side,
+/area/station/command/meeting_room)
 "OB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2638,6 +2663,11 @@
 /obj/machinery/vending/boozeomat,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain/private)
+"QX" = (
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/station/command/meeting_room)
 "QY" = (
 /obj/machinery/suit_storage_unit/medical,
 /obj/effect/turf_decal/bot_red,
@@ -2651,6 +2681,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
+"Rg" = (
+/turf/open/floor/iron/dark/side{
+	dir = 6
+	},
+/area/station/command/meeting_room)
 "Rs" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
@@ -2663,6 +2698,11 @@
 	dir = 5
 	},
 /area/space)
+"RM" = (
+/turf/open/floor/iron/dark/side{
+	dir = 5
+	},
+/area/station/command/meeting_room)
 "RP" = (
 /obj/machinery/door/airlock/vault{
 	name = "Vault"
@@ -3040,8 +3080,8 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "Xs" = (
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 4
+/obj/structure/chair/office/light{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/space)
@@ -3186,7 +3226,7 @@
 	pixel_y = 3;
 	pixel_x = -6
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/red,
 /area/station/command/meeting_room)
 "Zd" = (
 /obj/machinery/teleport/hub,
@@ -32870,7 +32910,7 @@ sj
 sj
 sj
 sj
-CJ
+bk
 Nt
 Nt
 qe
@@ -33167,7 +33207,7 @@ xx
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -33222,7 +33262,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -33277,7 +33317,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -33641,7 +33681,7 @@ sj
 sj
 sj
 sj
-CJ
+bk
 iI
 LS
 fS
@@ -33938,7 +33978,7 @@ xx
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -33993,7 +34033,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -34048,7 +34088,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -34669,9 +34709,9 @@ kk
 kk
 kk
 GW
-nv
-nv
-nv
+uI
+BX
+wW
 nv
 Yv
 Yv
@@ -34926,11 +34966,11 @@ kk
 kk
 kk
 GW
+BW
 Xs
-Xs
-Df
 nv
 nv
+ig
 nv
 nv
 RR
@@ -36479,9 +36519,9 @@ nv
 nv
 yu
 eD
-mg
-mg
-mg
+af
+af
+af
 hQ
 HN
 fR
@@ -36739,7 +36779,7 @@ vn
 BQ
 xF
 BQ
-hQ
+Oz
 HN
 Ut
 Wc
@@ -36992,11 +37032,11 @@ nv
 nv
 nv
 hu
-hQ
+QX
 iq
 Ar
 Za
-hQ
+Oz
 HN
 Ut
 Wc
@@ -37239,7 +37279,7 @@ sj
 sj
 sj
 sj
-CJ
+bk
 GW
 nv
 nv
@@ -37253,7 +37293,7 @@ DY
 NV
 zm
 NV
-hQ
+Oz
 HN
 Ut
 Wc
@@ -37334,7 +37374,7 @@ Bi
 rc
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -37389,7 +37429,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -37469,7 +37509,7 @@ sj
 sj
 sj
 sj
-CJ
+bk
 "}
 (134,1,1) = {"
 ju
@@ -37506,11 +37546,11 @@ nv
 nv
 nv
 yu
-hQ
+RM
 pT
-hQ
-hQ
-hQ
+bG
+bG
+Rg
 AO
 AO
 AO
@@ -38010,7 +38050,7 @@ sj
 sj
 sj
 sj
-CJ
+bk
 GW
 GW
 nv
@@ -38050,7 +38090,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -38105,7 +38145,7 @@ xs
 PP
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -38160,7 +38200,7 @@ ph
 ph
 yo
 sj
-CJ
+bk
 yo
 ph
 ph
@@ -38240,7 +38280,7 @@ sj
 sj
 sj
 sj
-CJ
+bk
 "}
 (137,1,1) = {"
 kk
