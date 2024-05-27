@@ -21,11 +21,10 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 
 /datum/disease/blood_root/infect(mob/living/infectee, make_copy = TRUE)
 	. = ..()
-	GLOB.blood_root_infected += infectee
 	if(!infection_goal)
-		var/initial_infection_goal = 100 SECONDS
+		var/initial_infection_goal = 80 SECONDS
 		if(HAS_TRAIT(infectee, TRAIT_MINDSHIELD))
-			initial_infection_goal = 200 SECONDS
+			initial_infection_goal = 160 SECONDS
 		infection_goal = initial_infection_goal
 
 /datum/disease/blood_root/stage_act(seconds_per_tick, times_fired)
@@ -34,39 +33,39 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 		return
 
 	if(affected_mob.blood_volume < BLOOD_VOLUME_BAD)
+		GLOB.blood_root_infected -= affected_mob
 		cure()
 		return FALSE
 
 	switch(stage)
 		if(1)
 			if(infection_amount >= infection_goal)
+				GLOB.blood_root_infected += affected_mob
 				update_stage(min(stage + 1, max_stages))
+
 		if(2)
 			if(infection_amount >= 600 SECONDS)
 				update_stage(min(stage + 1, max_stages))
 			increase_infection()
 			spread()
-			spread_infectivity(affected_mob)
 		if(3)
 			if(infection_amount >= 1200 SECONDS)
 				update_stage(min(stage + 1, max_stages))
 			increase_infection()
 			spread()
-			spread_infectivity(affected_mob)
 		if(4)
 			spread()
-			spread_infectivity(affected_mob)
-
 	return
 
-/datum/disease/blood_root/proc/spread_infectivity(mob/living/infector)
-	for(var/mob/living/guy_to_infect in view(2, source))
-		var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
-		if(!src in diseases)
-			continue
-
+/datum/disease/blood_root/spread(force_spread = 0)
+	. = ..()
+	var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
+	if(!var/datum/disease/blood_root/virus in diseases)
+		return
+	virus.increase_infection()
 
 /datum/disease/blood_root/proc/increase_infection()
 	if(infection_amount > 1200 SECONDS)
 		return
+	// The infection amount depends on the amount of blood root stage 2 infected we have
 	infection_amount += 1 / ((length(GLOB.blood_root_infected)+2) / 5)
