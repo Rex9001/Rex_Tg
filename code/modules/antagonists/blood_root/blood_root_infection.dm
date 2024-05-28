@@ -17,15 +17,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	/// The amount of infection this person has
 	var/infection_amount = 0
 	/// The amount of infection this person has to have in order to gain the antag datum and move up a stage
-	var/static/infection_goal = 0
-
-/datum/disease/blood_root/infect(mob/living/infectee, make_copy = TRUE)
-	. = ..()
-	if(!infection_goal)
-		var/initial_infection_goal = 80 SECONDS
-		if(HAS_TRAIT(infectee, TRAIT_MINDSHIELD))
-			initial_infection_goal = 160 SECONDS
-		infection_goal = initial_infection_goal
+	var/infection_goal = 80 SECONDS
 
 /datum/disease/blood_root/stage_act(seconds_per_tick, times_fired)
 	. = ..()
@@ -42,7 +34,6 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			if(infection_amount >= infection_goal)
 				GLOB.blood_root_infected += affected_mob
 				update_stage(min(stage + 1, max_stages))
-
 		if(2)
 			if(infection_amount >= 600 SECONDS)
 				update_stage(min(stage + 1, max_stages))
@@ -55,17 +46,65 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			spread()
 		if(4)
 			spread()
+
+	var/datum/antagonist/blood_root/antag = IS_BLOOD_ROOT(affected_mob)
+	if(!antag)
+		return
+	antag.set_stage(stage)
 	return
 
+// Sadly have to slot in the whole proc because we want to do something special in the last loop
 /datum/disease/blood_root/spread(force_spread = 0)
-	. = ..()
-	var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
-	if(!var/datum/disease/blood_root/virus in diseases)
+	if(!affected_mob)
 		return
-	virus.increase_infection()
+
+	if(!(spread_flags & DISEASE_SPREAD_AIRBORNE) && !force_spread)
+		return
+
+	if(affected_mob.internal) //if you keep your internals on, no airborne spread at least
+		return
+
+	if(HAS_TRAIT(affected_mob, TRAIT_NOBREATH)) //also if you don't breathe
+		return
+
+	if(!has_required_infectious_organ(affected_mob, ORGAN_SLOT_LUNGS)) //also if you lack lungs
+		return
+
+	if(!affected_mob.CanSpreadAirborneDisease()) //should probably check this huh
+		return
+
+	if(HAS_TRAIT(affected_mob, TRAIT_VIRUS_RESISTANCE) || (affected_mob.satiety > 0 && prob(affected_mob.satiety/2))) //being full or on spaceacillin makes you less likely to spread a virus
+		return
+
+	var/spread_range = 2
+
+	if(force_spread)
+		spread_range = force_spread
+
+	var/turf/T = affected_mob.loc
+	if(istype(T))
+		for(var/mob/living/carbon/guy_to_infect in oview(spread_range, affected_mob))
+			var/turf/V = get_turf(guy_to_infect)
+			if(disease_air_spread_walk(T, V))
+				guy_to_infect.AirborneContractDisease(src, force_spread)
+			var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
+			var/datum/disease/blood_root/virus
+			if(!(virus in diseases))
+				return
+			virus.increase_infection()
 
 /datum/disease/blood_root/proc/increase_infection()
-	if(infection_amount > 1200 SECONDS)
+	if(infection_amount >= 1200 SECONDS)
+		return
+	if(HAS_TRAIT(affected_mob, TRAIT_MINDSHIELD))
+		// Half as much infection if they are mindshielded
+		infection_amount += (1 / ((length(GLOB.blood_root_infected)+2) / 5)) / 2
 		return
 	// The infection amount depends on the amount of blood root stage 2 infected we have
 	infection_amount += 1 / ((length(GLOB.blood_root_infected)+2) / 5)
+
+/datum/disease/blood_root/cure()
+	var/datum/antagonist/blood_root/antag = IS_BLOOD_ROOT(affected_mob)
+	if(antag)
+		affected_mob.mind.remove_antag_datum(antag)
+	return ..()
