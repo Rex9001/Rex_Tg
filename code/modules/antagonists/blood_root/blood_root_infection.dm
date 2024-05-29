@@ -86,8 +86,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 		for(var/mob/living/carbon/guy_to_infect in oview(spread_range, affected_mob))
 			var/turf/V = get_turf(guy_to_infect)
 			if(disease_air_spread_walk(T, V))
-				guy_to_infect.AirborneContractDisease(src, force_spread)
-			var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
+				infect(guy_to_infect)
 			var/datum/disease/blood_root/virus
 			if(!(virus in diseases))
 				return
@@ -107,4 +106,10 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	var/datum/antagonist/blood_root/antag = IS_BLOOD_ROOT(affected_mob)
 	if(antag)
 		affected_mob.mind.remove_antag_datum(antag)
+	return ..()
+
+/datum/disease/blood_root/try_infect(mob/living/infectee, make_copy = TRUE)
+	if(IS_CHANGELING(infectee) || IS_CULTIST_OR_CULTIST_MOB(infectee) || IS_HEAD_REVOLUTIONARY(infectee))
+		return FALSE
+
 	return ..()
