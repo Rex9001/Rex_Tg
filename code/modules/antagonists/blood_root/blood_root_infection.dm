@@ -34,6 +34,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			if(infection_amount >= infection_goal)
 				GLOB.blood_root_infected += affected_mob
 				update_stage(min(stage + 1, max_stages))
+				affected_mob.mind.add_antag_datum(/datum/antagonist/blood_root)
 		if(2)
 			if(infection_amount >= 600 SECONDS)
 				update_stage(min(stage + 1, max_stages))
@@ -109,7 +110,8 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	return ..()
 
 /datum/disease/blood_root/try_infect(mob/living/infectee, make_copy = TRUE)
-	if(IS_CHANGELING(infectee) || IS_CULTIST_OR_CULTIST_MOB(infectee) || IS_HEAD_REVOLUTIONARY(infectee))
+	// No conversion antag chikanery and changelings should be virus immune
+	if(IS_CHANGELING(infectee) || IS_CULTIST_OR_CULTIST_MOB(infectee) || IS_REVOLUTIONARY(infectee))
 		return FALSE
 
 	return ..()
