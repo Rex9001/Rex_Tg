@@ -1,8 +1,9 @@
 /datum/action/root_fist
-	name = "Organic Weapon"
-	desc = "Go tell a coder if you see this"
-	helptext = "Yell at Miauw and/or Perakp"
-
+	name = "Blood Root Barbs"
+	desc = "Covers your arms in barbs of infectious matter. High embed chance on hit. If embeded increases infection in target and if embeded in corpses revives them as t1 infected."
+	button_icon =
+	button_icon_state = "alien_hide"
+	background_icon =
 
 	var/silent = FALSE
 	var/weapon_type
