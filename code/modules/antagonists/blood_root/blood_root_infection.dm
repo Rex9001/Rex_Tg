@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	// The infection amount depends on the amount of blood root stage 2 infected we have
 	infection_amount += 1 / ((length(GLOB.blood_root_infected)+2) / 5)
 
-/datum/disease/blood_root/cure(FALSE)
+/datum/disease/blood_root/cure(add_resistance = FALSE)
 	var/datum/antagonist/blood_root/antag = IS_BLOOD_ROOT(affected_mob)
 	if(antag)
 		affected_mob.mind.remove_antag_datum(antag)
