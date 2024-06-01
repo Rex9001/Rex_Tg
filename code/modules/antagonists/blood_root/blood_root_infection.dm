@@ -88,6 +88,8 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			var/turf/V = get_turf(guy_to_infect)
 			if(disease_air_spread_walk(T, V))
 				infect(guy_to_infect)
+				guy_to_infect.AirborneContractDisease(src, force_spread)
+				var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
 			var/datum/disease/blood_root/virus
 			if(!(virus in diseases))
 				return
@@ -103,7 +105,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	// The infection amount depends on the amount of blood root stage 2 infected we have
 	infection_amount += 1 / ((length(GLOB.blood_root_infected)+2) / 5)
 
-/datum/disease/blood_root/cure()
+/datum/disease/blood_root/cure(FALSE)
 	var/datum/antagonist/blood_root/antag = IS_BLOOD_ROOT(affected_mob)
 	if(antag)
 		affected_mob.mind.remove_antag_datum(antag)

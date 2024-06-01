@@ -256,6 +256,9 @@ GLOBAL_LIST_INIT(ai_employers, list(
 /// Checks if the given mob is a spy!
 #define IS_SPY(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/spy))
 
+/// Checks if the given mob has the blood root antagonist.
+#define IS_BLOOD_ROOT(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/blood_root))
+
 /// List of human antagonist types which don't spawn directly on the space station
 GLOBAL_LIST_INIT(human_invader_antagonists, list(
 	/datum/antagonist/abductor,
