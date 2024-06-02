@@ -27,7 +27,7 @@
 			return
 		if(2)
 			// Our guy should look more fucked up
-			// We want stun resistence and passive healing with the caviat of burn damage here
+			// We want stun resistence and passive healing with the caviat of MORE burn damage here
 			// Should also add a spell to grant a weapon which embeds fragments of blood root into someone
 			// Spell should also be able to shoot people with barbs
 			/* Barbs also have the unique effect of working on corpses.
