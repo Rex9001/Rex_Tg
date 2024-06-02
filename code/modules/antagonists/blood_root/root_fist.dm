@@ -7,10 +7,9 @@
 
 	var/silent = FALSE
 	var/weapon_type
-	var/weapon_name
 
-/datum/action/root_fist/Remove(mob/remove_from)
-	unequip_held(remove_from)
+/datum/action/root_fist/Remove()
+	unequip_held(owner)
 	return ..()
 
 /// Removes weapon if it exists, returns true if we removed something
@@ -25,21 +24,48 @@
 		user.temporarilyRemoveItemFromInventory(hand_item, TRUE) //DROPDEL will delete the item
 		if(!silent)
 			playsound(user, 'sound/effects/blobattack.ogg', 30, TRUE)
-			user.visible_message(span_warning("With a sickening crunch, [user] reforms [user.p_their()] [weapon_name] into an arm!"), span_notice("We assimilate the [weapon_name] back into our body."), "<span class='italics>You hear organic matter ripping and tearing!</span>")
+			user.visible_message(span_warning("[user]s arms barbs retract with a sound of splitting bone!"), span_notice("We redraw the barbs from our arm."), "<span class='italics>You hear organic matter ripping and tearing!</span>")
 		user.update_held_items()
 		return TRUE
 
 /datum/action/root_fist/Activate()
-	var/obj/item/held = user.get_active_held_item()
-	if(held && !user.dropItemToGround(held))
-		user.balloon_alert(user, "hand occupied!")
+	var/obj/item/held = owner.get_active_held_item()
+	if(held && !owner.dropItemToGround(held))
+		owner.balloon_alert(owner, "hand occupied!")
 		return
-	if(!istype(user))
-		user.balloon_alert(user, "wrong shape!")
+	if(unequip_held(owner))
 		return
-	var/obj/item/weapon = new weapon_type(user, silent)
-	if(!user.put_in_hands(weapon))
+	if(!istype(owner))
+		owner.balloon_alert(owner, "wrong shape!")
+		return
+	var/obj/item/weapon = new weapon_type(owner, silent)
+	if(!owner.put_in_hands(weapon))
 		return
 	if(!silent)
-		playsound(user, 'sound/effects/blobattack.ogg', 30, TRUE)
+		playsound(owner, 'sound/effects/blobattack.ogg', 30, TRUE)
 	return
+
+/obj/item/gun/magic/root_fist
+	name = "Barbed arm"
+	desc = "A deadly combination of laziness and bloodlust, this blade allows the user to dismember their enemies without all the hard work of actually swinging the sword."
+	fire_sound = 'sound/magic/fireball.ogg'
+	ammo_type = /obj/item/ammo_casing/magic/spellblade
+	icon_state = "spellblade"
+	inhand_icon_state = "spellblade"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	hitsound = 'sound/weapons/rapierhit.ogg'
+	block_sound = 'sound/weapons/parry.ogg'
+	force = 20
+	armour_penetration = 75
+	block_chance = 50
+	sharpness = SHARP_EDGED
+
+/obj/item/gun/magic/root_fist/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, \
+		speed = 1.5 SECONDS, \
+		effectiveness = 125, \
+		bonus_modifier = 0, \
+		butcher_sound = hitsound, \
+	)
