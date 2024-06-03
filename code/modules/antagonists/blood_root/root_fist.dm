@@ -29,6 +29,7 @@
 		return TRUE
 
 /datum/action/spell/root_fist/Activate()
+	. = ..()
 	var/obj/item/held = owner.get_active_held_item()
 	if(held && !owner.dropItemToGround(held))
 		owner.balloon_alert(owner, "hand occupied!")
@@ -49,7 +50,7 @@
 	name = "Barbed arm"
 	desc = "A deadly combination of laziness and bloodlust, this blade allows the user to dismember their enemies without all the hard work of actually swinging the sword."
 	fire_sound = 'sound/magic/fireball.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/spellblade
+	ammo_type = /obj/item/ammo_casing/root_barb
 	icon_state = "spellblade"
 	inhand_icon_state = "spellblade"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -58,3 +59,29 @@
 	force = 15
 	sharpness = SHARP_EDGED
 
+/obj/item/gun/magic/root_fist/attack(mob/living/target_mob, mob/living/user, params)
+
+/obj/item/ammo_casing/root_barb
+	projectile_type = /obj/projectile/root_barb
+
+/obj/projectile/root_barb
+	name = "freeze beam"
+	icon_state = "ice_2"
+	damage = 10
+	damage_type = BRUTE
+	armor_flag = BIO
+
+/obj/projectile/root_barb/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/hit_mob = target
+		var/thermal_protection = 1 - hit_mob.get_insulation_protection(hit_mob.bodytemperature + temperature)
+
+		// The new body temperature is adjusted by the bullet's effect temperature
+		// Reduce the amount of the effect temperature change based on the amount of insulation the mob is wearing
+		hit_mob.adjust_bodytemperature((thermal_protection * temperature) + temperature)
+
+	else if(isliving(target))
+		var/mob/living/L = target
+		// the new body temperature is adjusted by the bullet's effect temperature
+		L.adjust_bodytemperature((1 - blocked) * temperature)
