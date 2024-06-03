@@ -15,17 +15,20 @@
 	var/infection_stage = 1
 
 /datum/antagonist/blood_root/proc/set_stage(stage)
+	var/mob/living/our_mob = mob_override || owner.current
 	var/adjusted_stage = stage - 1
 	if(infection_stage == adjusted_stage)
 		return
 	infection_stage = adjusted_stage
-	apply_stage_abilities()
+	apply_stage_abilities(our_mob)
 
-/datum/antagonist/blood_root/proc/apply_stage_abilities()
+/datum/antagonist/blood_root/proc/apply_stage_abilities(mob/our_mob)
 	switch(infection_stage)
 		if(1)
 			return
 		if(2)
+			var/datum/action/spell/root_fist/fist= new /datum/action/cooldown/root_speak()
+			fist.Grant(our_mob)
 			// Our guy should look more fucked up
 			// We want stun resistence and passive healing with the caviat of MORE burn damage here
 			// Should also add a spell to grant a weapon which embeds fragments of blood root into someone
@@ -33,6 +36,8 @@
 			/* Barbs also have the unique effect of working on corpses.
 			Corpses infected with barbs will seek a ghost to control them if not previously owned and then ressurect the corpse with Phase 1 infection.*/
 		if(3)
+			var/old_fist = locate(/datum/action/spell/root_fist) in our_mob.actions
+			old_fist.Remove()
 			// Same effects as stage 2 but beefed up
 			// Should be able to make tiles that infect people and heal infected
 			// Monsterous human subtypes, dead space esque

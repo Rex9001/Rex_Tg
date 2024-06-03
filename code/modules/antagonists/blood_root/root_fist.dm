@@ -1,4 +1,4 @@
-/datum/action/root_fist
+/datum/action/spell/root_fist
 	name = "Blood Root Barbs"
 	desc = "Covers your arms in barbs of infectious matter. High embed chance on hit. If embeded increases infection in target and if embeded in corpses revives them as t1 infected."
 	button_icon =
@@ -8,18 +8,18 @@
 	var/silent = FALSE
 	var/weapon_type
 
-/datum/action/root_fist/Remove()
+/datum/action/spell/root_fist/Remove()
 	unequip_held(owner)
 	return ..()
 
 /// Removes weapon if it exists, returns true if we removed something
-/datum/action/root_fist/proc/unequip_held(mob/user)
+/datum/action/spell/root_fist/proc/unequip_held(mob/user)
 	var/found_weapon = FALSE
 	for(var/obj/item/held in user.held_items)
 		found_weapon = check_weapon(user, held) || found_weapon
 	return found_weapon
 
-/datum/action/root_fist/proc/check_weapon(mob/user, obj/item/hand_item)
+/datum/action/spell/root_fist/proc/check_weapon(mob/user, obj/item/hand_item)
 	if(istype(hand_item, weapon_type))
 		user.temporarilyRemoveItemFromInventory(hand_item, TRUE) //DROPDEL will delete the item
 		if(!silent)
@@ -28,7 +28,7 @@
 		user.update_held_items()
 		return TRUE
 
-/datum/action/root_fist/Activate()
+/datum/action/spell/root_fist/Activate()
 	var/obj/item/held = owner.get_active_held_item()
 	if(held && !owner.dropItemToGround(held))
 		owner.balloon_alert(owner, "hand occupied!")
@@ -55,17 +55,6 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	hitsound = 'sound/weapons/rapierhit.ogg'
-	block_sound = 'sound/weapons/parry.ogg'
-	force = 20
-	armour_penetration = 75
-	block_chance = 50
+	force = 15
 	sharpness = SHARP_EDGED
 
-/obj/item/gun/magic/root_fist/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/butchering, \
-		speed = 1.5 SECONDS, \
-		effectiveness = 125, \
-		bonus_modifier = 0, \
-		butcher_sound = hitsound, \
-	)
