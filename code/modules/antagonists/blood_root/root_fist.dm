@@ -4,6 +4,7 @@
 	button_icon =
 	button_icon_state = "alien_hide"
 	background_icon =
+	cooldown = 10 SECONDS
 
 	var/silent = FALSE
 	var/weapon_type
@@ -49,7 +50,7 @@
 /obj/item/gun/magic/root_fist
 	name = "Barbed arm"
 	desc = "A deadly combination of laziness and bloodlust, this blade allows the user to dismember their enemies without all the hard work of actually swinging the sword."
-	fire_sound = 'sound/magic/fireball.ogg'
+	fire_sound = 'sound/effects/blobattack.ogg'
 	ammo_type = /obj/item/ammo_casing/root_barb
 	icon_state = "spellblade"
 	inhand_icon_state = "spellblade"
@@ -58,8 +59,27 @@
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 15
 	sharpness = SHARP_EDGED
+	/// How many barbs we have embeded
+	var/barbs_embed = 0
 
 /obj/item/gun/magic/root_fist/attack(mob/living/target_mob, mob/living/user, params)
+	. = ..()
+	var/obj/projectile/root_barb/shot
+	if(!shot.tryEmbed(target_mob, prob(30)))
+		return
+	barbs_embed += 1
+	if(!barbs_embed >= 3)
+		return
+	loose_barbs(user)
+
+/obj/item/gun/magic/root_fist/fire_gun(atom/target, mob/living/user, flag, params)
+	. = ..()
+	loose_barbs(user)
+
+/obj/item/gun/magic/root_fist/proc/loose_barbs(mob/living/user)
+	visible_message(span_warning("[user]s [src]s runs out of barbs!"))
+	user.temporarilyRemoveItemFromInventory(src, TRUE)
+	user.update_held_items()
 
 /obj/item/ammo_casing/root_barb
 	projectile_type = /obj/projectile/root_barb
@@ -109,7 +129,6 @@
 
 /obj/projectile/root_barb/unembedded()
 	visible_message(span_warning("[src] cracks and twists, changing shape!"))
-	for(var/obj/tongue as anything in contents)
-		tongue.forceMove(get_turf(src))
-
+	for(var/obj/root_barb as anything in contents)
+		root_barb.forceMove(get_turf(src))
 	qdel(src)
