@@ -93,7 +93,7 @@
 		fall_chance = 0,
 	)
 
-/obj/projectile/root_barb/embedded(atom/target)
+/obj/projectile/root_barb/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(!iscarbon(target))
 		return
@@ -103,7 +103,7 @@
 	if(!is_type_in_list(virus , guy.get_static_viruses()))
 		virus = new /datum/disease/blood_root()
 		virus.infect(guy)
-	virus.infection_amount += 30 SECONDS
+	virus.infection_amount += 30
 	// Basically this only revives people if their virus stage is 1
 	if(!(guy.stat == DEAD) || virus.stage >= 2)
 		return
@@ -120,9 +120,3 @@
 	// If the corpse isnt controlled by anyone we add a new controller
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(check_jobban = ROLE_HERETIC, poll_time = 10 SECONDS, checked_target = guy, alert_pic = guy, role_name_text = "Blood root infected")
 	guy.key = chosen_one.key
-
-/obj/projectile/root_barb/unembedded()
-	visible_message(span_warning("[src] cracks and twists, changing shape!"))
-	for(var/obj/root_barb as anything in contents)
-		root_barb.forceMove(get_turf(src))
-	qdel(src)

@@ -1202,14 +1202,3 @@
 	bullet.preparePixelProjectile(target, src)
 	bullet.fire()
 	return bullet
-
-/// Called when a projectile is embedded into something
-/obj/projectile/proc/embedded(atom/embedded_target, obj/item/bodypart/part)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_EMBEDDED, embedded_target, part)
-
-/// Called when a projectile is embedded into something
-/obj/projectile/proc/unembedded()
-	if(DROPDEL && !QDELETED(src))
-		qdel(src)
-		return TRUE
