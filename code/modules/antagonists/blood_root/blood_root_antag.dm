@@ -14,6 +14,17 @@
 	/// Stage, the stage the infection is on, used to grant abilities
 	var/infection_stage = 1
 
+/datum/antagonist/blood_root/apply_innate_effects(mob/living/mob_override)
+	var/mob/living/our_mob = mob_override || owner.current
+	add_team_hud(our_mob)
+	var/datum/action/cooldown/root_speak/root = new /datum/action/cooldown/root_speak()
+	root.Grant(our_mob)
+
+/datum/antagonist/lunatic/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/our_mob = mob_override || owner.current
+	var/root = locate(/datum/action/cooldown/root_speak) in our_mob.actions
+	qdel(root)
+
 /datum/antagonist/blood_root/proc/set_stage(stage)
 	var/mob/living/our_mob = owner.current
 	if(infection_stage == stage)
@@ -28,6 +39,9 @@
 		if(2)
 			var/datum/action/cooldown/root_fist/fist= new /datum/action/cooldown/root_fist()
 			fist.Grant(our_mob)
+			ADD_TRAIT(our_mob, TRAIT_BATON_RESISTANCE, REF(src))
+			RegisterSignal (our_mob, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_damaged))
+			RegisterSignal(our_mob, COMSIG_LIVING_LIFE, PROC_REF(on_life))
 			// Our guy should look more fucked up
 			// We want stun resistence and passive healing with the caviat of MORE burn damage here
 			// Should also add a spell to grant a weapon which embeds fragments of blood root into someone
@@ -37,20 +51,47 @@
 		if(3)
 			var/old_fist = locate(/datum/action/cooldown/root_fist) in our_mob.actions
 			qdel(old_fist)
+			RegisterSignal(our_mob, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 			// Same effects as stage 2 but beefed up
 			// Should be able to make tiles that infect people and heal infected
 			// Monsterous human subtypes, dead space esque
 
+/datum/antagonist/blood_root/proc/on_damaged(datum/source, damage, damagetype)
+	SIGNAL_HANDLER
+	var/mob/living/our_mob = owner.current
 
-/datum/antagonist/blood_root/apply_innate_effects(mob/living/mob_override)
-	var/mob/living/our_mob = mob_override || owner.current
-	add_team_hud(our_mob)
-	var/datum/action/cooldown/root_speak/root = new /datum/action/cooldown/root_speak()
-	root.Grant(our_mob)
+	if(damagetype != BURN)
+		return
+	// An increase of 25% burn damage
+	our_mob.apply_damage(damage*0.25, damagetype = BURN, blocked = armor, spread_damage = TRUE)
+	// Our mob takes double burn damage if at or above stage 3
+	if(!infection_stage >= 3)
+		return
+	our_mob.apply_damage(damage*0.25, damagetype = BURN, blocked = armor, spread_damage = TRUE)
 
-/datum/antagonist/lunatic/remove_innate_effects(mob/living/mob_override)
-	var/mob/living/our_mob = mob_override || owner.current
-	var/root = locate(/datum/action/cooldown/root_speak) in our_mob.actions
-	qdel(root)
+/datum/antagonist/blood_root/proc/on_life(mob/living/source, seconds_per_tick, times_fired)
+	SIGNAL_HANDLER
+
+	var/need_mob_update = FALSE
+	if(stage == 2)
+		// Stage 2 infected heal at a slower rate than stage 3
+		need_mob_update += source.adjustBruteLoss(-1, updating_health = FALSE)
+		need_mob_update += source.adjustFireLoss(-1, updating_health = FALSE)
+		need_mob_update += source.adjustToxLoss(-1, updating_health = FALSE, forced = TRUE) // Slimes are people too
+		need_mob_update += source.adjustOxyLoss(-0.5, updating_health = FALSE)
+	else if(stage >= 3)
+		// Stage 3 also gain a stamina heal
+		need_mob_update += source.adjustBruteLoss(-3, updating_health = FALSE)
+		need_mob_update += source.adjustFireLoss(-3, updating_health = FALSE)
+		need_mob_update += source.adjustToxLoss(-3, updating_health = FALSE, forced = TRUE) // Slimes are people too
+		need_mob_update += source.adjustOxyLoss(-1.5, updating_health = FALSE)
+		need_mob_update += source.adjustStaminaLoss(-10, updating_stamina = FALSE)
+	if(!need_mob_update)
+		return
+	source.updatehealth()
+
+/datum/antagonist/blood_root/proc/on_death(datum/source)
+	SIGNAL_HANDLER
+
 
 // ENDGAME: Conglomorate everyone into a big monster

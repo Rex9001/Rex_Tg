@@ -93,6 +93,7 @@
 		fall_chance = 0,
 	)
 
+// PLANS: MAKE THIS SHIT APPLY WHILST ITS EMBEDED AND THEN STOP WHEN THE BARB IS PULLED OUT
 /obj/projectile/root_barb/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(!iscarbon(target))
