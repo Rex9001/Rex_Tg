@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	/// The amount of infection this person has
 	var/infection_amount = 0
 	/// The amount of infection this person has to have in order to gain the antag datum and move up a stage
-	var/infection_goal = 80 SECONDS
+	var/infection_goal = 80
 
 /datum/disease/blood_root/stage_act(seconds_per_tick, times_fired)
 	. = ..()
@@ -36,12 +36,12 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 				update_stage(min(stage + 1, max_stages))
 				affected_mob.mind.add_antag_datum(/datum/antagonist/blood_root)
 		if(2)
-			if(infection_amount >= 600 SECONDS)
+			if(infection_amount >= 600)
 				update_stage(min(stage + 1, max_stages))
 			increase_infection()
 			spread()
 		if(3)
-			if(infection_amount >= 1200 SECONDS)
+			if(infection_amount >= 1200)
 				update_stage(min(stage + 1, max_stages))
 			increase_infection()
 			spread()
@@ -51,7 +51,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 	var/datum/antagonist/blood_root/antag = IS_BLOOD_ROOT(affected_mob)
 	if(!antag)
 		return
-	antag.set_stage(stage)
+	antag.set_stage(stage-1)
 	return
 
 // Sadly have to slot in the whole proc because we want to do something special in the last loop
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			virus.increase_infection()
 
 /datum/disease/blood_root/proc/increase_infection()
-	if(infection_amount >= 1200 SECONDS)
+	if(infection_amount >= 1200)
 		return
 	if(HAS_TRAIT(affected_mob, TRAIT_MINDSHIELD))
 		// Half as much infection if they are mindshielded

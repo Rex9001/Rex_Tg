@@ -16,10 +16,9 @@
 
 /datum/antagonist/blood_root/proc/set_stage(stage)
 	var/mob/living/our_mob = owner.current
-	var/adjusted_stage = stage - 1
-	if(infection_stage == adjusted_stage)
+	if(infection_stage == stage)
 		return
-	infection_stage = adjusted_stage
+	infection_stage = stage
 	apply_stage_abilities(our_mob)
 
 /datum/antagonist/blood_root/proc/apply_stage_abilities(mob/our_mob)

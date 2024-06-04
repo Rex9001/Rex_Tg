@@ -108,10 +108,10 @@
 	if(!(guy.stat == DEAD) || virus.stage >= 2)
 		return
 	// Heals up their damage and revives them
-	guy.adjustBruteLoss(-100)
-	guy.adjustToxLoss(-100)
-	guy.adjustFireLoss(-100)
-	guy.adjustOxyLoss(-100)
+	guy.adjustBruteLoss(-200)
+	guy.adjustToxLoss(-200)
+	guy.adjustFireLoss(-200)
+	guy.adjustOxyLoss(-200)
 	guy.revive()
 	// Sets their stage to two, granting the antag datum
 	virus.update_stage(2)
