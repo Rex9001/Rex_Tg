@@ -15,7 +15,7 @@
 	var/infection_stage = 1
 
 /datum/antagonist/blood_root/proc/set_stage(stage)
-	var/mob/living/our_mob = mob_override || owner.current
+	var/mob/living/our_mob = owner.current
 	var/adjusted_stage = stage - 1
 	if(infection_stage == adjusted_stage)
 		return
@@ -27,7 +27,7 @@
 		if(1)
 			return
 		if(2)
-			var/datum/action/spell/root_fist/fist= new /datum/action/cooldown/root_speak()
+			var/datum/action/cooldown/root_fist/fist= new /datum/action/cooldown/root_fist()
 			fist.Grant(our_mob)
 			// Our guy should look more fucked up
 			// We want stun resistence and passive healing with the caviat of MORE burn damage here
@@ -36,8 +36,8 @@
 			/* Barbs also have the unique effect of working on corpses.
 			Corpses infected with barbs will seek a ghost to control them if not previously owned and then ressurect the corpse with Phase 1 infection.*/
 		if(3)
-			var/old_fist = locate(/datum/action/spell/root_fist) in our_mob.actions
-			old_fist.Remove()
+			var/old_fist = locate(/datum/action/cooldown/root_fist) in our_mob.actions
+			qdel(old_fist)
 			// Same effects as stage 2 but beefed up
 			// Should be able to make tiles that infect people and heal infected
 			// Monsterous human subtypes, dead space esque
@@ -54,4 +54,4 @@
 	var/root = locate(/datum/action/cooldown/root_speak) in our_mob.actions
 	qdel(root)
 
-// ENDGAME: Construct a spore tower in 3 different locations and then begin merging into them
+// ENDGAME: Conglomorate everyone into a big monster

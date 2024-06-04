@@ -31,7 +31,7 @@
 	if(!message)
 		return
 
-	var/my_message = "<span class='[noticealien]'><b>Root Speak: <br>[Infected] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]</span>"
+	var/my_message = "<span class='alien'><b>Root Speak: <br>Infected [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]</span>"
 	for(var/player in GLOB.player_list)
 		var/mob/reciever = player
 		if(IS_BLOOD_ROOT(reciever))

@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			if(disease_air_spread_walk(T, V))
 				infect(guy_to_infect)
 				guy_to_infect.AirborneContractDisease(src, force_spread)
-				var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
+			var/list/datum/disease/diseases = guy_to_infect.get_static_viruses()
 			var/datum/disease/blood_root/virus
 			if(!(virus in diseases))
 				return
