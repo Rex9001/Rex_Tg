@@ -65,23 +65,51 @@
 	projectile_type = /obj/projectile/root_barb
 
 /obj/projectile/root_barb
-	name = "freeze beam"
+	name = "Blood Root Barb"
 	icon_state = "ice_2"
 	damage = 10
 	damage_type = BRUTE
 	armor_flag = BIO
+	embedding = list(
+		"impact_pain_mult" = 0,
+		"embedded_pain_multiplier" = 15,
+		"embed_chance" = 100,
+		"embedded_fall_chance" = 0,
+		"embedded_ignore_throwspeed_threshold" = TRUE,
+	)
 
-/obj/projectile/root_barb/on_hit(atom/target, blocked = 0, pierce_hit)
+/obj/projectile/root_barb/embedded(atom/target)
 	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/hit_mob = target
-		var/thermal_protection = 1 - hit_mob.get_insulation_protection(hit_mob.bodytemperature + temperature)
+	if(!iscarbon(target))
+		return
+	var/mob/living/carbon/guy = target
+	var/datum/disease/blood_root/virus
+	// If the virus isnt in the list we create a new virus
+	if(!is_type_in_list(virus , guy.get_static_viruses()))
+		virus = new /datum/disease/blood_root()
+		virus.infect(guy)
+	virus.infection_amount += 30 SECONDS
+	// Basically this only revives people if their virus stage is 1
+	if(!(guy.stat == DEAD) || virus.stage >= 2)
+		return
+	// Heals up their damage and revives them
+	guy.adjustBruteLoss(-100)
+	guy.adjustToxLoss(-100)
+	guy.adjustFireLoss(-100)
+	guy.adjustOxyLoss(-100)
+	guy.revive()
+	// Sets their stage to two, granting the antag datum
+	virus.update_stage(2)
+	if(!guy.key)
+		return
+	// If the corpse isnt controlled by anyone we add a new controller
+	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(check_jobban = ROLE_HERETIC, poll_time = 10 SECONDS, checked_target = guy, ignore_category = poll_ignore_define, alert_pic = guy, role_name_text = "Blood root infected")
+	guy.key = chosen_one.key
 
-		// The new body temperature is adjusted by the bullet's effect temperature
-		// Reduce the amount of the effect temperature change based on the amount of insulation the mob is wearing
-		hit_mob.adjust_bodytemperature((thermal_protection * temperature) + temperature)
 
-	else if(isliving(target))
-		var/mob/living/L = target
-		// the new body temperature is adjusted by the bullet's effect temperature
-		L.adjust_bodytemperature((1 - blocked) * temperature)
+/obj/projectile/root_barb/unembedded()
+	visible_message(span_warning("[src] cracks and twists, changing shape!"))
+	for(var/obj/tongue as anything in contents)
+		tongue.forceMove(get_turf(src))
+
+	qdel(src)
