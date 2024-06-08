@@ -101,7 +101,7 @@
 	var/mob/living/carbon/guy = target
 	var/datum/disease/blood_root/virus
 	// If the virus isnt in the list we create a new virus
-	if(!is_type_in_list(virus , guy.get_static_viruses()))
+	if(!virus in guy.get_static_viruses())
 		virus = new /datum/disease/blood_root()
 		virus.infect(guy)
 	virus.infection_amount += 30

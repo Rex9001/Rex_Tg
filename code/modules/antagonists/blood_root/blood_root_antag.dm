@@ -42,7 +42,7 @@
 			ADD_TRAIT(our_mob, TRAIT_BATON_RESISTANCE, REF(src))
 			RegisterSignal (our_mob, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_damaged))
 			RegisterSignal(our_mob, COMSIG_LIVING_LIFE, PROC_REF(on_life))
-			// Our guy should look more fucked up
+			// Our guy should look more fucked up - PRIORITY
 			// We want stun resistence and passive healing with the caviat of MORE burn damage here
 			// Should also add a spell to grant a weapon which embeds fragments of blood root into someone
 			// Spell should also be able to shoot people with barbs
@@ -63,25 +63,25 @@
 		return
 
 	// An increase of 25% burn damage
-	our_mob.apply_damage(damage*0.25, damagetype = BURN, blocked = armor, spread_damage = TRUE)
+	our_mob.apply_damage(damage*0.25, damagetype = BURN, spread_damage = TRUE)
 	// Our mob takes double burn damage if at or above stage 3
 	if(!infection_stage >= 3)
 		return
 	// Deals the same damage again to work with early returns
-	our_mob.apply_damage(damage*0.25, damagetype = BURN, blocked = armor, spread_damage = TRUE)
+	our_mob.apply_damage(damage*0.25, damagetype = BURN, spread_damage = TRUE)
 
 /datum/antagonist/blood_root/proc/on_life(mob/living/source, seconds_per_tick, times_fired)
 	SIGNAL_HANDLER
 
 	var/need_mob_update = FALSE
-	if(stage == 2)
+	if(infection_stage == 2)
 		// Stage 2 infected heal at a slower rate than stage 3
 		need_mob_update += source.adjustBruteLoss(-1, updating_health = FALSE)
 		need_mob_update += source.adjustFireLoss(-1, updating_health = FALSE)
 		// Certain races take damage from toxyloss
 		need_mob_update += source.adjustToxLoss(-1, updating_health = FALSE, forced = TRUE)
 		need_mob_update += source.adjustOxyLoss(-0.5, updating_health = FALSE)
-	else if(stage >= 3)
+	else if(infection_stage >= 3)
 		// Stage 3 also gain a stamina heal
 		need_mob_update += source.adjustBruteLoss(-3, updating_health = FALSE)
 		need_mob_update += source.adjustFireLoss(-3, updating_health = FALSE)
