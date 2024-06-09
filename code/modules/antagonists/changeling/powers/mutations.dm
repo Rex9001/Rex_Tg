@@ -741,3 +741,101 @@
 	var/mob/living/basic/legion_brood/brood = minion
 	if (istype(brood))
 		brood.assign_creator(owner, FALSE)
+
+/***************************************\
+|************BONE CROSSBOW**************|
+\***************************************/
+
+/datum/action/changeling/weapon/crossbow
+	name = "Bone splitting"
+	desc = "We split open our forearm to shoot bone. Costs 30 chemicals."
+	helptext = "We can use it once to retrieve a distant item. If used on living creatures, the effect depends on our combat mode: \
+	In our neutral stance, we will simply drag them closer; if we try to shove, we will grab whatever they're holding in their active hand instead of them; \
+	in our combat stance, we will put the victim in our hold after catching them, and we will pull them in and stab them if we're also holding a sharp weapon. \
+	Cannot be used while in lesser form."
+	button_icon_state = "tentacle"
+	chemical_cost = 30
+	dna_cost = 2
+	req_human = TRUE
+	weapon_type = /obj/item/gun/magic/bone_crossbow
+	weapon_name_simple = "tentacle"
+	silent = TRUE
+
+/obj/item/gun/magic/bone_crossbow
+	name = "tentacle"
+	desc = "A fleshy tentacle that can stretch out and grab things or people."
+	icon = 'icons/obj/weapons/changeling_items.dmi'
+	icon_state = "tentacle"
+	inhand_icon_state = "tentacle"
+	lefthand_file = 'icons/mob/inhands/antag/changeling_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/antag/changeling_righthand.dmi'
+	item_flags = NEEDS_PERMIT | ABSTRACT | DROPDEL | NOBLUDGEON
+	flags_1 = NONE
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = NONE
+	antimagic_flags = NONE
+	pinless = TRUE
+	ammo_type = /obj/item/ammo_casing/bone_crossbow
+	fire_sound = 'sound/effects/splat.ogg'
+	force = 10
+	max_charges = 1
+	fire_delay = 1
+	throwforce = 0 //Just to be on the safe side
+	throw_range = 0
+	throw_speed = 0
+	can_hold_up = FALSE
+	resistance_flags = FLAMMABLE
+
+/obj/item/gun/magic/bone_crossbow/before_firing(atom/target, mob/user)
+	var/obj/projectile/bullet/bone/bone_shot = chambered.loaded_projectile
+	var/datum/antagonist/changeling/ling = IS_CHANGELING(user)
+	bone_shot.stinger = ling.chosen_sting
+	return ..()
+
+/obj/item/ammo_casing/bone_crossbow
+	projectile_type = /obj/projectile/bullet/rebar
+
+/obj/projectile/bullet/bone
+	name = "bone"
+	icon_state = "bone"
+	damage = 30
+	speed = 0.4
+	dismemberment = 1 //because a 1 in 100 chance to just blow someones arm off is enough to be cool but also not enough to be reliable
+	armour_penetration = 10
+	wound_bonus = -20
+	bare_wound_bonus = 20
+	embedding = list("embed_chance" = 80, "fall_chance" = 2, "jostle_chance" = 2, "ignore_throwspeed_threshold" = TRUE, "pain_stam_pct" = 0.4, "pain_mult" = 4, "jostle_pain_mult" = 2, "rip_time" = 10)
+	shrapnel_type = /obj/item/ammo_casing/bone_crossbow
+	/// The sting that the owner has, gives special effects to the gun
+	var/datum/action/changeling/sting/stinger
+
+/obj/projectile/bullet/bone/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(!iscarbon(target))
+		return
+
+	var/mob/living/carbon/guy = target
+	if(stinger == /datum/action/changeling/sting/transformation)
+		guy.bioscramble(name)
+		return
+
+	if(stinger == /datum/action/changeling/sting/mute)
+		guy.adjust_silence(20 SECONDS)
+		return
+
+	if(stinger == /datum/action/changeling/sting/blind)
+		guy.adjust_temp_blindness(5 SECONDS)
+		guy.set_eye_blur_if_lower(20 SECONDS)
+		return
+
+	if(stinger == /datum/action/changeling/sting/lsd)
+		guy.adjust_hallucinations(60 SECONDS)
+		return
+
+	if(stinger == /datum/action/changeling/sting/cryo)
+		guy.reagents.add_reagent(/datum/reagent/cryostylane, 20)
+		return
+
+	guy.reagents.add_reagent()
+
+
