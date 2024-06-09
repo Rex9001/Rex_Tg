@@ -25,6 +25,7 @@
 	var/root = locate(/datum/action/cooldown/root_speak) in our_mob.actions
 	qdel(root)
 
+/// Sets the stage of the blood root infection, affecting abilities
 /datum/antagonist/blood_root/proc/set_stage(stage)
 	var/mob/living/our_mob = owner.current
 	if(infection_stage == stage)

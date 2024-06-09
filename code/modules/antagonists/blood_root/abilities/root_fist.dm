@@ -108,7 +108,7 @@
 	// Basically this only revives people if their virus stage is 1
 	if(!(guy.stat == DEAD) || virus.stage >= 2)
 		return
-	// Heals up their damage and revives them
+	// Heals up their damage 	and revives them
 	guy.adjustBruteLoss(-200)
 	guy.adjustToxLoss(-200)
 	guy.adjustFireLoss(-200)
