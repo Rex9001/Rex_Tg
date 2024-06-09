@@ -789,7 +789,7 @@
 /obj/item/gun/magic/bone_crossbow/before_firing(atom/target, mob/user)
 	var/obj/projectile/bullet/bone/bone_shot = chambered.loaded_projectile
 	var/datum/antagonist/changeling/ling = IS_CHANGELING(user)
-	bone_shot.stinger = ling.chosen_sting
+	bone_shot.set_stinger(ling.chosen_sting)
 	return ..()
 
 /obj/item/ammo_casing/bone_crossbow
@@ -809,9 +809,18 @@
 	/// The sting that the owner has, gives special effects to the gun
 	var/datum/action/changeling/sting/stinger
 
+/obj/projectile/bullet/bone/proc/set_stinger(datum/action/changeling/sting/chosen_sting)
+	if(!chosen_sting)
+		return
+	stinger = chosen_sting
+
+// Adds special effects depending on the chosen sting of the ling who fired this
 /obj/projectile/bullet/bone/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(!iscarbon(target))
+		return
+
+	if(!stinger)
 		return
 
 	var/mob/living/carbon/guy = target
@@ -836,6 +845,6 @@
 		guy.reagents.add_reagent(/datum/reagent/cryostylane, 20)
 		return
 
-	guy.reagents.add_reagent()
+	guy.reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 10)
 
 
