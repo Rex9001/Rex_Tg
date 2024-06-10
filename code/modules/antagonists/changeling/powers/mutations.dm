@@ -860,6 +860,7 @@
 		QDEL_IN(blade, 20 SECONDS)
 		return
 
+	// If they have a sting that isnt represented it just injects some toxins
 	guy.reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 10)
 
 
