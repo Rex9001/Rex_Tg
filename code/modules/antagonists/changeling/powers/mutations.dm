@@ -759,7 +759,6 @@
 	req_human = TRUE
 	weapon_type = /obj/item/gun/magic/bone_crossbow
 	weapon_name_simple = "tentacle"
-	silent = TRUE
 
 /obj/item/gun/magic/bone_crossbow
 	name = "tentacle"
@@ -787,6 +786,12 @@
 	throw_speed = 0
 	can_hold_up = FALSE
 	resistance_flags = FLAMMABLE
+
+/obj/item/magic/bone_crossbow/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
+	if(ismob(loc))
+		loc.visible_message(span_warning("The end of [loc.name]\'s hand splits in two, showing a large bone protrussion!"), span_warning("We split our forearm to shoot bone!"), span_hear("You hear organic matter ripping and tearing!"))
 
 /obj/item/gun/magic/bone_crossbow/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	user.balloon_alert(user, "not ready!")
