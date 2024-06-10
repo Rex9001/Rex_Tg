@@ -779,6 +779,8 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	force = 10
 	max_charges = 1
+	// Slow recharge rate, bones aint free ya kow
+	recharge_rate = 12
 	fire_delay = 1
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
@@ -786,14 +788,18 @@
 	can_hold_up = FALSE
 	resistance_flags = FLAMMABLE
 
-/obj/item/gun/magic/bone_crossbow/before_firing(atom/target, mob/user)
+/obj/item/gun/magic/bone_crossbow/shoot_with_empty_chamber(mob/living/user as mob|obj)
+	user.balloon_alert(user, "not ready!")
+
+/obj/item/gun/magic/bone_crossbow/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
 	var/obj/projectile/bullet/bone/bone_shot = chambered.loaded_projectile
 	var/datum/antagonist/changeling/ling = IS_CHANGELING(user)
 	bone_shot.set_stinger(ling.chosen_sting)
 	return ..()
 
 /obj/item/ammo_casing/bone_crossbow
-	projectile_type = /obj/projectile/bullet/rebar
+// Add some sort of bone thing as casing
+	projectile_type = /obj/projectile/bullet/bone
 
 /obj/projectile/bullet/bone
 	name = "bone"
@@ -824,25 +830,34 @@
 		return
 
 	var/mob/living/carbon/guy = target
-	if(stinger == /datum/action/changeling/sting/transformation)
+	if(istype(stinger, /datum/action/changeling/sting/transformation))
 		guy.bioscramble(name)
 		return
 
-	if(stinger == /datum/action/changeling/sting/mute)
+	if(istype(stinger, /datum/action/changeling/sting/mute))
 		guy.adjust_silence(20 SECONDS)
 		return
 
-	if(stinger == /datum/action/changeling/sting/blind)
+	if(istype(stinger, /datum/action/changeling/sting/blind))
 		guy.adjust_temp_blindness(5 SECONDS)
 		guy.set_eye_blur_if_lower(20 SECONDS)
 		return
 
-	if(stinger == /datum/action/changeling/sting/lsd)
+	if(istype(stinger, /datum/action/changeling/sting/lsd))
 		guy.adjust_hallucinations(60 SECONDS)
 		return
 
-	if(stinger == /datum/action/changeling/sting/cryo)
+	if(istype(stinger, /datum/action/changeling/sting/cryo))
 		guy.reagents.add_reagent(/datum/reagent/cryostylane, 20)
+		return
+
+	if(istype(stinger, /datum/action/changeling/sting/false_armblade))
+		var/obj/item/held = guy.get_active_held_item()
+		if(held && !guy.dropItemToGround(held))
+			return
+		var/obj/item/melee/arm_blade/false/blade = new(guy,1)
+		guy.put_in_hands(blade)
+		QDEL_IN(blade, 20 SECONDS)
 		return
 
 	guy.reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 10)
