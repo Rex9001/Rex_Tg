@@ -747,22 +747,22 @@
 \***************************************/
 
 /datum/action/changeling/weapon/crossbow
-	name = "Bone splitting"
+	name = "Bone Splitting"
 	desc = "We split open our forearm to shoot bone. Costs 30 chemicals."
-	helptext = "We can use it once to retrieve a distant item. If used on living creatures, the effect depends on our combat mode: \
-	In our neutral stance, we will simply drag them closer; if we try to shove, we will grab whatever they're holding in their active hand instead of them; \
-	in our combat stance, we will put the victim in our hold after catching them, and we will pull them in and stab them if we're also holding a sharp weapon. \
-	Cannot be used while in lesser form."
+	helptext = "We can use it once to shoot bone from our arm. If shot with an active sting the effect varies: \
+	Transformation will bioscramble the target, mute will silence the target, blind will blind them, \
+	hallucination will cause the target hallucinations, false armblade will give the target a temporary \
+	false armblade, cryo will inject them with cooling chemicals and extract dna will inject small amounts of cloral hydrate."
 	button_icon_state = "tentacle"
 	chemical_cost = 30
 	dna_cost = 2
 	req_human = TRUE
 	weapon_type = /obj/item/gun/magic/bone_crossbow
-	weapon_name_simple = "tentacle"
+	weapon_name_simple = "Bone Crossbow"
 
 /obj/item/gun/magic/bone_crossbow
-	name = "tentacle"
-	desc = "A fleshy tentacle that can stretch out and grab things or people."
+	name = "Split forearm"
+	desc = "A forearm split in two, has a large bone protrussion in the center."
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "tentacle"
 	inhand_icon_state = "tentacle"
