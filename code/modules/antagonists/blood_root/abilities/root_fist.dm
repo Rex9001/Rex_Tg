@@ -99,9 +99,9 @@
 	if(!iscarbon(target))
 		return
 	var/mob/living/carbon/guy = target
-	var/datum/disease/blood_root/virus
+	var/datum/disease/blood_root/virus = HAS_BLOOD_ROOT
 	// If the virus isnt in the list we create a new virus
-	if(!virus in guy.get_static_viruses())
+	if(!virus)
 		virus = new /datum/disease/blood_root()
 		virus.infect(guy)
 	virus.infection_amount += 30

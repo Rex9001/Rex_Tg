@@ -258,6 +258,8 @@ GLOBAL_LIST_INIT(ai_employers, list(
 
 /// Checks if the given mob has the blood root antagonist.
 #define IS_BLOOD_ROOT(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/blood_root))
+/// If the given mob has a blood root infection
+#define HAS_BLOOD_ROOT(mob) (locate(/datum/disease/blood_root) in mob?.get_static_viruses())
 
 /// List of human antagonist types which don't spawn directly on the space station
 GLOBAL_LIST_INIT(human_invader_antagonists, list(
