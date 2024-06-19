@@ -89,7 +89,8 @@ GLOBAL_LIST_EMPTY(blood_root_infected)
 			if(disease_air_spread_walk(T, V))
 				infect(guy_to_infect)
 				guy_to_infect.AirborneContractDisease(src, force_spread)
-			if(!HAS_BLOOD_ROOT(guy_to_infect))
+			var/datum/disease/blood_root/virus = HAS_BLOOD_ROOT(guy_to_infect)
+			if(!virus)
 				return
 			virus.increase_infection()
 

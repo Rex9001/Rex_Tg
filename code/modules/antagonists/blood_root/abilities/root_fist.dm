@@ -99,7 +99,7 @@
 	if(!iscarbon(target))
 		return
 	var/mob/living/carbon/guy = target
-	var/datum/disease/blood_root/virus = HAS_BLOOD_ROOT
+	var/datum/disease/blood_root/virus = HAS_BLOOD_ROOT(guy)
 	// If the virus isnt in the list we create a new virus
 	if(!virus)
 		virus = new /datum/disease/blood_root()
