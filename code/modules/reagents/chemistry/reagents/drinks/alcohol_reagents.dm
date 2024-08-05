@@ -2941,7 +2941,7 @@
 	///If our drinker has a robotic liver
 	var/has_robo_liver = FALSE
 
-/datum/reagent/consumable/ethanol/fossilsauce/on_mob_metabolize(mob/living/affected_mob)
+/datum/reagent/consumable/ethanol/fossilsauce/on_mob_metabolize(mob/living/carbon/drinker)
 	. = ..()
 	var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(!IS_ROBOTIC_ORGAN(liver))
@@ -2950,7 +2950,7 @@
 	engine_loop = new(src)
 	engine_loop.start()
 
-/datum/reagent/consumable/ethanol/fossilsauce/on_mob_end_metabolize(mob/living/affected_mob)
+/datum/reagent/consumable/ethanol/fossilsauce/on_mob_end_metabolize(mob/living/carbon/drinker)
 	. = ..()
 	if(!has_robo_liver)
 		return
@@ -2963,7 +2963,7 @@
 
 	var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
 
-	if(drinker.flaming)
+	if(drinker.fire_stacks)
 		// More fire damage
 		drinker.adjust_fire_stacks(0.25)
 
