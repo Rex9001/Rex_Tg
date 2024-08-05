@@ -2909,7 +2909,7 @@
 	. = ..()
 	if(isethereal(drinker))
 		drinker.blood_volume += 1 * seconds_per_tick
-	else if(SPT_PROB(10, seconds_per_tick))
+	else if(SPT_PROB(2.5, seconds_per_tick))
 		drinker.electrocute_act(rand(5,10), "Syndicate EMP in their body", 1, SHOCK_NOGLOVES) //the shock is coming from inside the house
 		playsound(drinker, SFX_SPARKS, 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
@@ -2947,7 +2947,7 @@
 	if(!IS_ROBOTIC_ORGAN(liver))
 		return
 	has_robo_liver = TRUE
-	engine_loop = new(src)
+	engine_loop = new(drinker)
 	engine_loop.start()
 
 /datum/reagent/consumable/ethanol/fossilsauce/on_mob_end_metabolize(mob/living/carbon/drinker)
