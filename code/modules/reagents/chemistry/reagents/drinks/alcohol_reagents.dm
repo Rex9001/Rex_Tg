@@ -2896,5 +2896,65 @@
 	taste_description = "the aloha state"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
+/datum/reagent/consumable/ethanol/syndicatebomb_emp
+	name = "Syndicate EMP"
+	description = "Tastes like electricity!"
+	color = "#51afc2"
+	boozepwr = 70
+	quality = DRINK_GOOD
+	taste_description = "shockingly antagonistic"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/ethanol/syndicatebomb_emp/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
+	. = ..()
+	if(isethereal(affected_mob))
+		affected_mob.blood_volume += 1 * seconds_per_tick
+	else if(SPT_PROB(10, seconds_per_tick))
+		affected_mob.electrocute_act(rand(5,10), "Syndicate EMP in their body", 1, SHOCK_NOGLOVES) //the shock is coming from inside the house
+		playsound(affected_mob, SFX_SPARKS, 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+
+/datum/reagent/consumable/ethanol/empeach
+	name = "EMPeach"
+	description = "A sweet drink containing vodka and electromagnetic components."
+	color = "#ebbedd"
+	boozepwr = 30
+	quality = DRINK_NICE
+	taste_description = "peach, with a hint of silicon loathing"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/ethanol/empeach/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
+	. = ..()
+	if(SPT_PROB(2.5, seconds_per_tick))
+		playsound(drinker, 'sound/effects/empulse.ogg', 60, TRUE)
+		empulse(drinker, heavy_range = 1, light_range = 2)
+
+/datum/reagent/consumable/ethanol/fossilsauce
+	name = "Fossilsauce"
+	description = "A bitter energy drink and vodka cocktail made with real dinosaur bones"
+	color = "#1f110e"
+	boozepwr = 55
+	quality = DRINK_GOOD
+	taste_description = "rip roaring"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/ethanol/fossilsauce/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
+	. = ..()
+	if(SPT_PROB(2.5, seconds_per_tick))
+		drinker.adjustToxLoss(2 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
+
+	if(drinker.flaming)
+		// More fire damage
+		drinker.adjust_fire_stacks(0.25)
+
+	if(drinker.fire_stacks > 10)
+		drinker.visible_message(span_boldwarning("[drinker]'s liver explodes!"))
+		explosion(drinker, light_impact_range = 2, explosion_cause = src)
+
+	if(HAS_TRAIT(drinker, TRAIT_ALCOHOL_TOLERANCE))
+		return
+
+	drinker.set_jitter_if_lower(10 SECONDS)
+
+
 #undef ALCOHOL_EXPONENT
 #undef ALCOHOL_THRESHOLD_MODIFIER

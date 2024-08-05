@@ -1038,6 +1038,19 @@
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blue_hawaiian"
 
+/datum/glass_style/drinking_glass/syndicatebomb_emp
+	required_drink_type = /datum/reagent/consumable/ethanol/syndicatebomb_emp
+	name = "Syndicate EMP"
+	desc = "A syndicate EMP bomb. It tingles in the air around it, and the smell of it is enough to make your hairs stand."
+	icon = 'icons/obj/drinks/mixed_drinks.dmi'
+	icon_state = "syndicatebomb_emp"
+
+/datum/glass_style/drinking_glass/empeach
+	required_drink_type = /datum/reagent/consumable/ethanol/empeach
+	name = "EMPeach"
+	desc = "A sweet drink commonly enjoyed by the biggest loathers of silicon due to its electro magnetic pulses."
+	icon = 'icons/obj/drinks/mixed_drinks.dmi'
+	icon_state = "syndicatebomb"
 // Shot glasses
 
 /datum/glass_style/shot_glass/toxins_special
