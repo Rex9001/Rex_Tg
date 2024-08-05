@@ -658,13 +658,13 @@
 	required_reagents = list(/datum/reagent/consumable/ethanol/coconut_rum = 2, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/lemonjuice = 1, /datum/reagent/consumable/ethanol/curacao = 1)
 
 /datum/chemical_reaction/drink/syndicatebomb_emp
-	results = list(/datum/reagent/consumable/ethanol/blue_hawaiian = 5)
+	results = list(/datum/reagent/consumable/ethanol/syndicatebomb_emp = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/syndicatebomb = 4, /datum/reagent/consumable/ethanol/wine_voltaic = 1)
 
 /datum/chemical_reaction/drink/fossilsauce
-	results = list(/datum/reagent/consumable/ethanol/blue_hawaiian = 5)
+	results = list(/datum/reagent/consumable/ethanol/fossilsauce = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 2, /datum/reagent/fuel/oil = 2,/datum/reagent/consumable/ethanol = 1)
 
 /datum/chemical_reaction/drink/empeach
-	results = list(/datum/reagent/consumable/ethanol/blue_hawaiian = 5)
-	required_reagents = list(/datum/reagent/iron = 1, /datum/reagent/uranium = 1,/datum/reagent/consumable/peachjuice = 3)
+	results = list(/datum/reagent/consumable/ethanol/empeach = 8)
+	required_reagents = list(/datum/reagent/iron = 1, /datum/reagent/uranium = 1,/datum/reagent/consumable/peachjuice = 3, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/ethanol/vodka = 1)

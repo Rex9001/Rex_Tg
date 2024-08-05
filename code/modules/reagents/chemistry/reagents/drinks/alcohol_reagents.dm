@@ -2907,11 +2907,11 @@
 
 /datum/reagent/consumable/ethanol/syndicatebomb_emp/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	. = ..()
-	if(isethereal(affected_mob))
-		affected_mob.blood_volume += 1 * seconds_per_tick
+	if(isethereal(drinker))
+		drinker.blood_volume += 1 * seconds_per_tick
 	else if(SPT_PROB(10, seconds_per_tick))
-		affected_mob.electrocute_act(rand(5,10), "Syndicate EMP in their body", 1, SHOCK_NOGLOVES) //the shock is coming from inside the house
-		playsound(affected_mob, SFX_SPARKS, 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		drinker.electrocute_act(rand(5,10), "Syndicate EMP in their body", 1, SHOCK_NOGLOVES) //the shock is coming from inside the house
+		playsound(drinker, SFX_SPARKS, 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /datum/reagent/consumable/ethanol/empeach
 	name = "EMPeach"
@@ -2936,11 +2936,32 @@
 	quality = DRINK_GOOD
 	taste_description = "rip roaring"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	///The looping sound for our robotic liver when running
+	var/datum/looping_sound/chainsaw/engine_loop
+	///If our drinker has a robotic liver
+	var/has_robo_liver = FALSE
+
+/datum/reagent/consumable/ethanol/fossilsauce/on_mob_metabolize(mob/living/affected_mob)
+	. = ..()
+	var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
+	if(!IS_ROBOTIC_ORGAN(liver))
+		return
+	has_robo_liver = TRUE
+	engine_loop = new(src)
+	engine_loop.start()
+
+/datum/reagent/consumable/ethanol/fossilsauce/on_mob_end_metabolize(mob/living/affected_mob)
+	. = ..()
+	if(!has_robo_liver)
+		return
+	engine_loop.stop()
 
 /datum/reagent/consumable/ethanol/fossilsauce/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	. = ..()
 	if(SPT_PROB(2.5, seconds_per_tick))
 		drinker.adjustToxLoss(2 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
+
+	var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
 
 	if(drinker.flaming)
 		// More fire damage
@@ -2949,6 +2970,12 @@
 	if(drinker.fire_stacks > 10)
 		drinker.visible_message(span_boldwarning("[drinker]'s liver explodes!"))
 		explosion(drinker, light_impact_range = 2, explosion_cause = src)
+
+	if(has_robo_liver)
+		drinker.set_jitter_if_lower(3 SECONDS)
+		// Heals robotic livers, its fuel for them after all!
+		liver.apply_organ_damage(-2)
+		return
 
 	if(HAS_TRAIT(drinker, TRAIT_ALCOHOL_TOLERANCE))
 		return
