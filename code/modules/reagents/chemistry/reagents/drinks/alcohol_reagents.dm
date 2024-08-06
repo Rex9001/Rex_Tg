@@ -2968,8 +2968,9 @@
 		drinker.adjust_fire_stacks(0.25)
 
 	if(drinker.fire_stacks > 10)
-		drinker.visible_message(span_boldwarning("[drinker]'s liver explodes!"))
-		explosion(drinker, light_impact_range = 2, explosion_cause = src)
+		drinker.visible_message(span_boldwarning("[drinker]s [liver] explodes!"))
+		explosion(origin = drinker, light_impact_range = 2, explosion_cause = src)
+		qdel(liver)
 
 	if(has_robo_liver)
 		drinker.set_jitter_if_lower(3 SECONDS)
