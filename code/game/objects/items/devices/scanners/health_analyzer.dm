@@ -20,7 +20,7 @@
 	throw_speed = 3
 	throw_range = 7
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT *2)
-	interaction_flags_click = NEED_LITERACY|NEED_LIGHT
+	interaction_flags_click = NEED_LITERACY|NEED_LIGHT|ALLOW_RESTING
 	/// Verbose/condensed
 	var/mode = SCANNER_VERBOSE
 	/// HEALTH/WOUND
@@ -132,7 +132,7 @@
  * tochat - Whether to immediately post the result into the chat of the user, otherwise it will return the results.
  */
 /proc/healthscan(mob/user, mob/living/target, mode = SCANNER_VERBOSE, advanced = FALSE, tochat = TRUE)
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return
 
 	// the final list of strings to render
@@ -279,7 +279,7 @@
 				<td style='width:12em;'><font color='#ff0000'><b>Status</b></font></td>"
 
 			for(var/obj/item/organ/organ as anything in humantarget.organs)
-				var/status = organ.get_status_text()
+				var/status = organ.get_status_text(advanced)
 				if (status != "")
 					render = TRUE
 					toReport += "<tr><td><font color='#cc3333'>[organ.name]:</font></td>\
@@ -320,7 +320,7 @@
 
 		// Hulk and body temperature
 		var/datum/species/targetspecies = humantarget.dna.species
-		var/mutant = humantarget.dna.check_mutation(/datum/mutation/human/hulk)
+		var/mutant = HAS_TRAIT(humantarget, TRAIT_HULK)
 
 		render_list += "<span class='info ml-1'>Species: [targetspecies.name][mutant ? "-derived mutant" : ""]</span>\n"
 		var/core_temperature_message = "Core temperature: [round(humantarget.coretemperature-T0C, 0.1)] &deg;C ([round(humantarget.coretemperature*1.8-459.67,0.1)] &deg;F)"
@@ -409,7 +409,7 @@
 		return(jointext(render_list, ""))
 
 /proc/chemscan(mob/living/user, mob/living/target)
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return
 
 	if(istype(target) && target.reagents)
@@ -495,7 +495,7 @@
 
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/scanner, simple_scan = FALSE)
-	if(!istype(patient) || user.incapacitated())
+	if(!istype(patient) || user.incapacitated)
 		return
 
 	var/render_list = ""
@@ -664,7 +664,7 @@
 
 /// Checks the individual for any diseases that are visible to the scanner, and displays the diseases in the attacked to the attacker.
 /proc/diseasescan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/simple/scanner)
-	if(!istype(patient) || user.incapacitated())
+	if(!istype(patient) || user.incapacitated)
 		return
 
 	var/list/render = list()

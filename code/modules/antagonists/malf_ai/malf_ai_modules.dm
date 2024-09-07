@@ -47,6 +47,9 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 		/obj/machinery/hypertorus/corner,
 		/obj/machinery/atmospherics/components/binary/valve,
 		/obj/machinery/portable_atmospherics/canister,
+		/obj/machinery/computer/shuttle,
+		/obj/machinery/computer/emergency_shuttle,
+		/obj/machinery/computer/gateway_control,
 	)))
 
 GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
@@ -443,14 +446,19 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	desc = "[desc] It has [uses] use\s remaining."
 
 /datum/action/innate/ai/ranged/override_machine/do_ability(mob/living/caller, atom/clicked_on)
-	if(caller.incapacitated())
+	if(caller.incapacitated)
 		unset_ranged_ability(caller)
 		return FALSE
 	if(!ismachinery(clicked_on))
 		to_chat(caller, span_warning("You can only animate machines!"))
 		return FALSE
 	var/obj/machinery/clicked_machine = clicked_on
-	if(!clicked_machine.can_be_overridden() || is_type_in_typecache(clicked_machine, GLOB.blacklisted_malf_machines))
+
+	if(istype(clicked_machine, /obj/machinery/porta_turret_cover)) //clicking on a closed turret will attempt to override the turret itself instead of the animated/abstract cover.
+		var/obj/machinery/porta_turret_cover/clicked_turret = clicked_machine
+		clicked_machine = clicked_turret.parent_turret
+
+	if((clicked_machine.resistance_flags & INDESTRUCTIBLE) || is_type_in_typecache(clicked_machine, GLOB.blacklisted_malf_machines))
 		to_chat(caller, span_warning("That machine can't be overridden!"))
 		return FALSE
 
@@ -531,14 +539,19 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		qdel(to_explode)
 
 /datum/action/innate/ai/ranged/overload_machine/do_ability(mob/living/caller, atom/clicked_on)
-	if(caller.incapacitated())
+	if(caller.incapacitated)
 		unset_ranged_ability(caller)
 		return FALSE
 	if(!ismachinery(clicked_on))
 		to_chat(caller, span_warning("You can only overload machines!"))
 		return FALSE
 	var/obj/machinery/clicked_machine = clicked_on
-	if(is_type_in_typecache(clicked_machine, GLOB.blacklisted_malf_machines))
+
+	if(istype(clicked_machine, /obj/machinery/porta_turret_cover)) //clicking on a closed turret will attempt to override the turret itself instead of the animated/abstract cover.
+		var/obj/machinery/porta_turret_cover/clicked_turret = clicked_machine
+		clicked_machine = clicked_turret.parent_turret
+
+	if((clicked_machine.resistance_flags & INDESTRUCTIBLE) || is_type_in_typecache(clicked_machine, GLOB.blacklisted_malf_machines))
 		to_chat(caller, span_warning("You cannot overload that device!"))
 		return FALSE
 
@@ -666,7 +679,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		C.images -= I
 
 /mob/living/silicon/ai/proc/can_place_transformer(datum/action/innate/ai/place_transformer/action)
-	if(!eyeobj || !isturf(loc) || incapacitated() || !action)
+	if(!eyeobj || !isturf(loc) || incapacitated || !action)
 		return
 	var/turf/middle = get_turf(eyeobj)
 	var/list/turfs = list(middle, locate(middle.x - 1, middle.y, middle.z), locate(middle.x + 1, middle.y, middle.z))
@@ -982,7 +995,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	data["selected"] = say_span || owner.speech_span
 	return data
 
-/obj/machinery/ai_voicechanger/ui_act(action, params)
+/obj/machinery/ai_voicechanger/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return
 	switch(action)
@@ -1031,14 +1044,14 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 				owner.speech_span = say_span
 			to_chat(usr, span_notice("Voice set to [selection]."))
 		if("verb")
-			say_verb = params["verb"]
+			say_verb = strip_html(params["verb"], MAX_NAME_LEN)
 			if(changing_voice)
 				owner.verb_say = say_verb
 				owner.verb_ask = say_verb
 				owner.verb_exclaim = say_verb
 				owner.verb_yell = say_verb
 		if("name")
-			say_name = params["name"]
+			say_name = strip_html(params["name"], MAX_NAME_LEN)
 
 /datum/ai_module/utility/emag
 	name = "Targeted Safeties Override"
@@ -1083,7 +1096,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 
 	var/mob/living/silicon/ai/ai_caller = caller
 
-	if(ai_caller.incapacitated())
+	if(ai_caller.incapacitated)
 		unset_ranged_ability(caller)
 		return FALSE
 
@@ -1173,7 +1186,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		return FALSE
 	var/mob/living/silicon/ai/ai_caller = caller
 
-	if (ai_caller.incapacitated() || !isturf(ai_caller.loc))
+	if (ai_caller.incapacitated || !isturf(ai_caller.loc))
 		return FALSE
 
 	var/turf/target = get_turf(clicked_on)
@@ -1201,7 +1214,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	COOLDOWN_START(src, time_til_next_tilt, roll_over_cooldown)
 
 /datum/action/innate/ai/ranged/core_tilt/proc/do_roll_over(mob/living/silicon/ai/ai_caller, picked_dir)
-	if (ai_caller.incapacitated() || !isturf(ai_caller.loc)) // prevents bugs where the ai is carded and rolls
+	if (ai_caller.incapacitated || !isturf(ai_caller.loc)) // prevents bugs where the ai is carded and rolls
 		return
 
 	var/turf/target = get_step(ai_caller, picked_dir) // in case we moved we pass the dir not the target turf
@@ -1215,7 +1228,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 
 /// Used in our radial menu, state-checking proc after the radial menu sleeps
 /datum/action/innate/ai/ranged/core_tilt/proc/radial_check(mob/living/silicon/ai/caller)
-	if (QDELETED(caller) || caller.incapacitated() || caller.stat == DEAD)
+	if (QDELETED(caller) || caller.incapacitated || caller.stat == DEAD)
 		return FALSE
 
 	if (uses <= 0)
@@ -1262,7 +1275,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		return FALSE
 	var/mob/living/silicon/ai/ai_caller = caller
 
-	if(ai_caller.incapacitated())
+	if(ai_caller.incapacitated)
 		unset_ranged_ability(caller)
 		return FALSE
 
@@ -1318,7 +1331,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 
 /// Used in our radial menu, state-checking proc after the radial menu sleeps
 /datum/action/innate/ai/ranged/remote_vendor_tilt/proc/radial_check(mob/living/silicon/ai/caller, obj/machinery/vending/clicked_vendor)
-	if (QDELETED(caller) || caller.incapacitated() || caller.stat == DEAD)
+	if (QDELETED(caller) || caller.incapacitated || caller.stat == DEAD)
 		return FALSE
 
 	if (QDELETED(clicked_vendor))

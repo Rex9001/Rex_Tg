@@ -31,9 +31,10 @@ Fluoride Stare: After someone says 5 words, blah blah blah...
 /obj/item/organ/internal/heart/gondola/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/gondola)
-	AddElement(/datum/element/noticable_organ, "radiate%PRONOUN_S an aura of serenity.")
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_They radiate%PRONOUN_s an aura of serenity.")
+	AddElement(/datum/element/update_icon_blocker)
 
-/obj/item/organ/internal/heart/gondola/Insert(mob/living/carbon/receiver, special, movement_flags)
+/obj/item/organ/internal/heart/gondola/mob_insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
 	if(!(FACTION_HOSTILE in receiver.faction))
 		factions_to_remove += FACTION_HOSTILE
@@ -41,7 +42,7 @@ Fluoride Stare: After someone says 5 words, blah blah blah...
 		factions_to_remove += FACTION_MINING
 	receiver.faction |= list(FACTION_HOSTILE, FACTION_MINING)
 
-/obj/item/organ/internal/heart/gondola/Remove(mob/living/carbon/heartless, special, movement_flags)
+/obj/item/organ/internal/heart/gondola/mob_remove(mob/living/carbon/heartless, special, movement_flags)
 	. = ..()
 	for(var/faction in factions_to_remove)
 		heartless.faction -= faction
@@ -60,14 +61,14 @@ Fluoride Stare: After someone says 5 words, blah blah blah...
 
 /obj/item/organ/internal/tongue/gondola/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "mouth is permanently affixed into a relaxed smile.", BODY_ZONE_PRECISE_MOUTH)
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_Their mouth is permanently affixed into a relaxed smile.", BODY_ZONE_PRECISE_MOUTH)
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/gondola)
 
-/obj/item/organ/internal/tongue/gondola/Insert(mob/living/carbon/tongue_owner, special, movement_flags)
+/obj/item/organ/internal/tongue/gondola/mob_insert(mob/living/carbon/tongue_owner, special, movement_flags)
 	. = ..()
 	tongue_owner.add_mood_event("gondola_zen", /datum/mood_event/gondola_serenity)
 
-/obj/item/organ/internal/tongue/gondola/Remove(mob/living/carbon/tongue_owner, special, movement_flags)
+/obj/item/organ/internal/tongue/gondola/mob_remove(mob/living/carbon/tongue_owner, special, movement_flags)
 	tongue_owner.clear_mood_event("gondola_zen")
 	return ..()
 
@@ -83,10 +84,10 @@ Fluoride Stare: After someone says 5 words, blah blah blah...
 /obj/item/organ/internal/liver/gondola/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/gondola)
-	AddElement(/datum/element/noticable_organ, "left arm has small needles breaching the skin all over it.", BODY_ZONE_L_ARM)
-	AddElement(/datum/element/noticable_organ, "right arm has small needles breaching the skin all over it.", BODY_ZONE_R_ARM)
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_Their left arm has small needles breaching the skin all over it.", BODY_ZONE_L_ARM)
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_Their right arm has small needles breaching the skin all over it.", BODY_ZONE_R_ARM)
 
-/obj/item/organ/internal/liver/gondola/Insert(mob/living/carbon/liver_owner, special, movement_flags)
+/obj/item/organ/internal/liver/gondola/mob_insert(mob/living/carbon/liver_owner, special, movement_flags)
 	. = ..()
 	var/has_left = liver_owner.has_left_hand(check_disabled = FALSE)
 	var/has_right = liver_owner.has_right_hand(check_disabled = FALSE)
@@ -101,7 +102,7 @@ Fluoride Stare: After someone says 5 words, blah blah blah...
 	RegisterSignal(liver_owner, COMSIG_LIVING_TRY_PULL, PROC_REF(on_owner_try_pull))
 	RegisterSignal(liver_owner, COMSIG_CARBON_HELPED, PROC_REF(on_hug))
 
-/obj/item/organ/internal/liver/gondola/Remove(mob/living/carbon/liver_owner, special, movement_flags)
+/obj/item/organ/internal/liver/gondola/mob_remove(mob/living/carbon/liver_owner, special, movement_flags)
 	. = ..()
 	UnregisterSignal(liver_owner, list(COMSIG_HUMAN_EQUIPPING_ITEM, COMSIG_LIVING_TRY_PULL, COMSIG_CARBON_HELPED))
 

@@ -69,7 +69,7 @@
 /// The maximum number of degrees that your body can heat up in 1 tick, due to the environment, when in a hot area.
 #define BODYTEMP_HEATING_MAX 30
 /// The body temperature limit the human body can take before it starts taking damage from heat.
-/// This also affects how fast the body normalises it's temperature when hot.
+/// This also affects how fast the body normalises its temperature when hot.
 /// 340k is about 66c, and rather high for a human.
 #define BODYTEMP_HEAT_DAMAGE_LIMIT (BODYTEMP_NORMAL + 30)
 /// A temperature limit which is above the maximum lavaland temperature
@@ -77,7 +77,7 @@
 /// A temperature limit which is above the maximum Sandplanet temperature
 #define BODYTEMP_HEAT_SANDPLANET_SAFE (SANDPLANET_MAX_TEMPERATURE + 10)
 /// The body temperature limit the human body can take before it starts taking damage from cold.
-/// This also affects how fast the body normalises it's temperature when cold.
+/// This also affects how fast the body normalises its temperature when cold.
 /// 270k is about -3c, that is below freezing and would hurt over time.
 #define BODYTEMP_COLD_DAMAGE_LIMIT (BODYTEMP_NORMAL - 40)
 /// A temperature limit which is above the minimum icebox temperature

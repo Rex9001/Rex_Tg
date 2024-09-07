@@ -37,6 +37,25 @@
 			else
 				fish_data["feed"] = "[AQUARIUM_COMPANY] Fish Feed"
 			fish_data["fishing_tips"] = build_fishing_tips(fish)
+			var/beauty_score = initial(fish.beauty)
+			switch(beauty_score)
+				if(-INFINITY to FISH_BEAUTY_DISGUSTING)
+					beauty_score = "OH HELL NAW!"
+				if(FISH_BEAUTY_DISGUSTING to FISH_BEAUTY_UGLY)
+					beauty_score = "☆☆☆☆☆"
+				if(FISH_BEAUTY_UGLY to FISH_BEAUTY_BAD)
+					beauty_score = "★☆☆☆☆"
+				if(FISH_BEAUTY_BAD to FISH_BEAUTY_NULL)
+					beauty_score = "★★☆☆☆"
+				if(FISH_BEAUTY_NULL to FISH_BEAUTY_GENERIC)
+					beauty_score = "★★★☆☆"
+				if(FISH_BEAUTY_GENERIC to FISH_BEAUTY_GOOD)
+					beauty_score = "★★★★☆"
+				if(FISH_BEAUTY_GOOD to FISH_BEAUTY_GREAT)
+					beauty_score = "★★★★★"
+				if(FISH_BEAUTY_GREAT to INFINITY)
+					beauty_score = "★★★★★★"
+			fish_data["beauty"] = beauty_score
 			fish_info += list(fish_data)
 		// TODO: Custom entries for unusual stuff
 
@@ -71,7 +90,7 @@
 		if(source.catalog_description && (fish_type in source.fish_table))
 			spot_descriptions += source.catalog_description
 	.["spots"] = english_list(spot_descriptions, nothing_text = "Unknown")
-	var/list/fish_list_properties = collect_fish_properties()
+	var/list/fish_list_properties = SSfishing.fish_properties
 	var/list/fav_bait = fish_list_properties[fishy][NAMEOF(fishy, favorite_bait)]
 	var/list/disliked_bait = fish_list_properties[fishy][NAMEOF(fishy, disliked_bait)]
 	var/list/bait_list = list()

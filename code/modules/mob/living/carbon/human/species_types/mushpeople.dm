@@ -6,7 +6,7 @@
 
 	fixed_mut_color = "#DBBF92"
 
-	external_organs = list(/obj/item/organ/external/mushroom_cap = "Round")
+	mutant_organs = list(/obj/item/organ/external/mushroom_cap = "Round")
 
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
@@ -83,7 +83,7 @@
 	feature_key = "caps"
 
 /datum/bodypart_overlay/mutant/mushroom_cap/get_global_feature_list()
-	return GLOB.caps_list
+	return SSaccessories.caps_list
 
 /datum/bodypart_overlay/mutant/mushroom_cap/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))

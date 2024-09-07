@@ -1,4 +1,3 @@
-
 /obj/item/organ
 	name = "organ"
 	icon = 'icons/obj/medical/organs/organs.dmi'
@@ -79,13 +78,17 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 			volume = reagent_vol,\
 			after_eat = CALLBACK(src, PROC_REF(OnEatFrom)))
 
+	if(bodypart_overlay)
+		setup_bodypart_overlay()
+
 /obj/item/organ/Destroy()
 	if(bodypart_owner && !owner && !QDELETED(bodypart_owner))
 		bodypart_remove(bodypart_owner)
-	else if(owner)
-		// The special flag is important, because otherwise mobs can die
-		// while undergoing transformation into different mobs.
+	else if(owner && QDESTROYING(owner))
+		// The mob is being deleted, don't update the mob
 		Remove(owner, special=TRUE)
+	else if(owner)
+		Remove(owner)
 	else
 		STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -139,7 +142,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	return
 
 /obj/item/organ/proc/on_life(seconds_per_tick, times_fired)
-	CRASH("Oh god oh fuck something is calling parent organ life")
+	return
 
 /obj/item/organ/examine(mob/user)
 	. = ..()
@@ -317,19 +320,40 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		replacement.set_organ_damage(damage)
 
 /// Called by medical scanners to get a simple summary of how healthy the organ is. Returns an empty string if things are fine.
-/obj/item/organ/proc/get_status_text()
-	var/status = ""
-	if(owner.has_reagent(/datum/reagent/inverse/technetium))
-		status = "<font color='#E42426'>[round((damage/maxHealth)*100, 1)]% damaged.</font>"
-	else if(organ_flags & ORGAN_FAILING)
-		status = "<font color='#cc3333'>Non-Functional</font>"
-	else if(damage > high_threshold)
-		status = "<font color='#ff9933'>Severely Damaged</font>"
-	else if (damage > low_threshold)
-		status = "<font color='#ffcc33'>Mildly Damaged</font>"
+/obj/item/organ/proc/get_status_text(advanced)
+	if(advanced && (organ_flags & ORGAN_PROMINENT))
+		return "<font color='#cc3333'>Harmful Foreign Body</font>"
 
-	return status
+	if(organ_flags & ORGAN_EMP)
+		return "<font color='#cc3333'>EMP-Derived Failure Cascade in Progress</font>"
+
+	if(owner.has_reagent(/datum/reagent/inverse/technetium))
+		return "<font color='#E42426'>[round((damage/maxHealth)*100, 1)]% damaged.</font>"
+
+	if(organ_flags & ORGAN_FAILING)
+		return "<font color='#cc3333'>Non-Functional</font>"
+
+	if(damage > high_threshold)
+		return "<font color='#ff9933'>Severely Damaged</font>"
+
+	if (damage > low_threshold)
+		return "<font color='#ffcc33'>Mildly Damaged</font>"
+
+	return ""
 
 /// Tries to replace the existing organ on the passed mob with this one, with special handling for replacing a brain without ghosting target
 /obj/item/organ/proc/replace_into(mob/living/carbon/new_owner)
 	return Insert(new_owner, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+
+
+/// Get all possible organ slots by checking every organ, and then store it and give it whenever needed
+/proc/get_all_slots()
+	var/static/list/all_organ_slots = list()
+
+	if(!all_organ_slots.len)
+		for(var/obj/item/organ/an_organ as anything in subtypesof(/obj/item/organ))
+			if(!initial(an_organ.slot))
+				continue
+			all_organ_slots |= initial(an_organ.slot)
+
+	return all_organ_slots
