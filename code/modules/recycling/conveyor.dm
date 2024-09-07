@@ -40,8 +40,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor/Initialize(mapload, new_dir, new_id)
 	. = ..()
 	AddElement(/datum/element/footstep_override, priority = STEP_SOUND_CONVEYOR_PRIORITY)
-	var/static/list/give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN)
-	AddElement(/datum/element/give_turf_traits, give_turf_traits)
+	AddElement(/datum/element/give_turf_traits, string_list(list(TRAIT_TURF_IGNORE_SLOWDOWN)))
 	register_context()
 
 	if(new_dir)
@@ -374,8 +373,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 /obj/machinery/conveyor_switch/Destroy()
 	LAZYREMOVE(GLOB.conveyors_by_id[id], src)
-	QDEL_NULL(wires)
-	. = ..()
+	return ..()
 
 /obj/machinery/conveyor_switch/vv_edit_var(var_name, var_value)
 	if (var_name == NAMEOF(src, id))
@@ -436,6 +434,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /// Updates the switch's `position` and `last_pos` variable. Useful so that the switch can properly cycle between the forwards, backwards and neutral positions.
 /obj/machinery/conveyor_switch/proc/update_position(direction)
 	if(position == CONVEYOR_OFF)
+		playsound(src, 'sound/machines/lever_start.ogg', 40, TRUE)
+
 		if(oneway)   //is it a oneway switch
 			position = oneway
 		else
@@ -444,6 +444,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			else
 				position = CONVEYOR_BACKWARDS
 	else
+		playsound(src, 'sound/machines/lever_stop.ogg', 40, TRUE)
 		position = CONVEYOR_OFF
 
 /obj/machinery/conveyor_switch/proc/on_user_activation(mob/user, direction)
@@ -544,10 +545,9 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		belt.id = id
 	to_chat(user, span_notice("You have linked all nearby conveyor belt assemblies to this switch."))
 
-/obj/item/conveyor_switch_construct/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity || user.stat || !isfloorturf(target) || istype(target, /area/shuttle))
-		return
+/obj/item/conveyor_switch_construct/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!isfloorturf(interacting_with))
+		return NONE
 
 	var/found = FALSE
 	for(var/obj/machinery/conveyor/belt in view())
@@ -556,10 +556,11 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			break
 	if(!found)
 		to_chat(user, "[icon2html(src, user)]" + span_notice("The conveyor switch did not detect any linked conveyor belts in range."))
-		return
-	var/obj/machinery/conveyor_switch/built_switch = new/obj/machinery/conveyor_switch(target, id)
+		return ITEM_INTERACT_BLOCKING
+	var/obj/machinery/conveyor_switch/built_switch = new/obj/machinery/conveyor_switch(interacting_with, id)
 	transfer_fingerprints_to(built_switch)
 	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/conveyor
 	name = "conveyor belt assembly"
@@ -577,17 +578,17 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	. = ..()
 	id = _id
 
-/obj/item/stack/conveyor/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity || user.stat || !isfloorturf(target) || istype(target, /area/shuttle))
-		return
-	var/belt_dir = get_dir(target, user)
-	if(target == user.loc)
+/obj/item/stack/conveyor/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!isfloorturf(interacting_with))
+		return NONE
+	var/belt_dir = get_dir(interacting_with, user)
+	if(interacting_with == user.loc)
 		to_chat(user, span_warning("You cannot place a conveyor belt under yourself!"))
-		return
-	var/obj/machinery/conveyor/belt = new/obj/machinery/conveyor(target, belt_dir, id)
+		return ITEM_INTERACT_BLOCKING
+	var/obj/machinery/conveyor/belt = new/obj/machinery/conveyor(interacting_with, belt_dir, id)
 	transfer_fingerprints_to(belt)
 	use(1)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/conveyor/attackby(obj/item/item_used, mob/user, params)
 	..()

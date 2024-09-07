@@ -195,8 +195,12 @@
 		var/turf/inbetween_turf = center_turf
 
 		//this is the lowest overhead way of doing a loop in dm other than a goto. distance is guaranteed to be >= steps taken to target by this algorithm
-		for(var/step_counter in 1 to distance)
-			inbetween_turf = get_step_towards(inbetween_turf, target_turf)
+		var/list/steps = get_steps_to(inbetween_turf, target_turf)
+		if(isnull(steps))
+			return
+		steps.Cut(distance + 1)
+		for(var/direction in steps)
+			inbetween_turf = get_step(inbetween_turf, direction)
 
 			if(inbetween_turf == target_turf)//we've gotten to target's turf without returning due to turf opacity, so we must be able to see target
 				break
@@ -283,7 +287,7 @@
 	return atoms
 
 ///Returns the distance between two atoms
-/proc/get_dist_euclidian(atom/first_location as turf|mob|obj, atom/second_location as turf|mob|obj)
+/proc/get_dist_euclidean(atom/first_location, atom/second_location)
 	var/dx = first_location.x - second_location.x
 	var/dy = first_location.y - second_location.y
 
@@ -468,5 +472,8 @@
 		if(possible_spawn in inner)
 			continue
 		peel += possible_spawn
+
+	if(!length(peel))
+		return center //Offer the center only as a default case when we don't have a valid circle.
 	return peel
 

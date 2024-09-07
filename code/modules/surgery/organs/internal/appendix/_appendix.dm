@@ -6,7 +6,7 @@
 	name = "appendix"
 	icon_state = "appendix"
 	base_icon_state = "appendix"
-	visual = FALSE
+
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_APPENDIX
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/bad_food = 5)
@@ -87,7 +87,7 @@
 		ADD_TRAIT(organ_owner, TRAIT_DISEASELIKE_SEVERITY_MEDIUM, type)
 		organ_owner.med_hud_set_status()
 
-/obj/item/organ/internal/appendix/get_status_text()
+/obj/item/organ/internal/appendix/get_status_text(advanced)
 	if((!(organ_flags & ORGAN_FAILING)) && inflamation_stage)
 		return "<font color='#ff9933'>Inflamed</font>"
 	else
