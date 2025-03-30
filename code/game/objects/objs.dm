@@ -27,7 +27,7 @@
 	/// A multiplier to an object's force when used against a structure, vehicle, machine, or robot.
 	var/demolition_mod = 1
 
-	/// Custom fire overlay icon, will just use the default overlay if this is null
+	/// Cached custom fire overlay
 	var/custom_fire_overlay
 	/// Particles this obj uses when burning, if any
 	var/burning_particles
@@ -37,6 +37,12 @@
 	/// Map tag for something.  Tired of it being used on snowflake items.  Moved here for some semblance of a standard.
 	/// Next pr after the network fix will have me refactor door interactions, so help me god.
 	var/id_tag = null
+
+	/// The sound this obj makes when something is buckled to it
+	var/buckle_sound = null
+
+	/// The sound this obj makes when something is unbuckled from it
+	var/unbuckle_sound = null
 
 	uses_integrity = TRUE
 

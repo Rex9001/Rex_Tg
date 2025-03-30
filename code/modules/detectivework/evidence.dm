@@ -62,9 +62,7 @@
 	SIGNAL_HANDLER
 
 	if(!atom_storage.get_total_weight())
-		return
-
-	update_weight_class(WEIGHT_CLASS_TINY)
+		update_weight_class(WEIGHT_CLASS_TINY)
 
 /obj/item/evidencebag/attack_self(mob/user)
 	if(!atom_storage.get_total_weight())
@@ -80,5 +78,6 @@
 	desc = "A box claiming to contain evidence bags."
 
 /obj/item/storage/box/evidence/PopulateContents()
+	. = list()
 	for(var/i in 1 to 6)
-		new /obj/item/evidencebag(src)
+		. += /obj/item/evidencebag
