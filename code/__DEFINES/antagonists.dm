@@ -270,9 +270,6 @@ GLOBAL_LIST_INIT(ai_employers, list(
 /// Checks if the given mob is a changeling
 #define IS_CHANGELING(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/changeling))
 
-/// Checks if the mob is a changeling
-#define IS_CHANGELING(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/changeling))
-
 /// Checks if the mob is a fanatic
 #define IS_FANATIC(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/fanatic))
 

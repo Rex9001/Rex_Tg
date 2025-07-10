@@ -28,19 +28,12 @@
 				fanatic.receive_blessing()
 				continue
 
-			if(!carbon_target.mind || !IS_CHANGELING(carbon_target))
-				var/obj/item/organ/internal/ears/ears = carbon_target.get_organ_slot(ORGAN_SLOT_EARS)
-	for(var/mob/living/M in get_hearers_in_view(4, user))
-		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			if(!IS_CHANGELING(C))
-				var/obj/item/organ/ears/ears = C.get_organ_slot(ORGAN_SLOT_EARS)
+			if(!IS_CHANGELING(carbon_target))
+				var/obj/item/organ/ears/ears = carbon_target.get_organ_slot(ORGAN_SLOT_EARS)
 				if(ears)
 					ears.adjustEarDamage(0, 30)
-				C.adjust_confusion(25 SECONDS)
-				C.set_jitter_if_lower(100 SECONDS)
-			else
-				SEND_SOUND(C, sound('sound/effects/screech.ogg'))
+				carbon_target.adjust_confusion(25 SECONDS)
+				carbon_target.set_jitter_if_lower(100 SECONDS)
 
 		if(issilicon(mob_target))
 			SEND_SOUND(mob_target, sound('sound/weapons/flash.ogg'))

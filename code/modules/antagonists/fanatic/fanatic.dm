@@ -1,7 +1,7 @@
 /datum/antagonist/fanatic
 	name = "Fanatic"
 	antagpanel_category = "Other"
-	job_rank = ROLE_FANATIC
+	pref_flag = ROLE_FANATIC
 	show_name_in_check_antagonists = TRUE
 	preview_outfit = /datum/outfit/tiger_fanatic
 	antag_moodlet = /datum/mood_event/focused

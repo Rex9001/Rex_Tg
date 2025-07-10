@@ -1001,6 +1001,57 @@
 /datum/dynamic_ruleset/midround/from_ghosts/slaughter_demon/assign_role(datum/mind/candidate)
 	return // handled by new() entirely
 
+/// Midround Fanatic Ruleset (From Ghosts)
+/datum/dynamic_ruleset/midround/from_ghosts/fanatic
+	name = "Fanatic"
+	config_tag = "Fanatic"
+	preview_antag_datum = /datum/antagonist/fanatic
+	midround_type = LIGHT_MIDROUND
+	pref_flag = ROLE_FANATIC
+	ruleset_flags = RULESET_INVADER|RULESET_ADMIN_CONFIGURABLE
+	weight = 3
+	min_pop = 20
+	min_antag_cap = 1
+	max_antag_cap = 1
+	repeatable = TRUE
+	signup_atom_appearance = /obj/item/reagent_containers/cup/glass/flask/ritual_wine
+
+	var/list/possible_spawns = list() //This should be a cooler arrival in the future, maybe a drop pod?
+
+/datum/dynamic_ruleset/midround/from_ghosts/fanatic/execute()
+	possible_spawns += find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE)
+	if(!possible_spawns.len)
+		return MAP_ERROR
+	return ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/fanatic/create_ruleset_body(mob/applicant)
+	var/datum/mind/player_mind = new /datum/mind(applicant.key)
+	player_mind.active = TRUE
+
+	var/mob/living/carbon/human/tiger = create_fanatic(pick(possible_spawns))
+	tiger.key = applicant.key
+	tiger.mind.add_antag_datum(/datum/antagonist/fanatic)
+
+	new /obj/item/storage/toolbox/mechanical(tiger.loc) //should be replaced eventually
+	message_admins("[ADMIN_LOOKUPFLW(tiger)] has been made into a Fanatic by the midround ruleset.")
+	tiger.log_message("was spawned as a Fanatic of [key_name(tiger)] by the midround ruleset.", LOG_GAME)
+
+	return tiger
+
+/datum/dynamic_ruleset/midround/from_ghosts/fanatic/proc/create_fanatic(spawn_loc)
+	var/mob/living/carbon/human/tiger = new(spawn_loc)
+	tiger.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES))
+	tiger.equipOutfit(/datum/outfit/tiger_fanatic)
+	var/obj/item/storage/backpack/satchel/flat/empty/stash = new(spawn_loc)
+	new /obj/item/knife/combat(stash)
+	new /obj/item/gun/ballistic/automatic/pistol(stash)
+	new /obj/item/ammo_box/magazine/m9mm(stash)
+	new /obj/item/grenade/chem_grenade/bioterrorfoam(stash)
+	new /obj/item/card/emag/doorjack(stash)
+	new /obj/item/reagent_containers/cup/glass/flask/ritual_wine(stash)
+	tiger.put_in_hands(stash)
+	return tiger
+
 /datum/dynamic_ruleset/midround/from_living
 	min_antag_cap = 1
 	max_antag_cap = 1
