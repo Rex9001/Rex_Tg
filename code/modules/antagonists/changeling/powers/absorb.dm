@@ -95,10 +95,6 @@
 			if(!objective) //nulls? in my objective list? it's more likely than you think.
 				continue
 
-			if(istype(objective, /datum/objective/be_absorbed))
-				var/datum/objective/be_absorbed/absorbed = objective
-				absorbed.player_absorbed = TRUE
-
 			changeling.antag_memory += " Objective #[obj_count++]: [objective.explanation_text]."
 			var/list/datum/mind/other_owners = objective.get_owners() - suckedbrain
 			if(!other_owners.len)

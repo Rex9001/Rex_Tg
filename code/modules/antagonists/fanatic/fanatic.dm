@@ -22,38 +22,18 @@
 	. = ..()
 
 /datum/antagonist/fanatic/forge_objectives()
-	var/datum/objective/be_absorbed/absorbed_escape/absorbed = new
 	var/datum/objective/changeling_blessed/blessed = new
-	absorbed.owner = owner
 	blessed.owner = owner
-	objectives += absorbed
 	objectives += blessed
 	. = ..()
 
-/datum/objective/be_absorbed
-	name = "be absorbed"
-	explanation_text = "Be absorbed by a changeling so you may ascend to a higher level of being!"
+/* ADD THIS LATER AFTER FIGURING OUT HOW TO DO CHANGELING BEACONS
+/datum/objective/bring_changeling
+	name = "Summon an angel"
+	explanation_text = "Plant the three holy beacons and summon an angel onto the station!"
 	martyr_compatible = TRUE
-	admin_grantable = TRUE
-	var/player_absorbed = FALSE
-
-/datum/objective/be_absorbed/check_completion()
-	if(player_absorbed)
-		return TRUE
-	return FALSE
-
-
-/datum/objective/be_absorbed/absorbed_escape
-	name = "be absorbed"
-	explanation_text = "Ascend by being absorbed by a changeling, or escape on the shuttle or an escape pod alive and without being in custody."
-	martyr_compatible = TRUE
-	admin_grantable = TRUE
-
-
-/datum/objective/be_absorbed/absorbed_escape/check_completion()
-	if(player_absorbed || considered_escaped(owner))
-		return TRUE
-	return FALSE
+	admin_grantable = FALSE
+*/
 
 /datum/antagonist/fanatic/proc/receive_blessing()
 	blessings += 1

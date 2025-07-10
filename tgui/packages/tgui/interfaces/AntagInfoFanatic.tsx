@@ -1,7 +1,8 @@
+import { Section, Stack } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { ObjectivePrintout, Objective } from './common/Objectives';
+import { Objective, ObjectivePrintout } from './common/Objectives';
 
 const absorbstyle = {
   color: 'red',
@@ -43,29 +44,9 @@ export const AntagInfoFanatic = (props) => {
           <Stack.Item grow={4}>
             <AbilitiesSection />
           </Stack.Item>
-          <Stack.Item grow={2}>
-            <AscensionSection />
-          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
-  );
-};
-
-const AscensionSection = (props) => {
-  return (
-    <Section fill title="Ascension">
-      <Stack vertical fill>
-        <Stack.Item textColor="label">
-          To be assimilated is to serve the
-          <span style={hivemindstyle}>&ensp;hive</span>, and is the path towards
-          eternal life. You must be
-          <span style={absorbstyle}>&ensp;absorbed</span> by your changeling
-          idols in order to forever be one with the
-          <span style={hivemindstyle}>&ensp;hive.</span>
-        </Stack.Item>
-      </Stack>
-    </Section>
   );
 };
 
