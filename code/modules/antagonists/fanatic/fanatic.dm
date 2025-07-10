@@ -17,7 +17,6 @@
 	return data
 
 /datum/antagonist/fanatic/on_gain()
-	owner.special_role = ROLE_FANATIC
 	SEND_SOUND(owner.current, sound('sound/effects/tiger_greeting.ogg'))
 	forge_objectives()
 	. = ..()

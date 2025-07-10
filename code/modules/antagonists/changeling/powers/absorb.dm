@@ -147,21 +147,7 @@
 
 
 	if(IS_FANATIC(target))// If the target was a fanatic we get powered up.
-		to_chat(owner, span_changeling(span_boldnotice("[target] was a worshiper of the hive. Their DNA is prepared specifically for our tastes. We grow stronger.")))
-
-
-		var/genetic_points_to_add = 5
-		changeling.genetic_points += genetic_points_to_add
-		changeling.total_genetic_points += genetic_points_to_add
-
-		var/chems_to_add = 35
-		changeling.adjust_chemicals(chems_to_add)
-		changeling.total_chem_storage += chems_to_add
-
 		target.grab_ghost()
-
-		var/old_body_position = target.body_position_pixel_y_offset
-		target.body_position_pixel_y_offset = 0
 
 		target.set_lying_angle(0)
 
@@ -175,11 +161,10 @@
 		var/original_appearance = target.appearance
 		var/original_name = target.real_name
 
-		target.body_position_pixel_y_offset = old_body_position
 		target.set_lying_angle(90)
 
-		var/mob/camera/imaginary_friend/changeling_echo/worshiper = target.change_mob_type(
-			new_type = /mob/camera/imaginary_friend/changeling_echo,
+		var/mob/eye/imaginary_friend/changeling_echo/worshiper = target.change_mob_type(
+			new_type = /mob/eye/imaginary_friend/changeling_echo,
 			location = get_turf(target),
 			delete_old_mob = FALSE,
 		)

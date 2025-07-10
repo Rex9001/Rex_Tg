@@ -541,20 +541,19 @@
 	name = real_name
 	human_image = icon('icons/mob/simple/lavaland/lavaland_monsters.dmi', icon_state = "curseblob")
 
-/mob/camera/imaginary_friend/changeling_echo
+/mob/eye/imaginary_friend/changeling_echo
 	name = "Worshiper"
 	real_name = "Worshiper"
 	human_image = icon('icons/mob/simple/lavaland/lavaland_monsters.dmi', icon_state = "curseblob")
 	desc = "This one was made from the shattered mind of a worshiper, now it serves the hive even in death."
 
-
-/mob/camera/imaginary_friend/changeling_echo/setup_appearance(original_appearance, original_name)
+/mob/eye/imaginary_friend/changeling_echo/setup_appearance(original_appearance, original_name)
 	human_image = original_appearance
 	real_name = original_name
 	name = original_name
 	Show()
 
-/mob/camera/imaginary_friend/changeling_echo/greet()
+/mob/eye/imaginary_friend/changeling_echo/greet()
 	to_chat(src, span_changeling(span_bold("You have been absorbed, but you your mind persists! You you have become one with the hive!")))
 	to_chat(src, span_changeling("Your mind has melded with the changeling that absorbed you, assist them however you can!"))
 

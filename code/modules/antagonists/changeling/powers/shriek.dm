@@ -36,7 +36,7 @@
 				carbon_target.set_jitter_if_lower(100 SECONDS)
 
 		if(issilicon(mob_target))
-			SEND_SOUND(mob_target, sound('sound/weapons/flash.ogg'))
+			SEND_SOUND(mob_target, sound('sound/items/weapons/flash.ogg'))
 			mob_target.Paralyze(rand(100,200))
 
 	for(var/obj/machinery/light/lights in range(4, user))
