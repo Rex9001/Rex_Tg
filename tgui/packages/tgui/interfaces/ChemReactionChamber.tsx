@@ -1,6 +1,4 @@
-import { round, toFixed } from 'common/math';
-
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
 import {
   AnimatedNumber,
   Box,
@@ -10,23 +8,24 @@ import {
   RoundGauge,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+import { round, toFixed } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { MixingData } from './ChemMixingChamber';
+import type { MixingData, Reagent } from './ChemMixingChamber';
 
 type ReactingData = MixingData & {
   ph: number;
   reagentAcidic: number;
   reagentAlkaline: number;
+  catalysts: Reagent[];
 };
 
 export const ChemReactionChamber = (props) => {
   const { act, data } = useBackend<ReactingData>();
 
-  const [reagentQuantity, setReagentQuantity] = useLocalState(
-    'reagentQuantity',
-    1,
-  );
+  const [reagentQuantity, setReagentQuantity] = useState(1);
 
   const {
     emptying,
@@ -38,8 +37,9 @@ export const ChemReactionChamber = (props) => {
     reagentAlkaline,
   } = data;
   const reagents = data.reagents || [];
+  const catalysts = data.catalysts || [];
   return (
-    <Window width={290} height={400}>
+    <Window width={290} height={570}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -57,7 +57,7 @@ export const ChemReactionChamber = (props) => {
                       value={round(targetTemp, 0.1)}
                       minValue={0}
                       maxValue={1000}
-                      onDrag={(e, value) =>
+                      onDrag={(value) =>
                         act('temperature', {
                           target: value,
                         })
@@ -84,7 +84,7 @@ export const ChemReactionChamber = (props) => {
                         value={ph}
                         minValue={0}
                         maxValue={14}
-                        format={() => null}
+                        format={() => ''}
                         position="absolute"
                         size={1.5}
                         top={0.5}
@@ -162,7 +162,7 @@ export const ChemReactionChamber = (props) => {
                         step={1}
                         stepPixelSize={3}
                         width="39px"
-                        onDrag={(e, value) =>
+                        onDrag={(value) =>
                           act('acidic', {
                             target: value,
                           })
@@ -177,7 +177,7 @@ export const ChemReactionChamber = (props) => {
                         step={1}
                         stepPixelSize={3}
                         width="39px"
-                        onDrag={(e, value) =>
+                        onDrag={(value) =>
                           act('alkaline', {
                             target: value,
                           })
@@ -191,7 +191,6 @@ export const ChemReactionChamber = (props) => {
                   <Stack fill>
                     <Stack.Item grow>
                       <Button
-                        content="Add Reagent"
                         color="good"
                         icon="plus"
                         onClick={() =>
@@ -199,7 +198,9 @@ export const ChemReactionChamber = (props) => {
                             amount: reagentQuantity,
                           })
                         }
-                      />
+                      >
+                        Add Reagent
+                      </Button>
                     </Stack.Item>
                     <Stack.Item>
                       <NumberInput
@@ -209,7 +210,7 @@ export const ChemReactionChamber = (props) => {
                         step={1}
                         stepPixelSize={3}
                         width="39px"
-                        onDrag={(e, value) => setReagentQuantity(value)}
+                        onDrag={(value) => setReagentQuantity(value)}
                       />
                       <Box inline mr={1} />
                     </Stack.Item>
@@ -225,6 +226,24 @@ export const ChemReactionChamber = (props) => {
                           </Stack.Item>
                           <Stack.Item mt={0.25} grow>
                             {reagent.volume}
+                          </Stack.Item>
+
+                          <Stack.Item>
+                            <Button
+                              color="transparent"
+                              tooltip={`
+                                This button converts this reagent entry into a catalyst.
+                                Catalyst reagents are not removed from the reaction chamber
+                                on completion. Useful for certain reactions.`}
+                              tooltipPosition="bottom-start"
+                              onClick={() =>
+                                act('catalyst', {
+                                  chem: reagent.name,
+                                })
+                              }
+                            >
+                              C
+                            </Button>
                           </Stack.Item>
                           <Stack.Item>
                             <Button
@@ -243,6 +262,38 @@ export const ChemReactionChamber = (props) => {
                   </Stack>
                 </Stack.Item>
               </Stack>
+            </Section>
+          </Stack.Item>
+          <Stack.Item grow={0.7}>
+            <Section title="Catalysts" fill scrollable>
+              <Stack.Item>
+                <Stack vertical fill>
+                  {catalysts.map((reagent) => (
+                    <Stack.Item key={reagent.name}>
+                      <Stack fill>
+                        <Stack.Item mt={0.25} textColor="label">
+                          {reagent.name + ':'}
+                        </Stack.Item>
+                        <Stack.Item mt={0.25} grow>
+                          {reagent.volume}
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button
+                            color="bad"
+                            onClick={() =>
+                              act('catremove', {
+                                chem: reagent.name,
+                              })
+                            }
+                          >
+                            C
+                          </Button>
+                        </Stack.Item>
+                      </Stack>
+                    </Stack.Item>
+                  ))}
+                </Stack>
+              </Stack.Item>
             </Section>
           </Stack.Item>
         </Stack>

@@ -13,9 +13,15 @@
 /obj/machinery/atmospherics/components/unary/set_init_directions()
 	initialize_directions = dir
 
-/obj/machinery/atmospherics/components/unary/on_construction(mob/user)
+/obj/machinery/atmospherics/components/unary/on_construction(mob/user, from_flatpack = FALSE)
 	..()
 	update_appearance()
+
+
+/obj/machinery/atmospherics/components/unary/click_alt(mob/living/beno)
+	beno.handle_ventcrawl(src)
+	return CLICK_ACTION_SUCCESS
+
 
 /obj/machinery/atmospherics/components/unary/proc/assign_uid_vents()
 	uid = num2text(gl_uid++)

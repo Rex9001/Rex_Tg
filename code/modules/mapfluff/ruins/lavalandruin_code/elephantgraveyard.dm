@@ -77,11 +77,11 @@
 
 /turf/closed/mineral/strong/wasteland/drop_ores()
 	if(prob(10))
-		new /obj/item/stack/ore/iron(src, 1)
-		new /obj/item/stack/ore/glass(src, 1)
+		new /obj/item/stack/ore/iron(src)
+		new /obj/item/stack/ore/glass(src)
 		new /obj/effect/decal/remains/human(src, 1)
 	else
-		new /obj/item/stack/sheet/bone(src, 1)
+		new /obj/item/stack/sheet/bone(src)
 
 //***Oil well puddles.
 /obj/structure/sink/oil_well //You're not going to enjoy bathing in this...
@@ -105,9 +105,9 @@
 	reagents.expose(user, TOUCH, 20) //Covers target in 20u of oil.
 	to_chat(user, span_notice("You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water."))
 
-/obj/structure/sink/oil_well/attackby(obj/item/O, mob/living/user, params)
+/obj/structure/sink/oil_well/attackby(obj/item/O, mob/living/user, list/modifiers, list/attack_modifiers)
 	flick("puddle-oil-splash",src)
-	if(O.tool_behaviour == TOOL_SHOVEL && !(obj_flags & NO_DECONSTRUCTION)) //attempt to deconstruct the puddle with a shovel
+	if(O.tool_behaviour == TOOL_SHOVEL) //attempt to deconstruct the puddle with a shovel
 		to_chat(user, "You fill in the oil well with soil.")
 		O.play_tool_sound(src)
 		deconstruct()
@@ -128,7 +128,7 @@
 		return ..()
 
 /obj/structure/sink/oil_well/drop_materials()
-	new /obj/effect/decal/cleanable/oil(loc)
+	new /obj/effect/decal/cleanable/blood/oil(loc)
 
 //***Grave mounds.
 /// has no items inside unless you use the filled subtype
@@ -160,6 +160,8 @@
 	var/first_open = FALSE
 	/// was a shovel used to close this grave
 	var/dug_closed = FALSE
+	/// do we have a mood effect tied to accessing this type of grave?
+	var/affect_mood = FALSE
 
 /obj/structure/closet/crate/grave/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(isnull(held_item))
@@ -179,6 +181,9 @@
 /obj/structure/closet/crate/grave/examine(mob/user)
 	. = ..()
 	. += span_notice("It can be [EXAMINE_HINT((opened ? "closed" : "dug open"))] with a shovel.")
+
+/obj/structure/closet/crate/grave/filled
+	affect_mood = TRUE
 
 /obj/structure/closet/crate/grave/filled/PopulateContents()  //GRAVEROBBING IS NOW A FEATURE
 	..()
@@ -203,8 +208,8 @@
 			new /obj/item/reagent_containers/cup/beaker(src)
 			new /obj/item/clothing/glasses/science(src)
 		if(7)
-			new /obj/item/clothing/glasses/sunglasses(src)
-			new /obj/item/clothing/mask/cigarette/rollie(src)
+			new /obj/item/clothing/glasses/sunglasses/big(src)
+			new /obj/item/cigarette/rollie(src)
 		else
 			//empty grave
 			return
@@ -252,7 +257,7 @@
 		if(opened)
 			dug_closed = TRUE
 			close(user)
-		else if(open(user, force = TRUE))
+		else if(open(user, force = TRUE) && affect_mood)
 			if(HAS_MIND_TRAIT(user, TRAIT_MORBID))
 				user.add_mood_event("morbid_graverobbing", /datum/mood_event/morbid_graverobbing)
 			else
@@ -284,7 +289,7 @@
 		deconstruct(TRUE)
 		return TRUE
 
-/obj/structure/closet/crate/grave/container_resist_act(mob/living/user)
+/obj/structure/closet/crate/grave/container_resist_act(mob/living/user, loc_required = TRUE)
 	if(opened)
 		return
 	// The player is trying to dig themselves out of an early grave
@@ -307,9 +312,17 @@
 		if(user.loc == src)
 			to_chat(user, span_warning("You fail to dig yourself out of [src]!"))
 
+/obj/structure/closet/crate/grave/fresh
+	name = "makeshift grave"
+	desc = "A hastily-dug grave. This is definitely not six feet deep, but it'll hold a body."
+	icon = 'icons/obj/storage/crates.dmi'
+	icon_state = "grave_fresh"
+	base_icon_state = "grave_fresh"
+	material_drop_amount = 0
+
 /obj/structure/closet/crate/grave/filled/lead_researcher
 	name = "ominous burial mound"
-	desc = "Even in a place filled to the brim with graves, this one shows a level of preperation and planning that fills you with dread."
+	desc = "Even in a place filled to the brim with graves, this one shows a level of preparation and planning that fills you with dread."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "grave_lead"
 	lead_tomb = TRUE

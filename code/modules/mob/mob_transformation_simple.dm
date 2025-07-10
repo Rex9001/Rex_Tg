@@ -2,7 +2,7 @@
 //This proc is the most basic of the procs. All it does is make a new mob on the same tile and transfer over a few variables.
 //Returns the new mob
 //Note that this proc does NOT do MMI related stuff!
-/mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text, delete_old_mob = FALSE)
+/mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text|null, delete_old_mob = FALSE)
 
 	if(isnewplayer(src))
 		to_chat(usr, span_danger("Cannot convert players who have not entered yet."))
@@ -14,7 +14,7 @@
 	if(istext(new_type))
 		new_type = text2path(new_type)
 
-	if( !ispath(new_type) )
+	if(!ispath(new_type) )
 		to_chat(usr, "Invalid type path (new_type = [new_type]) in change_mob_type(). Contact a coder.")
 		return
 
@@ -50,7 +50,7 @@
 	if(has_dna() && desired_mob.has_dna())
 		var/mob/living/carbon/old_mob = src
 		var/mob/living/carbon/new_mob = desired_mob
-		old_mob.dna.transfer_identity(new_mob, transfer_species = FALSE)
+		old_mob.dna.copy_dna(new_mob.dna, NONE)
 		new_mob.updateappearance(icon_update = TRUE, mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 	else if(ishuman(desired_mob) && (!ismonkey(desired_mob)))
 		var/mob/living/carbon/human/new_human = desired_mob
@@ -67,7 +67,7 @@
 
 		mind.transfer_to(desired_mob, 1) // second argument to force key move to new mob
 	else
-		desired_mob.key = key
+		desired_mob.PossessByPlayer(key)
 
 	SEND_SIGNAL(src, COMSIG_MOB_CHANGED_TYPE, desired_mob)
 	if(delete_old_mob)

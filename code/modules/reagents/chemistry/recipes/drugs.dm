@@ -81,6 +81,7 @@
 	results = list(/datum/reagent/drug/bath_salts = 7)
 	required_reagents = list(/datum/reagent/toxin/bad_food = 1, /datum/reagent/saltpetre = 1, /datum/reagent/consumable/nutriment = 1, /datum/reagent/space_cleaner = 1, /datum/reagent/consumable/enzyme = 1, /datum/reagent/consumable/tea = 1, /datum/reagent/mercury = 1)
 	required_temp = 374
+	reaction_flags = REACTION_CLEAR_INVERSE
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 /datum/chemical_reaction/aranesp
@@ -92,6 +93,7 @@
 	results = list(/datum/reagent/drug/happiness = 4)
 	required_reagents = list(/datum/reagent/nitrous_oxide = 2, /datum/reagent/medicine/epinephrine = 1, /datum/reagent/consumable/ethanol = 1)
 	required_catalysts = list(/datum/reagent/toxin/plasma = 5)
+	reaction_flags = REACTION_CLEAR_INVERSE
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 /datum/chemical_reaction/pumpup
@@ -122,9 +124,10 @@
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 //These drug item reactions should probably be converted to fermichem in the future.
-/datum/chemical_reaction/moon_rock //botany is real easy so it requires a lot of kronkus_extract, make it cheaper if it doesnt get amde.
-	required_reagents = list(/datum/reagent/kronkus_extract = 15, /datum/reagent/fuel = 10, /datum/reagent/ammonia = 5)
+/datum/chemical_reaction/moon_rock //botany is real easy so it requires a lot of kronkus_extract, make it cheaper if it doesnt get made.
+	required_reagents = list(/datum/reagent/kronkus_extract = 15, /datum/reagent/fuel = 5, /datum/reagent/ammonia = 3)
 	mob_react = FALSE
+	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 /datum/chemical_reaction/moon_rock/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
@@ -134,9 +137,13 @@
 		new_rock.pixel_x = rand(-6, 6)
 		new_rock.pixel_y = rand(-6, 6)
 
+/datum/chemical_reaction/moon_rock/draintek
+	required_reagents = list(/datum/reagent/kronkus_extract = 15, /datum/reagent/fuel = 5, /datum/reagent/lye = 3)
+
 /datum/chemical_reaction/blastoff_ampoule
 	required_reagents = list(/datum/reagent/silver = 10, /datum/reagent/toxin/cyanide = 10, /datum/reagent/lye = 5)
 	mob_react = FALSE
+	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 /datum/chemical_reaction/blastoff_ampoule/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
@@ -149,6 +156,7 @@
 /datum/chemical_reaction/saturnx_glob
 	required_reagents = list(/datum/reagent/lead = 5, /datum/reagent/consumable/nothing = 5, /datum/reagent/drug/maint/tar = 10)
 	mob_react = FALSE
+	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 /datum/chemical_reaction/saturnx_glob/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)

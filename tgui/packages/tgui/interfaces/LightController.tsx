@@ -1,7 +1,17 @@
-import { round } from '../../common/math';
-import { BooleanLike, classes } from '../../common/react';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Knob, Section, Slider, Stack, Tabs } from '../components';
+import { useState } from 'react';
+import {
+  Box,
+  Button,
+  Knob,
+  Section,
+  Slider,
+  Stack,
+  Tabs,
+} from 'tgui-core/components';
+import { round } from 'tgui-core/math';
+import { type BooleanLike, classes } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 enum Direction {
@@ -50,14 +60,8 @@ export const LightController = (props) => {
     default_category,
     category_ids,
   } = data;
-  const [currentTemplate, setCurrentTemplate] = useLocalState<string>(
-    'currentTemplate',
-    default_id,
-  );
-  const [currentCategory, setCurrentCategory] = useLocalState<string>(
-    'currentCategory',
-    default_category,
-  );
+  const [currentTemplate, setCurrentTemplate] = useState(default_id);
+  const [currentCategory, setCurrentCategory] = useState(default_category);
 
   const category_keys = category_ids ? Object.keys(category_ids) : [];
 
@@ -67,7 +71,7 @@ export const LightController = (props) => {
         <Stack fill>
           <Stack.Item>
             <Section fitted fill scrollable width="170px">
-              <Tabs fluid centered>
+              <Tabs fluid align="center">
                 {category_keys.map((category, index) => (
                   <Tabs.Tab
                     key={category}
@@ -196,7 +200,7 @@ const LightControl = (props: LightControlProps) => {
             color="olive"
             minValue={-1}
             maxValue={5}
-            format={(value) => round(value, 2)}
+            format={(value) => round(value, 2).toString()}
             onChange={(e, value) =>
               act('set_power', {
                 value: value,

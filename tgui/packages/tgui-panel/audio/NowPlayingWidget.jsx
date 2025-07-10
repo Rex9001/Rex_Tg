@@ -4,9 +4,9 @@
  * @license MIT
  */
 
-import { toFixed } from 'common/math';
 import { useDispatch, useSelector } from 'tgui/backend';
-import { Button, Collapsible, Flex, Knob, Section } from 'tgui/components';
+import { Button, Collapsible, Flex, Knob, Section } from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
 
 import { useSettings } from '../settings';
 import { selectAudio } from './selectors';
@@ -99,7 +99,7 @@ export const NowPlayingWidget = (props) => {
           step={0.0025}
           stepPixelSize={1}
           format={(value) => toFixed(value * 100) + '%'}
-          onDrag={(e, value) =>
+          onChange={(e, value) =>
             settings.update({
               adminMusicVolume: value,
             })

@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 	SEND_SIGNAL(src,COMSIG_EXOSCAN_INTERRUPTED)
 	qdel(src)
 
-/datum/exoscan/Destroy(force, ...)
+/datum/exoscan/Destroy(force)
 	. = ..()
 	deltimer(scan_timer)
 
@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 	. = ..()
 	.["all_bands"] = GLOB.exoscanner_bands
 
-/obj/machinery/computer/exoscanner_control/ui_act(action, list/params)
+/obj/machinery/computer/exoscanner_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -181,11 +181,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 	failed_popup = TRUE
 	SStgui.update_uis(src)
 
-/obj/machinery/computer/exoscanner_control/Initialize(mapload)
-	..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/machinery/computer/exoscanner_control/LateInitialize()
+/obj/machinery/computer/exoscanner_control/post_machine_initialize()
 	. = ..()
 	AddComponent(/datum/component/experiment_handler, \
 		allowed_experiments = list(/datum/experiment/exploration_scan), \
@@ -205,7 +201,6 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 	. = ..()
 	RegisterSignals(GLOB.exoscanner_controller,list(COMSIG_EXOSCAN_STARTED,COMSIG_EXOSCAN_FINISHED), PROC_REF(scan_change))
 	update_readiness()
-	RefreshParts()
 
 /obj/machinery/exoscanner/RefreshParts()
 	. = ..()

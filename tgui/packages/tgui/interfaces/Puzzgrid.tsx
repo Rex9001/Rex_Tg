@@ -1,9 +1,9 @@
-import { range } from 'common/collections';
-import { BooleanLike } from 'common/react';
-import { PropsWithChildren } from 'react';
+import { range } from 'es-toolkit';
+import type { PropsWithChildren } from 'react';
+import { Box, Button, FitText, Stack } from 'tgui-core/components';
+import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Box, Button, FitText, Stack } from '../components';
 import { Window } from '../layouts';
 
 const CELLS_PER_GROUP = 4;
@@ -115,7 +115,7 @@ export const Puzzgrid = (props) => {
               textShadow: '1px 1px 1px #222',
               fontSize: '30px',
               position: 'absolute',
-              top: 0,
+              top: '0',
               left: '10px',
             }}
           >
@@ -133,7 +133,7 @@ export const Puzzgrid = (props) => {
               fontSize: '15px',
               pointerEvents: 'none',
               position: 'absolute',
-              top: 0,
+              top: '0',
               right: '10px',
             }}
           >

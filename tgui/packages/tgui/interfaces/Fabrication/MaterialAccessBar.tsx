@@ -1,11 +1,11 @@
-import { sortBy } from 'common/collections';
-import { classes } from 'common/react';
+import { sortBy } from 'es-toolkit';
+import { useState } from 'react';
+import { AnimatedNumber, Button, Flex } from 'tgui-core/components';
+import { formatSiUnit } from 'tgui-core/format';
+import { classes } from 'tgui-core/react';
 
-import { useLocalState } from '../../backend';
-import { AnimatedNumber, Button, Flex, Stack } from '../../components';
-import { formatSiUnit } from '../../format';
 import { MaterialIcon } from './MaterialIcon';
-import { Material } from './Types';
+import type { Material } from './Types';
 
 // by popular demand of discord people (who are always right and never wrong)
 // this is completely made up
@@ -55,19 +55,19 @@ export const MaterialAccessBar = (props: MaterialAccessBarProps) => {
 
   return (
     <Flex wrap>
-      {sortBy((m: Material) => MATERIAL_RARITY[m.name])(availableMaterials).map(
-        (material) => (
-          <Flex.Item key={material.name} grow={1}>
-            <MaterialCounter
-              material={material}
-              SHEET_MATERIAL_AMOUNT={SHEET_MATERIAL_AMOUNT}
-              onEjectRequested={(quantity) =>
-                onEjectRequested && onEjectRequested(material, quantity)
-              }
-            />
-          </Flex.Item>
-        ),
-      )}
+      {sortBy(availableMaterials, [
+        (m: Material) => MATERIAL_RARITY[m.name],
+      ]).map((material) => (
+        <Flex.Item grow basis={4.5} key={material.name}>
+          <MaterialCounter
+            material={material}
+            SHEET_MATERIAL_AMOUNT={SHEET_MATERIAL_AMOUNT}
+            onEjectRequested={(quantity) =>
+              onEjectRequested && onEjectRequested(material, quantity)
+            }
+          />
+        </Flex.Item>
+      ))}
     </Flex>
   );
 };
@@ -81,10 +81,7 @@ type MaterialCounterProps = {
 const MaterialCounter = (props: MaterialCounterProps) => {
   const { material, onEjectRequested, SHEET_MATERIAL_AMOUNT } = props;
 
-  const [hovering, setHovering] = useLocalState(
-    `MaterialCounter__${material.name}`,
-    false,
-  );
+  const [hovering, setHovering] = useState(false);
 
   const sheets = material.amount / SHEET_MATERIAL_AMOUNT;
 
@@ -98,7 +95,7 @@ const MaterialCounter = (props: MaterialCounterProps) => {
         sheets < 1 && 'MaterialDock--disabled',
       ])}
     >
-      <Stack vertial direction={'column-reverse'}>
+      <Flex direction="column-reverse">
         <Flex
           direction="column"
           textAlign="center"
@@ -138,7 +135,7 @@ const MaterialCounter = (props: MaterialCounterProps) => {
             </Flex>
           </div>
         )}
-      </Stack>
+      </Flex>
     </div>
   );
 };

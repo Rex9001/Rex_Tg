@@ -1,9 +1,9 @@
-import { sortBy } from 'common/collections';
+import { sortBy } from 'es-toolkit';
+import { Box, Button, Section } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
-import { Box, Button, Section } from '../components';
 import { Window } from '../layouts';
-import { Beaker, BeakerDisplay } from './common/BeakerDisplay';
+import { type Beaker, BeakerDisplay } from './common/BeakerDisplay';
 
 type DispensableReagent = {
   title: string;
@@ -12,19 +12,23 @@ type DispensableReagent = {
   pH: number;
 };
 
+type TransferableBeaker = Beaker & {
+  transferAmounts: number[];
+};
+
 type Data = {
   amount: number;
   chemicals: DispensableReagent[];
-  beaker: Beaker;
+  beaker: TransferableBeaker;
 };
 
 export const PortableChemMixer = (props) => {
   const { act, data } = useBackend<Data>();
   const { beaker } = data;
   const beakerTransferAmounts = beaker ? beaker.transferAmounts : [];
-  const chemicals = sortBy((chem: DispensableReagent) => chem.id)(
-    data.chemicals,
-  );
+  const chemicals = sortBy(data.chemicals, [
+    (chem: DispensableReagent) => chem.id,
+  ]);
   return (
     <Window width={500} height={500}>
       <Window.Content scrollable>
@@ -35,13 +39,14 @@ export const PortableChemMixer = (props) => {
               key={amount}
               icon="plus"
               selected={amount === data.amount}
-              content={amount}
               onClick={() =>
                 act('amount', {
                   target: amount,
                 })
               }
-            />
+            >
+              {amount}
+            </Button>
           ))}
         >
           <Box>
@@ -51,14 +56,15 @@ export const PortableChemMixer = (props) => {
                 icon="tint"
                 fluid
                 lineHeight={1.75}
-                content={`(${chemical.volume}) ${chemical.title}`}
                 tooltip={'pH: ' + chemical.pH}
                 onClick={() =>
                   act('dispense', {
                     reagent: chemical.id,
                   })
                 }
-              />
+              >
+                {`(${chemical.volume}) ${chemical.title}`}
+              </Button>
             ))}
           </Box>
         </Section>
@@ -68,9 +74,10 @@ export const PortableChemMixer = (props) => {
             <Button
               key={amount}
               icon="minus"
-              content={amount}
               onClick={() => act('remove', { amount })}
-            />
+            >
+              {amount}
+            </Button>
           ))}
         >
           <BeakerDisplay beaker={beaker} showpH />

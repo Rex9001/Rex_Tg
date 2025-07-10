@@ -1,20 +1,21 @@
 #define THERMOMACHINE_POWER_CONVERSION 0.01
 
 /obj/machinery/atmospherics/components/unary/thermomachine
-	icon = 'icons/obj/machines/atmospherics/thermomachine.dmi'
-	icon_state = "thermo_base"
-	plane = GAME_PLANE
-
 	name = "Temperature control unit"
 	desc = "Heats or cools gas in connected pipes."
+
+	icon = 'icons/map_icons/objects.dmi'
+	icon_state = "/obj/machinery/atmospherics/components/unary/thermomachine"
+	post_init_icon_state = "thermo_base"
+	plane = GAME_PLANE
+
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 
 	density = TRUE
 	max_integrity = 300
 	armor_type = /datum/armor/unary_thermomachine
 	layer = OBJ_LAYER
 	circuit = /obj/item/circuitboard/machine/thermomachine
-
-	hide = TRUE
 
 	move_resist = MOVE_RESIST_DEFAULT
 	vent_movement = NONE
@@ -41,8 +42,7 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/Initialize(mapload)
 	. = ..()
-	RefreshParts()
-	update_appearance()
+	update_appearance(UPDATE_ICON)
 	register_context()
 
 /obj/machinery/atmospherics/components/unary/thermomachine/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -63,11 +63,11 @@
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/atmospherics/components/unary/thermomachine/is_connectable()
-	if(!anchored || panel_open)
+	if(!anchored)
 		return FALSE
 	. = ..()
 
-/obj/machinery/atmospherics/components/unary/thermomachine/on_construction(mob/user, obj_color, set_layer)
+/obj/machinery/atmospherics/components/unary/thermomachine/on_construction(mob/user, obj_color, set_layer, from_flatpack = FALSE)
 	var/obj/item/circuitboard/machine/thermomachine/board = circuit
 	if(board)
 		piping_layer = board.pipe_layer
@@ -78,7 +78,6 @@
 	if(check_pipe_on_turf())
 		set_anchored(FALSE)
 		set_panel_open(TRUE)
-		change_pipe_connection(TRUE)
 		icon_state = "thermo-open"
 		balloon_alert(user, "the port is already in use!")
 
@@ -127,10 +126,10 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/update_overlays()
 	. = ..()
-	if(!initial(icon))
-		return
-	var/mutable_appearance/thermo_overlay = new(initial(icon))
-	. += get_pipe_image(thermo_overlay, "pipe", dir, COLOR_LIME, piping_layer)
+	var/mutable_appearance/thermo_overlay = new(icon)
+	var/image/pipe = get_pipe_image(thermo_overlay, "pipe", dir, pipe_color, piping_layer)
+	pipe.appearance_flags |= RESET_COLOR|KEEP_APART
+	. += pipe
 
 /obj/machinery/atmospherics/components/unary/thermomachine/examine(mob/user)
 	. = ..()
@@ -145,12 +144,10 @@
 		. += span_notice("Heat capacity at <b>[heat_capacity] Joules per Kelvin</b>.")
 		. += span_notice("Temperature range <b>[min_temperature]K - [max_temperature]K ([(T0C-min_temperature)*-1]C - [(T0C-max_temperature)*-1]C)</b>.")
 
-/obj/machinery/atmospherics/components/unary/thermomachine/AltClick(mob/living/user)
+/obj/machinery/atmospherics/components/unary/thermomachine/click_alt(mob/living/user)
 	if(panel_open)
 		balloon_alert(user, "close panel!")
-		return
-	if(!can_interact(user))
-		return
+		return CLICK_ACTION_BLOCKING
 
 	if(target_temperature == T20C)
 		target_temperature = max_temperature
@@ -161,7 +158,8 @@
 
 	investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
 	balloon_alert(user, "temperature reset to [target_temperature] K")
-	update_appearance()
+	update_appearance(UPDATE_ICON)
+	return CLICK_ACTION_SUCCESS
 
 /// Performs heat calculation for the freezer.
 /// We just equalize the gasmix with an object at temp = var/target_temperature and heat cap = var/heat_capacity
@@ -172,8 +170,7 @@
 	var/turf/local_turf = get_turf(src)
 
 	if(!is_operational || !local_turf)
-		on = FALSE
-		update_appearance()
+		set_on(FALSE)
 		return
 
 	// The gas we want to cool/heat
@@ -197,7 +194,7 @@
 	// This produces a nice curve that scales decently well for really hot stuff, and is nice to not fusion. It'll do
 	var/power_usage = idle_power_usage + (heat_amount * 0.05) ** (1.05 - (5e7 * 0.16 / max(heat_amount, 5e7)))
 
-	use_power(power_usage)
+	use_energy(power_usage)
 	update_parents()
 
 /obj/machinery/atmospherics/components/unary/thermomachine/screwdriver_act(mob/living/user, obj/item/tool)
@@ -208,14 +205,14 @@
 		balloon_alert(user, "anchor!")
 		return ITEM_INTERACT_SUCCESS
 	if(default_deconstruction_screwdriver(user, "thermo-open", "thermo-0", tool))
-		change_pipe_connection(panel_open)
+		update_appearance(UPDATE_ICON)
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmospherics/components/unary/thermomachine/wrench_act(mob/living/user, obj/item/tool)
 	return default_change_direction_wrench(user, tool)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/crowbar_act(mob/living/user, obj/item/tool)
-	return default_deconstruction_crowbar(tool)
+	return crowbar_deconstruction_act(user, tool)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	if(!panel_open)
@@ -223,15 +220,10 @@
 		return ITEM_INTERACT_SUCCESS
 	piping_layer = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
 	to_chat(user, span_notice("You change the circuitboard to layer [piping_layer]."))
-	update_appearance()
+	if(anchored)
+		reconnect_nodes()
+	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_SUCCESS
-
-/obj/machinery/atmospherics/components/unary/thermomachine/default_change_direction_wrench(mob/user, obj/item/I)
-	if(!..())
-		return FALSE
-	set_init_directions()
-	update_appearance()
-	return TRUE
 
 /obj/machinery/atmospherics/components/unary/thermomachine/multitool_act_secondary(mob/living/user, obj/item/tool)
 	if(!panel_open)
@@ -241,7 +233,9 @@
 	set_pipe_color(GLOB.pipe_paint_colors[GLOB.pipe_paint_colors[color_index]])
 	visible_message(span_notice("[user] set [src]'s pipe color to [GLOB.pipe_color_name[pipe_color]]."), ignored_mobs = user)
 	to_chat(user, span_notice("You set [src]'s pipe color to [GLOB.pipe_color_name[pipe_color]]."))
-	update_appearance()
+	if(anchored)
+		reconnect_nodes()
+	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmospherics/components/unary/thermomachine/proc/check_pipe_on_turf()
@@ -257,10 +251,11 @@
 		visible_message(span_warning("A pipe is hogging the port, remove the obstruction or change the machine piping layer."))
 		return ITEM_INTERACT_SUCCESS
 	if(default_unfasten_wrench(user, tool))
+		change_pipe_connection(!anchored)
 		return ITEM_INTERACT_SUCCESS
 	return
 
-/obj/machinery/atmospherics/components/unary/thermomachine/ui_status(mob/user)
+/obj/machinery/atmospherics/components/unary/thermomachine/ui_status(mob/user, datum/ui_state/state)
 	if(interactive)
 		return ..()
 	return UI_CLOSE
@@ -287,14 +282,14 @@
 	data["pressure"] = port.return_pressure()
 	return data
 
-/obj/machinery/atmospherics/components/unary/thermomachine/ui_act(action, params)
+/obj/machinery/atmospherics/components/unary/thermomachine/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
 	switch(action)
 		if("power")
-			on = !on
+			set_on(!on)
 			update_use_power(on ? ACTIVE_POWER_USE : IDLE_POWER_USE)
 			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
@@ -315,38 +310,54 @@
 				target_temperature = clamp(target, min_temperature, max_temperature)
 				investigate_log("was set to [target_temperature] K by [key_name(usr)]", INVESTIGATE_ATMOS)
 
-	update_appearance()
+	update_appearance(UPDATE_ICON)
 
-/obj/machinery/atmospherics/components/unary/thermomachine/CtrlClick(mob/living/user)
+/obj/machinery/atmospherics/components/unary/thermomachine/click_ctrl(mob/user)
 	if(!anchored)
-		return ..()
+		return NONE
 	if(panel_open)
 		balloon_alert(user, "close panel!")
-		return
-	if(!can_interact(user))
-		return
+		return CLICK_ACTION_BLOCKING
+	if(!is_operational)
+		return CLICK_ACTION_BLOCKING
 
-	on = !on
+	set_on(!on)
 	balloon_alert(user, "turned [on ? "on" : "off"]")
 	investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
-	update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/atmospherics/components/unary/thermomachine/update_layer()
 	return
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer
+	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1
+
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer1
+	piping_layer = 1
+
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2
+	piping_layer = 2
+
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer4
+	piping_layer = 4
+
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer5
+	piping_layer = 5
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on
+	icon_state = "/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on"
+	post_init_icon_state = "thermo_1"
+	flags_1 = /obj/machinery/atmospherics/components/unary/thermomachine::flags_1 // we want this one to generate a preview
 	on = TRUE
-	icon_state = "thermo_base_1"
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/Initialize(mapload)
 	. = ..()
 	if(target_temperature == initial(target_temperature))
 		target_temperature = min_temperature
+
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom
 	name = "Cold room temperature control unit"
-	icon_state = "thermo_base_1"
+	icon_state = "/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom"
 	greyscale_colors = COLOR_CYAN
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom/Initialize(mapload)
@@ -354,9 +365,23 @@
 	target_temperature = COLD_ROOM_TEMP
 
 /obj/machinery/atmospherics/components/unary/thermomachine/heater
+	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1
+
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/layer1
+	piping_layer = 1
+
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/layer2
+	piping_layer = 2
+
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/layer4
+	piping_layer = 4
+
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/layer5
+	piping_layer = 5
 
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on
+	icon_state = "/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on" // same icon as the freezer
+	post_init_icon_state = "thermo_1"
 	on = TRUE
-	icon_state = "thermo_base_1"
 
 #undef THERMOMACHINE_POWER_CONVERSION

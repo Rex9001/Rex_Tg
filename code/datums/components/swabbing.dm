@@ -32,7 +32,7 @@ This component is used in vat growing to swab for microbiological samples which 
 	src.update_icons = update_icons
 	src.update_overlays = update_overlays
 
-/datum/component/swabbing/Destroy(force, silent)
+/datum/component/swabbing/Destroy(force)
 	for(var/swabbed in swabbed_items)
 		qdel(swabbed)
 	update_icons = null
@@ -53,7 +53,7 @@ This component is used in vat growing to swab for microbiological samples which 
 				examine_list += MO.get_details()
 
 ///Ran when you attack an object, tries to get a swab of the object. if a swabbable surface is found it will run behavior and hopefully
-/datum/component/swabbing/proc/try_to_swab(datum/source, atom/target, mob/user, params)
+/datum/component/swabbing/proc/try_to_swab(datum/source, atom/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
 
 	if(istype(target, /obj/structure/table))//help how do i do this less shitty
@@ -106,7 +106,7 @@ This component is used in vat growing to swab for microbiological samples which 
 	LAZYINITLIST(swabbed_items) //If it isn't initialized, initialize it. As we need to pass it by reference
 
 	if(SEND_SIGNAL(target, COMSIG_SWAB_FOR_SAMPLES, swabbed_items) == NONE) //If we found something to swab now we let the swabbed thing handle what it would do, we just sit back and relax now.
-		to_chat(user, span_warning("You do not manage to find a anything on [target]!"))
+		to_chat(user, span_warning("You do not manage to find anything on [target]!"))
 		return
 
 	to_chat(user, span_nicegreen("You manage to collect a microbiological sample from [target]!"))

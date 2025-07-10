@@ -1,8 +1,15 @@
-import { paginate, range } from 'common/collections';
-import { multiline } from 'common/string';
+import { chunk, range } from 'es-toolkit';
+import { useState } from 'react';
+import {
+  BlockQuote,
+  Box,
+  Button,
+  Section,
+  Stack,
+  Tabs,
+} from 'tgui-core/components';
 
-import { useBackend, useLocalState } from '../backend';
-import { BlockQuote, Box, Button, Section, Stack, Tabs } from '../components';
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Entry = {
@@ -34,7 +41,7 @@ const PAGE_HEIGHT = 30;
 const TIER2TIERDATA: TierData[] = [
   {
     name: 'Lesser Mutant',
-    desc: multiline`
+    desc: `
       Lesser Mutants usually have a smaller list of potential mutations, and
       do not have bonuses for infusing many organs. Common species, cosmetics,
       and things of that sort are here. Always available!
@@ -43,7 +50,7 @@ const TIER2TIERDATA: TierData[] = [
   },
   {
     name: 'Regular Mutant',
-    desc: multiline`
+    desc: `
       Regular Mutants all have bonuses for infusing DNA into yourself, and are
       common enough to find consistently in a shift. Always available!
     `,
@@ -51,7 +58,7 @@ const TIER2TIERDATA: TierData[] = [
   },
   {
     name: 'Greater Mutant',
-    desc: multiline`
+    desc: `
       Greater Mutants have stronger upsides and downsides along with their
       bonus, and are harder to find in a shift. Must be unlocked by first
       unlocking a DNA Mutant bonus of a lower tier.
@@ -60,7 +67,7 @@ const TIER2TIERDATA: TierData[] = [
   },
   {
     name: 'Abberation',
-    desc: multiline`
+    desc: `
       We've been able to get stronger mutants out of vatgrown specimen,
       henceforth named "Abberations". Abberations have either strong utility
       purpose, anomalous qualities, or deadly capabilities.
@@ -73,18 +80,15 @@ export const InfuserBook = (props) => {
   const { data, act } = useBackend<DnaInfuserData>();
   const { entries } = data;
 
-  const [bookPosition, setBookPosition] = useLocalState<BookPosition>(
-    'bookPosition',
-    {
-      chapter: 0,
-      pageInChapter: 0,
-    },
-  );
+  const [bookPosition, setBookPosition] = useState({
+    chapter: 0,
+    pageInChapter: 0,
+  });
   const { chapter, pageInChapter } = bookPosition;
 
   const paginatedEntries = paginateEntries(entries);
 
-  let currentEntry = paginatedEntries[chapter][pageInChapter];
+  const currentEntry = paginatedEntries[chapter][pageInChapter];
 
   const switchChapter = (newChapter) => {
     if (chapter === newChapter) {
@@ -127,7 +131,7 @@ export const InfuserBook = (props) => {
     'Tier 3 - Abberations - RESTRICTED',
   ];
 
-  const paginatedTabs = paginate(tabs, 3);
+  const paginatedTabs = chunk(tabs, 3);
 
   const restrictedNext = chapter === 3 && pageInChapter === 0;
 
@@ -297,7 +301,7 @@ const paginateEntries = (collection: Entry[]): Entry[][] => {
   });
   // negative 1 to account for introduction, which has no entries
   let tier = -1;
-  for (let _ in range(tier, maxTier + 1)) {
+  for (const _ in range(tier, maxTier + 1)) {
     pages.push(collection.filter((entry) => entry.tier === tier));
     tier++;
   }

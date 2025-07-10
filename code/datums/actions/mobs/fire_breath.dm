@@ -7,7 +7,7 @@
 	/// The range of the fire
 	var/fire_range = 15
 	/// The sound played when you use this ability
-	var/fire_sound = 'sound/magic/fireball.ogg'
+	var/fire_sound = 'sound/effects/magic/fireball.ogg'
 	/// Time to wait between spawning each fire turf
 	var/fire_delay = 1.5 DECISECONDS
 	/// How hot is our fire
@@ -20,8 +20,10 @@
 	var/mech_damage = 45
 
 /datum/action/cooldown/mob_cooldown/fire_breath/Activate(atom/target_atom)
+	disable_cooldown_actions()
 	attack_sequence(target_atom)
 	StartCooldown()
+	enable_cooldown_actions()
 	return TRUE
 
 /// Apply our specific fire breathing shape, in proc form so we can override it in subtypes
@@ -51,7 +53,7 @@
 
 /// Finally spawn the actual fire, spawns the fire hotspot in case you want to recolour it or something
 /datum/action/cooldown/mob_cooldown/fire_breath/proc/burn_turf(turf/fire_turf, list/hit_list, mob/living/source)
-	var/obj/effect/hotspot/fire_hotspot = new /obj/effect/hotspot(fire_turf)
+	var/obj/effect/hotspot/fire_hotspot = new /obj/effect/hotspot(fire_turf, fire_volume, fire_temperature)
 	fire_turf.hotspot_expose(fire_temperature, fire_volume, TRUE)
 
 	for(var/mob/living/barbecued in fire_turf.contents)
@@ -70,7 +72,11 @@
 
 /// Do something unpleasant to someone we set on fire
 /datum/action/cooldown/mob_cooldown/fire_breath/proc/on_burn_mob(mob/living/barbecued, mob/living/source)
-	to_chat(barbecued, span_userdanger("You are burned by [source]'s fire breath!"))
+	if(fire_temperature <= TCMB)
+		barbecued.apply_status_effect(/datum/status_effect/ice_block_talisman, 2 SECONDS)
+		to_chat(barbecued, span_userdanger("You're frozen solid by [source]'s icy breath!"))
+	else
+		to_chat(barbecued, span_userdanger("You are burned by [source]'s fire breath!"))
 	barbecued.adjustFireLoss(fire_damage)
 
 /// Shoot three lines of fire in a sort of fork pattern approximating a cone
@@ -89,9 +95,9 @@
 /datum/action/cooldown/mob_cooldown/fire_breath/mass_fire
 	name = "Mass Fire"
 	button_icon = 'icons/effects/fire.dmi'
-	button_icon_state = "1"
+	button_icon_state = "light"
 	desc = "Breathe flames in all directions."
-	cooldown_time = 3 SECONDS
+	cooldown_time = 10.5 SECONDS
 	click_to_activate = FALSE
 	/// How many fire lines do we produce to turn a full circle?
 	var/sectors = 12

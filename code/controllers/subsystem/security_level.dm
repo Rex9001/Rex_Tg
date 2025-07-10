@@ -1,16 +1,18 @@
 SUBSYSTEM_DEF(security_level)
 	name = "Security Level"
 	can_fire = FALSE // We will control when we fire in this subsystem
-	init_order = INIT_ORDER_SECURITY_LEVEL
 	/// Currently set security level
 	var/datum/security_level/current_security_level
 	/// A list of initialised security level datums.
 	var/list/available_levels = list()
+	/// A list of alert icon states for use in [/obj/machinery/status_display/evac] (to differentiate them from other display images)
+	var/list/alert_level_icons = list()
 
 /datum/controller/subsystem/security_level/Initialize()
 	for(var/iterating_security_level_type in subtypesof(/datum/security_level))
 		var/datum/security_level/new_security_level = new iterating_security_level_type
 		available_levels[new_security_level.name] = new_security_level
+		alert_level_icons += new_security_level.status_display_icon_state
 	current_security_level = available_levels[number_level_to_text(SEC_LEVEL_GREEN)]
 	return SS_INIT_SUCCESS
 
@@ -28,8 +30,9 @@ SUBSYSTEM_DEF(security_level)
  *
  * Arguments:
  * * new_level - The new security level that will become our current level
+ * * announce - Play the announcement, set FALSE if you're doing your own custom announcement to prevent duplicates
  */
-/datum/controller/subsystem/security_level/proc/set_level(new_level)
+/datum/controller/subsystem/security_level/proc/set_level(new_level, announce = TRUE)
 	new_level = istext(new_level) ? new_level : number_level_to_text(new_level)
 	if(new_level == current_security_level.name) // If we are already at the desired level, do nothing
 		return
@@ -42,7 +45,8 @@ SUBSYSTEM_DEF(security_level)
 	if(SSnightshift.can_fire && (selected_level.number_level >= SEC_LEVEL_RED || current_security_level.number_level >= SEC_LEVEL_RED))
 		SSnightshift.next_fire = world.time + 7 SECONDS // Fire nightshift after the security level announcement is complete
 
-	level_announce(selected_level, current_security_level.number_level) // We want to announce BEFORE updating to the new level
+	if(announce)
+		level_announce(selected_level, current_security_level.number_level) // We want to announce BEFORE updating to the new level
 
 	SSsecurity_level.current_security_level = selected_level
 

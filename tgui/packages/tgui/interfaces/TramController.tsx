@@ -1,7 +1,4 @@
-import { toFixed } from 'common/math';
-import { BooleanLike } from 'common/react';
-
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
 import {
   Button,
   Dropdown,
@@ -10,7 +7,11 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
+import type { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
@@ -62,10 +63,7 @@ export const TramController = (props) => {
     destinations = [],
   } = data;
 
-  const [tripDestination, setTripDestination] = useLocalState(
-    'TramDestination',
-    '',
-  );
+  const [tripDestination, setTripDestination] = useState('');
 
   return (
     <Window title="Tram Controller" width={778} height={327} theme="dark">
@@ -195,7 +193,7 @@ export const TramController = (props) => {
                 width="98.5%"
                 options={destinations.map((id) => id.name)}
                 selected={tripDestination}
-                displayText={tripDestination || 'Pick a Destination'}
+                placeholder="Pick a Destination"
                 onSelected={(value) => setTripDestination(value)}
               />
               <Button

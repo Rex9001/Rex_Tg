@@ -48,7 +48,7 @@
 	))
 	parent.remove_traits(list(TRAIT_DISK_VERIFIER, TRAIT_CAN_STRIP, TRAIT_CAN_USE_NUKE), NUKE_OP_MINION_TRAIT)
 
-/datum/component/nuclear_bomb_operator/Destroy(force, silent)
+/datum/component/nuclear_bomb_operator/Destroy(force)
 	QDEL_NULL(disky)
 	on_disk_collected = null
 	add_disk_overlays = null
@@ -113,7 +113,7 @@
 	var/mob/mob_parent = parent
 	if(!isopenturf(attacked_target))
 		INVOKE_ASYNC(held_disk, TYPE_PROC_REF(/obj/item, melee_attack_chain), mob_parent, attacked_target)
-		mob_parent.do_item_attack_animation(attacked_target, used_item = held_disk)
+		mob_parent.do_item_attack_animation(attacked_target, used_item = held_disk, animation_type = ATTACK_ANIMATION_BLUNT)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	held_disk.forceMove(attacked_target)

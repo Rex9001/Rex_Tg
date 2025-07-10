@@ -1,12 +1,10 @@
 ///Adds the mob reference to the list and directory of all mobs. Called on Initialize().
 /mob/proc/add_to_mob_list()
 	GLOB.mob_list |= src
-	GLOB.mob_directory[tag] = src
 
 ///Removes the mob reference from the list and directory of all mobs. Called on Destroy().
 /mob/proc/remove_from_mob_list()
 	GLOB.mob_list -= src
-	GLOB.mob_directory -= tag
 
 ///Adds the mob reference to the list of all mobs alive. If mob is cliented, it adds it to the list of all living player-mobs.
 /mob/proc/add_to_alive_mob_list()
@@ -53,8 +51,6 @@
 		GLOB.keyloop_list |= src
 	else if(stat != DEAD || !SSlag_switch?.measures[DISABLE_DEAD_KEYLOOP])
 		GLOB.keyloop_list |= src
-	if(!SSticker.HasRoundStarted())
-		return
 	if(stat == DEAD)
 		add_to_current_dead_players()
 	else
@@ -65,8 +61,6 @@
 	SHOULD_CALL_PARENT(TRUE)
 	GLOB.player_list -= src
 	GLOB.keyloop_list -= src
-	if(!SSticker.HasRoundStarted())
-		return
 	if(stat == DEAD)
 		remove_from_current_dead_players()
 	else
@@ -75,13 +69,9 @@
 
 ///Adds the cliented mob reference to either the list of dead player-mobs or to the list of observers, depending on how they joined the game.
 /mob/proc/add_to_current_dead_players()
-	if(!SSticker.HasRoundStarted())
-		return
 	GLOB.dead_player_list |= src
 
 /mob/dead/observer/add_to_current_dead_players()
-	if(!SSticker.HasRoundStarted())
-		return
 	if(started_as_observer)
 		GLOB.current_observers_list |= src
 		return
@@ -92,13 +82,9 @@
 
 ///Removes the mob reference from either the list of dead player-mobs or from the list of observers, depending on how they joined the game.
 /mob/proc/remove_from_current_dead_players()
-	if(!SSticker.HasRoundStarted())
-		return
 	GLOB.dead_player_list -= src
 
 /mob/dead/observer/remove_from_current_dead_players()
-	if(!SSticker.HasRoundStarted())
-		return
 	if(started_as_observer)
 		GLOB.current_observers_list -= src
 		return
@@ -107,36 +93,28 @@
 
 ///Adds the cliented mob reference to the list of living player-mobs. If the mob is an antag, it adds it to the list of living antag player-mobs.
 /mob/proc/add_to_current_living_players()
-	if(!SSticker.HasRoundStarted())
-		return
 	GLOB.alive_player_list |= src
-	if(mind && (mind.special_role || length(mind.antag_datums)))
+	if(is_antag(NONE))
 		add_to_current_living_antags()
 
 ///Removes the mob reference from the list of living player-mobs. If the mob is an antag, it removes it from the list of living antag player-mobs.
 /mob/proc/remove_from_current_living_players()
-	if(!SSticker.HasRoundStarted())
-		return
 	GLOB.alive_player_list -= src
-	if(LAZYLEN(mind?.antag_datums))
+	if(is_antag(NONE))
 		remove_from_current_living_antags()
 
 
 ///Adds the cliented mob reference to the list of living antag player-mobs.
 /mob/proc/add_to_current_living_antags()
-	if(!SSticker.HasRoundStarted())
-		return
-
 	if (length(mind.antag_datums) == 0)
 		return
 
 	for (var/datum/antagonist/antagonist in mind.antag_datums)
-		if (antagonist.count_against_dynamic_roll_chance)
-			GLOB.current_living_antags |= src
-			return
+		if (antagonist.antag_flags & ANTAG_SKIP_GLOBAL_LIST)
+			continue
+		GLOB.current_living_antags |= src
+		return
 
 ///Removes the mob reference from the list of living antag player-mobs.
 /mob/proc/remove_from_current_living_antags()
-	if(!SSticker.HasRoundStarted())
-		return
 	GLOB.current_living_antags -= src

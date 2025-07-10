@@ -8,8 +8,8 @@
  * * List of clothing fibers on the atom
  */
 /datum/forensics
-	/// Weakref to the parent owning this datum
-	var/datum/weakref/parent
+	/// Ref to the parent owning this datum
+	var/atom/parent
 	/**
 	 * List of fingerprints on this atom
 	 *
@@ -39,7 +39,7 @@
 	 */
 	var/list/fibers
 
-/datum/forensics/New(atom/parent, fingerprints, hiddenprints, blood_DNA, fibers)
+/datum/forensics/New(atom/parent, list/fingerprints, list/hiddenprints, list/blood_DNA, list/fibers)
 	if(!isatom(parent))
 		stack_trace("We tried adding a forensics datum to something that isnt an atom. What the hell are you doing?")
 		qdel(src)
@@ -47,7 +47,7 @@
 
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(clean_act))
 
-	src.parent = WEAKREF(parent)
+	src.parent = parent
 	src.fingerprints = fingerprints
 	src.hiddenprints = hiddenprints
 	src.blood_DNA = blood_DNA
@@ -66,37 +66,46 @@
 		src.fibers = LAZY_LISTS_OR(src.fibers, fibers)
 	check_blood()
 
-/datum/forensics/Destroy(force, ...)
-	var/atom/parent_atom = parent.resolve()
-	if (!isnull(parent_atom))
-		UnregisterSignal(parent_atom, list(COMSIG_COMPONENT_CLEAN_ACT))
+/datum/forensics/Destroy(force)
+	UnregisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT)
+	parent = null
 	return ..()
 
 /// Empties the fingerprints list
 /datum/forensics/proc/wipe_fingerprints()
+	if(isnull(fingerprints))
+		return NONE
+
 	fingerprints = null
-	return TRUE
+	return COMPONENT_CLEANED
 
 /// Empties the blood_DNA list
 /datum/forensics/proc/wipe_blood_DNA()
+	if(isnull(blood_DNA))
+		return NONE
+
 	blood_DNA = null
-	return TRUE
+	return COMPONENT_CLEANED
 
 /// Empties the fibers list
 /datum/forensics/proc/wipe_fibers()
+	if(isnull(fibers))
+		return NONE
+
 	fibers = null
-	return TRUE
+	return COMPONENT_CLEANED
 
 /// Handles cleaning up the various forensic types
 /datum/forensics/proc/clean_act(datum/source, clean_types)
 	SIGNAL_HANDLER
 
+	. = NONE
 	if(clean_types & CLEAN_TYPE_FINGERPRINTS)
-		wipe_fingerprints()
+		. |= wipe_fingerprints()
 	if(clean_types & CLEAN_TYPE_BLOOD)
-		wipe_blood_DNA()
+		. |= wipe_blood_DNA()
 	if(clean_types & CLEAN_TYPE_FIBERS)
-		wipe_fibers()
+		. |= wipe_fibers()
 
 /// Adds the given list into fingerprints
 /datum/forensics/proc/add_fingerprint_list(list/fingerprints)
@@ -110,10 +119,10 @@
 /// Adds a single fingerprint
 /datum/forensics/proc/add_fingerprint(mob/living/suspect, ignoregloves = FALSE)
 	if(!isliving(suspect))
-		if(!iscameramob(suspect))
+		if(!iseyemob(suspect))
 			return
 		if(isaicamera(suspect))
-			var/mob/camera/ai_eye/ai_camera = suspect
+			var/mob/eye/camera/ai/ai_camera = suspect
 			if(!ai_camera.ai)
 				return
 			suspect = ai_camera.ai
@@ -147,8 +156,7 @@
 /// Adds a single fiber
 /datum/forensics/proc/add_fibers(mob/living/carbon/human/suspect)
 	var/fibertext
-	var/atom/actual_parent = parent.resolve()
-	var/item_multiplier = isitem(actual_parent) ? ITEM_FIBER_MULTIPLIER : NON_ITEM_FIBER_MULTIPLIER
+	var/item_multiplier = isitem(parent) ? ITEM_FIBER_MULTIPLIER : NON_ITEM_FIBER_MULTIPLIER
 	if(suspect.wear_suit)
 		fibertext = "Material from \a [suspect.wear_suit]."
 		if(prob(10 * item_multiplier) && !LAZYACCESS(fibers, fibertext))
@@ -192,10 +200,10 @@
 /// Adds a single hiddenprint
 /datum/forensics/proc/add_hiddenprint(mob/suspect)
 	if(!isliving(suspect))
-		if(!iscameramob(suspect))
+		if(!iseyemob(suspect))
 			return
 		if(isaicamera(suspect))
-			var/mob/camera/ai_eye/ai_camera = suspect
+			var/mob/eye/camera/ai/ai_camera = suspect
 			if(!ai_camera.ai)
 				return
 			suspect = ai_camera.ai
@@ -214,8 +222,7 @@
 		if(last_stamp_pos)
 			LAZYSET(hiddenprints, suspect.key, copytext(hiddenprints[suspect.key], 1, last_stamp_pos))
 		hiddenprints[suspect.key] += "\nLast: \[[current_time]\] \"[suspect.real_name]\"[has_gloves]. Ckey: [suspect.ckey]" //made sure to be existing by if(!LAZYACCESS);else
-	var/atom/parent_atom = parent.resolve()
-	parent_atom.fingerprintslast = suspect.ckey
+	parent.fingerprintslast = suspect.ckey
 	return TRUE
 
 /// Adds the given list into blood_DNA
@@ -230,11 +237,34 @@
 
 /// Updates the blood displayed on parent
 /datum/forensics/proc/check_blood()
-	if(!parent || !isitem(parent.resolve()))
+	if(!isitem(parent) || isorgan(parent)) // organs don't spawn with blood decals by default
 		return
-	if(isorgan(parent.resolve())) // organs don't spawn with blood decals by default
+	var/blood_color = parent.get_blood_dna_color()
+	if (blood_color)
+		parent.AddElement(/datum/element/decal/blood, _color = blood_color, _emissive = parent.get_blood_emissive_alpha())
+
+/// Returns how many blood datums on us fit our parent's expose flags
+/datum/forensics/proc/get_visible_blood()
+	RETURN_TYPE(/list)
+	var/expose_flag = null
+	if (isturf(parent) || istype(parent, /obj/effect/decal))
+		expose_flag = BLOOD_COVER_TURFS
+	else if (ismob(parent))
+		expose_flag = BLOOD_COVER_MOBS
+	else if (isitem(parent))
+		expose_flag = BLOOD_COVER_ITEMS
+
+	if (!expose_flag)
 		return
-	if(!length(blood_DNA))
-		return
-	var/atom/parent_atom = parent.resolve()
-	parent_atom.AddElement(/datum/element/decal/blood)
+
+	var/visible_blood = list()
+	for (var/blood_key in blood_DNA)
+		var/datum/blood_type/blood_type = blood_DNA[blood_key]
+		if (!istype(blood_type))
+			blood_type = get_blood_type(blood_type)
+			if (!istype(blood_type))
+				continue
+		if (blood_type.blood_flags & expose_flag)
+			visible_blood[blood_key] = blood_type
+
+	return visible_blood

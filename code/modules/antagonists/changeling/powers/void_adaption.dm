@@ -2,13 +2,13 @@
 	name = "Void Adaption"
 	desc = "We prepare our cells to resist the hostile environment outside of the station. We may freely travel wherever we wish."
 	helptext = "This ability is passive, and will automatically protect you in situations of extreme cold or vacuum, \
-		as well as removing your need to breathe. While it is actively protecting you from temperature or pressure \
-		it reduces your chemical regeneration rate."
+		as well as removing your need to breathe oxygen, although you will still be affected by hazardous gases. \
+		While it is actively protecting you from temperature or pressure it reduces your chemical regeneration rate."
 	owner_has_control = FALSE
 	dna_cost = 2
 
 	/// Traits we apply to become immune to the environment
-	var/static/list/gain_traits = list(TRAIT_NOBREATH, TRAIT_RESISTCOLD, TRAIT_RESISTLOWPRESSURE, TRAIT_SNOWSTORM_IMMUNE)
+	var/static/list/gain_traits = list(TRAIT_NO_BREATHLESS_DAMAGE, TRAIT_RESISTCOLD, TRAIT_RESISTLOWPRESSURE, TRAIT_SNOWSTORM_IMMUNE)
 	/// How much we slow chemical regeneration while active, in chems per second
 	var/recharge_slowdown = 0.25
 	/// Are we currently protecting our user?
@@ -55,14 +55,14 @@
 	if (!should_be_active)
 		on_removed_adaption(void_adapted, "Our cells relax in safer air.")
 		return
-	var/datum/antagonist/changeling/changeling_data = void_adapted.mind?.has_antag_datum(/datum/antagonist/changeling)
+	var/datum/antagonist/changeling/changeling_data = IS_CHANGELING(void_adapted)
 	to_chat(void_adapted, span_changeling("Our cells harden themselves against the [pick(active_reasons)]."))
 	changeling_data?.chem_recharge_slowdown -= recharge_slowdown
 	currently_active = TRUE
 
 /// Called when we stop being adapted
 /datum/action/changeling/void_adaption/proc/on_removed_adaption(mob/living/former, message)
-	var/datum/antagonist/changeling/changeling_data = former.mind?.has_antag_datum(/datum/antagonist/changeling)
+	var/datum/antagonist/changeling/changeling_data = IS_CHANGELING(former)
 	to_chat(former, span_changeling(message))
 	changeling_data?.chem_recharge_slowdown += recharge_slowdown
 	currently_active = FALSE

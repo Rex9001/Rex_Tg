@@ -5,6 +5,7 @@
 	desc = "A bag for storing extra clothes and shoes."
 	slot_flags = NONE
 	resistance_flags = FLAMMABLE
+	storage_type = /datum/storage/bag/garment
 
 /obj/item/storage/bag/garment/captain
 	name = "captain's garment bag"
@@ -37,17 +38,6 @@
 /obj/item/storage/bag/garment/quartermaster
 	name = "quartermasters's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the quartermaster."
-
-/obj/item/storage/bag/garment/Initialize(mapload)
-	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-	atom_storage.numerical_stacking = FALSE
-	atom_storage.max_total_storage = 200
-	atom_storage.max_slots = 15
-	atom_storage.insert_preposition = "in"
-	atom_storage.set_holdable(list(
-		/obj/item/clothing,
-	))
 
 /obj/item/storage/bag/garment/captain/PopulateContents()
 	new /obj/item/clothing/under/rank/captain(src)
@@ -89,6 +79,7 @@
 	new /obj/item/clothing/suit/armor/vest/leather(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga(src)
+	new /obj/item/clothing/head/hats/hos/beret(src)
 	new /obj/item/clothing/head/hats/hos/cap(src)
 	new /obj/item/clothing/mask/gas/sechailer/swat(src)
 	new /obj/item/clothing/neck/cloak/hos(src)
@@ -122,6 +113,8 @@
 	new /obj/item/clothing/under/rank/medical/chief_medical_officer(src)
 	new /obj/item/clothing/under/rank/medical/chief_medical_officer/skirt(src)
 	new /obj/item/clothing/under/rank/medical/chief_medical_officer/scrubs(src)
+	new /obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck(src)
+	new /obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck/skirt(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/medical/cmo(src)
 	new /obj/item/clothing/suit/toggle/labcoat/cmo(src)
 	new /obj/item/clothing/gloves/latex/nitrile(src)
@@ -133,6 +126,8 @@
 /obj/item/storage/bag/garment/engineering_chief/PopulateContents()
 	new /obj/item/clothing/under/rank/engineering/chief_engineer(src)
 	new /obj/item/clothing/under/rank/engineering/chief_engineer/skirt(src)
+	new /obj/item/clothing/under/rank/engineering/chief_engineer/turtleneck(src)
+	new /obj/item/clothing/under/rank/engineering/chief_engineer/turtleneck/skirt(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/engineering/ce(src)
 	new /obj/item/clothing/glasses/meson/engine(src)
 	new /obj/item/clothing/gloves/chief_engineer(src)

@@ -42,7 +42,7 @@
 		. += "It is empty."
 	. += span_notice("It is held together by some <b>screws</b>.")
 
-/obj/structure/tank_holder/attackby(obj/item/W, mob/living/user, params)
+/obj/structure/tank_holder/attackby(obj/item/W, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(user.combat_mode)
 		return ..()
 	if(W.tool_behaviour == TOOL_WRENCH)
@@ -63,12 +63,11 @@
 	deconstruct(TRUE)
 	return TRUE
 
-/obj/structure/tank_holder/deconstruct(disassembled = TRUE)
+/obj/structure/tank_holder/atom_deconstruct(disassembled = TRUE)
 	var/atom/Tsec = drop_location()
 	new /obj/item/stack/rods(Tsec, 2)
 	if(tank)
 		tank.forceMove(Tsec)
-	qdel(src)
 
 /obj/structure/tank_holder/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)
@@ -142,3 +141,7 @@
 /obj/structure/tank_holder/extinguisher/advanced
 	icon_state = "holder_foam_extinguisher"
 	tank = /obj/item/extinguisher/advanced
+
+/obj/structure/tank_holder/extinguisher/anti
+	icon_state = "holder_extinguisher"
+	tank = /obj/item/extinguisher/anti

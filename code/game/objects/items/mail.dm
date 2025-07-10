@@ -80,25 +80,25 @@
 	for(var/stamp in stamps)
 		var/image/stamp_image = image(
 			icon = icon,
-			icon_state = stamp,
-			pixel_x = stamp_offset_x,
-			pixel_y = stamp_offset_y + bonus_stamp_offset
+			icon_state = stamp
 		)
-		stamp_image.appearance_flags |= RESET_COLOR
-		add_overlay(stamp_image)
+		stamp_image.pixel_w = pixel_w = stamp_offset_x
+		stamp_image.pixel_z = stamp_offset_y + bonus_stamp_offset
+		stamp_image.appearance_flags |= RESET_COLOR|KEEP_APART
 		bonus_stamp_offset -= 5
+		. += stamp_image
 
 	if(postmarked == TRUE)
 		var/image/postmark_image = image(
 			icon = icon,
-			icon_state = "postmark",
-			pixel_x = stamp_offset_x + rand(-3, 1),
-			pixel_y = stamp_offset_y + rand(bonus_stamp_offset + 3, 1)
+			icon_state = "postmark"
 		)
-		postmark_image.appearance_flags |= RESET_COLOR
-		add_overlay(postmark_image)
+		postmark_image.pixel_w = stamp_offset_x + rand(-3, 1)
+		postmark_image.pixel_z = stamp_offset_y + rand(bonus_stamp_offset + 3, 1)
+		postmark_image.appearance_flags |= RESET_COLOR|KEEP_APART
+		. += postmark_image
 
-/obj/item/mail/attackby(obj/item/W, mob/user, params)
+/obj/item/mail/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	// Destination tagging
 	if(istype(W, /obj/item/dest_tagger))
 		var/obj/item/dest_tagger/destination_tag = W
@@ -107,7 +107,7 @@
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[destination_tag.currTag])
 			to_chat(user, span_notice("*[tag]*"))
 			sort_tag = destination_tag.currTag
-			playsound(loc, 'sound/machines/twobeep_high.ogg', vol = 100, vary = TRUE)
+			playsound(loc, 'sound/machines/beep/twobeep_high.ogg', vol = 100, vary = TRUE)
 
 /obj/item/mail/multitool_act(mob/living/user, obj/item/tool)
 	if(user.get_inactive_held_item() == src)
@@ -145,21 +145,25 @@
 			user.put_in_hands(stuff)
 		else
 			stuff.forceMove(drop_location())
-	playsound(loc, 'sound/items/poster_ripped.ogg', vol = 50, vary = TRUE)
+	playsound(loc, 'sound/items/poster/poster_ripped.ogg', vol = 50, vary = TRUE)
 	qdel(src)
 	return TRUE
 
 
 /obj/item/mail/examine_more(mob/user)
 	. = ..()
-	var/list/msg = list(span_notice("<i>You notice the postmarking on the front of the mail...</i>"))
+	if(!postmarked)
+		. += span_info("This mail has no postmarking of any sort...")
+	else
+		. += span_notice("<i>You notice the postmarking on the front of the mail...</i>")
 	var/datum/mind/recipient = recipient_ref.resolve()
 	if(recipient)
-		msg += "\t[span_info("Certified NT mail for [recipient].")]"
+		. += span_info("[postmarked ? "Certified NT" : "Uncertfieid"] mail for [recipient].")
+	else if(postmarked)
+		. += span_info("Certified mail for [GLOB.station_name].")
 	else
-		msg += "\t[span_info("Certified mail for [GLOB.station_name].")]"
-	msg += "\t[span_info("Distribute by hand or via destination tagger using the certified NT disposal system.")]"
-	return msg
+		. += span_info("This is a dead letter mail with no recipient.")
+	. += span_info("Distribute by hand or via destination tagger using the certified NT disposal system.")
 
 /// Accepts a mind to initialize goodies for a piece of mail.
 /obj/item/mail/proc/initialize_for_recipient(datum/mind/recipient)
@@ -192,6 +196,10 @@
 			if(LAZYLEN(quirk.mail_goodies))
 				var/quirk_goodie = pick(quirk.mail_goodies)
 				goodies[quirk_goodie] = 5
+
+		if(LAZYLEN(GLOB.holiday_mail))
+			var/holiday_goodie = pick(GLOB.holiday_mail)
+			goodies[holiday_goodie] = 5
 
 	for(var/iterator in 1 to goodie_count)
 		var/target_good = pick_weight(goodies)
@@ -246,9 +254,13 @@
 	base_icon_state = "mail"
 	can_install_electronics = FALSE
 	lid_icon_state = "maillid"
-	lid_x = -26
-	lid_y = 2
+	lid_w = -26
+	lid_z = 2
+	weld_w = 1
+	weld_z = 4
 	paint_jobs = null
+	///if it'll show the nt mark on the crate
+	var/postmarked = TRUE
 
 /obj/structure/closet/crate/mail/update_icon_state()
 	. = ..()
@@ -258,6 +270,11 @@
 			icon_state = base_icon_state
 	else
 		icon_state = "[base_icon_state]sealed"
+
+/obj/structure/closet/crate/mail/update_overlays()
+	. = ..()
+	if(postmarked)
+		. += "mail_nt"
 
 /// Fills this mail crate with N pieces of mail, where N is the lower of the amount var passed, and the maximum capacity of this crate. If N is larger than the number of alive human players, the excess will be junkmail.
 /obj/structure/closet/crate/mail/proc/populate(amount)
@@ -304,6 +321,19 @@
 	. = ..()
 	populate(INFINITY)
 
+///Used in the mail strike shuttle loan event
+/obj/structure/closet/crate/mail/full/mail_strike
+	desc = "A post crate from somewhere else. It has no NT logo on it."
+	postmarked = FALSE
+
+/obj/structure/closet/crate/mail/full/mail_strike/populate(amount)
+	var/strike_mail_to_spawn = rand(1, storage_capacity-1)
+	for(var/i in 1 to strike_mail_to_spawn)
+		if(prob(95))
+			new /obj/item/mail/mail_strike(src)
+		else
+			new /obj/item/mail/traitor/mail_strike(src)
+	return ..(storage_capacity - strike_mail_to_spawn)
 
 /// Opened mail crate
 /obj/structure/closet/crate/mail/preopen
@@ -318,18 +348,8 @@
 	icon_state = "mailbag"
 	worn_icon_state = "mailbag"
 	resistance_flags = FLAMMABLE
-
-/obj/item/storage/bag/mail/Initialize(mapload)
-	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-	atom_storage.max_total_storage = 42
-	atom_storage.max_slots = 21
-	atom_storage.numerical_stacking = FALSE
-	atom_storage.set_holdable(list(
-		/obj/item/mail,
-		/obj/item/delivery/small,
-		/obj/item/paper
-	))
+	custom_premium_price = PAYCHECK_LOWER
+	storage_type = /datum/storage/bag/mail
 
 /obj/item/paper/fluff/junkmail_redpill
 	name = "smudged paper"
@@ -378,10 +398,11 @@
 
 /obj/item/mail/traitor/after_unwrap(mob/user)
 	user.temporarilyRemoveItemFromInventory(src, force = TRUE)
-	playsound(loc, 'sound/items/poster_ripped.ogg', vol = 50, vary = TRUE)
+	playsound(loc, 'sound/items/poster/poster_ripped.ogg', vol = 50, vary = TRUE)
 	for(var/obj/item/stuff as anything in contents) // Mail and envelope actually can have more than 1 item.
 		if(user.put_in_hands(stuff) && armed)
-			log_bomber(user, "opened armed mail made by [made_by_cached_name] ([made_by_cached_ckey]), activating", stuff)
+			var/whomst = made_by_cached_name ? "[made_by_cached_name] ([made_by_cached_ckey])" : "no one in particular"
+			log_bomber(user, "opened armed mail made by [whomst], activating", stuff)
 			INVOKE_ASYNC(stuff, TYPE_PROC_REF(/obj/item, attack_self), user)
 	qdel(src)
 	return TRUE
@@ -394,7 +415,7 @@
 		if(!do_after(user, 2 SECONDS, target = src))
 			return FALSE
 		balloon_alert(user, "disarmed")
-		playsound(src, 'sound/machines/defib_ready.ogg', vol = 100, vary = TRUE)
+		playsound(src, 'sound/machines/defib/defib_ready.ogg', vol = 100, vary = TRUE)
 		armed = FALSE
 		return TRUE
 	else
@@ -405,29 +426,73 @@
 			return FALSE
 		if(prob(50))
 			balloon_alert(user, "disarmed something...?")
-			playsound(src, 'sound/machines/defib_ready.ogg', vol = 100, vary = TRUE)
+			playsound(src, 'sound/machines/defib/defib_ready.ogg', vol = 100, vary = TRUE)
 			armed = FALSE
 			return TRUE
 		else
 			after_unwrap(user)
 			return TRUE
 
+///Generic mail used in the mail strike shuttle loan event
+/obj/item/mail/mail_strike
+	name = "dead mail"
+	desc = "An unmarked parcel of unknown origins, effectively undeliverable."
+	postmarked = FALSE
+	generic_goodies = list(
+		/obj/effect/spawner/random/entertainment/money_medium = 2,
+		/obj/effect/spawner/random/contraband = 2,
+		/obj/effect/spawner/random/entertainment/money_large = 1,
+		/obj/effect/spawner/random/entertainment/coin = 1,
+		/obj/effect/spawner/random/food_or_drink/any_snack_or_beverage = 1,
+		/obj/effect/spawner/random/entertainment/drugs = 1,
+		/obj/effect/spawner/random/contraband/grenades = 1,
+	)
+
+/obj/item/mail/mail_strike/Initialize(mapload)
+	if(prob(35))
+		stamped = FALSE
+	if(prob(35))
+		name = "dead envelope"
+		icon_state = "mail_large"
+		goodie_count = 2
+		stamp_max = 2
+		stamp_offset_y = 5
+	. = ..()
+	color = pick(COLOR_SILVER, COLOR_DARK, COLOR_DRIED_TAN, COLOR_ORANGE_BROWN, COLOR_BROWN, COLOR_SYNDIE_RED)
+	for(var/goodie in 1 to goodie_count)
+		var/target_good = pick_weight(generic_goodies)
+		new target_good(src)
+
+///Also found in the mail strike shuttle loan. It contains a random grenade that'll be triggered when unwrapped
+/obj/item/mail/traitor/mail_strike
+	name = "dead mail"
+	desc = "An unmarked parcel of unknown origins, effectively undeliverable."
+	postmarked = FALSE
+
+/obj/item/mail/traitor/mail_strike/Initialize(mapload)
+	if(prob(35))
+		stamped = FALSE
+	if(prob(35))
+		name = "dead envelope"
+		icon_state = "mail_large"
+		goodie_count = 2
+		stamp_max = 2
+		stamp_offset_y = 5
+	. = ..()
+	color = pick(COLOR_SILVER, COLOR_DARK, COLOR_DRIED_TAN, COLOR_ORANGE_BROWN, COLOR_BROWN, COLOR_SYNDIE_RED)
+	new /obj/effect/spawner/random/contraband/grenades/dangerous(src)
+
 /obj/item/storage/mail_counterfeit_device
 	name = "GLA-2 mail counterfeit device"
-	desc = "Device that actually able to counterfeit NT's mail. This device also able to place a trap inside of mail for malicious actions. Trap will \"activate\" any item inside of mail. Also it might be used for contraband purposes. Integrated micro-computer will give you great configuration optionality for your needs."
+	desc = "A single-use device for spoofing official NT envelopes. Can hold one normal sized object, and can be programmed to arm its contents when opened."
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "mail_counterfeit_device"
-
-/obj/item/storage/mail_counterfeit_device/Initialize(mapload)
-	. = ..()
-	atom_storage.max_slots = 1
-	atom_storage.allow_big_nesting = TRUE
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	storage_type = /datum/storage/mail_counterfeit
 
 /obj/item/storage/mail_counterfeit_device/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You notice the manufacture marking on the side of the device...</i>")
+	. += span_notice("<i>You notice the manufacturer information on the side of the device...</i>")
 	. += "\t[span_info("Guerilla Letter Assembler")]"
 	. += "\t[span_info("GLA Postal Service, right on schedule.")]"
 	return .
@@ -438,7 +503,7 @@
 		return FALSE
 	if(loc != user)
 		return FALSE
-	mail_type = lowertext(mail_type)
+	mail_type = LOWER_TEXT(mail_type)
 
 	var/mail_armed = tgui_alert(user, "Arm it?", "Mail Counterfeiting", list("Yes", "No")) == "Yes"
 	if(isnull(mail_armed))
@@ -474,10 +539,10 @@
 	shady_mail.made_by_cached_name = user.mind.name
 
 	if(index == 1)
-		var/mail_name = tgui_input_text(user, "Enter mail title, or leave it blank", "Mail Counterfeiting")
+		var/mail_name = tgui_input_text(user, "Enter mail title, or leave it blank", "Mail Counterfeiting", max_length = MAX_LABEL_LEN)
 		if(!(src in user.contents))
 			return FALSE
-		if(reject_bad_text(mail_name, ascii_only = FALSE))
+		if(reject_bad_text(mail_name, max_length = MAX_LABEL_LEN, ascii_only = FALSE))
 			shady_mail.name = mail_name
 		else
 			shady_mail.name = mail_type
@@ -495,19 +560,17 @@
 /// Unobtainable item mostly for (b)admin purposes.
 /obj/item/storage/mail_counterfeit_device/advanced
 	name = "GLA-MACRO mail counterfeit device"
+	storage_type = /datum/storage/mail_counterfeit/advanced
 
 /obj/item/storage/mail_counterfeit_device/advanced/Initialize(mapload)
 	. = ..()
 	desc += " This model is highly advanced and capable of compressing items, making mail's storage space comparable to standard backpack."
-	create_storage(max_slots = 21, max_total_storage = 21)
-	atom_storage.allow_big_nesting = TRUE
 
 /// Unobtainable item mostly for (b)admin purposes.
 /obj/item/storage/mail_counterfeit_device/bluespace
 	name = "GLA-ULTRA mail counterfeit device"
+	storage_type = /datum/storage/mail_counterfeit/bluespace
 
 /obj/item/storage/mail_counterfeit_device/bluespace/Initialize(mapload)
 	. = ..()
 	desc += " This model is the most advanced and capable of performing crazy bluespace compressions, making mail's storage space comparable to bluespace backpack."
-	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30)
-	atom_storage.allow_big_nesting = TRUE

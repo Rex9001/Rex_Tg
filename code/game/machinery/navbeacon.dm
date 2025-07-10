@@ -57,7 +57,7 @@
 		GLOB.navbeacons["[new_turf?.z]"] += src
 	return ..()
 
-/obj/machinery/navbeacon/on_construction(mob/user)
+/obj/machinery/navbeacon/on_construction(mob/user, from_flatpack = FALSE)
 	var/turf/our_turf = loc
 	if(!isfloorturf(our_turf))
 		return
@@ -115,7 +115,7 @@
 		return TRUE
 	return default_deconstruction_screwdriver(user, "navbeacon1","navbeacon0",tool)
 
-/obj/machinery/navbeacon/attackby(obj/item/attacking_item, mob/user, params)
+/obj/machinery/navbeacon/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	var/turf/our_turf = loc
 	if(our_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
 		return // prevent intraction when T-scanner revealed
@@ -165,7 +165,7 @@
 	controls["cover_locked"] = cover_locked
 
 	data["locked"] = controls_locked
-	data["siliconUser"] = issilicon(user)
+	data["siliconUser"] = HAS_SILICON_ACCESS(user)
 	data["controls"] = controls
 
 	return data
@@ -181,16 +181,17 @@
 	data["static_controls"] = static_controls
 	return data
 
-/obj/machinery/navbeacon/ui_act(action, params)
+/obj/machinery/navbeacon/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+	var/mob/user = ui.user
 
-	if(action == "lock" && allowed(usr))
+	if(action == "lock" && allowed(user))
 		controls_locked = !controls_locked
 		return TRUE
 
-	if(controls_locked && !issilicon(usr))
+	if(controls_locked && !HAS_SILICON_ACCESS(user))
 		return
 
 	switch(action)
@@ -210,7 +211,7 @@
 			toggle_code(NAVBEACON_DELIVERY_MODE)
 			return TRUE
 		if("set_location")
-			var/input_text = tgui_input_text(usr, "Enter the beacon's location tag", "Beacon Location", location, 20)
+			var/input_text = tgui_input_text(user, "Enter the beacon's location tag", "Beacon Location", location, max_length = 20)
 			if (!input_text || location == input_text)
 				return
 			glob_lists_deregister()
@@ -219,7 +220,7 @@
 			return TRUE
 		if("set_patrol_next")
 			var/next_patrol = codes[NAVBEACON_PATROL_NEXT]
-			var/input_text = tgui_input_text(usr, "Enter the tag of the next patrol location", "Beacon Location", next_patrol, 20)
+			var/input_text = tgui_input_text(user, "Enter the tag of the next patrol location", "Beacon Location", next_patrol, max_length = 20)
 			if (!input_text || location == input_text)
 				return
 			codes[NAVBEACON_PATROL_NEXT] = input_text

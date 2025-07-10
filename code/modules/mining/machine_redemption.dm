@@ -1,4 +1,4 @@
-/**********************Ore Redemption Unit**************************/
+/**********************Ore Redemption Unit (ORM)**************************/
 //Turns all the various mining machines into a single unit to speed up mining and establish a point system
 
 /obj/machinery/mineral/ore_redemption
@@ -52,13 +52,21 @@
 	if(!GLOB.autounlock_techwebs[/datum/techweb/autounlocking/smelter])
 		GLOB.autounlock_techwebs[/datum/techweb/autounlocking/smelter] = new /datum/techweb/autounlocking/smelter
 	stored_research = GLOB.autounlock_techwebs[/datum/techweb/autounlocking/smelter]
-	materials = AddComponent(
+
+	//mat_container_signals is for reedeming points from local storage if silo is not required
+	var/list/local_signals = null
+	if(!requires_silo)
+		local_signals = list(
+			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, local_redeem_points)
+		)
+	materials = AddComponent( \
 		/datum/component/remote_materials, \
 		mapload, \
-		mat_container_flags = BREAKDOWN_FLAGS_ORM \
+		mat_container_signals = local_signals \
 	)
 
-	RegisterSignal(src, COMSIG_MATCONTAINER_ITEM_CONSUMED, TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, redeem_points))
+	//for reedeming points from items inserted into ore silo
+	RegisterSignal(src, COMSIG_SILO_ITEM_CONSUMED, TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, silo_redeem_points))
 
 /obj/machinery/mineral/ore_redemption/Destroy()
 	stored_research = null
@@ -71,7 +79,12 @@
 		. += span_notice("Alt-click to rotate the input and output direction.")
 
 
-/obj/machinery/mineral/ore_redemption/proc/redeem_points(obj/machinery/mineral/ore_redemption/machine, container, obj/item/stack/ore/gathered_ore)
+/obj/machinery/mineral/ore_redemption/proc/silo_redeem_points(obj/machinery/mineral/ore_redemption/machine, container, obj/item/stack/ore/gathered_ore)
+	SIGNAL_HANDLER
+
+	local_redeem_points(container, gathered_ore)
+
+/obj/machinery/mineral/ore_redemption/proc/local_redeem_points(container, obj/item/stack/ore/gathered_ore)
 	SIGNAL_HANDLER
 
 	if(istype(gathered_ore) && gathered_ore.refined_type)
@@ -160,7 +173,7 @@
 		if(isnull(gathered_ore.refined_type))
 			continue
 
-		if(materials.mat_container.insert_item(gathered_ore, ore_multiplier, breakdown_flags = BREAKDOWN_FLAGS_ORM, context = src) <= 0)
+		if(materials.insert_item(gathered_ore, ore_multiplier) <= 0)
 			unload_mineral(gathered_ore) //if rejected unload
 
 		SEND_SIGNAL(src, COMSIG_ORM_COLLECTED_ORE)
@@ -190,18 +203,16 @@
 	default_unfasten_wrench(user, tool)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/machinery/mineral/ore_redemption/AltClick(mob/living/user)
-	. = ..()
-	if(!user.can_perform_action(src))
-		return
-	if(panel_open)
-		input_dir = turn(input_dir, -90)
-		output_dir = turn(output_dir, -90)
-		to_chat(user, span_notice("You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)]."))
-		unregister_input_turf() // someone just rotated the input and output directions, unregister the old turf
-		register_input_turf() // register the new one
-		update_appearance(UPDATE_OVERLAYS)
-		return TRUE
+/obj/machinery/mineral/ore_redemption/click_alt(mob/living/user)
+	if(!panel_open)
+		return CLICK_ACTION_BLOCKING
+	input_dir = turn(input_dir, -90)
+	output_dir = turn(output_dir, -90)
+	to_chat(user, span_notice("You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)]."))
+	unregister_input_turf() // someone just rotated the input and output directions, unregister the old turf
+	register_input_turf() // register the new one
+	update_appearance(UPDATE_OVERLAYS)
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/mineral/ore_redemption/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -218,21 +229,27 @@
 		for(var/datum/material/material as anything in mat_container.materials)
 			var/amount = mat_container.materials[material]
 			var/sheet_amount = amount / SHEET_MATERIAL_AMOUNT
+			var/obj/sheet_type = material.sheet_type
 			data["materials"] += list(list(
 				"name" = material.name,
 				"id" = REF(material),
 				"amount" = sheet_amount,
 				"category" = "material",
 				"value" = ore_values[material.type],
+				"icon" = sheet_type::icon,
+				"icon_state" = sheet_type::icon_state,
 			))
 
 		for(var/research in stored_research.researched_designs)
 			var/datum/design/alloy = SSresearch.techweb_design_by_id(research)
+			var/obj/alloy_type = alloy.build_path
 			data["materials"] += list(list(
 				"name" = alloy.name,
 				"id" = alloy.id,
 				"category" = "alloy",
 				"amount" = can_smelt_alloy(alloy),
+				"icon" = alloy_type::icon,
+				"icon_state" = alloy_type::icon_state,
 			))
 
 	data["disconnected"] = null
@@ -263,51 +280,33 @@
 			)
 	return data
 
-/obj/machinery/mineral/ore_redemption/ui_static_data(mob/user)
-	var/list/data = list()
-
-	var/datum/component/material_container/mat_container = materials.mat_container
-	if (mat_container)
-		for(var/datum/material/material as anything in mat_container.materials)
-			var/obj/material_display = initial(material.sheet_type)
-			data["material_icons"] += list(list(
-				"id" = REF(material),
-				"product_icon" = icon2base64(getFlatIcon(image(icon = initial(material_display.icon), icon_state = initial(material_display.icon_state)), no_anim=TRUE)),
-			))
-
-	for(var/research in stored_research.researched_designs)
-		var/datum/design/alloy = SSresearch.techweb_design_by_id(research)
-		var/obj/alloy_display = initial(alloy.build_path)
-		data["material_icons"] += list(list(
-			"id" = alloy.id,
-			"product_icon" = icon2base64(getFlatIcon(image(icon = initial(alloy_display.icon), icon_state = initial(alloy_display.icon_state)), no_anim=TRUE)),
-		))
-
-	return data
-
-
-/obj/machinery/mineral/ore_redemption/ui_act(action, params)
+/obj/machinery/mineral/ore_redemption/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 	var/datum/component/material_container/mat_container = materials.mat_container
 	switch(action)
 		if("Claim")
+			//requires silo but silo not in range
+			if(requires_silo && !materials.check_z_level())
+				return FALSE
+
+			//no ID
 			var/obj/item/card/id/user_id_card
 			if(isliving(usr))
 				var/mob/living/user = usr
 				user_id_card = user.get_idcard(TRUE)
-			if(!materials.check_z_level() && (requires_silo || !user_id_card.registered_account.replaceable))
-				return TRUE
+			if(isnull(user_id_card))
+				to_chat(usr, span_warning("No valid ID detected."))
+				return FALSE
+
+			//we have points
 			if(points)
-				if(user_id_card)
-					user_id_card.registered_account.mining_points += points
-					points = 0
-				else
-					to_chat(usr, span_warning("No valid ID detected."))
-			else
-				to_chat(usr, span_warning("No points to claim."))
-			return TRUE
+				user_id_card.registered_account.mining_points += points
+				points = 0
+				return TRUE
+
+			return FALSE
 		if("Release")
 			if(!mat_container)
 				return
@@ -374,26 +373,26 @@
 
 	switch(input_dir)
 		if(NORTH)
-			ore_input.pixel_y = 32
-			ore_output.pixel_y = -32
+			ore_input.pixel_z = 32
+			ore_output.pixel_z = -32
 		if(SOUTH)
-			ore_input.pixel_y = -32
-			ore_output.pixel_y = 32
+			ore_input.pixel_z = -32
+			ore_output.pixel_z = 32
 		if(EAST)
-			ore_input.pixel_x = 32
-			ore_output.pixel_x = -32
+			ore_input.pixel_w = 32
+			ore_output.pixel_w = -32
 		if(WEST)
-			ore_input.pixel_x = -32
-			ore_output.pixel_x = 32
+			ore_input.pixel_w = -32
+			ore_output.pixel_w = 32
 
 	ore_input.color = COLOR_MODERATE_BLUE
 	ore_output.color = COLOR_SECURITY_RED
 	var/mutable_appearance/light_in = emissive_appearance(ore_input.icon, ore_input.icon_state, offset_spokesman = src, alpha = ore_input.alpha)
-	light_in.pixel_y = ore_input.pixel_y
-	light_in.pixel_x = ore_input.pixel_x
+	light_in.pixel_z = ore_input.pixel_z
+	light_in.pixel_w = ore_input.pixel_w
 	var/mutable_appearance/light_out = emissive_appearance(ore_output.icon, ore_output.icon_state, offset_spokesman = src, alpha = ore_output.alpha)
-	light_out.pixel_y = ore_output.pixel_y
-	light_out.pixel_x = ore_output.pixel_x
+	light_out.pixel_z = ore_output.pixel_z
+	light_out.pixel_w = ore_output.pixel_w
 	. += ore_input
 	. += ore_output
 	. += light_in

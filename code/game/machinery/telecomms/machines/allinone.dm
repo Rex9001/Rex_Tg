@@ -20,14 +20,19 @@
 
 /obj/machinery/telecomms/allinone/indestructible
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	obj_flags = NO_DECONSTRUCTION
+
+/obj/machinery/telecomms/allinone/indestructible/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
+
+/obj/machinery/telecomms/allinone/indestructible/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
 
 /obj/machinery/telecomms/allinone/receive_signal(datum/signal/subspace/signal)
 	if(!istype(signal) || signal.transmission_method != TRANSMISSION_SUBSPACE)  // receives on subspace only
 		return
 	if(!on || !is_freq_listening(signal))  // has to be on to receive messages
 		return
-	if(!syndicate && !(z in signal.levels) && !(0 in signal.levels))  // has to be syndicate or on the right level
+	if(!syndicate && !(z in signal.levels) && !(RADIO_NO_Z_LEVEL_RESTRICTION in signal.levels))  // has to be syndicate or on the right level
 		return
 
 	// Decompress the signal and mark it done
@@ -40,6 +45,6 @@
 		sleep(signal.data["slow"]) // simulate the network lag if necessary
 	signal.broadcast()
 
-/obj/machinery/telecomms/allinone/attackby(obj/item/attacking_item, mob/user, params)
+/obj/machinery/telecomms/allinone/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(attacking_item.tool_behaviour == TOOL_MULTITOOL)
 		return attack_hand(user)

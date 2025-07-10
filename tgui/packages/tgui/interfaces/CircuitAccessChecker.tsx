@@ -1,13 +1,13 @@
-import { BooleanLike } from 'common/react';
+import { Button, LabeledList } from 'tgui-core/components';
+import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Button, LabeledList } from '../components';
 import { Window } from '../layouts';
-import { AccessConfig } from './common/AccessConfig';
+import { AccessConfig, type Region } from './common/AccessConfig';
 
 type Data = {
   oneAccess: BooleanLike;
-  regions: string[];
+  regions: Region[];
   accesses: string[];
 };
 

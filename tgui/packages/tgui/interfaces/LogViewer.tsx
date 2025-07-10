@@ -1,6 +1,4 @@
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
 import {
   Button,
   Collapsible,
@@ -8,7 +6,9 @@ import {
   NoticeBox,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type LogViewerData = {
@@ -97,44 +97,40 @@ const CategoryBar = (props: CategoryBarProps) => {
       scrollableHorizontal
       buttons={
         <Input
-          grow
           placeholder="Search"
           value={categorySearch}
-          onChange={(_, value) => setCategorySearch(value)}
+          onChange={setCategorySearch}
         />
       }
     >
-      <Stack scrollableHorizontal>
+      <Stack>
         {/** these are not in stack items to have them directly next to eachother */}
         <Button
-          textAlign="left"
-          content="None"
           selected={props.active === ''}
           onClick={() => props.setActive('')}
-        />
+        >
+          None
+        </Button>
         <Button
-          textAlign="left"
-          content="All"
           tooltip="This can be slow!"
           selected={props.active === CATEGORY_ALL}
           onClick={() => props.setActive(CATEGORY_ALL)}
-        />
+        >
+          All
+        </Button>
         {sorted
           .filter((cat) =>
             cat.toLowerCase().includes(categorySearch.toLowerCase()),
           )
-          .map((category) => {
-            return (
-              <Stack.Item key={category}>
-                <Button
-                  textAlign="left"
-                  content={category}
-                  selected={category === props.active}
-                  onClick={() => props.setActive(category)}
-                />
-              </Stack.Item>
-            );
-          })}
+          .map((category) => (
+            <Button
+              key={category}
+              selected={category === props.active}
+              onClick={() => props.setActive(category)}
+            >
+              {category}
+            </Button>
+          ))}
       </Stack>
     </Section>
   );
@@ -157,7 +153,7 @@ const validateRegExp = (str: string) => {
 const CategoryViewer = (props: CategoryViewerProps) => {
   const [search, setSearch] = useState('');
   let [searchRegex, setSearchRegex] = useState(false);
-  let [caseSensitive, setCaseSensitive] = useState(false);
+  const [caseSensitive, setCaseSensitive] = useState(false);
   if (!search && searchRegex) {
     setSearchRegex(false);
     searchRegex = false;
@@ -176,21 +172,15 @@ const CategoryViewer = (props: CategoryViewerProps) => {
       }`}
       buttons={
         <>
-          <Input
-            grow
-            fill
-            placeholder="Search"
-            value={search}
-            onChange={(_, value) => setSearch(value)}
-          />
+          <Input placeholder="Search" value={search} onChange={setSearch} />
           <Button
-            icon={'code'}
+            icon="code"
             tooltip="RegEx Search"
             selected={searchRegex}
             onClick={() => setSearchRegex(!searchRegex)}
           />
           <Button
-            icon={'font'}
+            icon="font"
             selected={caseSensitive}
             tooltip="Case Sensitive"
             onClick={() => setCaseSensitive(!caseSensitive)}
@@ -233,11 +223,7 @@ const CategoryViewer = (props: CategoryViewerProps) => {
 
             return (
               <Stack.Item key={entry.id}>
-                <Collapsible
-                  fitted
-                  tooltip={entry.timestamp}
-                  title={`[${entry.id}] - ${entry.message}`}
-                >
+                <Collapsible title={`[${entry.id}] - ${entry.message}`}>
                   <Stack vertical fill>
                     <Stack.Item>
                       <p font-family="Courier">{entry.message}</p>

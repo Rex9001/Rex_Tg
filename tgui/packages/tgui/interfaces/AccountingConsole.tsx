@@ -1,15 +1,16 @@
-import { BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
 import {
+  Blink,
   BlockQuote,
   Collapsible,
   Modal,
   Section,
   Stack,
   Tabs,
-} from '../components';
+} from 'tgui-core/components';
+import type { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
@@ -80,7 +81,6 @@ const UsersScreen = (props) => {
     <Section fill scrollable title="Crew Account Summary">
       {PlayerAccounts.map((account) => (
         <Collapsible
-          fill
           key={account.index}
           title={account.name + ' the ' + account.job}
         >
@@ -126,7 +126,7 @@ const MarketCrashing = (props) => {
   }
   return (
     <Modal textAlign="center" mr={1.5}>
-      <blink>OH GOD THE ECONOMY IS RUINED.</blink>
+      <Blink>OH GOD THE ECONOMY IS RUINED.</Blink>
     </Modal>
   );
 };

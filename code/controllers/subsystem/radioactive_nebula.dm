@@ -4,6 +4,9 @@
 /// Controls making objects irradiated when Radioactive Nebula is in effect.
 SUBSYSTEM_DEF(radioactive_nebula)
 	name = "Radioactive Nebula"
+	dependencies = list(
+		/datum/controller/subsystem/processing/station,
+	)
 	flags = SS_BACKGROUND
 	wait = 30 SECONDS
 
@@ -50,9 +53,10 @@ SUBSYSTEM_DEF(radioactive_nebula)
 /// Loop through radioactive space (with lag checks) and make it all radioactive!
 /datum/controller/subsystem/radioactive_nebula/proc/irradiate_everything()
 	for (var/area/area as anything in get_areas(radioactive_nebula.radioactive_areas))
-		for (var/turf/turf as anything in area.get_contained_turfs())
-			for (var/atom/movable/target as anything in turf)
-				fake_irradiate(target)
+		for (var/list/zlevel_turfs as anything in area.get_zlevel_turf_lists())
+			for (var/turf/area_turf as anything in zlevel_turfs)
+				for (var/atom/movable/target as anything in area_turf)
+					fake_irradiate(target)
 
 			CHECK_TICK
 

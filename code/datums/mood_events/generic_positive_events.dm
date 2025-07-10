@@ -122,13 +122,18 @@
 
 /datum/mood_event/heretics
 	description = "THE HIGHER I RISE, THE MORE I SEE."
-	mood_change = 10 //maybe being a cultist isnt that bad after all
+	mood_change = 10 //maybe being a heretic isnt that bad after all
 	hidden = TRUE
 
 /datum/mood_event/changeling_enjoyer
 	description = "I have been blessed by the hive!"
 	mood_change = 10
 	timeout = 3 MINUTES
+
+/datum/mood_event/rift_fishing
+	description = "THE MORE I FISH, THE HIGHER I RISE."
+	mood_change = 7
+	timeout = 5 MINUTES
 
 /datum/mood_event/family_heirloom
 	description = "My family heirloom is safe with me."
@@ -189,12 +194,6 @@
 	description = "That work of art was so great it made me believe in the goodness of humanity. Says a lot in a place like this."
 	mood_change = 6
 	timeout = 5 MINUTES
-
-/datum/mood_event/pet_borg
-	description = "I just love my robotic friends!"
-	mood_change = 3
-	timeout = 5 MINUTES
-	required_job = list(/datum/job/research_director, /datum/job/scientist, /datum/job/roboticist, /datum/job/geneticist)
 
 /datum/mood_event/bottle_flip
 	description = "The bottle landing like that was satisfying."
@@ -296,7 +295,7 @@
 	timeout = 30 SECONDS
 
 /datum/mood_event/gamer_won
-	description = "I love winning videogames!"
+	description = "I love winning video games!"
 	mood_change = 10
 	timeout = 5 MINUTES
 
@@ -344,8 +343,33 @@
 
 /datum/mood_event/fishing
 	description = "Fishing is relaxing."
-	mood_change = 5
+	mood_change = 4
 	timeout = 3 MINUTES
+
+/datum/mood_event/fish_released
+	description = "Go, fish, swim and be free!"
+	mood_change = 1
+	timeout = 2 MINUTES
+
+/datum/mood_event/fish_released/add_effects(morbid, obj/item/fish/fish)
+	if(!morbid)
+		description = "Go, [fish.name], swim and be free!"
+		return
+	if(fish.status == FISH_DEAD)
+		description = "Some scavenger will surely find a use for the remains of [fish.name]. How pragmatic."
+	else
+		description = "Returned to the burden of the deep. But is this truly a mercy, [fish.name]? There will always be bigger fish..."
+
+/datum/mood_event/fish_petting
+	description = "It felt nice to pet the fish."
+	mood_change = 2
+	timeout = 2 MINUTES
+
+/datum/mood_event/fish_petting/add_effects(obj/item/fish/fish, morbid)
+	if(!morbid)
+		description = "It felt nice to pet \the [fish]."
+	else
+		description = "I caress \the [fish] as [fish.p_they()] squirms under my touch, blissfully unaware of how cruel this world is."
 
 /datum/mood_event/kobun
 	description = "You are all loved by the Universe. I’m not alone, and you aren’t either."
@@ -377,6 +401,11 @@
 	description = "Slam dunk! Boom, shakalaka!"
 	mood_change = 2
 	timeout = 5 MINUTES
+
+/datum/mood_event/moon_smile
+	description = "THE MOON SHOWS ME THE TRUTH AND ITS SMILE IS FACED TOWARDS ME!!!"
+	mood_change = 10
+	timeout = 2 MINUTES
 
 ///Wizard cheesy grand finale - what the wizard gets
 /datum/mood_event/madness_elation

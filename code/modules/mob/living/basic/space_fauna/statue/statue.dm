@@ -25,10 +25,11 @@
 	melee_damage_upper = 83
 	attack_verb_continuous = "claws"
 	attack_verb_simple = "claw"
-	attack_sound = 'sound/hallucinations/growl1.ogg'
+	attack_sound = 'sound/effects/hallucinations/growl1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	melee_attack_cooldown = 1 SECONDS
 
+	status_flags = CANPUSH
 	faction = list(FACTION_STATUE)
 	speak_emote = list("screams")
 	death_message = "falls apart into a fine dust."
@@ -50,13 +51,12 @@
 	move_resist = MOVE_FORCE_EXTREMELY_STRONG
 	pull_force = MOVE_FORCE_EXTREMELY_STRONG
 
+	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 	ai_controller = /datum/ai_controller/basic_controller/statue
-	/// Stores the creator in here if it has one.
-	var/mob/living/creator = null
 
-/mob/living/basic/statue/Initialize(mapload, mob/living/creator)
+/mob/living/basic/statue/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_UNOBSERVANT, INNATE_TRAIT)
+	add_traits(list(TRAIT_MUTE, TRAIT_UNOBSERVANT), INNATE_TRAIT)
 	AddComponent(/datum/component/unobserved_actor, unobserved_flags = NO_OBSERVED_MOVEMENT | NO_OBSERVED_ATTACKS)
 
 	var/static/list/innate_actions = list(
@@ -65,23 +65,13 @@
 	)
 	grant_actions_by_list(innate_actions)
 
-	// Set creator
-	if(creator)
-		src.creator = creator
-
 /mob/living/basic/statue/med_hud_set_health()
 	return //we're a statue we're invincible
 
 /mob/living/basic/statue/med_hud_set_status()
 	return //we're a statue we're invincible
 
-/mob/living/basic/statue/can_speak(allow_mimes = FALSE)
-	return FALSE // We're a statue, of course we can't talk.
-
 // Cannot talk
-
-/mob/living/basic/statue/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
-	return
 
 // Turn to dust when gibbed
 
@@ -142,11 +132,11 @@
 /datum/ai_controller/basic_controller/statue
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
-		BB_LOW_PRIORITY_HUNTING_TARGET = null, // lights
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/escape_captivity,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_light_fixtures,

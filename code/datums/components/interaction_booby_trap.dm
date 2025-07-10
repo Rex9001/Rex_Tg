@@ -26,7 +26,7 @@
 /datum/component/interaction_booby_trap/Initialize(
 	explosion_light_range = 3,
 	explosion_heavy_range = 1, // So we destroy some machine components
-	triggered_sound = 'sound/machines/triple_beep.ogg',
+	triggered_sound = 'sound/machines/beep/triple_beep.ogg',
 	trigger_delay = 0.5 SECONDS,
 	sound_loop_type = /datum/looping_sound/trapped_machine_beep,
 	defuse_tool = TOOL_SCREWDRIVER,
@@ -56,7 +56,7 @@
 	if (length(additional_triggers))
 		RegisterSignals(parent, additional_triggers, PROC_REF(trigger_explosive))
 
-/datum/component/interaction_booby_trap/Destroy(force, silent)
+/datum/component/interaction_booby_trap/Destroy(force)
 	UnregisterSignal(parent, list(COMSIG_ATOM_ATTACK_HAND, COMSIG_ATOM_TOOL_ACT(defuse_tool), COMSIG_ATOM_EXAMINE_MORE) + additional_triggers)
 	QDEL_NULL(active_sound_loop)
 	on_triggered_callback = null

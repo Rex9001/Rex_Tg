@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Box, Button, Input, Section, Stack } from 'tgui/components';
+import { Box, Button, Input, Section, Stack } from 'tgui-core/components';
 
 import {
   getDefaultPrintDescription,
   getDefaultPrintHeader,
   getSecurityRecord,
 } from './helpers';
-import { PRINTOUT, SecurityRecordsData } from './types';
+import { PRINTOUT, type SecurityRecordsData } from './types';
 
 /** Handles printing posters and rapsheets */
 export const RecordPrint = (props) => {
@@ -17,15 +18,12 @@ export const RecordPrint = (props) => {
   const innocent = !crimes?.length;
   const { act } = useBackend<SecurityRecordsData>();
 
-  const [open, setOpen] = useLocalState<boolean>('printOpen', true);
-  const [alias, setAlias] = useLocalState<string>('printAlias', name);
+  const [open, setOpen] = useLocalState('printOpen', true);
+  const [alias, setAlias] = useState(name);
 
-  const [printType, setPrintType] = useLocalState<PRINTOUT>(
-    'printType',
-    PRINTOUT.Missing,
-  );
-  const [header, setHeader] = useLocalState<string>('printHeader', '');
-  const [description, setDescription] = useLocalState<string>('printDesc', '');
+  const [printType, setPrintType] = useState(PRINTOUT.Missing);
+  const [header, setHeader] = useState('');
+  const [description, setDescription] = useState('');
 
   /** Prints the record and resets. */
   const printSheet = () => {
@@ -121,11 +119,7 @@ export const RecordPrint = (props) => {
       <Stack color="label" fill vertical>
         <Stack.Item>
           <Box>Enter a Header:</Box>
-          <Input
-            onChange={(event, value) => setHeader(value)}
-            maxLength={7}
-            value={header}
-          />
+          <Input onChange={setHeader} maxLength={7} value={header} />
           <Button
             icon="sync"
             onClick={() => clearField('header')}
@@ -134,12 +128,7 @@ export const RecordPrint = (props) => {
         </Stack.Item>
         <Stack.Item>
           <Box>Enter an Alias:</Box>
-          <Input
-            onChange={(event, value) => setAlias(value)}
-            maxLength={42}
-            value={alias}
-            width="55%"
-          />
+          <Input onChange={setAlias} maxLength={42} value={alias} width="55%" />
           <Button
             icon="sync"
             onClick={() => clearField('alias')}
@@ -153,7 +142,7 @@ export const RecordPrint = (props) => {
               <Input
                 fluid
                 maxLength={150}
-                onChange={(event, value) => setDescription(value)}
+                onChange={setDescription}
                 value={description}
               />
             </Stack.Item>

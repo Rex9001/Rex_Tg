@@ -1,7 +1,7 @@
-import { BooleanLike } from 'common/react';
+import { Box, Button, Image, Section, Stack } from 'tgui-core/components';
+import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Image, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type Data = {
@@ -27,7 +27,7 @@ export const Vendatray = (props) => {
           </Stack.Item>
         </Stack>
         {registered ? (
-          <Section italics>Pays to the account of {owner_name}.</Section>
+          <Section italic>Pays to the account of {owner_name}.</Section>
         ) : (
           <>
             <Section>Tray is unregistered.</Section>

@@ -29,7 +29,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 	find_and_hang_on_wall()
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
+/obj/structure/noticeboard/attackby(obj/item/O, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
 		if(!allowed(user))
 			to_chat(user, span_warning("You are not authorized to add notices!"))
@@ -66,7 +66,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 		data["items"] += list(content_data)
 	return data
 
-/obj/structure/noticeboard/ui_act(action, params)
+/obj/structure/noticeboard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -110,15 +110,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 	notices--
 	update_appearance(UPDATE_ICON)
 
-/obj/structure/noticeboard/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		if(!disassembled)
-			new /obj/item/stack/sheet/mineral/wood(loc)
-		else
-			new /obj/item/wallframe/noticeboard(loc)
+/obj/structure/noticeboard/atom_deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		new /obj/item/stack/sheet/mineral/wood(loc)
+	else
+		new /obj/item/wallframe/noticeboard(loc)
 	for(var/obj/item/content in contents)
 		remove_item(content)
-	qdel(src)
 
 /obj/item/wallframe/noticeboard
 	name = "notice board"

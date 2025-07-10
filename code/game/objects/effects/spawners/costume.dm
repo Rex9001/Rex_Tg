@@ -2,7 +2,7 @@
 	name = "costume spawner"
 	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "x2"
-	color = "#00FF00"
+	color = COLOR_VIBRANT_LIME
 
 	var/list/items
 
@@ -40,14 +40,14 @@
 	items = list(
 		/obj/item/clothing/under/rank/captain/suit,
 		/obj/item/clothing/head/flatcap,
-		/obj/item/clothing/mask/cigarette/cigar/havana,
+		/obj/item/cigarette/cigar/havana,
 		/obj/item/clothing/shoes/jackboots,
 	)
 
 /obj/effect/spawner/costume/nyangirl
 	name = "nyangirl costume spawner"
 	items = list(
-		/obj/item/clothing/under/costume/schoolgirl,
+		/obj/item/clothing/under/costume/seifuku,
 		/obj/item/clothing/head/costume/kitty,
 		/obj/item/clothing/glasses/blindfold,
 	)

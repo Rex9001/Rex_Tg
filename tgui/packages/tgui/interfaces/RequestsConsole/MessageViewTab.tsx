@@ -1,6 +1,3 @@
-import { decodeHtmlEntities } from 'common/string';
-
-import { useBackend } from '../../backend';
 import {
   BlockQuote,
   Button,
@@ -8,11 +5,14 @@ import {
   NoticeBox,
   Section,
   Stack,
-} from '../../components';
+} from 'tgui-core/components';
+import { decodeHtmlEntities } from 'tgui-core/string';
+
+import { useBackend } from '../../backend';
 import {
-  RequestMessage,
+  type RequestMessage,
   RequestPriority,
-  RequestsData,
+  type RequestsData,
   RequestType,
 } from './types';
 
@@ -48,10 +48,10 @@ const MessageDisplay = (props: { message: RequestMessage }) => {
         }
       >
         {message.priority === RequestPriority.HIGH && (
-          <NoticeBox warning>High Priority</NoticeBox>
+          <NoticeBox>High Priority</NoticeBox>
         )}
         {message.priority === RequestPriority.EXTREME && (
-          <NoticeBox bad>!!!Extreme Priority!!!</NoticeBox>
+          <NoticeBox danger>!!!Extreme Priority!!!</NoticeBox>
         )}
         <BlockQuote>
           {decodeHtmlEntities(message.content)}

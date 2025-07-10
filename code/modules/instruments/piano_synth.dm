@@ -7,11 +7,18 @@
 	allowed_instrument_ids = "piano"
 	var/circuit_type = /obj/item/circuit_component/synth
 	var/shell_capacity = SHELL_CAPACITY_SMALL
+	/// Can a mouse play this instrument?
+	var/mouse_playable = TRUE
 
 /obj/item/instrument/piano_synth/Initialize(mapload)
 	. = ..()
 	song.allowed_instrument_ids = SSinstruments.synthesizer_instrument_ids
 	AddComponent(/datum/component/shell, list(new circuit_type), shell_capacity)
+
+/obj/item/instrument/piano_synth/attack_animal(mob/living/simple_animal/user, list/modifiers)
+	if (!mouse_playable || !ismouse(user))
+		return ..()
+	song.ui_interact(user)
 
 /obj/item/instrument/piano_synth/headphones
 	name = "headphones"
@@ -26,9 +33,13 @@
 	force = 0
 	w_class = WEIGHT_CLASS_SMALL
 	custom_price = PAYCHECK_CREW * 2.5
+	equip_sound = SFX_HEADSET_EQUIP
+	pickup_sound = SFX_HEADSET_PICKUP
+	drop_sound = 'sound/items/handling/headset/headset_drop1.ogg'
 	instrument_range = 1
 	circuit_type = /obj/item/circuit_component/synth/headphones
 	shell_capacity = SHELL_CAPACITY_TINY
+	mouse_playable = FALSE
 
 /obj/item/instrument/piano_synth/headphones/Initialize(mapload)
 	. = ..()
@@ -148,7 +159,7 @@
 	stopped_playing.set_output(COMPONENT_SIGNAL)
 
 /obj/item/circuit_component/synth/proc/import_song()
-	synth.song.ParseSong(song.value)
+	synth.song.ParseSong(new_song = song.value)
 
 /obj/item/circuit_component/synth/proc/set_repetitions()
 	synth.song.set_repeats(repetitions.value)
@@ -169,7 +180,9 @@
 	synth.song.note_shift = clamp(note_shift.value, synth.song.note_shift_min, synth.song.note_shift_max)
 
 /obj/item/circuit_component/synth/proc/set_sustain_mode()
-	synth.song.sustain_mode = SSinstruments.note_sustain_modes[sustain_mode.value]
+	if(!(sustain_mode.value in SSinstruments.note_sustain_modes))
+		return
+	synth.song.sustain_mode = sustain_mode.value
 
 /obj/item/circuit_component/synth/proc/set_sustain_value()
 	switch(synth.song.sustain_mode)

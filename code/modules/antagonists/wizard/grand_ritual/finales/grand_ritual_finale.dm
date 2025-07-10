@@ -28,7 +28,7 @@
 		return
 	var/time_remaining_desc = ""
 	if (minimum_time >= world.time - SSticker.round_start_time)
-		time_remaining_desc = "<i>This ritual will be available to begin invoking in [DisplayTimeText(minimum_time - world.time - SSticker.round_start_time)]</i>"
+		time_remaining_desc = " <i>This ritual will be available to begin invoking in [DisplayTimeText(minimum_time - world.time - SSticker.round_start_time)]</i>"
 	var/datum/radial_menu_choice/choice = new()
 	choice.name = name
 	choice.image = image(icon = icon, icon_state = icon_state)
@@ -71,9 +71,9 @@
 	name = "\improper Wizard Prank Victim"
 	roundend_category = "wizard prank victims"
 	show_in_antagpanel = FALSE
-	antagpanel_category = "Other"
+	antagpanel_category = ANTAG_GROUP_CREW
 	show_name_in_check_antagonists = TRUE
-	count_against_dynamic_roll_chance = FALSE
+	antag_flags = ANTAG_FAKE|ANTAG_SKIP_GLOBAL_LIST
 	silent = TRUE
 
 /// Give everyone magic items, its so simple it feels pointless to give it its own file

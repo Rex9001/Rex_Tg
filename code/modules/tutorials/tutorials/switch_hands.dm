@@ -19,14 +19,14 @@
 
 	hand_to_watch = (user.active_hand_index % user.held_items.len) + 1
 
-/datum/tutorial/switch_hands/Destroy(force, ...)
+/datum/tutorial/switch_hands/Destroy(force)
 	user.client?.screen -= hand_preview
 	QDEL_NULL(hand_preview)
 
 	return ..()
 
-/datum/tutorial/switch_hands/perform(list/params)
-	create_hand_preview(params[SCREEN_LOC])
+/datum/tutorial/switch_hands/perform(list/modifiers)
+	create_hand_preview(modifiers[SCREEN_LOC])
 	addtimer(CALLBACK(src, PROC_REF(show_instructions)), TIME_TO_START_MOVING_HAND_ICON)
 
 	RegisterSignal(user, COMSIG_MOB_SWAP_HANDS, PROC_REF(on_swap_hands))
@@ -38,7 +38,7 @@
 
 /datum/tutorial/switch_hands/proc/create_hand_preview(initial_screen_loc)
 	hand_preview = animate_ui_element(
-		"hand_[hand_to_watch % 2 == 0 ? "r" : "l"]",
+		"hand_[user.held_index_to_dir(hand_to_watch)]",
 		initial_screen_loc,
 		ui_hand_position(hand_to_watch),
 		TIME_TO_START_MOVING_HAND_ICON,
@@ -50,7 +50,7 @@
 
 	switch (stage)
 		if (STAGE_SHOULD_SWAP_HAND)
-			var/hand_name = hand_to_watch % 2 == 0 ? "right" : "left"
+			var/hand_name = IS_RIGHT_INDEX(hand_to_watch) ? "right" : "left"
 			show_instruction(keybinding_message(
 				/datum/keybinding/mob/swap_hands,
 				"Press '%KEY%' to use your [hand_name] hand",

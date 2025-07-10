@@ -1,11 +1,17 @@
-import { sortBy } from 'common/collections';
-import { classes } from 'common/react';
-import { ReactNode } from 'react';
+import { sortBy } from 'es-toolkit';
+import type { ReactNode } from 'react';
+import {
+  Dimmer,
+  Icon,
+  Section,
+  Stack,
+  VirtualList,
+} from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
 
 import { useSharedState } from '../../backend';
-import { Dimmer, Icon, Section, Stack } from '../../components';
-import { SearchBar } from './SearchBar';
-import { Design, MaterialMap } from './Types';
+import { SearchBar } from '../common/SearchBar';
+import type { Design, MaterialMap } from './Types';
 
 /**
  * A function that does nothing.
@@ -208,8 +214,8 @@ export const DesignBrowser = <T extends Design = Design>(
             <Stack.Item>
               <Section title="Categories" fitted />
             </Stack.Item>
-            <Stack.Item grow>
-              <Section fill style={{ overflow: 'auto' }}>
+            <Stack.Item grow style={{ overflowY: 'auto', overflowX: 'hidden' }}>
+              <Section fill>
                 <div className="FabricatorTabs">
                   <div
                     className={classes([
@@ -229,9 +235,9 @@ export const DesignBrowser = <T extends Design = Design>(
                     </div>
                   </div>
 
-                  {sortBy((category: Category) => category.title)(
-                    Object.values(root.subcategories),
-                  ).map((category) => (
+                  {sortBy(Object.values(root.subcategories), [
+                    (category: Category) => category.title,
+                  ]).map((category) => (
                     <DesignBrowserTab
                       key={category.title}
                       category={category}
@@ -262,42 +268,45 @@ export const DesignBrowser = <T extends Design = Design>(
             <Stack.Item>
               <Section>
                 <SearchBar
-                  searchText={searchText}
-                  onSearchTextChanged={setSearchText}
-                  hint={'Search all designs...'}
+                  expensive
+                  query={searchText}
+                  onSearch={setSearchText}
+                  placeholder={'Search all designs...'}
                 />
               </Section>
             </Stack.Item>
-            <Stack.Item grow>
-              <Section fill style={{ overflow: 'auto' }}>
+            <Stack.Item grow style={{ overflowY: 'auto', overflowX: 'hidden' }}>
+              <Section fill>
                 {searchText.length > 0 ? (
-                  sortBy((design: T) => design.name)(
-                    Object.values(root.descendants),
-                  )
-                    .filter((design) =>
-                      design.name
-                        .toLowerCase()
-                        .includes(searchText.toLowerCase()),
-                    )
-                    .map((design) =>
-                      buildRecipeElement(
-                        design,
-                        availableMaterials || {},
-                        onPrintDesign || NOOP,
-                      ),
-                    )
+                  <VirtualList>
+                    {sortBy(Object.values(root.descendants), [
+                      (design: T) => design.name,
+                    ])
+                      .filter((design) =>
+                        design.name
+                          .toLowerCase()
+                          .includes(searchText.toLowerCase()),
+                      )
+                      .map((design) =>
+                        buildRecipeElement(
+                          design,
+                          availableMaterials || {},
+                          onPrintDesign || NOOP,
+                        ),
+                      )}
+                  </VirtualList>
                 ) : selectedCategory === ALL_CATEGORY ? (
-                  <>
-                    {sortBy((design: T) => design.name)(
-                      Object.values(root.descendants),
-                    ).map((design) =>
+                  <VirtualList>
+                    {sortBy(Object.values(root.descendants), [
+                      (design: T) => design.name,
+                    ]).map((design) =>
                       buildRecipeElement(
                         design,
                         availableMaterials || {},
                         onPrintDesign || NOOP,
                       ),
                     )}
-                  </>
+                  </VirtualList>
                 ) : (
                   root.subcategories[selectedCategory] && (
                     <CategoryView
@@ -378,9 +387,9 @@ const DesignBrowserTab = <T extends Design = Design>(
         Object.entries(category.subcategories).length > 0 &&
         selectedCategory === category.title && (
           <div className="FabricatorTabs">
-            {sortBy((category: Category) => category.title)(
-              Object.values(category.subcategories),
-            ).map((subcategory) => (
+            {sortBy(Object.values(category.subcategories), [
+              (category: Category) => category.title,
+            ]).map((subcategory) => (
               <DesignBrowserTab
                 key={subcategory.title}
                 category={subcategory}
@@ -459,8 +468,8 @@ const CategoryView = <T extends Design = Design>(
   depth ??= 0;
 
   const body = (
-    <>
-      {sortBy((design: T) => design.name)(category.children).map((design) =>
+    <VirtualList>
+      {sortBy(category.children, [(design: T) => design.name]).map((design) =>
         buildRecipeElement(
           design,
           availableMaterials || {},
@@ -479,7 +488,7 @@ const CategoryView = <T extends Design = Design>(
             key={category.title}
           />
         ))}
-    </>
+    </VirtualList>
   );
 
   if (depth === 0 || category.children.length === 0) {
@@ -489,7 +498,8 @@ const CategoryView = <T extends Design = Design>(
   return (
     <Section
       title={category.title}
-      id={category.anchorKey}
+      key={category.anchorKey}
+      container_id={category.anchorKey}
       buttons={categoryButtons && categoryButtons(category)}
     >
       {body}
