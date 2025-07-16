@@ -9,6 +9,7 @@
 	hardcore_random_bonus = TRUE
 	ui_name = "AntagInfoFanatic"
 	var/blessings = 0
+	var/datum/triangulation_datum/trianglulation
 
 /datum/antagonist/fanatic/ui_data(mob/user)
 	var/list/data = list()
@@ -18,6 +19,8 @@
 
 /datum/antagonist/fanatic/on_gain()
 	SEND_SOUND(owner.current, sound('sound/effects/tiger_greeting.ogg'))
+	trianglulation = new /datum/triangulation_datum()
+	trianglulation.generate_areas()
 	forge_objectives()
 	. = ..()
 
