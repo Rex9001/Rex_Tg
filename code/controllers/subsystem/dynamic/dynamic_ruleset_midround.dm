@@ -1024,7 +1024,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/fanatic/assign_role(datum/mind/candidate)
 
-	candidate.add_antag_datum(/datum/antagonist/fanatic)
+	var/datum/antagonist/fanatic/fanatic = candidate.add_antag_datum(/datum/antagonist/fanatic)
 
 	var/mob/living/carbon/human/tiger = candidate.current
 
@@ -1040,6 +1040,10 @@
 	new /obj/item/grenade/chem_grenade/bioterrorfoam(stash)
 	new /obj/item/card/emag/doorjack(stash)
 	new /obj/item/reagent_containers/cup/glass/flask/ritual_wine(stash)
+
+	var/obj/item/triangulation_device/device = new /obj/item/triangulation_device(stash)
+	device.triangulation = fanatic.triangulation
+
 	tiger.put_in_hands(stash)
 
 	return
