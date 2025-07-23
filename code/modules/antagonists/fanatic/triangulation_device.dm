@@ -36,7 +36,8 @@
 		return
 
 	var/area/user_area = get_area(user)
-	to_chat(user, "[triangulation.get_areas()]")
+	for(var/area/ar in triangulation.get_areas())
+		to_chat(user, "[ar]")
 	if(!(user_area.type in triangulation.get_areas()))
 		balloon_alert(user, "invalid area!")
 		to_chat(user, span_notice("hmm, must not be a holy enough area."))

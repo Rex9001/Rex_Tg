@@ -30,7 +30,7 @@
 			possible_areas -= possible_area
 
 	for(var/i in 1 to initial_triangulation_amount)
-		triangulation_areas = pick_n_take(possible_areas)
+		triangulation_areas += pick_n_take(possible_areas)
 
 	return triangulation_areas
 
