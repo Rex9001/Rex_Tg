@@ -3,7 +3,7 @@
 	desc = "A simple triangulation device branded by the tiger cooperative. It has a large spike on it. For some reason."
 	icon = 'icons/obj/antags/fanatic_beacon.dmi'
 	icon_state = "Fanatic_beacon"
-	inhand_icon_state = "Fanatic_beacon"
+	inhand_icon_state = "tile"
 	lefthand_file = 'icons/mob/inhands/items/tiles_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/tiles_righthand.dmi'
 	throwforce = 0
