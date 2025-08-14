@@ -1041,8 +1041,10 @@
 	new /obj/item/card/emag/doorjack(stash)
 	new /obj/item/reagent_containers/cup/glass/flask/ritual_wine(stash)
 
-	var/obj/item/triangulation_device/device = new /obj/item/triangulation_device(stash)
-	device.triangulation = fanatic.triang
+	// Creates 3 lil triangulation devices
+	for(var/i in 1 to 3)
+		var/obj/item/triangulation_device/device = new /obj/item/triangulation_device(stash)
+		device.triangulation = fanatic.triang
 
 	tiger.put_in_hands(stash)
 

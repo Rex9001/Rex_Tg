@@ -34,6 +34,8 @@
 
 	return triangulation_areas
 
-/// Returns the triangulation areas
+/// Returns the triangulation areas, returns FALSE if we have no triangulation_areas
 /datum/triangulation/proc/get_areas()
+	if(!triangulation_areas.len)
+		return FALSE
 	return triangulation_areas
