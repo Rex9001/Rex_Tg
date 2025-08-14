@@ -78,7 +78,7 @@
 	in_use = TRUE
 	icon_state = "Fanatic_beacon_activating"
 	interaction_flags_item = NONE
-	forceMove(user)
+	forceMove(get_turf(user))
 	addtimer(CALLBACK(src, PROC_REF(activate), user), 20 SECONDS)
 
 /obj/item/triangulation_device/proc/activate(user)
@@ -89,7 +89,7 @@
 
 	triangulation.triangulation_areas -= user_area
 	to_chat(user, span_notice("The time has passed. Communion successful."))
-	say("Communion successful. Praise be the cooperative!")
+	say("Communion successful. Praise be to the angels!")
 	playsound(src, 'sound/effects/pray_chaplain.ogg', 10, TRUE)
 
 	if(triangulation.get_areas())
