@@ -19,6 +19,13 @@
 	/// If we are currently using this
 	var/in_use = FALSE
 
+/* TODO:
+* Add the changeling spawning
+* Make purity seals/blessing seals that you have to put on the beacon to use them (You get a message like "This is not blessed.")
+*/
+
+
+
 /obj/item/triangulation_device/examine(mob/user)
 	. = ..()
 	if(!IS_FANATIC(user))
@@ -80,7 +87,7 @@
 	var/area/user_area = get_area(user)
 	in_use = FALSE
 	activated = TRUE
-	icon_state = "Fanatic_beacon_actived"
+	icon_state = "Fanatic_beacon_activated"
 
 	triangulation.triangulation_areas -= user_area
 	to_chat(user, span_notice("The time has passed. Communion successful."))
