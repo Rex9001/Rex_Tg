@@ -24,8 +24,6 @@
 * Make purity seals/blessing seals that you have to put on the beacon to use them (You get a message like "This is not blessed.")
 */
 
-
-
 /obj/item/triangulation_device/examine(mob/user)
 	. = ..()
 	if(!IS_FANATIC(user))
