@@ -2,7 +2,7 @@
 // creation and storage of areas we triangulate in
 /datum/triangulation
 	/// The areas that triangulation have to be performed in
-	var/list/triangulation_areas = list()
+	var/list/area/triangulation_areas = list()
 	/// The amount of areas we have to triangulate in, used to generate the areas
 	var/initial_triangulation_amount = 3
 
@@ -24,7 +24,7 @@
 		/area/station/security/prison,
 	))
 
-	var/list/possible_areas = GLOB.the_station_areas.Copy()
+	var/list/possible_areas = GLOB.areas.Copy()
 	for(var/area/possible_area as anything in possible_areas)
 		if(!is_type_in_typecache(possible_area, allowed_areas) || initial(possible_area.outdoors) || is_type_in_typecache(possible_area, blacklisted_areas))
 			possible_areas -= possible_area

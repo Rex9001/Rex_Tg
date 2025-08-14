@@ -1,6 +1,6 @@
 /obj/item/triangulation_device
 	name = "Triangulation Device"
-	desc = "A simple triangulation device branded by the tiger cooperative. It has a large spike"
+	desc = "A simple triangulation device branded by the tiger cooperative. It has a large spike on it. For some reason."
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "weakpoint_locator"
 	inhand_icon_state = "weakpoint_locator"
@@ -36,11 +36,9 @@
 		return
 
 	var/area/user_area = get_area(user)
-	for(var/area/ar in triangulation.get_areas())
-		to_chat(user, "[ar]")
-	if(!(user_area.type in triangulation.get_areas()))
+	if(!(user_area in triangulation.get_areas()))
 		balloon_alert(user, "invalid area!")
-		to_chat(user, span_notice("hmm, must not be a holy enough area."))
+		to_chat(user, span_notice("Hmm, must not be a holy enough area."))
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return
 
@@ -52,15 +50,17 @@
 	for(var/mob/living/silicon/ai/ai_player in GLOB.player_list)
 		to_chat(ai_player, alertstr)
 
-	if(!do_after(user, 20 SECONDS, src, IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM | IGNORE_INCAPACITATED | IGNORE_SLOWDOWNS, hidden = TRUE))
+	if(!do_after(user, 20 SECONDS, src, IGNORE_SLOWDOWNS, hidden = TRUE))
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return
 
 	triangulation.triangulation_areas -= user_area
+	to_chat(user, span_notice("Communion successful."))
 
 	if(triangulation.get_areas())
 		return
 
 	// Handle spawning the changeling in a different proc that should be called here
 
+/obj/item/triangulation_device/proc/spawn_ling(mob/living/user)
 

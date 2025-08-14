@@ -1042,7 +1042,7 @@
 	new /obj/item/reagent_containers/cup/glass/flask/ritual_wine(stash)
 
 	var/obj/item/triangulation_device/device = new /obj/item/triangulation_device(stash)
-	device.triangulation = fanatic.triangulation
+	device.triangulation = fanatic.triang
 
 	tiger.put_in_hands(stash)
 

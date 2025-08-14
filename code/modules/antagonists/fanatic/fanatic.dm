@@ -9,7 +9,7 @@
 	hardcore_random_bonus = TRUE
 	ui_name = "AntagInfoFanatic"
 	var/blessings = 0
-	var/datum/triangulation/triangulation
+	var/datum/triangulation/triang
 
 /datum/antagonist/fanatic/ui_data(mob/user)
 	var/list/data = list()
@@ -19,18 +19,18 @@
 
 /datum/antagonist/fanatic/on_gain()
 	SEND_SOUND(owner.current, sound('sound/effects/tiger_greeting.ogg'))
-	triangulation = new /datum/triangulation()
-	triangulation.generate_areas()
+	triang = new()
+	triang.generate_areas()
 	forge_objectives()
 	. = ..()
 
 /datum/antagonist/fanatic/forge_objectives()
-	var/datum/objective/changeling_blessed/blessed = new
+	var/datum/objective/changeling_blessed/blessed = new()
 	blessed.owner = owner
 	objectives += blessed
 
-	var/datum/objective/bring_changeling/ling = new
-	ling.triang = triangulation
+	var/datum/objective/bring_changeling/ling = new()
+	ling.triangulation = triang
 	ling.update_explanation_text()
 	objectives += ling
 	. = ..()
@@ -40,18 +40,19 @@
 	explanation_text = "Use the communion device and summon an angel onto the station!"
 	martyr_compatible = TRUE
 	admin_grantable = FALSE
-	var/datum/triangulation/triang
+	completed = FALSE
+	var/datum/triangulation/triangulation
 
 /datum/objective/bring_changeling/update_explanation_text()
-	. = ..()
-	if(!triang)
+	if(isnull(triangulation))
 		return
 
+	var/list/area/triangulation_areas = triangulation.get_areas()
 	var/list/area_names = list()
-	for(var/area/triangle_area in triang.get_areas())
+	for(var/area/triangle_area as anything in triangulation_areas)
 		area_names += triangle_area.get_original_area_name()
 
-	explanation_text = "Use the communion device in [area_names[0]], [area_names[1]], and [area_names[2]] to summon an angel onto the station!"
+	explanation_text = "Use the communion device in [area_names[1]], [area_names[2]], and [area_names[3]] to summon an angel onto the station!"
 
 /datum/antagonist/fanatic/proc/receive_blessing()
 	blessings += 1
