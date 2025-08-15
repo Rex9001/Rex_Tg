@@ -31,7 +31,12 @@
 	if(!IS_FANATIC(user))
 		return
 
+	if(!blessed)
+		. = "A ritual implement yet to be blessed used for spiritual communion and contacting angels. It requires the letting of ones own blood. It requires blessing through a seal before it can be used to commune."
+		return
+
 	. = "A holy ritual implement used for spiritual communion and contacting angels. It requires the letting of ones own blood. Once the communion has begun the AI will be notified."
+
 
 /obj/item/triangulation_device/attack_self(mob/living/user, modifiers)
 	. = ..()
