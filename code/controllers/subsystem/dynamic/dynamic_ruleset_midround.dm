@@ -1020,7 +1020,7 @@
 	return ..() && !isnull(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE))
 
 /datum/dynamic_ruleset/midround/from_ghosts/fanatic/create_ruleset_body()
-	return new /mob/living/carbon/human(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE))
+	return new /mob/living/carbon/human()
 
 /datum/dynamic_ruleset/midround/from_ghosts/fanatic/assign_role(datum/mind/candidate)
 
@@ -1028,7 +1028,8 @@
 
 	var/mob/living/carbon/human/tiger = candidate.current
 
-	new /obj/item/storage/toolbox/mechanical(tiger.loc)
+	var/obj/item/storage/toolbox/mechanical/tbox = new /obj/item/storage/toolbox/mechanical()
+
 	message_admins("[ADMIN_LOOKUPFLW(tiger)] has been made into a Fanatic by the midround ruleset.")
 	tiger.log_message("was spawned as a Fanatic of [key_name(tiger)] by the midround ruleset.", LOG_GAME)
 
@@ -1048,6 +1049,14 @@
 		device.triangulation = fanatic.triang
 
 	tiger.put_in_hands(stash)
+	tiger.put_in_hands(tbox)
+
+	var/turf/tile_spawn = find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE)
+	podspawn(list(
+		"target" = tile_spawn,
+		"style" = /datum/pod_style,
+		"spawn" = tiger,
+	))
 
 	return
 
