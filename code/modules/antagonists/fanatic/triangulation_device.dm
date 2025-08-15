@@ -1,6 +1,6 @@
 /obj/item/triangulation_device
-	name = "Triangulation Device"
-	desc = "A simple triangulation device branded by the tiger cooperative. It has a large spike on it. For some reason."
+	name = "Triangulation Beacon"
+	desc = "A simple triangulation beacon branded by the tiger cooperative. It looks like the antenna would pierce the hand. For some reason."
 	icon = 'icons/obj/antags/fanatic_beacon.dmi'
 	icon_state = "Fanatic_beacon"
 	inhand_icon_state = "tile"
@@ -12,6 +12,8 @@
 	throw_range = 5
 	/// A triangulation datum, it HAS to be assigned otherwise this will not work
 	var/datum/triangulation/triangulation
+	/// Blessed, if this device has had a blessing sticker applied to it
+	var/blessed = FALSE
 	/// Activated, if this triangulation beacon has been activated. If it has it cannot be used again (unless primed)
 	var/activated = FALSE
 	/// Primed, if we are done with our triangulations
@@ -56,6 +58,10 @@
 	if(activated)
 		return
 
+	if(!blessed)
+		to_chat(user, span_warning("This device has not been properly blessed for communion!"))
+		return
+
 	var/area/user_area = get_area(user)
 	if(!(user_area in triangulation.get_areas()))
 		balloon_alert(user, "invalid area!")
@@ -63,7 +69,7 @@
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return
 
-	user.visible_message(span_danger("[user] plunges their hand onto [src] and it starts ominously beeping!"), span_notice("You plunge your hand onto [src] and begin the communion. Do not exit [get_area_name(user, TRUE)] until the angels are contacted!"))
+	user.visible_message(span_danger("[user] presses down on [src] and an antenna pierces straight through their arm! [src] starts ominously beeping!"), span_notice("You press your hand onto [src] and an antenna pierces your hand to begin the communion. Do not exit [get_area_name(user, TRUE)] until the angels are contacted!"))
 	playsound(user, 'sound/items/weapons/pierce_slow.ogg', 30, TRUE)
 	playsound(user, 'sound/machines/beep/triple_beep.ogg', 30, TRUE)
 	var/obj/item/bodypart/arm/arm = user.get_active_hand(src)

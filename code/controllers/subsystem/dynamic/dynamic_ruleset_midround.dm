@@ -1040,6 +1040,7 @@
 	new /obj/item/grenade/chem_grenade/bioterrorfoam(stash)
 	new /obj/item/card/emag/doorjack(stash)
 	new /obj/item/reagent_containers/cup/glass/flask/ritual_wine(stash)
+	new /obj/item/storage/box/stickers/fanatic(stash)
 
 	// Creates 3 lil triangulation devices
 	for(var/i in 1 to 3)
