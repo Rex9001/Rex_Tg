@@ -41,13 +41,13 @@
 
 	if(!isnull(user))
 		user.do_attack_animation(target, used_item = src)
-		target.balloon_alert(user, "sticker sticked")
 		var/mob/living/victim = target
 		if(istype(victim) && !isnull(victim.client))
 			user.log_message("stuck [src] to [key_name(victim)]", LOG_ATTACK)
 			victim.log_message("had [src] stuck to them by [key_name(user)]", LOG_ATTACK)
 
 	if(!IS_FANATIC(user))
+		target.balloon_alert(user, "sticker sticked")
 		target.AddComponent(/datum/component/sticker, src, get_dir(target, src), px, py, null, null, examine_text)
 		return TRUE
 
@@ -69,6 +69,7 @@
 	triang_device.blessed = TRUE
 	target.AddComponent(/datum/component/sticker, src, get_dir(target, src), px, py, null, null, examine_text)
 	to_chat(user, span_notice("The [triang_device] has been properly blessed for communion!"))
+	target.balloon_alert(user, "seal applied")
 
 	return TRUE
 
