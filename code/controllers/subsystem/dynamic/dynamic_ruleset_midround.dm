@@ -1054,7 +1054,7 @@
 	var/turf/tile_spawn = find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = FALSE)
 	podspawn(list(
 		"target" = tile_spawn,
-		"style" = /datum/pod_style,
+		"style" = /datum/pod_style/fanatic,
 		"spawn" = tiger,
 	))
 

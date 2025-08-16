@@ -75,7 +75,7 @@
 
 /obj/item/storage/box/stickers/fanatic
 	name = "Tiger cooperative blessings pack"
-	desc = "A cheaply made little box for stickers with a tiger cooperative logo slapped onto it."
+	desc = "A cheaply made little box for stickers with a seal hastly slapped onto it."
 	illustration = "fanatic_blessing"
 
 /obj/item/storage/box/stickers/fanatic/PopulateContents()

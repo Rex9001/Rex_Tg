@@ -64,6 +64,15 @@
 	glow_color = "red"
 	id = "cultist"
 
+/datum/pod_style/fanatic
+	name = "tiger cooperative supply pod"
+	ui_name = "Fanatic"
+	desc = "A dark supply pod carrying a spray painted logo of the Tiger Cooperative. Several seals are placed on the pod and it smells vaguely of incense."
+	icon_state = "darkpod"
+	decal_icon = "fanatic"
+	glow_color = "white"
+	id = "fanatic"
+
 /datum/pod_style/missile
 	name = "cruise missile"
 	ui_name = "Missile"

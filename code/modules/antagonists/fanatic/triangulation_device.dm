@@ -99,16 +99,18 @@
 	icon_state = "Fanatic_beacon_activated"
 
 	triangulation.triangulation_areas -= user_area
-	to_chat(user, span_notice("The time has passed. Communion successful."))
+	to_chat(user, span_notice("The time has passed. The communion is successful."))
 	say("Communion successful. Praise be to the angels!")
 	playsound(src, 'sound/effects/pray_chaplain.ogg', 10, TRUE)
 
 	if(triangulation.get_areas())
 		return
 
-	try_spawn_ling(user)
+	if(!try_spawn_ling(user))
+		primed = TRUE
+		interaction_flags_item = INTERACT_ITEM_ATTACK_HAND_PICKUP
+		return
 
 /obj/item/triangulation_device/proc/try_spawn_ling(mob/living/user)
 	// if this fails, set primed to true so they can try again later
-	primed = TRUE
-	return
+	return FALSE
