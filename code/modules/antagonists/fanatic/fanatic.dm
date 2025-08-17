@@ -37,7 +37,7 @@
 
 /datum/objective/bring_changeling
 	name = "Summon an angel"
-	explanation_text = "Use the communion device and summon an angel onto the station!"
+	explanation_text = "Use the triangulation devices and summon an angel onto the station!"
 	martyr_compatible = TRUE
 	admin_grantable = FALSE
 	completed = FALSE
@@ -52,7 +52,7 @@
 	for(var/area/triangle_area as anything in triangulation_areas)
 		area_names += triangle_area.get_original_area_name()
 
-	explanation_text = "Use the communion device in [area_names[1]], [area_names[2]], and [area_names[3]] to summon an angel onto the station!"
+	explanation_text = "Use a triangulation device in [area_names[1]], [area_names[2]], and [area_names[3]] to summon an angel onto the station!"
 
 /datum/antagonist/fanatic/proc/receive_blessing()
 	blessings += 1
