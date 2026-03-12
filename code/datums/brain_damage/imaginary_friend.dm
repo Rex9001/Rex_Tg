@@ -548,11 +548,11 @@
 /mob/eye/imaginary_friend/changeling_echo
 	name = "Worshiper"
 	real_name = "Worshiper"
-	human_image = icon('icons/mob/simple/lavaland/lavaland_monsters.dmi', icon_state = "curseblob")
+	human_icon = icon('icons/mob/simple/lavaland/lavaland_monsters.dmi', icon_state = "curseblob")
 	desc = "This one was made from the shattered mind of a worshiper, now it serves the hive even in death."
 
 /mob/eye/imaginary_friend/changeling_echo/setup_appearance(original_appearance, original_name)
-	human_image = original_appearance
+	human_icon = original_appearance
 	real_name = original_name
 	name = original_name
 	Show()

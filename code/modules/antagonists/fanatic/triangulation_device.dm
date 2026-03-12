@@ -74,7 +74,7 @@
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return
 
-	user.visible_message(span_danger("[user] presses down on [src] and an antenna pierces straight through their arm! [src] starts ominously beeping!"), span_notice("You press your hand onto [src] and an antenna pierces your hand to begin the communion. Do not exit [get_area_name(user, TRUE)] until the angels are contacted!"))
+	user.visible_message(span_danger("[user] presses down on [src] and an antenna pierces straight through their hand! [src] starts ominously beeping!"), span_notice("You press your hand onto [src] and an antenna pierces your hand to begin the communion. Do not exit [get_area_name(user, TRUE)] until the angels are contacted!"))
 	playsound(user, 'sound/items/weapons/pierce_slow.ogg', 30, TRUE)
 	playsound(user, 'sound/machines/beep/triple_beep.ogg', 30, TRUE)
 	var/obj/item/bodypart/arm/arm = user.get_active_hand(src)
@@ -112,5 +112,4 @@
 		return
 
 /obj/item/triangulation_device/proc/try_spawn_ling(mob/living/user)
-	// if this fails, set primed to true so they can try again later
 	return FALSE

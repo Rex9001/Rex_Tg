@@ -18,8 +18,19 @@
 		return FALSE
 	playsound(user, 'sound/effects/screech.ogg', 100)
 	for(var/mob/living/living in get_hearers_in_view(4, user))
-		if(IS_CHANGELING(living) || !living.soundbang_act(SOUNDBANG_MASSIVE, stun_pwr = 0, damage_pwr = 0, deafen_pwr = 1 MINUTES, ignore_deafness = TRUE, send_sound = FALSE))
+		if(IS_CHANGELING(living) || IS_FANATIC(living) ||!living.soundbang_act(SOUNDBANG_MASSIVE, stun_pwr = 0, damage_pwr = 0, deafen_pwr = 1 MINUTES, ignore_deafness = TRUE, send_sound = FALSE))
 			continue
+
+		if(IS_FANATIC(living))
+			var/mob/living/carbon/carbon_fanatic = living
+			var/datum/antagonist/fanatic/fanatic = carbon_fanatic.mind.has_antag_datum(/datum/antagonist/fanatic)
+			to_chat(carbon_fanatic, span_changeling("The scream invigorates you!"))
+			carbon_fanatic.AdjustAllImmobility(-5 SECONDS)
+			carbon_fanatic.adjustStaminaLoss(-60)
+			carbon_fanatic.set_jitter_if_lower(20 SECONDS)
+			fanatic.receive_blessing()
+			continue
+
 		if(issilicon(living))
 			living.Paralyze(rand(10 SECONDS, 20 SECONDS))
 			continue
