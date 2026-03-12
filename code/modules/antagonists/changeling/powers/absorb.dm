@@ -102,7 +102,6 @@
 		for(var/datum/objective/objective as anything in all_objectives)
 			if(!objective) //nulls? in my objective list? it's more likely than you think.
 				continue
-
 			changeling.antag_memory += " Objective #[obj_count++]: [objective.explanation_text]."
 			var/list/datum/mind/other_owners = objective.get_owners() - suckedbrain
 			if(!other_owners.len)
@@ -148,33 +147,6 @@
 		target.mind.remove_antag_datum(/datum/antagonist/changeling)
 		var/datum/antagonist/fallen_changeling/fallen = target.mind.add_antag_datum(/datum/antagonist/fallen_changeling)
 		fallen.objectives = copied_objectives
-
-
-	if(IS_FANATIC(target))// If the target was a fanatic we get powered up.
-		target.grab_ghost()
-
-		target.set_lying_angle(0)
-
-		if(target.wear_suit)
-			target.wear_suit.add_mob_blood(target) // For that pathetic, unwholsome look
-			target.update_worn_oversuit()
-		if(target.w_uniform)
-			target.w_uniform.add_mob_blood(target)
-			target.update_worn_undersuit()
-
-		var/original_appearance = target.appearance
-		var/original_name = target.real_name
-
-		target.set_lying_angle(90)
-
-		var/mob/eye/imaginary_friend/changeling_echo/worshiper = target.change_mob_type(
-			new_type = /mob/eye/imaginary_friend/changeling_echo,
-			location = get_turf(target),
-			delete_old_mob = FALSE,
-		)
-		worshiper.attach_to_owner(owner)
-		worshiper.setup_appearance(original_appearance, original_name)
-		to_chat(owner, span_changeling(span_boldnotice("The mind of this one is especially malleable, we are able to construct an echo of them from their memories.")))
 
 /datum/action/changeling/absorb_dna/proc/attempt_absorb(mob/living/carbon/human/target)
 	for(var/absorbing_iteration in 1 to 3)

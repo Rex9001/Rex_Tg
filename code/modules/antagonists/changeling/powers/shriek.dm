@@ -26,7 +26,7 @@
 			var/datum/antagonist/fanatic/fanatic = carbon_fanatic.mind.has_antag_datum(/datum/antagonist/fanatic)
 			to_chat(carbon_fanatic, span_changeling("The scream invigorates you!"))
 			carbon_fanatic.AdjustAllImmobility(-5 SECONDS)
-			carbon_fanatic.adjustStaminaLoss(-60)
+			carbon_fanatic.adjust_stamina_loss(-60)
 			carbon_fanatic.set_jitter_if_lower(20 SECONDS)
 			fanatic.receive_blessing()
 			continue

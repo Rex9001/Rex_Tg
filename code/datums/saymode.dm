@@ -41,18 +41,17 @@
 		return FALSE
 	if(!HAS_TRAIT(user, TRAIT_CHANGELING_HIVEMIND) && !IS_FANATIC(user))
 		return FALSE
-	if(HAS_TRAIT(user, TRAIT_CHANGELING_HIVEMIND_MUTE))
+	if(is_muted(user))
 		to_chat(user, span_warning("The poison in the air hinders our ability to interact with the hivemind."))
 		return FALSE
+	return TRUE
 
-	user.log_talk(message, LOG_SAY, tag="changeling [ling_sender.changelingID]")
-	var/msg = span_changeling("<b>[ling_sender.changelingID]:</b> [message]")
+/datum/saymode/changeling/proc/is_muted(mob/living/user)
+	return user.reagents?.has_reagent(/datum/reagent/bz_metabolites, needs_metabolizing = TRUE)
 
-	//the recipients can receive the message
-	for(var/datum/antagonist/changeling/ling_receiver in GLOB.antagonists)
-		if(!ling_receiver.owner)
-			continue
-		var/mob/living/ling_mob = ling_receiver.owner.current
+/datum/saymode/changeling/proc/get_lings()
+	. = list()
+	for(var/mob/ling_mob as anything in GLOB.mob_list)
 		//removes types that override the presence of being changeling (for example, borged lings still can't hivemind chat)
 		if(!HAS_TRAIT(ling_mob, TRAIT_CHANGELING_HIVEMIND) || issilicon(ling_mob) || isbrain(ling_mob) )
 			continue
@@ -82,7 +81,6 @@
 	for(var/mob/dead/ghost as anything in GLOB.dead_mob_list)
 		to_chat(ghost, "[FOLLOW_LINK(ghost, user)] [msg]", type = MESSAGE_TYPE_RADIO)
 	return SAYMODE_MESSAGE_HANDLED
-
 
 /datum/saymode/xeno
 	key = MODE_KEY_ALIEN
