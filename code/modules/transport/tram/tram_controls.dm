@@ -64,7 +64,7 @@
 
 	var/datum/transport_controller/linear/tram/tram = transport_ref?.resolve()
 	if(tram)
-		RegisterSignal(SStransport, COMSIG_TRANSPORT_ACTIVE, PROC_REF(update_display))
+		RegisterSignal(SStransport, COMSIG_TRANSPORT_UPDATED, PROC_REF(update_display))
 
 /obj/machinery/computer/tram_controls/update_current_power_usage()
 	return // We get power from area rectifiers
@@ -183,7 +183,7 @@
 
 	update_appearance()
 
-/obj/machinery/computer/tram_controls/on_construction(mob/user, from_flatpack = FALSE)
+/obj/machinery/computer/tram_controls/on_construction(mob/user)
 	. = ..()
 	var/obj/item/circuitboard/computer/tram_controls/my_circuit = circuit
 	split_mode = my_circuit.split_mode
