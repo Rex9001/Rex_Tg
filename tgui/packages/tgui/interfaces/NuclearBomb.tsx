@@ -37,12 +37,13 @@ export function NukeKeypad(props) {
                 mb={1}
                 textAlign="center"
                 fontSize="40px"
-                lineHeight={1.25}
+                lineHeight={0.80}
                 width="55px"
+                height="50px"
                 className={classes([
                   'NuclearBomb__Button',
                   'NuclearBomb__Button--keypad',
-                  'NuclearBomb__Button--' + key,
+                  `NuclearBomb__Button--${key}`,
                 ])}
                 onClick={() => act('keypad', { digit: key })}
               >
