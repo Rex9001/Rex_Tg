@@ -417,10 +417,12 @@
 			COMSIG_LIVING_POST_FULLY_HEAL,
 			COMSIG_LIVING_CULT_SACRIFICED,
 			COMSIG_ATOM_EXAMINE,
+			COMSIG_ATOM_UPDATE_OVERLAYS,
 			SIGNAL_ADDTRAIT(TRAIT_HERETIC_AURA_HIDDEN),
-			SIGNAL_REMOVETRAIT(TRAIT_HERETIC_AURA_HIDDEN)
+			SIGNAL_REMOVETRAIT(TRAIT_HERETIC_AURA_HIDDEN),
 		)
 	)
+	our_mob.update_appearance(UPDATE_OVERLAYS)
 
 /// Removes the ability to blade break, removes cloak of shadows and removes the cap on how many blades you can craft
 /datum/antagonist/heretic/proc/disable_blade_breaking()
@@ -569,7 +571,7 @@
 	else
 		drawing_effect = new(target_turf, rune_colour)
 
-	if(!do_after(user, drawing_time, target_turf, extra_checks = additional_checks, hidden = TRUE))
+	if(!do_after(user, drawing_time, target_turf, extra_checks = additional_checks, cog_icon = null))
 		target_turf.balloon_alert(user, "interrupted!")
 		new /obj/effect/temp_visual/drawing_heretic_rune/fail(target_turf, rune_colour)
 		qdel(drawing_effect)
@@ -782,7 +784,7 @@
  */
 /datum/antagonist/heretic/proc/passive_influence_gain()
 	adjust_knowledge_points(1)
-	if(owner?.current?.stat <= SOFT_CRIT)
+	if(!IS_UNCONSCIOUS(owner?.current))
 		to_chat(owner.current, "[span_hear("You hear a whisper...")] [span_hypnophrase(pick_list(HERETIC_INFLUENCE_FILE, "drain_message"))]")
 	addtimer(CALLBACK(src, PROC_REF(passive_influence_gain)), passive_gain_timer)
 

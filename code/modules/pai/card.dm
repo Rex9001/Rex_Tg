@@ -14,6 +14,7 @@
 	sound_vary = TRUE
 	pickup_sound = SFX_GENERIC_DEVICE_PICKUP
 	drop_sound = SFX_GENERIC_DEVICE_DROP
+	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT)
 
 	/// Spam alert prevention
 	var/alert_cooldown
@@ -120,7 +121,7 @@
 		can_holo = pai.can_holo,
 		dna = pai.master_dna,
 		emagged = pai.emagged,
-		laws = pai.laws.supplied,
+		laws = pai.laws.inherent,
 		master = pai.master_name,
 		name = pai.name,
 		transmit = pai.can_transmit,

@@ -17,8 +17,6 @@
 		/obj/item/storage/pill_bottle/ondansetron,
 		/obj/item/reagent_containers/applicator/pill/gravitum,
 	)
-	/// How high spacers get bumped up to
-	var/modded_height = HUMAN_HEIGHT_TALLEST
 	/// How long on a planet before we get averse effects
 	var/planet_period = 3 MINUTES
 	/// TimerID for time spend on a planet
@@ -36,7 +34,13 @@
 	VAR_FINAL/drift_mod = 0.75
 
 /datum/quirk/spacer_born/add(client/client_source)
+	var/modded_height = GLOB.spacer_height_choices[client_source?.prefs?.read_preference(/datum/preference/choiced/spacer_height)]
+	if(isnull(modded_height))
+		modded_height = GLOB.spacer_height_choices[pick(GLOB.spacer_height_choices)]
+
 	if(isdummy(quirk_holder))
+		var/mob/living/carbon/human/dummy_quirker = quirk_holder
+		dummy_quirker.set_mob_height(modded_height)
 		return
 
 	// Using Z moved because we don't urgently need to check on every single turf movement for planetary status.
@@ -50,7 +54,7 @@
 	update_effects(quirk_holder, skip_timers = TRUE)
 
 	// drift slightly faster through zero G
-	quirk_holder.inertia_move_multiplier *= drift_mod
+	quirk_holder.inertia_move_multiplier_passive *= drift_mod
 
 	var/mob/living/carbon/human/human_quirker = quirk_holder
 	human_quirker.set_mob_height(modded_height)
@@ -81,7 +85,7 @@
 	if(QDELING(quirk_holder))
 		return
 
-	quirk_holder.inertia_move_multiplier /= drift_mod
+	quirk_holder.inertia_move_multiplier_passive /= drift_mod
 	quirk_holder.clear_mood_event("spacer")
 	quirk_holder.remove_movespeed_modifier(/datum/movespeed_modifier/spacer)
 	quirk_holder.remove_status_effect(/datum/status_effect/spacer)
