@@ -712,9 +712,15 @@
 	var/mob/user = ui.user
 	add_fingerprint(user)
 	update_last_used(user)
-	if(isAI(user) && !SScameras.is_visible_by_cameras(get_turf(src))) //We check if they're an AI specifically here, so borgs/adminghosts/human wand can still access off-camera stuff.
+	if(isAI(user) && !SScameras.is_visible_by_cameras(get_turf(src)))
 		to_chat(user, span_warning("You can no longer connect to this device!"))
 		return FALSE
+
+	if(isAI(user) && !params["ai_processed"])
+		var/mob/living/silicon/ai/ai_user = user
+		ai_user.ais_queue.add_command(new /datum/ai_command/ui_act(src, ai_user, action, params, ui, state))
+		return TRUE // tell tgui the click was "handled"; the real state update lands once the queue fires
+
 	return ..()
 
 /obj/machinery/Topic(href, href_list)

@@ -173,3 +173,6 @@
 	VAR_FINAL/obj/item/multitool/aiMulti
 	/// Helper effect that creates sparks when the AI is damaged
 	VAR_FINAL/datum/effect_system/basic/spark_spread/spark_system
+
+	/// The queue of ai processing
+	var/datum/ai_queue/ais_queue

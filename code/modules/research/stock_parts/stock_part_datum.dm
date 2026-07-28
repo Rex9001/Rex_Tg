@@ -198,3 +198,14 @@ GLOBAL_LIST_INIT(stock_part_datums, generate_stock_part_datums())
 	tier = 1
 	physical_object_type = /obj/item/stock_parts/water_recycler
 	physical_object_base_type = /obj/item/stock_parts/water_recycler
+
+// Ai server stock parts
+/datum/stock_part/cpu
+	tier = 1
+	physical_object_type = /obj/item/stock_parts/cpu
+	physical_object_base_type = /obj/item/stock_parts/cpu
+
+/datum/stock_part/ram
+	tier = 1
+	physical_object_type = /obj/item/stock_parts/ram
+	physical_object_base_type = /obj/item/stock_parts/ram

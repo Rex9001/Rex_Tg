@@ -98,6 +98,9 @@
 	add_traits(list(TRAIT_PULL_BLOCKED, TRAIT_AI_ACCESS, TRAIT_HANDS_BLOCKED, TRAIT_CAN_GET_AI_TRACKING_MESSAGE, TRAIT_LOUD_BINARY), INNATE_TRAIT)
 	AddElement(/datum/element/block_area_power_fail)
 
+	// Creates a new queue with this AI as the controller
+	ais_queue = new/datum/ai_queue(src)
+
 	//Heads up to other binary chat listeners that a new AI is online and listening to Binary.
 	if(announce_init_to_others && !is_centcom_level(z)) //Skip new syndicate AIs and also new AIs on centcom Z
 		for(var/mob/McMobby as anything in GLOB.player_list)
