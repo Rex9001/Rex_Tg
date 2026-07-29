@@ -37,12 +37,19 @@
 	STOP_PROCESSING(SSfastprocess, src)
 	..()
 
-/datum/ai_queue/proc/change_linked_servers(obj/machinery/ai_server/server)
+/datum/ai_queue/proc/add_linked_server(obj/machinery/ai_server/server)
 	if(server in linked_servers)
-		linked_servers -= server
-	else
-		linked_servers += server
+		return linked_servers
 
+	linked_servers += server
+	update_components()
+	return linked_servers
+
+/datum/ai_queue/proc/remove_linked_server(obj/machinery/ai_server/server)
+	if(!server in linked_servers)
+		return linked_servers
+
+	linked_servers -= server
 	update_components()
 	return linked_servers
 
