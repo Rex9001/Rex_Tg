@@ -202,10 +202,10 @@ GLOBAL_LIST_INIT(stock_part_datums, generate_stock_part_datums())
 // Ai server stock parts
 /datum/stock_part/cpu
 	tier = 1
-	physical_object_type = /obj/item/stock_parts/cpu
-	physical_object_base_type = /obj/item/stock_parts/cpu
+	physical_object_type = /obj/item/stock_parts/component/cpu
+	physical_object_base_type = /obj/item/stock_parts/component/cpu
 
 /datum/stock_part/ram
 	tier = 1
-	physical_object_type = /obj/item/stock_parts/ram
-	physical_object_base_type = /obj/item/stock_parts/ram
+	physical_object_type = /obj/item/stock_parts/component/ram
+	physical_object_base_type = /obj/item/stock_parts/component/ram

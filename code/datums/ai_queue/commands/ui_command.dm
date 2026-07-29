@@ -10,7 +10,7 @@
 
 /datum/ai_command/ui_act
 	name = "AI UI Interaction"
-	process_required = 3
+	process_required = 1
 
 	/// The machine (or other movable) whose UI is being acted on
 	var/atom/movable/target
@@ -28,12 +28,14 @@
 /datum/ai_command/ui_act/New(atom/movable/target, mob/living/silicon/ai/user, action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	to_chat(user, span_warning("Added to queue"))
+	// src. to make it clearer if we're referring to our own variables
 	src.target = target
 	src.user = user
 	src.action = action
 	src.params = params.Copy()
 	src.ui = ui
 	src.state = state
+	name = "[target] [action]"
 	RegisterSignal(target, COMSIG_QDELETING, PROC_REF(on_involved_qdel))
 	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(on_involved_qdel))
 

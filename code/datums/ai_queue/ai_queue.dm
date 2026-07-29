@@ -5,9 +5,7 @@
 	// Current idea is to datumize the ais actions like that
 	var/list/commands = list()
 	/// A list containing all linked servers
-	// For malf ais hacked APCs will also act as linked servers
 	var/list/linked_servers = list()
-	// These are 1 for now, until servers are fixed
 	/// RAM: The how long the command que can be
 	var/ram = 5
 	/// Processing power: How quickly a command can be executed
@@ -16,6 +14,8 @@
 	var/mob/living/silicon/ai/linked_ai
 	/// If we are currently processing
 	var/is_processing = FALSE
+	/// If we are paused
+	var/is_paused = FALSE
 	// Special modifiers should also be stored somewhere, like ones changing the queue or giving the ai abilities
 
 	/* TODO
@@ -27,11 +27,15 @@
 	* Protocol component that takes a copy of the queue and is able to execute the same queue at a later time as an ability
 	* Move all malf abilities to the command system
 	* Make malf APCs act as servers which the AI is able to install components into
+	* Queue UI, a separate menu for manipulating and viewing queues
 	*/
 
 /datum/ai_queue/New(ai)
 	. = ..()
 	linked_ai = ai
+	// Temp code until a UI is made
+	var/datum/action/cooldown/pause/action = new /datum/action/cooldown/pause()
+	action.Grant(linked_ai)
 
 /datum/ai_queue/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
@@ -46,7 +50,7 @@
 	return linked_servers
 
 /datum/ai_queue/proc/remove_linked_server(obj/machinery/ai_server/server)
-	if(!server in linked_servers)
+	if(!(server in linked_servers))
 		return linked_servers
 
 	linked_servers -= server
@@ -57,21 +61,22 @@
 	var/potential_ram = 0
 	var/potential_processing_power = 0
 	for(var/obj/machinery/ai_server/server in linked_servers)
-		for(var/obj/item/stock_parts/part in server.component_parts)
+		for(var/obj/item/stock_parts/part in server.components)
 			// Should account for tiers, but that can be added later
-			if(istype(part, /obj/item/stock_parts/cpu))
+			if(istype(part, /obj/item/stock_parts/component/cpu))
 				potential_processing_power += 1
-			if(istype(part, /obj/item/stock_parts/ram))
+			if(istype(part, /obj/item/stock_parts/component/ram))
 				potential_ram += 1
 
-	if(potential_processing_power != processing_power || potential_ram != ram)
+	if(potential_processing_power != processing_power)
 		processing_power = potential_processing_power
+
+	if(potential_ram != ram)
 		ram = potential_ram
 
 /datum/ai_queue/proc/add_command(datum/ai_command/command)
-	if(!is_processing)
-		is_processing = TRUE
-		START_PROCESSING(SSfastprocess, src)
+	if((!is_processing) && (!is_paused))
+		start()
 
 	if(commands.len)
 		var/datum/ai_command/first_command = commands[1]
@@ -86,11 +91,18 @@
 
 	commands += command
 
+/datum/ai_queue/proc/start()
+	START_PROCESSING(SSfastprocess, src)
+	is_processing = TRUE
+
+/datum/ai_queue/proc/stop()
+	STOP_PROCESSING(SSfastprocess, src)
+	is_processing = FALSE
+
 /datum/ai_queue/process(seconds_per_tick)
 	// Nothing to do, so do nothing
 	if(!commands.len)
-		STOP_PROCESSING(SSfastprocess, src)
-		is_processing = FALSE
+		stop()
 		return
 
 	var/datum/ai_command/first_command = commands[1]

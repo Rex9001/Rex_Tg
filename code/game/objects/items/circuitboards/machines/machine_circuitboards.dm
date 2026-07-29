@@ -2009,6 +2009,5 @@
 	build_path = /obj/machinery/ai_server
 	req_components = list(
 		/obj/item/stack/cable_coil = 2,
-		/datum/stock_part/cpu = 1,
-		/datum/stock_part/ram = 1,
+		/obj/item/stack/sheet/glass = 1,
 	)

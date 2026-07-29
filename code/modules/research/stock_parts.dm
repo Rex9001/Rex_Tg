@@ -235,13 +235,21 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 
 // Parts used for ai_server.dm construction
 // Needs a proper desc and icon
-/obj/item/stock_parts/cpu
+// /component is just used for AI server stuff
+/obj/item/stock_parts/component
+	name = "component stock part"
+	desc = "What?"
+	abstract_type = /obj/item/stock_parts/component
+	// Ability this kind of component adds
+	var/datum/action/addable_ability = FALSE
+
+/obj/item/stock_parts/component/cpu
 	name = "CPU"
 	icon_state = "card_reader"
 	desc = "A cpu or something."
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.1)
 
-/obj/item/stock_parts/ram
+/obj/item/stock_parts/component/ram
 	name = "Ram stick"
 	icon_state = "card_reader"
 	desc = "A ram or something."
