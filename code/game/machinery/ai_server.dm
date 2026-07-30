@@ -104,3 +104,4 @@
 
 	linked_queue = ai_player.ais_queue
 	linked_queue.add_linked_server(src)
+	return INITIALIZE_HINT_LATELOAD

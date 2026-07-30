@@ -1,8 +1,6 @@
 // RELATED TO ai_server.dm
 /datum/ai_queue
 	/// The command que itself
-	// Not sure how I will do this
-	// Current idea is to datumize the ais actions like that
 	var/list/commands = list()
 	/// A list containing all linked servers
 	var/list/linked_servers = list()
@@ -16,20 +14,22 @@
 	var/is_processing = FALSE
 	/// If we are paused
 	var/is_paused = FALSE
+	/// Commands unlocked by components
+	var/list/unlocked_commands = list(/datum/ai_command/sesame)
 	// Special modifiers should also be stored somewhere, like ones changing the queue or giving the ai abilities
 
 	/* TODO
-	* Being able to pause the queue
-		* This requires a button for it
-	* Components for the servers, more than just placeholders
-	* Components that add abilities to the ai
+	* Convert onclicks to commands
+	* Components that add commands to the ai
 	* Components that change queue processing
 	* Protocol component that takes a copy of the queue and is able to execute the same queue at a later time as an ability
 	* Move all malf abilities to the command system
 	* Make malf APCs act as servers which the AI is able to install components into
-	* Queue UI, a separate menu for manipulating and viewing queues
 	*/
 
+	/* Maybe list
+	* Maybe "subroutines" that take processing to uphold but have some continual effect, like auto-opening doors for someone
+	*/
 /datum/ai_queue/New(ai)
 	. = ..()
 	linked_ai = ai
@@ -60,7 +60,7 @@
 	var/potential_ram = 0
 	var/potential_processing_power = 0
 	for(var/obj/machinery/ai_server/server in linked_servers)
-		for(var/obj/item/stock_parts/part in server.components)
+		for(var/obj/item/stock_parts/component/part in server.components)
 			// Should account for tiers, but that can be added later
 			if(istype(part, /obj/item/stock_parts/component/cpu))
 				potential_processing_power += 1
@@ -129,8 +129,8 @@
 
 	var/datum/ai_command/first_command = commands[1]
 
+	first_command.progress(processing_power * seconds_per_tick)
+
 	if(!first_command.live)
 		commands -= first_command
 		return
-
-	first_command.progress(processing_power * seconds_per_tick)

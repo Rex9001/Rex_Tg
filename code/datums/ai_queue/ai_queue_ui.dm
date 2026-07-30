@@ -1,5 +1,4 @@
-// This holds all the ui for the queue, originally I had this a seperate datum but idk how to make that work super well
-
+// Holds all the datums relating to the queues ui
 /datum/ai_queue/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -15,6 +14,7 @@
 	data["queue_length"] = length(commands)
 	data["is_paused"] = is_paused
 	data["commands"] = get_commands_ui_data()
+	data["unlocked"] = get_special_commands_ui_data()
 
 	return data
 
@@ -28,6 +28,15 @@
 		))
 	return command_data
 
+/datum/ai_queue/proc/get_special_commands_ui_data()
+	var/list/spec_data = list()
+	for(var/datum/ai_command/command as anything in unlocked_commands)
+		spec_data += list(list(
+			"name" = command.name,
+			"process_required" = command.process_required,
+		))
+	return spec_data
+
 /datum/ai_queue/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
 
@@ -38,6 +47,18 @@
 	switch(action)
 		if("toggle_pause")
 			toggle_pause()
+			return TRUE
+		if("add_to_queue")
+			var/command_name = params["command"]
+			var/datum/ai_command/nu_command
+			switch(command_name)
+				if("Large Scale Door Opening")
+					var/mob/eye/camera/ai/peeper = linked_ai.eyeobj
+					if(!istype(get_area(peeper), /area/station))
+						to_chat(linked_ai, span_warning("Can only be used inside of the station."))
+						return
+					nu_command = new /datum/ai_command/sesame(peeper.loc, linked_ai)
+			add_command(nu_command)
 			return TRUE
 
 /// Lets the AI pull up the queue, should be moved to a static ui button eventually

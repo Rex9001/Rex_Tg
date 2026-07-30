@@ -1,13 +1,4 @@
-	/*
-	* This may prove difficult to code here is the idea:
-	* The AI clicks something
-	* This opens the UI menu for that thing (machinery)
-	* The AI clicks something on the UI
-	* This command intercepts the click and places it in the queue
-	* After this command processes the clicked action will occur
-	* WORST CASE this might require a refactor of UI_ACT for all types of machinery
-	*/
-
+/// A command the AI uses to interact with pretty much all machinery UI in the game
 /datum/ai_command/ui_act
 	name = "AI UI Interaction"
 	process_required = 1
@@ -27,7 +18,6 @@
 
 /datum/ai_command/ui_act/New(atom/movable/target, mob/living/silicon/ai/user, action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	to_chat(user, span_warning("Added to queue"))
 	// src. to make it clearer if we're referring to our own variables
 	src.target = target
 	src.user = user
@@ -45,7 +35,7 @@
 	return ..()
 
 /datum/ai_command/ui_act/execute()
-	if(live && target && user)
+	if(target && user)
 		if(target.ui_status(user, state) <= UI_CLOSE)
 			to_chat(user, span_warning("Connection lost before the command could process."))
 		else
@@ -56,5 +46,4 @@
 			usr = old_usr
 			if(handled)
 				SStgui.update_uis(target)
-	to_chat(user, span_warning("Command executed."))
 	return ..()

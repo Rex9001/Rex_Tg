@@ -15,8 +15,11 @@ type Command = {
   name: string;
   processing: number;
   process_required: number;
-  percent: number;
-  live: boolean;
+};
+
+type SpecCommand = {
+  name: string;
+  process_required: number;
 };
 
 type Data = {
@@ -26,11 +29,12 @@ type Data = {
   is_paused: BooleanLike;
   is_processing: BooleanLike;
   commands: Command[];
+  unlocked: SpecCommand[];
 };
 
 export const AiQueueUi = () => {
   const { data } = useBackend<Data>();
-  const { commands } = data;
+  const { commands, unlocked } = data;
 
   return (
     <Window title="AI Command Queue" width={420} height={480}>
@@ -46,13 +50,15 @@ export const AiQueueUi = () => {
           <Stack.Item grow>
             <QueueList commands={commands} />
           </Stack.Item>
+          <Stack.Item grow>
+            <QueueSpecList unlocked={unlocked} />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-/** Top summary bar: RAM/processing power stats plus the pause/resume control. */
 const QueueStatus = () => {
   const { data, act } = useBackend<Data>();
   const { ram, processing_power, queue_length, is_paused, is_processing } =
@@ -135,8 +141,51 @@ const CommandRow = (props: { command: Command; position: number }) => {
         minValue={0}
         maxValue={Math.max(1, command.process_required)}
       >
-        {command.processing} processed out of {command.process_required}
+        {command.processing} process out of {command.process_required} required
       </ProgressBar>
     </Box>
+  );
+};
+
+/** List of commands that have been unlocked but not yet queued/run. */
+const QueueSpecList = (props: { unlocked: SpecCommand[] }) => {
+  const { unlocked } = props;
+
+  return (
+    <Section title="Unlocked Commands" fill scrollable>
+      {unlocked.length === 0 ? (
+        <Box color="label" italic>
+          No commands unlocked.
+        </Box>
+      ) : (
+        <Stack vertical>
+          {unlocked.map((specCommand, index) => (
+            <Stack.Item key={index} className="candystripe">
+              <SpecCommandRow specCommand={specCommand} position={index + 1} />
+            </Stack.Item>
+          ))}
+        </Stack>
+      )}
+    </Section>
+  );
+};
+
+const SpecCommandRow = (props: {
+  specCommand: SpecCommand;
+  position: number;
+}) => {
+  const { act } = useBackend<Data>();
+  const { specCommand, position } = props;
+
+  return (
+    <Button
+      fluid
+      onClick={() => act('add_to_queue', { command: specCommand.name })}
+    >
+      <Box bold>
+        {position}. {specCommand.name}
+      </Box>
+      <Box>Requires {specCommand.process_required} processing</Box>
+    </Button>
   );
 };
