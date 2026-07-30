@@ -5,12 +5,16 @@
 	icon_state = "RD-server-on"
 	base_icon_state = "RD-server"
 	circuit = /obj/item/circuitboard/machine/ai_server
+	use_power = IDLE_POWER_USE
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION
 	// The current queue this server is linked to
 	var/datum/ai_queue/linked_queue
 	// The parts currently inside the server
 	var/list/components = list()
 	// The maximum amount of components an ai server can have
 	var/max_slots = 5
+	// Our energy drainage
+	var/energy_rating = 0
 
 /obj/machinery/ai_server/Destroy(force)
 	. = ..()
@@ -21,11 +25,13 @@
 	if(!istype(tool, /obj/item/stock_parts/component))
 		return NONE
 
+	var/obj/item/stock_parts/component/nu_component = tool
+
 	if(!panel_open)
 		return ITEM_INTERACT_BLOCKING
 
-	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool] is stuck in hand!"))
+	if(!user.transferItemToLoc(nu_component, src))
+		to_chat(user, span_warning("[nu_component] is stuck in hand!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/dif = max_slots - length(components)
@@ -34,9 +40,14 @@
 		to_chat(user, span_warning("[src] is already full!"))
 		return
 
-	LAZYADD(components, tool)
+	LAZYADD(components, nu_component)
 	balloon_alert(user, "added component")
-	to_chat(user, span_notice("[tool] has been added to [src]. [dif] amount of components can still be added to [src]."))
+	to_chat(user, span_notice("[nu_component] has been added to [src]. [dif] amount of components can still be added to [src]."))
+
+	energy_rating += nu_component.energy_rating
+	idle_power_usage = initial(idle_power_usage) * (1 + energy_rating)
+	update_current_power_usage()
+
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/ai_server/multitool_act(mob/living/user, obj/item/multitool/multi)
@@ -76,6 +87,12 @@
 
 	components -= choice
 	try_put_in_hand(choice, user)
+
+	var/obj/item/stock_parts/component/chosen_component = choice
+
+	energy_rating -= chosen_component.energy_rating
+	idle_power_usage = initial(idle_power_usage) * (1 + energy_rating)
+	update_current_power_usage()
 
 // /roundstart denotes the ai_servers spawned at roundstart
 // The ones you map in, auto linked to the AI at roundstart

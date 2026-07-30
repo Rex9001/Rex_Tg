@@ -174,5 +174,5 @@
 	/// Helper effect that creates sparks when the AI is damaged
 	VAR_FINAL/datum/effect_system/basic/spark_spread/spark_system
 
-	/// The queue of ai processing
+	/// The queue of ais commands
 	var/datum/ai_queue/ais_queue

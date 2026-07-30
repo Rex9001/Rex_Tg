@@ -33,8 +33,7 @@
 /datum/ai_queue/New(ai)
 	. = ..()
 	linked_ai = ai
-	// Temp code until a UI is made
-	var/datum/action/cooldown/pause/action = new /datum/action/cooldown/pause()
+	var/datum/action/innate/view_ai_queue/action = new /datum/action/innate/view_ai_queue(linked_ai.ais_queue)
 	action.Grant(linked_ai)
 
 /datum/ai_queue/Destroy()
@@ -75,9 +74,6 @@
 		ram = potential_ram
 
 /datum/ai_queue/proc/add_command(datum/ai_command/command)
-	if((!is_processing) && (!is_paused))
-		start()
-
 	if(commands.len)
 		var/datum/ai_command/first_command = commands[1]
 
@@ -90,6 +86,32 @@
 			return
 
 	commands += command
+
+	if(is_paused)
+		return
+
+	// We do this bottom bit only if the command we just added is the first command
+	if(command != commands[1])
+		return
+
+	// If we dont do this there is a small delay between commands we should just execute immediatly which feels odd for the player
+	command.progress(processing_power)
+
+	if(!command)
+		commands -= command
+		return
+
+	if(!is_processing)
+		start()
+
+/datum/ai_queue/proc/toggle_pause()
+	if(!is_paused)
+		to_chat(linked_ai, span_notice("Queue paused."))
+		stop()
+	else
+		to_chat(linked_ai, span_notice("Queue started."))
+		start()
+	is_paused = !is_paused
 
 /datum/ai_queue/proc/start()
 	START_PROCESSING(SSfastprocess, src)

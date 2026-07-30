@@ -16,6 +16,5 @@
 
 /// Do something
 /datum/ai_command/proc/execute()
-	processing = 0
 	live = FALSE
 	qdel(src)

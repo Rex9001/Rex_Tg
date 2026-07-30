@@ -36,24 +36,13 @@
 	src.ui = ui
 	src.state = state
 	name = "[target] [action]"
-	RegisterSignal(target, COMSIG_QDELETING, PROC_REF(on_involved_qdel))
-	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(on_involved_qdel))
 
 /datum/ai_command/ui_act/Destroy()
-	if(target)
-		UnregisterSignal(target, COMSIG_QDELETING)
-	if(user)
-		UnregisterSignal(user, COMSIG_QDELETING)
 	target = null
 	user = null
 	ui = null
 	state = null
 	return ..()
-
-/datum/ai_command/ui_act/proc/on_involved_qdel(datum/source)
-	SIGNAL_HANDLER
-	live = FALSE
-	qdel(src)
 
 /datum/ai_command/ui_act/execute()
 	if(live && target && user)
