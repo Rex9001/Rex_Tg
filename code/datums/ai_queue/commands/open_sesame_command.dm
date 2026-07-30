@@ -18,17 +18,8 @@
 	name = "[focus_area.name] large doors opening"
 
 /datum/ai_command/sesame/execute()
-	live = FALSE
-
-	var/list/doors = list()
 	var/list/o_range = orange(10, focus)
 	for(var/obj/machinery/door/airlock/door in o_range)
-		if(door in doors)
-			continue
-
-		doors += door
-
-	for(var/obj/machinery/door/airlock/door in doors)
-		door.AIShiftClick(owner)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/atom, AIShiftClick), owner)
 
 	return ..()

@@ -54,9 +54,6 @@
 			switch(command_name)
 				if("Large Scale Door Opening")
 					var/mob/eye/camera/ai/peeper = linked_ai.eyeobj
-					if(!istype(get_area(peeper), /area/station))
-						to_chat(linked_ai, span_warning("Can only be used inside of the station."))
-						return
 					nu_command = new /datum/ai_command/sesame(peeper.loc, linked_ai)
 			add_command(nu_command)
 			return TRUE

@@ -10,11 +10,15 @@
 
 /// This runs on every processing from the ai_queue if the processing reaches the amount required the ai command will execute
 /datum/ai_command/proc/progress(processing_amount)
+	// A safeguard in case some sort of shennanigans happens
+	if(!live)
+		return
+
 	processing += processing_amount
 	if(processing >= process_required)
+		live = FALSE
 		execute()
 
 /// Do something
 /datum/ai_command/proc/execute()
-	live = FALSE
 	qdel(src)

@@ -97,7 +97,7 @@
 	// If we dont do this there is a small delay between commands we should just execute immediatly which feels odd for the player
 	command.progress(processing_power)
 
-	if(!command)
+	if(!command.live)
 		commands -= command
 		return
 
