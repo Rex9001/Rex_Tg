@@ -718,8 +718,8 @@
 
 	if(isAI(user) && !params["ai_processed"])
 		var/mob/living/silicon/ai/ai_user = user
-		ai_user.ais_queue.add_command(new /datum/ai_command/ui_act(src, ai_user, action, params, ui, state))
-		return TRUE // tell tgui the click was "handled"; the real state update lands once the queue fires
+		ai_user.ais_queue.add_command(new /datum/ai_command/ui_action(src, ai_user, action, params, ui, state))
+		return TRUE
 
 	return ..()
 

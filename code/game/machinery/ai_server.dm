@@ -48,6 +48,8 @@
 	idle_power_usage = initial(idle_power_usage) * (1 + energy_rating)
 	update_current_power_usage()
 
+	linked_queue.update_components()
+
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/ai_server/multitool_act(mob/living/user, obj/item/multitool/multi)
@@ -94,14 +96,14 @@
 	idle_power_usage = initial(idle_power_usage) * (1 + energy_rating)
 	update_current_power_usage()
 
+	linked_queue.update_components()
+
 // /roundstart denotes the ai_servers spawned at roundstart
 // The ones you map in, auto linked to the AI at roundstart
 /obj/machinery/ai_server/roundstart/Initialize(mapload)
 	. = ..()
-	var/mob/living/silicon/ai/ai_player
-	if(!(ai_player in GLOB.player_list))
-		return
+	for(var/mob/living/silicon/ai/ai_player in GLOB.mob_list)
+		linked_queue = ai_player.ais_queue
+		linked_queue.add_linked_server(src)
 
-	linked_queue = ai_player.ais_queue
-	linked_queue.add_linked_server(src)
 	return INITIALIZE_HINT_LATELOAD

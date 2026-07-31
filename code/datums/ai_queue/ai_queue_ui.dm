@@ -30,10 +30,10 @@
 
 /datum/ai_queue/proc/get_special_commands_ui_data()
 	var/list/spec_data = list()
-	for(var/datum/ai_command/command as anything in unlocked_commands)
+	for(var/datum/ai_command/path as anything in unlocked_commands)
 		spec_data += list(list(
-			"name" = command.name,
-			"process_required" = command.process_required,
+			"name" = initial(path.name),
+			"process_required" = initial(path.process_required),
 		))
 	return spec_data
 

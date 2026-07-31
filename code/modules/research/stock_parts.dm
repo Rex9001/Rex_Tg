@@ -235,13 +235,15 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 
 // Parts used for ai_server.dm construction
 // Needs a proper desc and icon
-// /component is just used for AI server stuff
+///component is just used for AI server stuff
 /obj/item/stock_parts/component
 	name = "component stock part"
 	desc = "What?"
 	abstract_type = /obj/item/stock_parts/component
-	// Ability this kind of component adds
-	var/datum/action/addable_ability = FALSE
+	/// If this adds a command (maybe change to a flag later)
+	var/command_adder = FALSE
+	/// Commands this component unlocks
+	var/list/added_commands = list()
 
 /obj/item/stock_parts/component/cpu
 	name = "CPU"
@@ -250,11 +252,19 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.1)
 
 /obj/item/stock_parts/component/ram
-	name = "Ram stick"
+	name = "RAM stick"
 	icon_state = "card_reader"
 	desc = "A ram or something."
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.1)
 
+/obj/item/stock_parts/component/edmc
+	name = "Expanded Door Manipulation card"
+	icon_state = "card_reader"
+	desc = "A ram or something."
+	energy_rating = 5
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.1)
+	command_adder = TRUE
+	added_commands = list(/datum/ai_command/sesame)
 
 // Misc. Parts
 

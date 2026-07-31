@@ -209,3 +209,8 @@ GLOBAL_LIST_INIT(stock_part_datums, generate_stock_part_datums())
 	tier = 1
 	physical_object_type = /obj/item/stock_parts/component/ram
 	physical_object_base_type = /obj/item/stock_parts/component/ram
+
+/datum/stock_part/edmc
+	tier = 1
+	physical_object_type = /obj/item/stock_parts/component/edmc
+	physical_object_base_type = /obj/item/stock_parts/component/edmc

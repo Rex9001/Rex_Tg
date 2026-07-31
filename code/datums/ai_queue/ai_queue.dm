@@ -15,7 +15,7 @@
 	/// If we are paused
 	var/is_paused = FALSE
 	/// Commands unlocked by components
-	var/list/unlocked_commands = list(/datum/ai_command/sesame)
+	var/list/unlocked_commands = list()
 	// Special modifiers should also be stored somewhere, like ones changing the queue or giving the ai abilities
 
 	/* TODO
@@ -41,37 +41,57 @@
 	..()
 
 /datum/ai_queue/proc/add_linked_server(obj/machinery/ai_server/server)
-	if(server in linked_servers)
-		return linked_servers
-
-	linked_servers += server
+	var/list/dupe_shield = linked_servers
+	dupe_shield += server
+	linked_servers = unique_list(dupe_shield)
 	update_components()
 	return linked_servers
 
 /datum/ai_queue/proc/remove_linked_server(obj/machinery/ai_server/server)
-	if(!(server in linked_servers))
-		return linked_servers
-
-	linked_servers -= server
+	var/list/dupe_shield = linked_servers
+	dupe_shield -= server
+	linked_servers = unique_list(dupe_shield)
 	update_components()
 	return linked_servers
 
 /datum/ai_queue/proc/update_components()
 	var/potential_ram = 0
 	var/potential_processing_power = 0
+	var/list/special_components = list()
+
+	// These can be tweaked so the AI has some minimum amounts
+	if(!linked_servers)
+		unlocked_commands = list()
+		processing_power = 0
+		ram = 0
+
 	for(var/obj/machinery/ai_server/server in linked_servers)
 		for(var/obj/item/stock_parts/component/part in server.components)
 			// Should account for tiers, but that can be added later
 			if(istype(part, /obj/item/stock_parts/component/cpu))
 				potential_processing_power += 1
+				continue
+
 			if(istype(part, /obj/item/stock_parts/component/ram))
 				potential_ram += 1
+				continue
+
+			special_components += part
 
 	if(potential_processing_power != processing_power)
 		processing_power = potential_processing_power
 
 	if(potential_ram != ram)
 		ram = potential_ram
+
+	var/list/no_dupes = unique_list(special_components)
+	unlocked_commands = list()
+	for(var/obj/item/stock_parts/component/part in no_dupes)
+		if(part.command_adder)
+			for(var/datum/ai_command/path as anything in part.added_commands)
+				if(!ispath(path, /datum/ai_command))
+					continue
+				unlocked_commands += path
 
 /datum/ai_queue/proc/add_command(datum/ai_command/command)
 	if(commands.len)

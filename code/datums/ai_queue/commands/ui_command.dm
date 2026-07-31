@@ -1,5 +1,5 @@
 /// A command the AI uses to interact with pretty much all machinery UI in the game
-/datum/ai_command/ui_act
+/datum/ai_command/ui_action
 	name = "AI UI Interaction"
 	process_required = 1
 
@@ -16,7 +16,7 @@
 	/// ui_state used to validate the interaction when it actually fires
 	var/datum/ui_state/state
 
-/datum/ai_command/ui_act/New(atom/movable/target, mob/living/silicon/ai/user, action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/ai_command/ui_action/New(atom/movable/target, mob/living/silicon/ai/user, action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	// src. to make it clearer if we're referring to our own variables
 	src.target = target
@@ -27,14 +27,14 @@
 	src.state = state
 	name = "[target] [action]"
 
-/datum/ai_command/ui_act/Destroy()
+/datum/ai_command/ui_action/Destroy()
 	target = null
 	user = null
 	ui = null
 	state = null
 	return ..()
 
-/datum/ai_command/ui_act/execute()
+/datum/ai_command/ui_action/execute()
 	if(target && user)
 		if(target.ui_status(user, state) <= UI_CLOSE)
 			to_chat(user, span_warning("Connection lost before the command could process."))
